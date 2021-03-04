@@ -17,10 +17,13 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string("firstName");
             $table->string("lastName");
-            $table->string("email");
-            $table->string("phone");
+            $table->string("username")->unique();
+            $table->string("password");
+            $table->string("email")->unique();
+            $table->string("phone")->unique();
             $table->string("organisation")->nullable();
             $table->string("town");
+            $table->boolean("status")->default(1);
             $table->timestamps();
         });
     }

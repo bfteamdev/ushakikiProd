@@ -14,7 +14,8 @@ class GroupeController extends Controller
      */
     public function index()
     {
-        //
+        $groupe = Groupe::all();
+        return view("admin.groupe.index", compact("groupe"));
     }
 
     /**
@@ -24,7 +25,7 @@ class GroupeController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.groupe.create");
     }
 
     /**
@@ -35,7 +36,13 @@ class GroupeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request = request()->validate([
+            "name" => "required",
+            "icon" => "required",
+            "color" => "required",
+        ]);
+        Groupe::firstOrCreate($request);
+        return redirect()->route("group.index")->with("success", "Le groupe a ete enregistere avec succe !!!!");
     }
 
     /**
@@ -55,9 +62,10 @@ class GroupeController extends Controller
      * @param  \App\Models\Groupe  $groupe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Groupe $groupe)
+    public function edit($groupe)
     {
-        //
+        $groupe = Groupe::findOrFail($groupe);
+        return view("admin.groupe.edit", compact("groupe"));
     }
 
     /**
@@ -69,7 +77,14 @@ class GroupeController extends Controller
      */
     public function update(Request $request, Groupe $groupe)
     {
-        //
+        $request = request()->validate([
+            "name" => "required",
+            "icon" => "required",
+            "color" => "required",
+        ]);
+        // $count = Groupe::where("name",$request['name'])->count();
+        $groupe->update($request);
+        return redirect()->route("group.index")->with("success", "Le groupe a ete modifier avec succe !!!!");
     }
 
     /**
@@ -78,8 +93,10 @@ class GroupeController extends Controller
      * @param  \App\Models\Groupe  $groupe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Groupe $groupe)
+    public function destroy($groupe)
     {
-        //
+        $groupe = Groupe::findOrFail($groupe);
+        $groupe->delete();
+        return redirect()->route("group.index")->with("success", "Le groupe a ete supprime avec succe !!!!");
     }
 }

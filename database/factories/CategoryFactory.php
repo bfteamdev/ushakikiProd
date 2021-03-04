@@ -22,7 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "groupe_id"=> $this->faker->numberBetween($min=1, $max=5),
+            "name"=>$this->faker->name
         ];
     }
 }

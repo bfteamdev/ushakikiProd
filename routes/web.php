@@ -32,3 +32,13 @@ Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search')
 
 // Admin --Group
 Route::resource("group","GroupeController");
+// Route::get("svg","GroupeController@icons")->name("group.icons");// Admin --Group
+
+// Admin --Category
+Route::resource("category","CategoryController");
+
+// Admin --Category
+Route::resource("type","TypeController");
+
+// Admin --Client
+Route::resource("client","ClientController");

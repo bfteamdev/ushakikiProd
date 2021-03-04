@@ -14,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.client.index");
     }
 
     /**
@@ -24,7 +24,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $client = new Client();
+        return view("admin.client.create", compact("client"));
     }
 
     /**
@@ -35,7 +36,19 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validator();
+        $countEmail = Client::where("email", $request['email'])->count();
+        $countUsername = Client::where("phone", $request['username'])->count();
+        if ($countEmail === 0) {
+            if ($countUsername === 0) {
+                Client::firstOrCreate($data);
+                return redirect()->route("client.index")->with("success", "Le client a ete enregistre avec succe !!!");
+            } else {
+                return back()->with("error", "Le username a ete deja utilise par un autre");
+            }
+        } else {
+            return back()->with("error", "L'adresse email a ete deja utilise par un autre");
+        }
     }
 
     /**
@@ -81,5 +94,20 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         //
+    }
+
+    public function validator()
+    {
+        return request()->validate([
+            "firstName" => "required",
+            "lastName" => "required",
+            "username" => "required",
+            "password" => "required",
+            "email" => "required|email",
+            "phone" => "required",
+            "organisation" => "",
+            "town" => "",
+            "status" => ""
+        ]);
     }
 }

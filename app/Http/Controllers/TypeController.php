@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $type = Type::all();
+        return view("admin.type.index",compact("type"));
     }
 
     /**
@@ -24,7 +26,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view("admin.type.create",compact("category"));
     }
 
     /**
@@ -35,7 +38,12 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            "category_id"=> "required",
+            "name"=> "required",
+        ]);
+        Type::firstOrCreate($data);
+        return redirect()->route("type.index")->with("success", "Le type a ete enregistre avec succe !!!!");
     }
 
     /**
@@ -57,7 +65,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $category = Category::all();
+        return view("admin.type.edit",compact("type","category"));
     }
 
     /**
@@ -69,7 +78,12 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $data = request()->validate([
+            "category_id"=> "required",
+            "name"=> "required",
+        ]);
+        $type->update($data);
+        return redirect()->route("type.index")->with("success", "Le type a ete modifier avec succe !!!!");
     }
 
     /**
@@ -80,6 +94,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route("type.index")->with("success", "Le type a ete supprime avec succe !!!!");
     }
 }
