@@ -4,13 +4,12 @@
         <div class="card-header flex-wrap border-0 pt-6 pb-0 mb-8">
             <div class="card-title">
                 <h3 class="card-label">
-                    Groupe
-                    <span class="d-block text-muted pt-2 font-size-sm">Datatable initialized from HTML table</span>
+                    Group
                 </h3>
             </div>
             <div class="card-toolbar">
                 <a href="{{ route('group.create') }}" class="btn btn-primary font-weight-bolder">
-                    Creer un groupe
+                    Create a Group
                 </a>
                 <!--end::Button-->
             </div>

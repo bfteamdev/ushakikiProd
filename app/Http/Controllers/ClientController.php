@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ClientRegistedEvent;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -14,7 +16,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view("admin.client.index");
+        $client = Client::all();
+        return view("admin.client.index", compact("client"));
     }
 
     /**
@@ -41,13 +44,18 @@ class ClientController extends Controller
         $countUsername = Client::where("phone", $request['username'])->count();
         if ($countEmail === 0) {
             if ($countUsername === 0) {
-                Client::firstOrCreate($data);
-                return redirect()->route("client.index")->with("success", "Le client a ete enregistre avec succe !!!");
+                if ($data['profil'] !== null) {
+                    $data['profil'] = $data['profil']->store("profil", "public");
+                }
+                $data['password'] = Hash::make($data['password']);
+                $client = Client::firstOrCreate($data);
+                event(new ClientRegistedEvent($client));
+                return redirect()->route("client.index")->with("success", "The client was successfully registered!!!");
             } else {
-                return back()->with("error", "Le username a ete deja utilise par un autre");
+                return back()->with("error", "The email username has already been used by another user");
             }
         } else {
-            return back()->with("error", "L'adresse email a ete deja utilise par un autre");
+            return back()->with("error", "The email address has already been used by another user");
         }
     }
 
@@ -59,7 +67,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return view("admin.client.show", compact("client"));
     }
 
     /**
@@ -82,7 +90,22 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $data = $this->validator2();
+        // dd($data);
+        $countEmail = Client::where("email", $request['email'])->where("id", '!=', $client->id)->count();
+        $countUsername = Client::where("username", $request['username'])->where("id", '!=', $client->id)->count();
+        if ($countEmail !== 1) {
+            if ($countUsername !== 1) {
+                    // $data['profil'] = $data['profil']->store("profil", "public");
+                
+                $client->update($data);
+                return back()->with("success", "The client has been updated successfully!!!");
+            } else {
+                return back()->with("error", "The email username has already been used by another user");
+            }
+        } else {
+            return back()->with("error", "The email address has already been used by another user");
+        }
     }
 
     /**
@@ -93,7 +116,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route("client.index")->with("success", "The client was successfully deleted !!!");
     }
 
     public function validator()
@@ -106,6 +130,20 @@ class ClientController extends Controller
             "email" => "required|email",
             "phone" => "required",
             "organisation" => "",
+            "town" => "",
+            "status" => "",
+            "profil" => ""
+        ]);
+    }
+
+    public function validator2()
+    {
+        return request()->validate([
+            "firstName" => "required",
+            "lastName" => "required",
+            "username" => "required",
+            "email" => "required|email",
+            "phone" => "required",
             "town" => "",
             "status" => ""
         ]);

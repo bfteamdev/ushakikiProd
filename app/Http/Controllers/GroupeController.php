@@ -42,7 +42,7 @@ class GroupeController extends Controller
             "color" => "required",
         ]);
         Groupe::firstOrCreate($request);
-        return redirect()->route("group.index")->with("success", "Le groupe a ete enregistere avec succe !!!!");
+        return redirect()->route("group.index")->with("success", "The group has been successfully registered!!!!");
     }
 
     /**
@@ -84,7 +84,7 @@ class GroupeController extends Controller
         ]);
         // $count = Groupe::where("name",$request['name'])->count();
         $groupe->update($request);
-        return redirect()->route("group.index")->with("success", "Le groupe a ete modifier avec succe !!!!");
+        return redirect()->route("group.index")->with("success", "The group has been successfully edit !!!!");
     }
 
     /**
@@ -97,6 +97,6 @@ class GroupeController extends Controller
     {
         $groupe = Groupe::findOrFail($groupe);
         $groupe->delete();
-        return redirect()->route("group.index")->with("success", "Le groupe a ete supprime avec succe !!!!");
+        return redirect()->route("group.index")->with("success", "The group has been deleted successfully !!!!");
     }
 }

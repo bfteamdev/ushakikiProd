@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Client;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,15 @@ class ClientRegistedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $client;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Client $client)
     {
-        //
+        $this->client = $client;
     }
 
     /**

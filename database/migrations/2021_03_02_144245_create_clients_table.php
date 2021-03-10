@@ -24,6 +24,7 @@ class CreateClientsTable extends Migration
             $table->string("organisation")->nullable();
             $table->string("town");
             $table->boolean("status")->default(1);
+            $table->string("profil")->default("profil/blank.png");
             $table->timestamps();
         });
     }

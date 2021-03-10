@@ -3,12 +3,12 @@
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
-                <h3 class="card-label">Listes des touts les categories
-                    <div class="text-muted pt-2 font-size-sm">Categorie</div>
+                <h3 class="card-label">Categories list
+                    <div class="text-muted pt-2 font-size-sm">Categories</div>
                 </h3>
             </div>
             <div class="card-toolbar">
-                <a href="{{ route('category.create') }}" class="btn btn-primary font-weight-bolder">Creer un categorie
+                <a href="{{ route('category.create') }}" class="btn btn-primary font-weight-bolder">Create a category
                 </a>
             </div>
         </div>
@@ -54,7 +54,7 @@
                         <tr>
                             <td class="pr-0">
                                 <div class="symbol symbol-50 symbol-light mt-1">
-                                    <span class="symbol-label">
+                                    <span class="symbol-label" style="background-color: #d1d1d1">
                                         <img src="{{ asset("$item->icon") }}" class="h-75 align-self-end"
                                             alt="{{ $item->name }}">
                                     </span>
@@ -67,17 +67,16 @@
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->price }}
                             </td>
                             <td class="d-flex">
-                                <a href="{{ route('category.edit', ['category' => $item->id]) }}" class="btn"
-                                    style="padding: 0; padding: 0 7px;">
-                                    <i class="flaticon-edit text-primary"></i>
-                                </a> |
+                                <a href="{{ route('category.edit', ['category' => $item->id]) }}" class="btn btn-primary" style="padding: 8px 10px;">
+                                    <i class="flaticon-edit p-0"></i>
+                                </a>
                                 <form action="{{ route('category.destroy', ['category' => $item->id]) }}" method="post"
                                     style="display: inline-block;">
                                     @method("delete")
                                     @csrf
-                                    <button type="submit" class="btn" style="padding: 0; padding: 0 7px;"
+                                    <button type="submit" class="btn btn-danger" style="padding: 8px 10px;"
                                         onclick="Delete()">
-                                        <i class="flaticon2-trash text-danger"></i>
+                                        <i class="flaticon2-trash p-0"></i>
                                     </button>
                                 </form>
                             </td>

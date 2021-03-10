@@ -3,12 +3,12 @@
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
-                <h3 class="card-label">Listes des touts les type
-                    <div class="text-muted pt-2 font-size-sm">Type</div>
+                <h3 class="card-label">Sub-categories list
+                    <div class="text-muted pt-2 font-size-sm">sub-category</div>
                 </h3>
             </div>
             <div class="card-toolbar">
-                <a href="{{ route('type.create') }}" class="btn btn-primary font-weight-bolder">Creer un nouveau type
+                <a href="{{ route('sub-category.create') }}" class="btn btn-primary font-weight-bolder">Create a new subcategory
                 </a>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <thead>
                     <tr>
                         <th title="Field #2">Name</th>
-                        <th title="Field #3">Categorie</th>
+                        <th title="Field #3">Parent category</th>
                         <th title="Field #5">ACTION</th>
                         <th title="Field #5">ACTION</th>
                     </tr>
@@ -56,17 +56,16 @@
                             </td>
                             </td>
                             <td class="d-flex">
-                                <a href="{{ route('type.edit', ['type' => $item->id]) }}" class="btn"
-                                    style="padding: 0; padding: 0 7px;">
-                                    <i class="flaticon-edit text-primary"></i>
-                                </a> |
-                                <form action="{{ route('type.destroy', ['type' => $item->id]) }}" method="post"
+                                <a href="{{ route('sub-category.edit', ['sub_category' => $item->id]) }}" class="btn btn-primary" style="padding: 8px 10px;">
+                                    <i class="flaticon-edit p-0"></i>
+                                </a>
+                                <form action="{{ route('sub-category.destroy', ['sub_category' => $item->id]) }}" method="post"
                                     style="display: inline-block;">
                                     @method("delete")
                                     @csrf
-                                    <button type="submit" class="btn" style="padding: 0; padding: 0 7px;"
+                                    <button type="submit" class="btn btn-danger" style="padding: 8px 10px;"
                                         onclick="Delete()">
-                                        <i class="flaticon2-trash text-danger"></i>
+                                        <i class="flaticon2-trash p-0"></i>
                                     </button>
                                 </form>
                             </td>

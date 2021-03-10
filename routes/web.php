@@ -38,7 +38,7 @@ Route::resource("group","GroupeController");
 Route::resource("category","CategoryController");
 
 // Admin --Category
-Route::resource("type","TypeController");
+Route::resource("sub-category","TypeController");
 
 // Admin --Client
 Route::resource("client","ClientController");

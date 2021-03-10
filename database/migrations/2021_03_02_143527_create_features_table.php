@@ -17,7 +17,10 @@ class CreateFeaturesTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("type");
+            $table->unsignedBigInteger("category_id")->index();
             $table->timestamps();
+
+            $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
         });
     }
 

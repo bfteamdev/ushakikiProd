@@ -16,82 +16,42 @@ return [
             'section' => 'Layout',
         ],
         [
-            'title' => 'Categories',
-            'desc' => '',
-            'icon' => 'media/svg/icons/Code/Compiling.svg',
-            'bullet' => 'dot',
+            'title' => 'Group',
             'root' => true,
-            'submenu' => [
-                [
-                    'title' => 'Group',
-                    'page' => '/group'
-                ],
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            'page' => '/group',
+            'new-tab' => false,
+        ],
+        [
+            'title' => 'Categories',
+            'root' => true,
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            "bullet" => "dot",
+            'new-tab' => false,
+            "submenu" =>[
                 [
                     'title' => 'Category',
-                    'page' => 'category'
+                    'page' => '/category',
                 ],
                 [
-                    'title' => 'Type',
-                    'page' => 'type'
+                    'title' => 'Sub-category',
+                    'page' => '/sub-category',
                 ],
-                [
-                    'title' => 'Feature',
-                    'page' => 'feature'
-                ]
-            ]
+            ],
         ],
         [
-            'title' => 'Users',
-            'desc' => '',
-            'icon' => 'media/svg/icons/Code/Compiling.svg',
-            'bullet' => 'dot',
+            'title' => 'Features',
             'root' => true,
-            'submenu' => [
-                [
-                    'title' => 'Client',
-                    'page' => '/client'
-                ],
-            ]
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            'page' => '/feature',
+            'new-tab' => false,
         ],
         [
-            'title' => 'General',
-            'icon' => 'media/svg/icons/General/Settings-1.svg',
-            'bullet' => 'dot',
+            'title' => 'Clients',
             'root' => true,
-            'submenu' => [
-                [
-                    'title' => 'Fixed Content',
-                    'page' => 'layout/general/fixed-content'
-                ],
-                [
-                    'title' => 'Minimized Aside',
-                    'page' => 'layout/general/minimized-aside'
-                ],
-                [
-                    'title' => 'No Aside',
-                    'page' => 'layout/general/no-aside'
-                ],
-                [
-                    'title' => 'Empty Page',
-                    'page' => 'layout/general/empty-page'
-                ],
-                [
-                    'title' => 'Fixed Footer',
-                    'page' => 'layout/general/fixed-footer'
-                ],
-                [
-                    'title' => 'No Header Menu',
-                    'page' => 'layout/general/no-header-menu'
-                ]
-            ]
-        ],
-        [
-            'title' => 'Builder',
-            'root' => true,
-            'icon' => 'media/svg/icons/Home/Library.svg',
-            'page' => '#',
-            'visible' => 'preview',
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            'page' => '/client',
+            'new-tab' => false,
         ],
     ]
-
 ];

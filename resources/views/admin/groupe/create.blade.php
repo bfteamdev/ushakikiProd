@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="row">
                 <h3 class="card-title">
-                    Creer un nouveau Groupe
+                    Create a new Group
                 </h3>
             </div>
         </div>
@@ -16,7 +16,7 @@
                     {{-- <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"></h3> --}}
                     <div class="mb-4 row">
                         <div class="form-group col-lg-12 ">
-                            <label>Nom <span class="text-danger">*</span></label>
+                            <label>Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Nom du groupe " name="name">
                             @error('name')
@@ -37,7 +37,7 @@
                                             role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Icons Lists</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <i aria-hidden="true" class="ki ki-close"></i>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12 ">
-                        <label>Couleur <span class="text-danger">*</span></label>
+                        <label>color <span class="text-danger">*</span></label>
                         <input type="color" class="form-control" placeholder="Nom du groupe " name="color">
                     </div>
                 </div>
@@ -75,8 +75,11 @@
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <a href="{{ route("group.index") }}" class="btn btn-light-dark"><i class="flaticon2-left-arrow-1"></i>Back</a>
+                    <div class="col-lg-6">
+                        <a href="{{ route('group.index') }}" class="btn btn-light-dark"><i
+                                class="flaticon2-left-arrow-1"></i>Back</a>
+                    </div>
+                    <div class="col-lg-6 text-right">
                         <button type="submit" class="btn font-weight-bold btn-primary mr-2 col-3">Submit</button>
                     </div>
                 </div>

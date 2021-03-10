@@ -4,12 +4,12 @@
         <div class="card-header">
             <div class="row">
                 <h3 class="card-title">
-                    Creer un nouveau Type
+                    Creer un sous-categorie
                 </h3>
             </div>
         </div>
         <!--begin::Form-->
-        <form class="form" method="POST" action="{{ route('type.store') }}">
+        <form class="form" method="POST" action="{{ route('sub-category.store') }}">
             @csrf
             <div class="card-body">
                 @if (session()->has('error'))
@@ -21,9 +21,9 @@
                     {{-- <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"></h3> --}}
                     <div class="mb-4 row">
                         <div class="form-group col-lg-12">
-                            <label for="exampleSelect1">Groupe <span class="text-danger">*</span></label>
+                            <label for="exampleSelect1">Category <span class="text-danger">*</span></label>
                             <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
-                                <option></option>
+                                <option value="">select category</option>
                                 @foreach ($category as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
@@ -33,21 +33,23 @@
                             @enderror
                         </div>
                         <div class="form-group col-lg-12">
-                            <label>Nom <span class="text-danger">*</span></label>
+                            <label>Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Nom du type " name="name" value="{{ old('name') }}">
+                                placeholder="Sub-category name" name="name" value="{{ old('name') }}">
                             @error('name')
                                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                             @enderror
                         </div>
                     </div>
                 </div>
-                <div class="separator separator-dashed my-8"></div>
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <a href="http://localhost:8001/tld" class="btn btn-dark col-2">Back</a>
+                    <div class="col-lg-6">
+                        <a href="{{ route('sub-category.index') }}" class="btn btn-light-dark"><i
+                                class="flaticon2-left-arrow-1"></i>Back</a>
+                    </div>
+                    <div class="col-lg-6 text-right">
                         <button type="submit" class="btn font-weight-bold btn-primary mr-2 col-3">Submit</button>
                     </div>
                 </div>
