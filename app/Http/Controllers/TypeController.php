@@ -43,7 +43,7 @@ class TypeController extends Controller
             "name"=> "required",
         ]);
         Type::firstOrCreate($data);
-        return redirect()->route("type.index")->with("success", "The subcategory was successfully registered !!!!");
+        return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully registered !!!!");
     }
 
     /**
@@ -83,7 +83,7 @@ class TypeController extends Controller
             "name"=> "required",
         ]);
         $type->update($data);
-        return redirect()->route("type.index")->with("success", "The subcategory was successfully modified !!!!");
+        return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully modified !!!!");
     }
 
     /**
@@ -95,6 +95,6 @@ class TypeController extends Controller
     public function destroy(Type $type)
     {
         $type->delete();
-        return redirect()->route("type.index")->with("success", "The subcategory has been deleted successfully !!!!");
+        return redirect()->route("sub-category.index")->with("success", "The subcategory has been deleted successfully !!!!");
     }
 }

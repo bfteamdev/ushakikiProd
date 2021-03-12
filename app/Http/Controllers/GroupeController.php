@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Groupe;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class GroupeController extends Controller
     public function index()
     {
         $groupe = Groupe::all();
-        return view("admin.groupe.index", compact("groupe"));
+        $categories = Category::all();
+        return view("admin.groupe.index", compact("groupe","categories"));
     }
 
     /**

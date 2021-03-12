@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Annonce;
+use App\Models\Category;
+use App\Models\Groupe;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
@@ -14,7 +17,7 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.ads.index");
     }
 
     /**
@@ -24,7 +27,10 @@ class AnnonceController extends Controller
      */
     public function create()
     {
-        //
+        $group = Groupe::all();
+        $category = Category::all();
+        $subCategory = Type::all();
+        return view("admin.ads.create", compact("group", "category", "subCategory"));
     }
 
     /**

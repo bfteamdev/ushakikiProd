@@ -44,7 +44,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div data-scroll="true" data-height="738">
+                                                    <div data-scroll="false" data-height="738">
                                                         @include('admin.icons.svg')
                                                         <div>
                                                         </div>

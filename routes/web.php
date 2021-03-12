@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,14 +32,23 @@ Route::get('/icons/svg', 'PagesController@svg');
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
 // Admin --Group
-Route::resource("group","GroupeController");
+Route::resource("/group","GroupeController");
 // Route::get("svg","GroupeController@icons")->name("group.icons");// Admin --Group
 
 // Admin --Category
-Route::resource("category","CategoryController");
+Route::resource("/category","CategoryController");
 
 // Admin --Category
-Route::resource("sub-category","TypeController");
+Route::resource("/sub-category","TypeController");
+
+// Admin --Features
+Route::resource("/features","FeatureController");
 
 // Admin --Client
-Route::resource("client","ClientController");
+Route::resource("/client","ClientController");
+
+// Admin --Ads
+Route::resource("/ads","AnnonceController");
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

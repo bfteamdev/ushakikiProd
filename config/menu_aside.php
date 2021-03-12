@@ -28,7 +28,7 @@ return [
             'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
             "bullet" => "dot",
             'new-tab' => false,
-            "submenu" =>[
+            "submenu" => [
                 [
                     'title' => 'Category',
                     'page' => '/category',
@@ -43,15 +43,63 @@ return [
             'title' => 'Features',
             'root' => true,
             'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => '/feature',
+            'page' => '/features',
             'new-tab' => false,
         ],
         [
-            'title' => 'Clients',
+            'title' => 'Users',
             'root' => true,
             'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => '/client',
+            "bullet" => "dot",
             'new-tab' => false,
+            "submenu" => [
+                [
+                    'title' => 'Clients',
+                    'page' => '/client',
+                ],
+                // [
+                //     'title' => 'Organisation',
+                //     'page' => '',
+                // ],
+            ],
+        ],
+        [
+            'title' => 'All ads',
+            'root' => true,
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            "bullet" => "dot",
+            'new-tab' => false,
+            "submenu" => [
+                [
+                    'title' => 'Ads',
+                    'page' => '/ads',
+                ],
+                [
+                    'title' => 'Create Ads',
+                    'page' => '/ads/create',
+                ],
+            ],
+        ],
+        [
+            'title' => 'All orders',
+            'root' => true,
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            "bullet" => "dot",
+            'new-tab' => false,
+            "submenu" => [
+                [
+                    'title' => 'Order',
+                    'page' => '/category',
+                ],
+                [
+                    'title' => 'Order pending',
+                    'page' => '',
+                ],
+                [
+                    'title' => 'Order deleted',
+                    'page' => '',
+                ],
+            ],
         ],
     ]
 ];
