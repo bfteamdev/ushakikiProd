@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="row">
                 <h3 class="card-title">
-                    Edit category : <b>{{ $category->name }}</b>
+                    Edit category :&nbsp;<b><em>{{ $category->name }}</em></b>
                 </h3>
             </div>
         </div>

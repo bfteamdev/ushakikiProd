@@ -28,8 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $category = new Category();
         $groupe = Groupe::all();
-        return view("admin.category.create", compact("groupe"));
+        return view("admin.category.create", compact("groupe", "category"));
     }
 
     /**
@@ -88,11 +89,22 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $data = $this->validator();
+        $id = $category->groupe_id;
         $countGroup = Groupe::where("id", $request['groupe_id'])->count();
-        $name = Category::where("name", $request['name'])->count();
+        $nameGroup = Groupe::where("id", $request['groupe_id'])->get();
+        $nameExist = Category::where("name", $request['name'])
+        ->where("groupe_id", "!=", $request['groupe_id'])
+        ->count();
         if ($countGroup === 1) {
-            $category->update($data);
-            return redirect()->route("category.index")->with("success", "The category has been successfully modified !!");
+            if ($nameExist === 0) {
+                $category->update($data);
+                if ($request['features'][0]["name"] !== null) {
+                    $this->updateFeatures($request, "features", $category->id);
+                }
+                return back()->with("success", "The category has been successfully modified !!");
+            } else {
+                return back()->with("error", "The name already exits on this groupe <b>" . $nameGroup . "</b> !!!!");
+            }
         } else {
             return back()->with("error", "The group does not exist OR is not selected !!");
         }
@@ -125,9 +137,24 @@ class CategoryController extends Controller
         foreach ($request[$valuesFeatues] as $item) {
             if (in_array($item['type'], $this->Type())) {
                 Feature::firstOrCreate([
-                    "name"=>$item['name'],
-                    "type"=>$item['type'],
-                    "category_id"=>$category_id
+                    "name" => $item['name'],
+                    "type" => $item['type'],
+                    "category_id" => $category_id
+                ]);
+            } else {
+                return back()->with("error", "Type of the information " . $item["name"] . "is not defined");
+            }
+        }
+    }
+
+    public function updateFeatures($request, $valuesFeatues, $category_id)
+    {
+        foreach ($request[$valuesFeatues] as $item) {
+            if (in_array($item['type'], $this->Type())) {
+                Feature::updateOrCreate([
+                    "name" => $item['name'],
+                    "type" => $item['type'],
+                    "category_id" => $category_id
                 ]);
             } else {
                 return back()->with("error", "Type of the information " . $item["name"] . "is not defined");
