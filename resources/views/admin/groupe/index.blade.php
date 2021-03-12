@@ -145,7 +145,7 @@
     <script>
         function Delete() {
             this.addEventListener('submit', (e) => {
-                if (confirm("Do wont ???") == true) {
+                if (confirm("Do wont delete this group ???") == true) {
                     return true;
                 } else {
                     e.preventDefault();
