@@ -75,15 +75,22 @@ class GroupeController extends Controller
      * @param  \App\Models\Groupe  $groupe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Groupe $groupe)
+    public function update(Request $request, $groupe)
     {
         $request = request()->validate([
             "name" => "required",
             "icon" => "required",
             "color" => "required",
         ]);
+        $groupes = Groupe::findOrFail($groupe);
+        $groupes->update([
+            'name'=>$request['name'],
+            'icon'=>$request['icon'],
+            'color'=>$request['color']
+            ]
+        );
         // $count = Groupe::where("name",$request['name'])->count();
-        $groupe->update($request);
+        // $groupe->update($request);
         return redirect()->route("group.index")->with("success", "The group has been successfully edit !!!!");
     }
 
