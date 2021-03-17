@@ -18,6 +18,7 @@ class CreateGroupesTable extends Migration
             $table->string("name");
             $table->string("color");
             $table->string("icon");
+            $table->double("price");
             $table->timestamps();
         });
     }
