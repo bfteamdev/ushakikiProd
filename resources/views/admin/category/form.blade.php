@@ -15,13 +15,14 @@
             <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#categorie">
                     <span class="nav-icon"><i class="flaticon2-chat-1"></i></span>
-                    <span class="nav-text">{{ $category->name ? "Update category":"Create a category" }}</span>
+                    <span class="nav-text">{{ $category->name ? 'Update category' : 'Create a category' }}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#caracteristique" aria-controls="profile">
                     <span class="nav-icon"><i class="flaticon2-layers-1"></i></span>
-                    <span class="nav-text">{{ !empty($category->features[0]) ? "Update the feature":"Add features" }}</span>
+                    <span
+                        class="nav-text">{{ !empty($category->features[0]) ? 'Update the feature' : 'Add features' }}</span>
                 </a>
             </li>
         </ul>
@@ -67,7 +68,7 @@
                                             role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">SVG Icons</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Icons lists</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <i aria-hidden="true" class="ki ki-close"></i>
@@ -75,7 +76,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div data-scroll="true" data-height="738">
-                                                        @include('admin.icons.svg')
+                                                        @include('admin.icons.icons')
                                                         <div>
                                                         </div>
                                                     </div>

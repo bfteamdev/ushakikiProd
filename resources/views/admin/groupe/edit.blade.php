@@ -39,7 +39,7 @@
                                     </button>
                                     <div class="modal fade" id="exampleModalCustomScrollable" tabindex="-1" role="dialog"
                                         aria-labelledby="staticBackdrop" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable" style="max-width: 1324px"
+                                        <div class="modal-dialog modal-dialog-scrollable" style="max-width: 1500px"
                                             role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">

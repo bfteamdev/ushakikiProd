@@ -29,7 +29,7 @@
                                     style="background-color: {{ $item->color }}"
                                     style="padding-bottom: 2rem !important;margin: 14px 25px !important;">
                                     <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2 customSVG">
-                                        <img src="{{ asset("$item->icon") }}" />
+                                        <i class="{{ $item->icon }}"></i>
                                     </span>
                                     <div class="d-flex justify-content-between" style="margin-top: 60px;">
                                         {{-- <span class="text-light font-weight-bold font-size-h6">{{ $item->name }}</span> --}}
@@ -99,15 +99,16 @@
     <style>
         .customSVG {
             position: absolute;
-            background-color: #fbfbfb;
-            padding: 11px;
+            background-color: #ffffff;
+            padding: 12px 12px;
             border-radius: 25%;
             box-shadow: 0px 0px 12px 0px #ffffff;
             top: 10px;
         }
 
-        .customSVG img {
-            width: 30px;
+        .customSVG i {
+            font-size: 27px;
+            color: #353535;
         }
 
         .action {
