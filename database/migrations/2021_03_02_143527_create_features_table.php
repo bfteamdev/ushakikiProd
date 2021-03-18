@@ -16,7 +16,7 @@ class CreateFeaturesTable extends Migration
         Schema::create('features', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("category_id");
-            $table->string("name");
+            $table->string("title");
             $table->integer("displayOrder");
             $table->timestamps();
 

@@ -18,6 +18,11 @@
                         {{ session()->get('error') }}
                     </div>
                 @endif
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <div class="mb">
                     {{-- <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"></h3> --}}
                     <div class="mb-4 row">
@@ -70,6 +75,13 @@
                                     <div class="invalid-feedback">{{ $errors->first('icon') }}</div>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="form-group col-lg-12 ">
+                            <label>Price <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" placeholder="Price of this group" name="price" value="{{ old("price") ?? $groupe->price }}">
+                            @error('price')
+                                <div class="invalid-feedback">{{ $errors->first('price') }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group col-lg-12 ">

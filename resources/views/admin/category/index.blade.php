@@ -44,7 +44,6 @@
                         <th title="Field #1">Icon</th>
                         <th title="Field #2">Name</th>
                         <th title="Field #3">Groupe</th>
-                        <th title="Field #4">Price</th>
                         <th title="Field #5">ACTION</th>
                         <th title="Field #5">ACTION</th>
                     </tr>
@@ -55,16 +54,13 @@
                             <td class="pr-0">
                                 <div class="symbol symbol-50 symbol-light mt-1">
                                     <span class="symbol-label" style="background-color: #d1d1d1">
-                                        <img src="{{ asset("$item->icon") }}" class="h-75 align-self-end"
-                                            alt="{{ $item->name }}">
+                                        <i class="{{ $item->icon }}" style="color: black;"></i>
                                     </span>
                                 </div>
                             </td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->name }}
                             </td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->groupe->name }}
-                            </td>
-                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->price }}
                             </td>
                             <td class="d-flex">
                                 <a href="{{ route('category.edit', ['category' => $item->id]) }}" class="btn btn-primary" style="padding: 8px 10px;">

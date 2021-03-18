@@ -47,9 +47,9 @@
             <table class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
                 <thead>
                     <tr>
-                        <th title="Field #3">Name</th>
-                        <th title="Field #3">Type info</th>
+                        <th title="Field #3">Title</th>
                         <th title="Field #3">Category</th>
+                        <th title="Field #3">Display order</th>
                         <th title="Field #5">ACTION</th>
                         <th title="Field #5">ACTION</th>
                     </tr>
@@ -57,9 +57,9 @@
                 <tbody>
                     @foreach ($features as $item)
                         <tr>
-                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->name }}</td>
-                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->type }}</td>
+                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->title }}</td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->category->name }}</td>
+                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->displayOrder }}</td>
                             <td class="d-flex">
                                 <a href="{{ route('features.edit', ['feature' => $item->id]) }}"
                                     class="btn btn-primary" style="padding: 8px 10px;">

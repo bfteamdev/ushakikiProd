@@ -15,7 +15,12 @@ class CreateFieldsTable extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("feature_id");
+            $table->string("name");
+            $table->string("type");
             $table->timestamps();
+
+            $table->foreign("feature_id")->references("id")->on("features")->onDelete("cascade");
         });
     }
 

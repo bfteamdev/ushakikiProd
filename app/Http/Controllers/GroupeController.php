@@ -17,7 +17,7 @@ class GroupeController extends Controller
     {
         $groupe = Groupe::all();
         $categories = Category::all();
-        return view("admin.groupe.index", compact("groupe","categories"));
+        return view("admin.groupe.index", compact("groupe", "categories"));
     }
 
     /**
@@ -38,13 +38,14 @@ class GroupeController extends Controller
      */
     public function store(Request $request)
     {
-        $request = request()->validate([
-            "name" => "required",
-            "icon" => "required",
-            "color" => "required",
-        ]);
-        Groupe::firstOrCreate($request);
-        return redirect()->route("group.index")->with("success", "The group has been successfully registered!!!!");
+        $request = $this->validator();
+        $groupeCount = Groupe::where("name", $request['name'])->count();
+        if ($groupeCount === 0) {
+            Groupe::firstOrCreate($request);
+            return redirect()->route("group.index")->with("success", "The group has been successfully registered!!!!");
+        } else {
+            return back()->with("error", "The group name is already exist !!");
+        }
     }
 
     /**
@@ -79,15 +80,17 @@ class GroupeController extends Controller
      */
     public function update(Request $request, $groupe)
     {
-        $request = request()->validate([
-            "name" => "required",
-            "icon" => "required",
-            "color" => "required",
-        ]);
+        $request = $this->validator();
         $groupe = Groupe::findOrfail($groupe);
-        // $count = Groupe::where("name",$request['name'])->count();
-        $groupe->update($request);
-        return redirect()->route("group.index")->with("success", "The group has been successfully edit !!!!");
+        $groupecount = Groupe::where("name", $request['name'])
+            ->where("id", "!=", $groupe->id)
+            ->count();
+        if ($groupecount === 0) {
+            $groupe->update($request);
+            return back()->with("success", "The group has been successfully edit !!!!");
+        }else{
+            return back()->with("error","The group name already exist !!!!");
+        }
     }
 
     /**
@@ -101,5 +104,15 @@ class GroupeController extends Controller
         $groupe = Groupe::findOrFail($groupe);
         $groupe->delete();
         return redirect()->route("group.index")->with("success", "The group has been deleted successfully !!!!");
+    }
+
+    private function validator()
+    {
+        return request()->validate([
+            "name" => "required",
+            "icon" => "required",
+            "price" => "required",
+            "color" => "required",
+        ]);
     }
 }
