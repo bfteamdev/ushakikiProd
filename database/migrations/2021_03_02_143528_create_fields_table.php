@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFeaturesTable extends Migration
+class CreateFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateFeaturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('features', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("category_id");
-            $table->string("title");
-            $table->integer("displayOrder");
+            $table->unsignedBigInteger("feature_id");
+            $table->string("name");
+            $table->string("type");
             $table->timestamps();
 
-            $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
+            $table->foreign("feature_id")->references("id")->on("features")->onDelete("cascade");
         });
     }
 
@@ -31,6 +31,6 @@ class CreateFeaturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('features');
+        Schema::dropIfExists('fields');
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Field;
 use App\Models\Feature;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeatureController extends Controller
 {
@@ -39,22 +41,24 @@ class FeatureController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $data = $this->validator();
+        // dd($data);
         $categoryCount = Category::where("id", $request['category_id'])->count();
-        $featuresCount = Feature::where("name", $request['name'])->count();
-        if (in_array($request['type'], $this->Type())) {
-            if ($categoryCount === 1) {
-                if ($featuresCount === 0) {
-                    Feature::firstOrCreate($data);
-                    return redirect()->route("features.index")->with("success", "The feature is registered with successfull !!!");
-                } else {
-                    return back()->with("error", "The feature name alread exist !!!");
+        $featuresCount = Feature::where("title", $request['title'])->count();
+        if ($categoryCount === 1) {
+            if ($featuresCount === 0) {
+                Feature::firstOrCreate($data);
+                $feature_id = DB::getPdo()->lastInsertId();
+                if ($request['fields'][0]['name'] !==  null) {
+                    $this->addFeatures($request, "fields", $feature_id);
                 }
+                return redirect()->route("features.index")->with("success", "The feature is registered with successfull !!!");
             } else {
-                return back()->with("error", "The category is not defined !!!");
+                return back()->with("error", "The feature name alread exist !!!");
             }
         } else {
-            return back()->with("error", "The type info is not defined !!!");
+            return back()->with("error", "The category is not defined !!!");
         }
     }
 
@@ -92,22 +96,22 @@ class FeatureController extends Controller
     {
         $data = $this->validator();
         $categoryCount = Category::where("id", $request['category_id'])->count();
-        $featuresCount = Feature::where("name", $request['name'])
+        $featuresCount = Feature::where("title", $request['title'])
             ->where("id", "!=", $feature->id)
             ->count();
-        if (in_array($request['type'], $this->Type())) {
-            if ($categoryCount === 1) {
-                if ($featuresCount === 0) {
-                    $feature->update($data);
-                    return back()->with("success", "The feature is updated with successfull !!!");
-                } else {
-                    return back()->with("error", "The feature name alread exist !!!");
+        if ($categoryCount === 1) {
+            if ($featuresCount === 0) {
+                if ($request['fields'][0]['name'] !==  null) {
+                    $feature->field()->delete();
+                    $this->addFeatures($request, "fields", $feature->id);
                 }
+                $feature->update($data);
+                return back()->with("success", "The feature is updated with successfull !!!");
             } else {
-                return back()->with("error", "The category is not defined !!!");
+                return back()->with("error", "The feature name already exist !!!");
             }
         } else {
-            return back()->with("error", "The type info is not defined !!!");
+            return back()->with("error", "The category is not defined !!!");
         }
     }
 
@@ -124,17 +128,32 @@ class FeatureController extends Controller
         return redirect()->route("features.index")->with("success", "The feature $name is delete with successfull !!!");
     }
 
-    private function Type()
+    private function addFeatures($request, $valuesFeatues, $feature_id)
     {
-        return ["text", "check", "number", "file"];
+        foreach ($request[$valuesFeatues] as $item) {
+            if (in_array($item['type'], $this->Type())) {
+                Field::create([
+                    "feature_id" => $feature_id,
+                    "name" => $item['name'],
+                    "type" => $item['type'],
+                ]);
+            } else {
+                return back()->with("error", "Type of the information " . $item["name"] . "is not defined");
+            }
+        }
     }
 
     private function validator()
     {
         return request()->validate([
-            "name" => "required",
+            "title" => "required",
             "category_id" => "required",
-            "type" => "required"
+            "displayOrder" => "required"
         ]);
+    }
+    
+    private function Type()
+    {
+        return ["text", "check", "number", "file"];
     }
 }

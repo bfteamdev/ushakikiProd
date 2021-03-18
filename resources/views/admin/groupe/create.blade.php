@@ -18,7 +18,7 @@
                         <div class="form-group col-lg-12 ">
                             <label>Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Nom du groupe " name="name">
+                                placeholder="Group name" name="name">
                             @error('name')
                                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                             @enderror
@@ -33,7 +33,7 @@
                                     </button>
                                     <div class="modal fade" id="exampleModalCustomScrollable" tabindex="-1" role="dialog"
                                         aria-labelledby="staticBackdrop" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable" style="max-width: 1324px"
+                                        <div class="modal-dialog modal-dialog-scrollable" style="max-width: 1500px"
                                             role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div data-scroll="false" data-height="738">
-                                                        @include('admin.icons.svg')
+                                                        @include('admin.icons.icons')
                                                         <div>
                                                         </div>
                                                     </div>
@@ -59,16 +59,26 @@
                                     </div>
                                 </div>
                                 <input type="text" class="form-control col-lg-10 @error('icon') is-invalid @enderror"
-                                    placeholder="Nom du groupe " name="icon">
+                                    placeholder="icon name" name="icon">
                                 @error('icon')
                                     <div class="invalid-feedback">{{ $errors->first('icon') }}</div>
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group col-lg-12 ">
+                            <label>Price <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" placeholder="Price of this group" name="price">
+                            @error('price')
+                                <div class="invalid-feedback">{{ $errors->first('price') }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="form-group col-lg-12 ">
                         <label>color <span class="text-danger">*</span></label>
-                        <input type="color" class="form-control" placeholder="Nom du groupe " name="color">
+                        <input type="color" class="form-control @error('color') is-invalid @enderror" name="color">
+                        @error('color')
+                            <div class="invalid-feedback">{{ $errors->first('color') }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="separator separator-dashed my-8"></div>

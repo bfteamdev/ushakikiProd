@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Field;
 use App\Models\Groupe;
-use App\Models\Category;
 use App\Models\Feature;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,14 +44,34 @@ class CategoryController extends Controller
     {
         // dd($request->all());
         $data = $this->validator();
+        // dd($request['fields']);
+        // dd($data);
         $countGroup = Groupe::where("id", $request['groupe_id'])->count();
+        $categoryNameCount = Category::where("name", $request['name'])->count();
+        $featureTitleOrderCount = Feature::where("title", $request['title'])->count();
         if ($countGroup === 1) {
-            Category::firstOrCreate($data);
-            $category_id = DB::getPdo()->lastInsertId();
-            if ($request['features'][0]["name"] !== null) {
-                $this->addFeatures($request, "features", $category_id);
+            if ($categoryNameCount === 0) {
+                Category::firstOrCreate([
+                    "groupe_id" => $request['groupe_id'],
+                    "name" => trim($request['name']),
+                    "icon" => $request['icon']
+                ]);
+                $category_id = DB::getPdo()->lastInsertId();
+                if ($featureTitleOrderCount === 0) {
+                    Feature::firstOrCreate([
+                        "category_id" => $category_id,
+                        "title" => $request['title'],
+                        "displayOrder" => $request['displayOrder']
+                    ]);
+                }
+                $feature_id = DB::getPdo()->lastInsertId();
+                if ($request['fields'][0]["name"] !== null) {
+                    $this->addFeatures($request, "fields", $feature_id);
+                }
+                return redirect()->route("category.index")->with("success", "The category was successfully registered !!");
+            } else {
+                return back()->with("error", "The name of this category is already exist !!");
             }
-            return redirect()->route("category.index")->with("success", "The category was successfully registered !!");
         } else {
             return back()->with("error", "The group does not exist OR is not selected !!");
         }
@@ -90,20 +111,33 @@ class CategoryController extends Controller
     {
         $data = $this->validator();
         $id = $category->groupe_id;
+        $feature = Feature::class;
+        $feature_id = Feature::where("category_id", $category->id)->get();
         $countGroup = Groupe::where("id", $request['groupe_id'])->count();
-        $nameGroup = Groupe::where("id", $request['groupe_id'])->get();
-        $nameExist = Category::where("name", $request['name'])
-        ->where("groupe_id", "!=", $request['groupe_id'])
-        ->count();
+        $categoryNameCount = Category::where("name", trim($request['name']))
+            ->where("id", "!=", $category->id)
+            ->count();
+        // dd($categoryNameCount);
+        $featureTitleOrderCount = Feature::where("title", $request['title'])->count();
         if ($countGroup === 1) {
-            if ($nameExist === 0) {
-                $category->update($data);
-                if ($request['features'][0]["name"] !== null) {
-                    $this->updateFeatures($request, "features", $category->id);
+            if ($categoryNameCount === 0) {
+                $category->features()->delete();
+                if ($featureTitleOrderCount === 0) {
+                    Feature::firstOrCreate([
+                        "category_id" => $category->id,
+                        "title" => $request['title'],
+                        "displayOrder" => $request['displayOrder']
+                    ]);
                 }
-                return back()->with("success", "The category has been successfully modified !!");
+                if ($request['fields'][0]["name"] !== null) {
+                    foreach ($feature_id as $x) {
+                        $this->addFeatures($request, "fields", $x->id);
+                    }
+                }
+                $category->update($data);
+                return back()->with("success", "The category was successfully registered !!");
             } else {
-                return back()->with("error", "The name already exits on this groupe <b>" . $nameGroup . "</b> !!!!");
+                return back()->with("error", "The name of this category is already exist !!");
             }
         } else {
             return back()->with("error", "The group does not exist OR is not selected !!");
@@ -128,33 +162,19 @@ class CategoryController extends Controller
             "groupe_id" => "required",
             "name" => "required",
             "icon" => "required",
-            "price" => "required",
+            "title" => "required",
+            "displayOrder" => "required",
         ]);
     }
 
-    public function addFeatures($request, $valuesFeatues, $category_id)
+    private function addFeatures($request, $valuesFeatues, $feature_id)
     {
         foreach ($request[$valuesFeatues] as $item) {
             if (in_array($item['type'], $this->Type())) {
-                Feature::firstOrCreate([
+                Field::firstOrCreate([
+                    "feature_id" => $feature_id,
                     "name" => $item['name'],
                     "type" => $item['type'],
-                    "category_id" => $category_id
-                ]);
-            } else {
-                return back()->with("error", "Type of the information " . $item["name"] . "is not defined");
-            }
-        }
-    }
-
-    public function updateFeatures($request, $valuesFeatues, $category_id)
-    {
-        foreach ($request[$valuesFeatues] as $item) {
-            if (in_array($item['type'], $this->Type())) {
-                Feature::updateOrCreate([
-                    "name" => $item['name'],
-                    "type" => $item['type'],
-                    "category_id" => $category_id
                 ]);
             } else {
                 return back()->with("error", "Type of the information " . $item["name"] . "is not defined");

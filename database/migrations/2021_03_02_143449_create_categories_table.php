@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger("groupe_id")->index();
             $table->string("name");
             $table->string("icon");
-            $table->double("price");
             $table->timestamps();
 
             $table->foreign("groupe_id")->references("id")->on("groupes")->onDelete("cascade")->onUpdate("cascade");
