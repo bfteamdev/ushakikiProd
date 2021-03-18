@@ -10,6 +10,7 @@ class Type extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table='types';
 
     public function category(){
         return $this->belongsTo(Category::class);

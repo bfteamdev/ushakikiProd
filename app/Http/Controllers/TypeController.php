@@ -16,7 +16,9 @@ class TypeController extends Controller
     public function index()
     {
         $type = Type::all();
-        return view("admin.type.index",compact("type"));
+        $chr=Type::where('parent_id',!null)->get();
+        // dd($chr);
+        return view("admin.type.index",compact("type","chr"));
     }
 
     /**
@@ -27,7 +29,8 @@ class TypeController extends Controller
     public function create()
     {
         $category = Category::all();
-        return view("admin.type.create",compact("category"));
+        $type=Type::where('parent_id',null)->get();
+        return view("admin.type.create",compact("category","type"));
     }
 
     /**
@@ -41,6 +44,7 @@ class TypeController extends Controller
         $data = request()->validate([
             "category_id"=> "required",
             "name"=> "required",
+            "parent_id"=>'',
         ]);
         Type::firstOrCreate($data);
         return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully registered !!!!");
@@ -63,10 +67,16 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit( $type)
     {
+        $parent=Type::where('parent_id',null)->get();
+
+        $type = Type::findOrFail($type);
+
+        // dd($type);
         $category = Category::all();
-        return view("admin.type.edit",compact("type","category"));
+
+        return view("admin.type.edit",compact("type","category","parent"));
     }
 
     /**
@@ -76,13 +86,15 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request,  $type)
     {
         $data = request()->validate([
             "category_id"=> "required",
             "name"=> "required",
+            "parent_id"=>''
         ]);
-        $type->update($data);
+        $types = Type::findOrFail($type);
+        $types->update($data);
         return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully modified !!!!");
     }
 
@@ -92,9 +104,11 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy($type)
     {
-        $type->delete();
+        $types = Type::findOrFail($type);
+        // dd($type);
+        $types->delete();
         return redirect()->route("sub-category.index")->with("success", "The subcategory has been deleted successfully !!!!");
     }
 }

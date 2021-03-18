@@ -3,7 +3,7 @@
     <div class="card card-custom col-lg-7 mx-auto">
         <div class="card-header">
             <div class="row">
-                <h3 class="card-title">Create a new sub-category</h3>
+                <h3 class="card-title">Create a new features</h3>
             </div>
         </div>
         <!--begin::Form-->
@@ -22,7 +22,7 @@
                         <div class="form-group col-lg-7">
                             <label>Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Sub-category name" name="name" value="{{ old('name') }}">
+                                placeholder=" feature's name" name="name" value="{{ old('name') }}">
                             @error('name')
                                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                             @enderror

@@ -89,7 +89,7 @@ return [
             "submenu" => [
                 [
                     'title' => 'Order',
-                    'page' => '/category',
+                    'page' => '/order',
                 ],
                 [
                     'title' => 'Order pending',

@@ -52,7 +52,7 @@ class AnnonceController extends Controller
      */
     public function show(Annonce $annonce)
     {
-        //
+        return view('admin.ads.show');
     }
 
     /**

@@ -44,10 +44,13 @@
                         <th title="Field #2">Name</th>
                         <th title="Field #3">Parent category</th>
                         <th title="Field #5">ACTION</th>
-                        <th title="Field #5">ACTION</th>
+                        {{-- <th title="Field #5">ACTION</th> --}}
                     </tr>
                 </thead>
                 <tbody>
+
+                    
+                   {{-- jjjjjjjjjjjjjjjjjj --}}
                     @foreach ($type as $item)
                         <tr>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->name }}

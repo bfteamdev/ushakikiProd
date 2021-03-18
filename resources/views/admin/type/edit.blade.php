@@ -33,12 +33,24 @@
                                 <div class="invalid-feedback">{{ $errors->first('category_id') }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-lg-12">
+                        <div class="form-group col-lg-6">
                             <label>Nom <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Nom du type " name="name" value="{{ old('name') ?? $type->name }}">
                             @error('name')
                                 <div class="invalid-feedback">{{ $errors->first('name')}}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>sub-category parent <span class="text-danger">*</span></label>
+                            <select class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
+                                <option value="">select parent</option>
+                                @foreach ($parent as $items)
+                                    <option value="{{ $items->id }}" {{ $items->id === $type->parent_id ? "selected" :'' }}>{{ $items->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('parent_id')
+                                <div class="invalid-feedback">{{ $errors->first('parent_id') }}</div>
                             @enderror
                         </div>
                     </div>
