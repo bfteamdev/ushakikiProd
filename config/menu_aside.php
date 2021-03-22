@@ -8,7 +8,7 @@ return [
             'title' => 'Dashboard',
             'root' => true,
             'icon' => 'media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => '/',
+            'page' => 'admin',
             'new-tab' => false,
         ],
         // Layout
@@ -19,7 +19,7 @@ return [
             'title' => 'Group',
             'root' => true,
             'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => '/group',
+            'page' => 'admin/group',
             'new-tab' => false,
         ],
         [
@@ -31,11 +31,11 @@ return [
             "submenu" => [
                 [
                     'title' => 'Category',
-                    'page' => '/category',
+                    'page' => 'admin/category',
                 ],
                 [
                     'title' => 'Sub-category',
-                    'page' => '/sub-category',
+                    'page' => 'admin/sub-category',
                 ],
             ],
         ],
@@ -43,7 +43,7 @@ return [
             'title' => 'Features',
             'root' => true,
             'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => '/features',
+            'page' => 'admin/features',
             'new-tab' => false,
         ],
         [
@@ -55,7 +55,7 @@ return [
             "submenu" => [
                 [
                     'title' => 'Clients',
-                    'page' => '/client',
+                    'page' => 'admin/client',
                 ],
                 // [
                 //     'title' => 'Organisation',
@@ -72,11 +72,11 @@ return [
             "submenu" => [
                 [
                     'title' => 'Ads',
-                    'page' => '/ads',
+                    'page' => 'admin/ads',
                 ],
                 [
                     'title' => 'Create Ads',
-                    'page' => '/ads/create',
+                    'page' => 'admin/ads/create',
                 ],
             ],
         ],
@@ -89,7 +89,7 @@ return [
             "submenu" => [
                 [
                     'title' => 'Order',
-                    'page' => '/order',
+                    'page' => 'admin/order',
                 ],
                 [
                     'title' => 'Order pending',

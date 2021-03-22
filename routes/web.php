@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PagesController@index');
 
 
 // Demo routes
@@ -32,23 +31,28 @@ Route::get('/icons/svg', 'PagesController@svg');
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
 // Admin --Group
-Route::resource("/group","GroupeController");
+Route::resource("admin/group","GroupeController");
 // Route::get("svg","GroupeController@icons")->name("group.icons");// Admin --Group
 
 // Admin --Category
-Route::resource("/category","CategoryController");
+Route::resource("admin/category","CategoryController");
 
 // Admin --Category
-Route::resource("/sub-category","TypeController");
+Route::resource("admin/sub-category","TypeController");
 
 // Admin --Features
-Route::resource("/features","FeatureController");
+Route::resource("admin/features","FeatureController");
 
 // Admin --Client
-Route::resource("/client","ClientController");
+Route::resource("admin//client","ClientController")->middleware('auth');
 
 // Admin --Ads
-Route::resource("/ads","AnnonceController");
+Route::resource("admin/ads","AnnonceController");
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', 'PagesController@index');
+
+
+//website --route
+Route::get('/',[App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.index');
