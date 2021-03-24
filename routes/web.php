@@ -30,7 +30,18 @@ Route::get('/icons/svg', 'PagesController@svg');
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
-// Admin --Group
+
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//website --route
+Route::get('/',[App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.index');
+Route::group(['middleware'=>'auth','admin'],function () {
+    Route::get('/admin', 'PagesController@index');
+    // Admin --Group
 Route::resource("admin/group","GroupeController");
 // Route::get("svg","GroupeController@icons")->name("group.icons");// Admin --Group
 
@@ -44,15 +55,8 @@ Route::resource("admin/sub-category","TypeController");
 Route::resource("admin/features","FeatureController");
 
 // Admin --Client
-Route::resource("admin//client","ClientController")->middleware('auth');
+Route::resource("admin/client","ClientController")->middleware('auth');
 
 // Admin --Ads
 Route::resource("admin/ads","AnnonceController");
-
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', 'PagesController@index');
-
-
-//website --route
-Route::get('/',[App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.index');
+});
