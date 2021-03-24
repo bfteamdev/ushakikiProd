@@ -4,9 +4,37 @@
 @endsection
 @section('content')
     <div class="main-banner banner text-center">
-        <div class="container">
+        <div class="container d-flex flex-column align-items-center"
+            style="align-items: center;display: flex;flex-direction: column;">
             <h1>USHAKIKI</h1>
-            <a href="#">Post Free Ad</a>
+            <div class="separateTitle"></div>
+            <a href="#"><i class="fa fa-plus-circle"></i> Post a new Ad</a>
+        </div>
+        <div class="container containerCategory">
+            <div class="rond bg1">
+                <i class="fa fa-home"></i>
+                <span class="nameCategory">Immobilier</span>
+                <div class="separateName"></div>
+                <span class="option">Achat / vente / location</span>
+            </div>
+            <div class="rond bg2">
+                <i class="fa fa-home"></i>
+                <span class="nameCategory">Immobilier</span>
+                <div class="separateName"></div>
+                <span class="option">Achat / vente / location</span>
+            </div>
+            <div class="rond bg3">
+                <i class="fa fa-home"></i>
+                <span class="nameCategory">Immobilier</span>
+                <div class="separateName"></div>
+                <span class="option">Achat / vente / location</span>
+            </div>
+            <div class="rond bg4">
+                <i class="fa fa-home"></i>
+                <span class="nameCategory">Immobilier</span>
+                <div class="separateName"></div>
+                <span class="option">Achat / vente / location</span>
+            </div>
         </div>
     </div>
     <div class="content">

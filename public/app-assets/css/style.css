@@ -68,25 +68,96 @@ label {
 
 .banner h1 {
 	color: #fff;
-	font-size: 10rem;
+	font-family: "Intro Inline";
+	font-size: 18rem;
 }
 
-.banner p {
-	color: #fff;
-	margin: 10px 0 30px 0;
-	font-size: 18px;
+.banner .separateTitle {
+	width: 30%;
+	height: 2px;
+	margin: 30px 0;
+	background-color: white;
+	position: relative;
 }
 
 .banner a {
 	text-decoration: none;
 	color: #fff;
 	font-size: 17px;
-	background-color: #f3c500;
+	background-color: #0086FB;
+	border-radius: 4px;
 	padding: 10px 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
 }
 
 .banner a:hover {
-	background: #01a185;
+	background: #0073d8;
+}
+
+.containerCategory {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10rem;
+}
+
+.bg1 {
+	background-color: #DBAC14;
+}
+
+.bg2 {
+	background-color: #888B33;
+}
+
+.bg3 {
+	background-color: #AE3E60;
+}
+
+.bg4 {
+	background-color: #E6402A;
+}
+
+.rond {
+	width: auto;
+	margin: 0 30px;
+	padding: 65px 85px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+}
+
+.rond i {
+	font-size: 11rem;
+	color: white;
+	margin-bottom: 15px;
+}
+
+.rond .nameCategory {
+	font-size: 2rem;
+	padding: 0 3px;
+	font-weight: bold;
+	color: white;
+}
+
+.rond .separateName {
+	width: 100%;
+	height: 2px;
+	background-color: white;
+	position: relative;
+	margin: 4px 0;
+}
+
+.rond .option {
+	font-size: 12px;
+	font-weight: bold;
+	color: white;
 }
 
 .modal-header {
@@ -220,16 +291,55 @@ li.dropdown-header {
 }
 
 .header {
-	padding: 0px 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
 	background-color: #fdfdfd;
 }
 
 .logo {
 	float: left;
+	width: 200px;
+}
+
+.logo img {
+	width: 100%;
+	height: 100px;
+	object-fit: cover;
 }
 
 .header-right {
-	float: right;
+	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.header-right .search {
+	position: relative;
+	width: 33%;
+}
+
+.header-right .search .searchInput {
+	border: 2px solid #878787;
+	border-radius: 4px;
+	padding: 8px 25px;
+	font-size: 15px;
+	font-weight: 600;
+	width: 100%;
+}
+
+.header-right .search i {
+	position: absolute;
+	padding: 12px 22px;
+	height: 100%;
+	background-color: #878787;
+	color: white;
+	right: 0;
+	border-radius: 4px;
+	font-size: 18px;
 }
 
 .logo a {
@@ -243,9 +353,41 @@ li.dropdown-header {
 	color: #f3c500;
 }
 
-a.account {
+a.MyAds {
 	float: left;
-	margin-top: 20px;
+	font-size: 15px;
+	color: #fff;
+	background-color: #0086fb;
+	padding: 10px 17px;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+a.MyAds:hover {
+	background-color: #0177df;
+}
+
+a.iconCart {
+	float: left;
+	font-size: 15px;
+	color: #fff;
+	background-color: #FF5E00;
+	padding: 6px 20px;
+	text-decoration: none;
+	border-radius: 50%;
+}
+
+a.iconCart:hover {
+	background-color: #f3c500;
+}
+
+.auth{
+	width: 17%;
+	display: flex;
+	justify-content: center;
+}
+.auth a.authBtn {
+	float: left;
 	font-size: 15px;
 	color: #fff;
 	background-color: #01a185;
@@ -253,7 +395,7 @@ a.account {
 	text-decoration: none;
 }
 
-a.account:hover {
+.auth a.authBtn:hover {
 	background-color: #f3c500;
 }
 
