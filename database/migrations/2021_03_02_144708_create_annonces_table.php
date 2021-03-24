@@ -17,7 +17,7 @@ class CreateAnnoncesTable extends Migration
             $table->id();
             $table->string("title");
             $table->unsignedBigInteger("type_id")->index();
-            $table->unsignedBigInteger("client_id")->index();
+            $table->unsignedBigInteger("user_id")->index();
             $table->string("state");
             $table->string("description");
             $table->string("price");
@@ -26,7 +26,7 @@ class CreateAnnoncesTable extends Migration
             $table->timestamps();
 
             $table->foreign("type_id")->references("id")->on("types");
-            $table->foreign("client_id")->references("id")->on("clients");
+            $table->foreign("user_id")->references("id")->on("users");
         });
     }
 

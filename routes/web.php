@@ -32,14 +32,14 @@ Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search')
 
 
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
 //website --route
 Route::get('/',[App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.index');
-Route::group(['middleware'=>'auth','admin'],function () {
+
     Route::get('/admin', 'PagesController@index');
     // Admin --Group
 Route::resource("admin/group","GroupeController");
@@ -55,8 +55,11 @@ Route::resource("admin/sub-category","TypeController");
 Route::resource("admin/features","FeatureController");
 
 // Admin --Client
-Route::resource("admin/client","ClientController")->middleware('auth');
+Route::resource("admin/client","ClientController");
 
 // Admin --Ads
 Route::resource("admin/ads","AnnonceController");
-});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

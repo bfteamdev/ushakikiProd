@@ -4,7 +4,7 @@
             <a href="index.html"><span>Re</span>sale</a>
         </div>
         <div class="header-right">
-        <a class="account" href="login.html">My Account</a>
+        <a class="account" href="{{ route('login') }}">My Account</a>
         <span class="active uls-trigger">Select language</span>
     
         <div class="selectregion">
