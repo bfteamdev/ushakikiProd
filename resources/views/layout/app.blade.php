@@ -74,4 +74,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <footer>
       @yield('footer')
     </footer>
+    @yield('script')
 </body>
