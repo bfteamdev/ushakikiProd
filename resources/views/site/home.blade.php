@@ -8,300 +8,218 @@
             style="align-items: center;display: flex;flex-direction: column;">
             <h1>USHAKIKI</h1>
             <div class="separateTitle"></div>
-            <a href="#"><i class="fa fa-plus-circle"></i> Post a new Ad</a>
+            <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a>
         </div>
         <div class="container containerCategory">
-            <div class="rond bg1">
+            <a href="#" class="rond bg1">
+                <i class="far fa-angry"></i>
+                <span class="nameCategory">Immobilier</span>
+                <div class="separateName"></div>
+                <span class="option">Achat / vente / location</span>
+                {{-- <div class="badge">23</div> --}}
+            </a>
+            <a href="#" class="rond bg2">
                 <i class="fa fa-home"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
-            </div>
-            <div class="rond bg2">
+            </a>
+            <a href="#" class="rond bg3">
                 <i class="fa fa-home"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
-            </div>
-            <div class="rond bg3">
+            </a>
+            <a href="#" class="rond bg4">
                 <i class="fa fa-home"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
-            </div>
-            <div class="rond bg4">
-                <i class="fa fa-home"></i>
-                <span class="nameCategory">Immobilier</span>
-                <div class="separateName"></div>
-                <span class="option">Achat / vente / location</span>
-            </div>
+            </a>
         </div>
     </div>
     <div class="content">
         <div class="categories">
             <div class="container">
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-mobile"></i></div>
-                                <h4 class="clrchg">Mobiles</h4>
-                            </div>
-                        </div>
-                    </a>
+                <h2 class="head">ABOUT</h2>
+                <div class="work-section-head text-center">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolorem porro aspernatur suscipit
+                        pariatur dignissimos eveniet qui expedita error, minima, delectus, ipsam cupiditate neque
+                        repudiandae. Dolore asperiores nostrum laborum voluptatem modi minus, ratione repellat aspernatur
+                        pariatur corrupti minima doloribus ducimus omnis, maiores beatae enim vel placeat.</p>
                 </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab2">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-laptop"></i></div>
-                                <h4 class="clrchg"> Electronics & Appliances</h4>
-                            </div>
-                        </div>
-                    </a>
+                <div class="work-section-grids text-center">
+                    <div class="col-md-3 work-section-grid">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <h4>Post an Ad</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        </p>
+                        <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span>
+                    </div>
+                    <div class="col-md-3 work-section-grid">
+                        <i class="fa fa-eye"></i>
+                        <h4>Find an item</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        </p>
+                        <span class="arrow2"><img src="{{ asset('app-assets/images/arrow2.png') }}" alt=""></span>
+                    </div>
+                    <div class="col-md-3 work-section-grid">
+                        <i class="fa fa-phone"></i>
+                        <h4>contact the seller</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        </p>
+                        <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span>
+                    </div>
+                    <div class="col-md-3 work-section-grid">
+                        <i class="fa fa-money"></i>
+                        <h4>make transactions</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <a class="work" href="#">Get start Now</a>
                 </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab3">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-car"></i></div>
-                                <h4 class="clrchg">Cars</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab4">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-motorcycle"></i></div>
-                                <h4 class="clrchg">Bikes</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab5">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-wheelchair"></i></div>
-                                <h4 class="clrchg">Furnitures</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab6">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-paw"></i></div>
-                                <h4 class="clrchg">Pets</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab7">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-book"></i></div>
-                                <h4 class="clrchg">Books, Sports & Hobbies</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab8">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-asterisk"></i></div>
-                                <h4 class="clrchg">Fashion</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab9">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-gamepad"></i></div>
-                                <h4 class="clrchg">Kids</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab10">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-shield"></i></div>
-                                <h4 class="clrchg">Services</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab11">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-at"></i></div>
-                                <h4 class="clrchg">Jobs</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 focus-grid">
-                    <a href="categories.html#parentVerticalTab12">
-                        <div class="focus-border">
-                            <div class="focus-layout">
-                                <div class="focus-image"><i class="fa fa-home"></i></div>
-                                <h4 class="clrchg">Real Estate</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="clearfix"></div>
             </div>
         </div>
         <div class="trending-ads">
-            <div class="container">
-                <!-- slider -->
-                <div class="trend-ads">
-                    <h2>Trending Ads</h2>
-                    <ul id="flexiselDemo3">
-                        <li>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
-                                    <span class="price">&#36; 450</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>There are many variations of passages</h5>
-                                    <span>1 hour ago</span>
+            <div class="mobile-app">
+                <div class="container">
+                    <div class="trend-ads">
+                        <ul id="flexiselDemo3">
+                            <li>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                        <span class="price">&#36; 450</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>There are many variations of passages</h5>
+                                        <span>1 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p2.jpg') }}" />
-                                    <span class="price">&#36; 399</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>Lorem Ipsum is simply dummy</h5>
-                                    <span>3 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p2.jpg') }}" />
+                                        <span class="price">&#36; 399</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>Lorem Ipsum is simply dummy</h5>
+                                        <span>3 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p3.jpg') }}" />
-                                    <span class="price">&#36; 199</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>It is a long established fact that a reader</h5>
-                                    <span>8 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p3.jpg') }}" />
+                                        <span class="price">&#36; 199</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>It is a long established fact that a reader</h5>
+                                        <span>8 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p4.jpg') }}" />
-                                    <span class="price">&#36; 159</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>passage of Lorem Ipsum you need to be</h5>
-                                    <span>19 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p4.jpg') }}" />
+                                        <span class="price">&#36; 159</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>passage of Lorem Ipsum you need to be</h5>
+                                        <span>19 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p5.jpg') }}" />
-                                    <span class="price">&#36; 1599</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>There are many variations of passages</h5>
-                                    <span>1 hour ago</span>
+                            </li>
+                            <li>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p5.jpg') }}" />
+                                        <span class="price">&#36; 1599</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>There are many variations of passages</h5>
+                                        <span>1 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p6.jpg') }}" />
-                                    <span class="price">&#36; 1099</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>passage of Lorem Ipsum you need to be</h5>
-                                    <span>1 day ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p6.jpg') }}" />
+                                        <span class="price">&#36; 1099</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>passage of Lorem Ipsum you need to be</h5>
+                                        <span>1 day ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p7.jpg') }}" />
-                                    <span class="price">&#36; 109</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>It is a long established fact that a reader</h5>
-                                    <span>9 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p7.jpg') }}" />
+                                        <span class="price">&#36; 109</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>It is a long established fact that a reader</h5>
+                                        <span>9 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p8.jpg') }}" />
-                                    <span class="price">&#36; 189</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>Lorem Ipsum is simply dummy</h5>
-                                    <span>3 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p8.jpg') }}" />
+                                        <span class="price">&#36; 189</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>Lorem Ipsum is simply dummy</h5>
+                                        <span>3 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p9.jpg') }}" />
-                                    <span class="price">&#36; 2599</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>Lorem Ipsum is simply dummy</h5>
-                                    <span>3 hour ago</span>
+                            </li>
+                            <li>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p9.jpg') }}" />
+                                        <span class="price">&#36; 2599</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>Lorem Ipsum is simply dummy</h5>
+                                        <span>3 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p10.jpg') }}" />
-                                    <span class="price">&#36; 3999</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>It is a long established fact that a reader</h5>
-                                    <span>9 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p10.jpg') }}" />
+                                        <span class="price">&#36; 3999</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>It is a long established fact that a reader</h5>
+                                        <span>9 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p11.jpg') }}" />
-                                    <span class="price">&#36; 2699</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>passage of Lorem Ipsum you need to be</h5>
-                                    <span>1 day ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p11.jpg') }}" />
+                                        <span class="price">&#36; 2699</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>passage of Lorem Ipsum you need to be</h5>
+                                        <span>1 day ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 biseller-column">
-                                <a href="single.html">
-                                    <img src="{{ asset('app-assets/images/p12.jpg') }}" />
-                                    <span class="price">&#36; 899</span>
-                                </a>
-                                <div class="ad-info">
-                                    <h5>There are many variations of passages</h5>
-                                    <span>1 hour ago</span>
+                                <div class="col-md-3 biseller-column">
+                                    <a href="single.html">
+                                        <img src="{{ asset('app-assets/images/p12.jpg') }}" />
+                                        <span class="price">&#36; 899</span>
+                                    </a>
+                                    <div class="ad-info">
+                                        <h5>There are many variations of passages</h5>
+                                        <span>1 hour ago</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
 
+                    </div>
                 </div>
             </div>
             <!-- //slider -->
         </div>
-        <div class="mobile-app">
+        {{-- <div class="mobile-app">
             <div class="container">
                 <div class="col-md-5 app-left">
                     <a href="mobileapp.html"><img src="{{ asset('app-assets/images/app.png') }}" alt=""></a>
@@ -323,7 +241,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
 @section('script')

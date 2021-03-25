@@ -277,5 +277,24 @@ return [
             'js/scripts.bundle.js',
         ],
     ],
+    // Demo Assets
+    'resourcesUSHAKIKI' => [
+        'favicon' => 'media/img/logo/favicon.ico',
+        'fonts' => [
+            'google' => [
+                'families' => [
+                    'Poppins:300,400,500,600,700'
+                ]
+            ]
+        ],
+        'css' => [
+            'plugins/global/plugins.bundle.css',
+        ],
+        'js' => [
+            // 'plugins/global/plugins.bundle.js',
+            // 'plugins/custom/prismjs/prismjs.bundle.js',
+            // 'js/scripts.bundle.js',
+        ],
+    ],
 
 ];
