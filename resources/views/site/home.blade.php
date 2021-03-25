@@ -2,8 +2,6 @@
 @section('title')
     <title>home</title>
 @endsection
-
-
 @section('content')
 
     <div class="main-banner banner text-center">

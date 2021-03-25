@@ -3,6 +3,7 @@
 <head>
 {{-- <title>ushakiki</title> --}}
 @yield('title')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap-select.css') }}">
 <link href="{{asset('app-assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -23,6 +24,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="{{ asset('app-assets/js/jquery.min.js') }}"></script>
 <!-- js -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 <script src="{{ asset('app-assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ ('app-assets/js/bootstrap-select.js') }}"></script>
 <script>

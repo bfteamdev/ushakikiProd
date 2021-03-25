@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // private $is_admin=0;
     protected $guarded=[];
     // protected $fillable = [
     //     'name', 'email', 'password',
@@ -37,4 +38,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isAdmin()
+    {
+        if($this->is_admin === 1){
+            return $this->is_admin;
+
+        }
+    }
 }

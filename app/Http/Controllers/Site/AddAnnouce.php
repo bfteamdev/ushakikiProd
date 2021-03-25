@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Site;
 
-use App\Models\Annonce;
-use App\Models\Category;
-use App\Models\Groupe;
-use App\Models\Type;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Groupe;
 
-class AnnonceController extends Controller
+class AddAnnouce extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,8 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        return view("admin.ads.index");
+        
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -28,10 +25,7 @@ class AnnonceController extends Controller
      */
     public function create()
     {
-        $group = Groupe::all();
-        $category = Category::all();
-        $subCategory = Type::all();
-        return view("admin.ads.create", compact("group", "category", "subCategory"));
+        //
     }
 
     /**
@@ -48,21 +42,21 @@ class AnnonceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Annonce  $annonce
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Annonce $annonce)
+    public function show($id)
     {
-        return view('admin.ads.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Annonce  $annonce
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Annonce $annonce)
+    public function edit($id)
     {
         //
     }
@@ -71,10 +65,10 @@ class AnnonceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Annonce  $annonce
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Annonce $annonce)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,11 +76,17 @@ class AnnonceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Annonce  $annonce
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Annonce $annonce)
+    public function destroy($id)
     {
         //
+    }
+    public function showCategory()
+    {
+        $cat=Groupe::all();
+        return view('site.createAdd',compact('cat'));
+
     }
 }
