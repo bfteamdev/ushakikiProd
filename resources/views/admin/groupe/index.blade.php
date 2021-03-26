@@ -25,6 +25,7 @@
                     <div class="card-spacer">
                         <div class="row m-0 justify-content-center align-items-center">
                             @foreach ($groupe as $item)
+
                                 <div class="col-lg-5 px-6 py-8 rounded-xl mx-3  mb-7"
                                     style="background-color: {{ $item->color }}"
                                     style="padding-bottom: 2rem !important;margin: 14px 25px !important;">
@@ -73,7 +74,7 @@
                                                     style="padding: 0 3px"><i
                                                         class="text-danger fas fa-trash iconStyle"></i></button>
                                             </form>
-                                            <a href="{{ route('group.edit', ['group' => $item->id]) }}"" class=" btn p-1"
+                                            <a href="{{ route('group.edit', ['group' => $item->id]) }}" class=" btn p-1"
                                                 style="padding: 0 3px"><i class="text-success fas fa-pen iconStyle"></i></a>
                                         </div>
                                     </div>

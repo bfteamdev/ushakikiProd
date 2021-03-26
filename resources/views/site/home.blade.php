@@ -3,6 +3,7 @@
     <title>home</title>
 @endsection
 @section('content')
+
     <div class="main-banner banner text-center">
         <div class="container d-flex flex-column align-items-center"
             style="align-items: center;display: flex;flex-direction: column;">
@@ -279,4 +280,10 @@
 
     </script>
     <script type="text/javascript" src="{{ asset('app-assets/js/jquery.flexisel.js') }}"></script>
+
+@endsection
+
+@section('footer')
+    @include('layout.partials.include.footer')
+
 @endsection

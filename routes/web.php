@@ -29,7 +29,8 @@ Route::get('/icons/svg', 'PagesController@svg');
 
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
-Route::prefix("admin")->group(function () {
+
+Route::group(['prefix' => 'admin'], function () {
   // Admin --Group
   Route::resource("/group", "GroupeController");
   // Route::get("svg","GroupeController@icons")->name("group.icons");// Admin --Group
@@ -44,9 +45,13 @@ Route::prefix("admin")->group(function () {
   // Admin --Ads
   Route::resource("/ads", "AnnonceController");
 
-  Auth::routes();
-  Route::get('/home', "HomeController@index")->name('home');
+
   Route::get('/', 'PagesController@index');
 });
 //website --route
 Route::get('/', "Site\HomeController@index")->name('site.index');
+
+Auth::routes();
+Route::get('/home', "HomeController@index")->name('home');
+Route::get('/createAd', "Site\AddAnnouce@showCategory" )->name('ad.category');
+Route::get('/createAd/sub-category/{id}', "Site\AddAnnouce@showSubCategory" )->name('ad.subCategory');

@@ -15,9 +15,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    // private $is_admin=0;
+    protected $guarded=[];
+    // protected $fillable = [
+    //     'name', 'email', 'password',
+    // ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +38,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isAdmin()
+    {
+        if($this->is_admin === 1){
+            return $this->is_admin;
+
+        }
+    }
 }
