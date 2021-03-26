@@ -54,7 +54,11 @@
 <div class="footer-bottom text-center">
     <div class="container">
         <div class="footer-logo">
-            <a href="index.html"><span>USHA</span>KIKI</a>
+            <a href="/">
+                <span class="cl1">US</span>
+                <span class="cl2">HA</span>
+                <span class="cl3">KI</span>
+                <span class="cl4">KI</span></a>
         </div>
         <div class="footer-social-icons">
             <ul>

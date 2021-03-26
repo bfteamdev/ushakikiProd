@@ -9,7 +9,11 @@
             style="align-items: center;display: flex;flex-direction: column;">
             <h1>USHAKIKI</h1>
             <div class="separateTitle"></div>
-            <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a>
+            {{-- <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a> --}}
+        </div>
+        <div class="container search">
+            <input type="search" class="searchInput" name="" id="" placeholder="Search.....">
+            <i class="fa fa-search"></i>
         </div>
         <div class="container containerCategory">
             <a href="#" class="rond bg1">
@@ -49,6 +53,7 @@
                         repudiandae. Dolore asperiores nostrum laborum voluptatem modi minus, ratione repellat aspernatur
                         pariatur corrupti minima doloribus ducimus omnis, maiores beatae enim vel placeat.</p>
                 </div>
+                <h2 class="head">How work it</h2>
                 <div class="work-section-grids text-center">
                     <div class="col-md-3 work-section-grid">
                         <i class="fa fa-pencil-square-o"></i>
