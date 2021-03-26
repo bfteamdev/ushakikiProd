@@ -2,8 +2,12 @@
 <html>
 
 <head>
-    {{-- <title>ushakiki</title> --}}
-    @yield('title')
+
+{{-- <title>ushakiki</title> --}}
+@yield('title')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+   
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap-select.css') }}">
     <link href="{{ asset('app-assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -86,6 +90,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
+    @yield('styles')
+
 </head>
 
 <body>

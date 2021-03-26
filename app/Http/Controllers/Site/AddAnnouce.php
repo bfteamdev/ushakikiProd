@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Groupe;
+use App\Models\Category;
+
 
 class AddAnnouce extends Controller
 {
@@ -87,6 +89,12 @@ class AddAnnouce extends Controller
     {
         $cat=Groupe::all();
         return view('site.createAdd',compact('cat'));
+
+    }
+    public function showSubCategory($id)
+    {
+        $subCat=Category::where('groupe_id',$id)->get();
+        return view('site.subCategoryAd',compact('subCat'));
 
     }
 }

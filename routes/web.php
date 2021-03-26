@@ -54,3 +54,4 @@ Route::get('/', "Site\HomeController@index")->name('site.index');
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
 Route::get('/createAd', "Site\AddAnnouce@showCategory" )->name('ad.category');
+Route::get('/createAd/sub-category/{id}', "Site\AddAnnouce@showSubCategory" )->name('ad.subCategory');
