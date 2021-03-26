@@ -15,28 +15,27 @@
             <input type="search" class="searchInput" name="" id="" placeholder="Search.....">
             <i class="fa fa-search"></i>
         </div>
-        <div class="container containerCategory">
+        <div class="containerCategory">
             <a href="#" class="rond bg1">
-                <i class="far fa-angry"></i>
+                <i class="fas fa-home"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
-                {{-- <div class="badge">23</div> --}}
             </a>
             <a href="#" class="rond bg2">
-                <i class="fa fa-home"></i>
+                <i class="fas fa-car-alt"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
             <a href="#" class="rond bg3">
-                <i class="fa fa-home"></i>
+                <i class="far fa-sun"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
             <a href="#" class="rond bg4">
-                <i class="fa fa-home"></i>
+                <i class="fas fa-users"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>

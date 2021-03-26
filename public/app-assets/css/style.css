@@ -1520,12 +1520,31 @@ ul.location li:nth-child(2) {
 	margin: 40px 0 15px 0;
 }
 
-.footer-logo a {
-	font-family: 'Ubuntu Condensed', sans-serif;
+.footer-logo {
+	font-family: "Intro Inline", sans-serif;
 	font-size: 40px;
-	color: #01a185;
 	text-decoration: none;
 }
+.footer-logo a .cl1 {
+	color: #DBAC14;
+	font-size: 40px;
+}
+
+.footer-logo a .cl2 {
+	color: #888B33;
+	font-size: 40px;
+}
+
+.footer-logo a .cl3 {
+	color: #AE3E60;
+	font-size: 40px;
+}
+
+.footer-logo a .cl4 {
+	color: #E6402A;
+	font-size: 40px;
+}
+
 /* 
 .footer-logo a span {
 	color: #f3c500;
@@ -1533,7 +1552,9 @@ ul.location li:nth-child(2) {
 
 .footer-logo a {
 	position: relative;
-	display: block;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
 }
 
 .footer-logo a:before {
@@ -1541,7 +1562,7 @@ ul.location li:nth-child(2) {
 	position: absolute;
 	top: 50%;
 	left: 0;
-	width: 44%;
+	width: 41%;
 	height: 1px;
 	background: #545556;
 }
@@ -1551,7 +1572,7 @@ ul.location li:nth-child(2) {
 	position: absolute;
 	top: 50%;
 	right: 0;
-	width: 44%;
+	width: 41%;
 	height: 1px;
 	background: #545556;
 }
@@ -3059,6 +3080,49 @@ h2.sear-head.fer {
 }
 
 /*-- //Slider range --*/
+
+.cardCategory {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 15px;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	border-radius: 16px !important;
+}
+
+.cardCategory:hover{
+	text-decoration: none;
+	color: white;
+	background-color: #323232;
+}
+
+.cardCategory i {
+	font-size: 6rem;
+	color: inherit;
+}
+
+.cardCategory .nameCategory {
+	font-size: 19px;
+	color: inherit;
+	margin: 16px 0;
+}
+
+.choiseCategory h2{
+	font-size: 4rem;
+	font-weight: bold;
+	margin: 9px 0px;
+	padding-bottom: 13px;
+	border-bottom: 1px solid #c1c1c1;
+}
+
+.choiseCategory h3{
+	font-size: 28px;
+	padding: 10px 14px;
+	background-color: #e6c65e;
+	border-radius: 5px;
+	margin: 15px 0px;
+}
 
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
 
