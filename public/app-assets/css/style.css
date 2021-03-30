@@ -340,7 +340,8 @@ li.dropdown-header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0px;
-	background-color: #fdfdfd;
+	background-color: #ffffff;
+	box-shadow: 0px 2px 7px -3px #c5c5c5;
 }
 
 .logo {
@@ -1324,6 +1325,7 @@ span.price:after {
 
 .footer-top {
 	padding: 60px 0;
+	box-shadow: 0px -1px 8px -4px #adadad;
 }
 
 .footer-bottom p {
@@ -1525,6 +1527,7 @@ ul.location li:nth-child(2) {
 	font-size: 40px;
 	text-decoration: none;
 }
+
 .footer-logo a .cl1 {
 	color: #DBAC14;
 	font-size: 40px;
@@ -3081,6 +3084,11 @@ h2.sear-head.fer {
 
 /*-- //Slider range --*/
 
+.postCard {
+	box-shadow: 0px 0px 9px -3px #8c8c8c;
+	padding: 29px;
+}
+
 .cardCategory {
 	display: flex;
 	flex-direction: column;
@@ -3089,12 +3097,16 @@ h2.sear-head.fer {
 	text-decoration: none;
 	color: white;
 	border-radius: 16px !important;
+	-webkit-border-radius: 16px !important;
+	-moz-border-radius: 16px !important;
+	-ms-border-radius: 16px !important;
+	-o-border-radius: 16px !important;
 }
 
-.cardCategory:hover{
+.cardCategory:hover {
 	text-decoration: none;
 	color: white;
-	background-color: #323232;
+	background-color: #323232 !important;
 }
 
 .cardCategory i {
@@ -3108,20 +3120,69 @@ h2.sear-head.fer {
 	margin: 16px 0;
 }
 
-.choiseCategory h2{
+.choiseCategory h2 {
 	font-size: 4rem;
 	font-weight: bold;
-	margin: 9px 0px;
+	margin-bottom: 20px;
 	padding-bottom: 13px;
 	border-bottom: 1px solid #c1c1c1;
 }
 
-.choiseCategory h3{
+.choiseCategory h3 {
 	font-size: 28px;
-	padding: 10px 14px;
-	background-color: #e6c65e;
-	border-radius: 5px;
-	margin: 15px 0px;
+	padding: 11px 0px;
+	font-family: "Arial Rounded MT";
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 30px;
+	font-style: italic;
+	color: #696969
+}
+
+.cardSubCategory {
+	display: flex;
+	padding: 5px 10px;
+	align-items: center;
+	justify-content: space-between;
+	text-decoration: none;
+	color: #333333;
+	border: 1px solid #a9a9a9;
+	border-radius: 7px !important;
+	-webkit-border-radius: 7px !important;
+	-moz-border-radius: 7px !important;
+	-ms-border-radius: 7px !important;
+	-o-border-radius: 7px !important;
+}
+
+.cardSubCategory:hover {
+	text-decoration: none;
+	color: white;
+	background-color: #323232 !important;
+}
+
+.cardSubCategory i {
+	font-size: 4rem;
+	color: inherit;
+}
+
+.cardSubCategory .nameCategory {
+	font-size: 17px;
+	color: inherit;
+	font-weight: bold;
+	color: #4a4a4a;
+}
+
+.cardSubCategory .totalAds {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.cardSubCategory .totalAds span {
+	color: #656565;
+	font-size: 9px;
+	font-weight: bold;
+	font-style: italic;
+	letter-spacing: 1px;
 }
 
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */

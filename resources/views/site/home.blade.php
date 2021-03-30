@@ -24,19 +24,19 @@
             </a>
             <a href="#" class="rond bg2">
                 <i class="fas fa-car-alt"></i>
-                <span class="nameCategory">Immobilier</span>
+                <span class="nameCategory">Voiture</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
             <a href="#" class="rond bg3">
                 <i class="far fa-sun"></i>
-                <span class="nameCategory">Immobilier</span>
+                <span class="nameCategory">Trucs</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
             <a href="#" class="rond bg4">
                 <i class="fas fa-users"></i>
-                <span class="nameCategory">Immobilier</span>
+                <span class="nameCategory">Services</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
