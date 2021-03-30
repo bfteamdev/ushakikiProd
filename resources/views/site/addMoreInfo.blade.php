@@ -8,8 +8,9 @@
         <div class="container postCard">
             <div class="row choiseCategory">
                 {{-- style="display: flex;flex-wrap: wrap;align-items: center;justify-content: center;"> --}}
-                <h3 style="width:100%;" class="mx-4">choisir un sous-category</h3>
-                @foreach ($category as $item)
+                <h3 style="width:100%;" class="mx-4">Ad more information</h3>
+                @if(sizeof($subCategory) !== 0)
+                @foreach ($subCategory as $item)
                     <div class="col-lg-6 col-md-6 mb-4">
                         <a href="{{ route('ad.AddMoreInfo', ['category' => $item->id]) }}" class="cardSubCategory">
                             <i class="{{ $item->icon }}"></i>
@@ -21,6 +22,9 @@
                         </a>
                     </div>
                 @endforeach
+                @else
+                <h4 class="mx-4">No result</h4>
+                @endif
             </div>
         </div>
 

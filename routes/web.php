@@ -53,5 +53,6 @@ Route::get('/', "Site\HomeController@index")->name('site.index');
 
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
-Route::get('/createAd', "Site\AddAnnouce@showCategory" )->name('ad.category');
-Route::get('/createAd/sub-category/{id}', "Site\AddAnnouce@showSubCategory" )->name('ad.subCategory');
+Route::get('/createAd', "Site\AddAnnouce@showGroup" )->name('ad.category');
+Route::get('/createAd/sub-category/{group}', "Site\AddAnnouce@showCategory" )->name('ad.subCategory');
+Route::get('/createAd/ad-more-information/{category}', "Site\AddAnnouce@AddMoreInformation")->name('ad.AddMoreInfo');

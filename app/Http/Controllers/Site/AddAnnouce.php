@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Groupe;
 use App\Models\Category;
-
+use App\Models\Type;
 
 class AddAnnouce extends Controller
 {
@@ -17,7 +17,6 @@ class AddAnnouce extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -85,16 +84,39 @@ class AddAnnouce extends Controller
     {
         //
     }
-    public function showCategory()
-    {
-        $cat=Groupe::all();
-        return view('site.createAdd',compact('cat'));
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showGroup()
+    {
+        $group = Groupe::all();
+        return view('site.createAdd', compact('group'));
     }
-    public function showSubCategory($id)
+    
+    /**
+     * @param Groupe $groupe
+     * Display a listing of the resource they passed in param.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCategory(Groupe $group)
     {
-        $subCat=Category::where('groupe_id',$id)->get();
-        return view('site.subCategoryAd',compact('subCat'));
-
+        $category = Category::where('groupe_id', $group->id)->get();
+        return view('site.subCategoryAd', compact('category'));
+    }
+    
+    /**
+     * @param Groupe $groupe
+     * Display a listing of the resource they passed in param.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AddMoreInformation(Category $category)
+    {
+        $subCategory = Type::where('category_id', $category->id)->get();
+        return view('site.addMoreInfo', compact('subCategory'));
     }
 }
