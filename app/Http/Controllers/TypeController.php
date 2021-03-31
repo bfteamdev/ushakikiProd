@@ -15,10 +15,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $type = Type::all();
-        $chr=Type::where('parent_id',!null)->get();
+        $type = Type::select("*")->orderBy("id", "desc")->get();
+        $chr = Type::where('parent_id', !null)->get();
         // dd($chr);
-        return view("admin.type.index",compact("type","chr"));
+        return view("admin.type.index", compact("type", "chr"));
     }
 
     /**
@@ -29,8 +29,8 @@ class TypeController extends Controller
     public function create()
     {
         $category = Category::all();
-        $type=Type::where('parent_id',null)->get();
-        return view("admin.type.create",compact("category","type"));
+        $type = Type::where('parent_id', null)->get();
+        return view("admin.type.create", compact("category", "type"));
     }
 
     /**
@@ -42,12 +42,22 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            "category_id"=> "required",
-            "name"=> "required",
-            "parent_id"=>'',
+            "category_id" => "required|numeric",
+            "name" => "required|string",
+            "parent_id" => 'numeric|nullable',
         ]);
-        Type::firstOrCreate($data);
-        return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully registered !!!!");
+        $nameCount = Type::where("name", $data['name'])->count();
+        $categoryCount = Category::where("id", $data['category_id'])->count();
+        if ($categoryCount === 1) {
+            if ($nameCount === 0) {
+                Type::firstOrCreate($data);
+                return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully registered !!!!");
+            } else {
+                return back()->withInput()->with("error", "The name already exist on this sub-category !!!!");
+            }
+        } else {
+            return back()->withInput()->with("error", "The category is not defined OR not selected !!!!");
+        }
     }
 
     /**
@@ -67,16 +77,16 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit( $type)
+    public function edit($type)
     {
-        $parent=Type::where('parent_id',null)->get();
+        $parent = Type::where('parent_id', null)->get();
 
         $type = Type::findOrFail($type);
 
         // dd($type);
         $category = Category::all();
 
-        return view("admin.type.edit",compact("type","category","parent"));
+        return view("admin.type.edit", compact("type", "category", "parent"));
     }
 
     /**
@@ -89,13 +99,25 @@ class TypeController extends Controller
     public function update(Request $request,  $type)
     {
         $data = request()->validate([
-            "category_id"=> "required",
-            "name"=> "required",
-            "parent_id"=>''
+            "category_id" => "required|numeric",
+            "name" => "required|string",
+            "parent_id" => 'numeric|nullable',
         ]);
         $types = Type::findOrFail($type);
-        $types->update($data);
-        return redirect()->route("sub-category.index")->with("success", "The subcategory was successfully modified !!!!");
+        $nameCount = Type::where("name", $data['name'])->count();
+        $categoryCount = Category::where("id", $data['category_id'])
+            ->where("id", "!=", $type)
+            ->count();
+        if ($categoryCount === 1) {
+            if ($nameCount === 0) {
+                $types->update($data);
+                return back()->withInput()->with("success", "The subcategory was successfully modified !!!!");
+            } else {
+                return back()->withInput()->with("error", "The name already exist on this sub-category !!!!");
+            }
+        } else {
+            return back()->withInput()->with("error", "The category is not defined OR not selected !!!!");
+        }
     }
 
     /**
@@ -107,7 +129,6 @@ class TypeController extends Controller
     public function destroy($type)
     {
         $types = Type::findOrFail($type);
-        // dd($type);
         $types->delete();
         return redirect()->route("sub-category.index")->with("success", "The subcategory has been deleted successfully !!!!");
     }

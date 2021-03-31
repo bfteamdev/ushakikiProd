@@ -9,7 +9,7 @@
             </div>
         </div>
         <!--begin::Form-->
-        <form class="form" method="POST" action="{{ route('sub-category.update',['sub_category'=>$type->id]) }}">
+        <form class="form" method="POST" action="{{ route('sub-category.update', ['sub_category' => $type->id]) }}">
             @csrf
             @method("patch")
             <div class="card-body">
@@ -26,7 +26,16 @@
                             <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
                                 <option value="">select category</option>
                                 @foreach ($category as $item)
-                                    <option value="{{ $item->id }}" {{ $item->id === $type->category_id ? "selected":'' }}>{{ $item->name }}</option>
+                                    @if (old('category_id'))
+                                        <option value="{{ $item->id }}"
+                                            {{ $item->id === (int) old('category_id') ? 'selected' : '' }}>
+                                            {{ $item->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $item->id }}"
+                                            {{ $item->id === $type->category_id ? 'selected' : '' }}>{{ $item->name }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -38,7 +47,7 @@
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Nom du type " name="name" value="{{ old('name') ?? $type->name }}">
                             @error('name')
-                                <div class="invalid-feedback">{{ $errors->first('name')}}</div>
+                                <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                             @enderror
                         </div>
                         <div class="form-group col-lg-6">
@@ -46,7 +55,13 @@
                             <select class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
                                 <option value="">select parent</option>
                                 @foreach ($parent as $items)
-                                    <option value="{{ $items->id }}" {{ $items->id === $type->parent_id ? "selected" :'' }}>{{ $items->name }}</option>
+                                    @if (old('parent_id'))
+                                        <option value="{{ $items->id }}" {{ $items->id === (int) old('parent_id') ? 'selected' : '' }}>{{ $items->name }}
+                                        </option>
+                                    @else
+                                    <option value="{{ $items->id }}" {{ $items->id === $type->parent_id ? 'selected' : '' }}>{{ $items->name }}
+                                    </option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('parent_id')
@@ -55,7 +70,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="separator separator-dashed my-8"></div>
             </div>
             <div class="card-footer">
                 <div class="row">

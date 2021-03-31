@@ -25,7 +25,7 @@
                             <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
                                 <option value="">select category</option>
                                 @foreach ($category as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}" {{ $item->id === (int)old("category_id") ? "selected":'' }}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -45,7 +45,7 @@
                             <select class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
                                 <option value="">select parent</option>
                                 @foreach ($type as $items)
-                                    <option value="{{ $items->id }}">{{ $items->name }}</option>
+                                    <option value="{{ $items->id }}" {{ $items->id === (int)old("parent_id") ? "selected":'' }}>{{ $items->name }}</option>
                                 @endforeach
                             </select>
                             @error('parent_id')

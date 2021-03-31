@@ -17,7 +17,7 @@ class FeatureController extends Controller
      */
     public function index()
     {
-        $features = Feature::all();
+        $features = Feature::select("*")->orderBy("id", "desc")->get();
         return view("admin.feature.index", compact("features"));
     }
 
@@ -48,17 +48,32 @@ class FeatureController extends Controller
         $featuresCount = Feature::where("title", $request['title'])->count();
         if ($categoryCount === 1) {
             if ($featuresCount === 0) {
-                Feature::firstOrCreate($data);
-                $feature_id = DB::getPdo()->lastInsertId();
-                if ($request['fields'][0]['name'] !==  null) {
-                    $this->addFeatures($request, "fields", $feature_id);
+                DB::beginTransaction();
+                try {
+                    Feature::firstOrCreate($data);
+                    $feature_id = DB::getPdo()->lastInsertId();
+                    if ($request['fields']) {
+                        if ($this->fieldDoublons($request, "fields") === true) {
+                            if ($request['fields'][0]['name'] !==  null) {
+                                $this->addFeatures($request, "fields", $feature_id);
+                            }
+                        } else {
+                            return back()->withInput()->with("error", "You repeated a feature name several times OR is empty !!!");
+                        }
+                    } else {
+                        return back()->withInput()->with("error", "The feature name can't be not null !!!");
+                    }
+                    DB::commit();
+                    return redirect()->route("features.index")->with("success", "The feature is registered with successfull !!!");
+                } catch (\Throwable $th) {
+                    DB::rollBack();
+                    return back()->withInput()->with("error", "Errorrrrrrr");
                 }
-                return redirect()->route("features.index")->with("success", "The feature is registered with successfull !!!");
             } else {
-                return back()->with("error", "The feature name alread exist !!!");
+                return back()->withInput()->with("error", "The feature name alread exist !!!");
             }
         } else {
-            return back()->with("error", "The category is not defined !!!");
+            return back()->withInput()->with("error", "The category is not defined !!!");
         }
     }
 
@@ -101,17 +116,33 @@ class FeatureController extends Controller
             ->count();
         if ($categoryCount === 1) {
             if ($featuresCount === 0) {
-                if ($request['fields'][0]['name'] !==  null) {
+                DB::beginTransaction();
+                try {
+                    $feature->update($data);
                     $feature->field()->delete();
-                    $this->addFeatures($request, "fields", $feature->id);
+                    if ($request['fields']) {
+                        if ($this->fieldDoublons($request, "fields") === true) {
+                            if ($request['fields'][0]['name'] !==  null) {
+                                $this->addFeatures($request, "fields", $feature->id);
+                            }
+                        } else {
+                            return back()->withInput()->with("error", "You repeated a feature name several times OR is empty !!!");
+                        }
+                    } else {
+                        return back()->withInput()->with("error", "The feature name can't be not null !!!");
+                    }
+                    DB::commit();
+                    return back()->withInput()->with("success", "The feature is registered with successfull !!!");
+                } catch (\Throwable $th) {
+                    DB::rollBack();
+                    return back()->withInput()->with("error", "Errorrrrrrr");
                 }
-                $feature->update($data);
-                return back()->with("success", "The feature is updated with successfull !!!");
+                return back()->withInput()->with("success", "The feature is updated with successfull !!!");
             } else {
-                return back()->with("error", "The feature name already exist !!!");
+                return back()->withInput()->with("error", "The feature name already exist !!!");
             }
         } else {
-            return back()->with("error", "The category is not defined !!!");
+            return back()->withInput()->with("error", "The category is not defined !!!");
         }
     }
 
@@ -138,7 +169,7 @@ class FeatureController extends Controller
                     "type" => $item['type'],
                 ]);
             } else {
-                return back()->with("error", "Type of the information " . $item["name"] . "is not defined");
+                return back()->withInput()->with("error", "Type of the information " . $item["name"] . "is not defined");
             }
         }
     }
@@ -146,14 +177,29 @@ class FeatureController extends Controller
     private function validator()
     {
         return request()->validate([
-            "title" => "required",
-            "category_id" => "required",
-            "displayOrder" => "required"
+            "title" => "required|string",
+            "category_id" => "required|numeric",
+            "displayOrder" => "required|numeric"
         ]);
     }
-    
+
     private function Type()
     {
         return ["text", "check", "number", "file"];
+    }
+
+    public static function fieldDoublons($request, $Champ)
+    {
+        $countFeature = [];
+        $isOkay = false;
+        foreach ($request[$Champ] as $i => $v) {
+            $countFeature[] = $request[$Champ][$i]['name'];
+        }
+        if (array_unique($countFeature) === $countFeature) {
+            $isOkay = true;
+        } else {
+            $isOkay;
+        }
+        return $isOkay;
     }
 }

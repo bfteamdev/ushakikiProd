@@ -15,7 +15,7 @@ class GroupeController extends Controller
      */
     public function index()
     {
-        $groupe = Groupe::all();
+        $groupe = Groupe::select("*")->orderBy("id", "desc")->get();
         $categories = Category::all();
         return view("admin.groupe.index", compact("groupe", "categories"));
     }
@@ -44,7 +44,7 @@ class GroupeController extends Controller
             Groupe::firstOrCreate($request);
             return redirect()->route("group.index")->with("success", "The group has been successfully registered!!!!");
         } else {
-            return back()->with("error", "The group name is already exist !!");
+            return back()->withInput()->with("error", "The group name is already exist !!");
         }
     }
 
@@ -88,9 +88,9 @@ class GroupeController extends Controller
             ->count();
         if ($groupecount === 0) {
             $groupe->update($request);
-            return back()->with("success", "The group has been successfully edit !!!!");
+            return back()->withInput()->with("success", "The group has been successfully edit !!!!");
         }else{
-            return back()->with("error","The group name already exist !!!!");
+            return back()->withInput()->with("error","The group name already exist !!!!");
         }
 
     }
