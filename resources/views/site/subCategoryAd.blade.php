@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-3">
         <div class="container choiseCategory px-0">
             <h2>Déposer une annonce </h2>
         </div>

@@ -185,7 +185,13 @@ class FeatureController extends Controller
 
     private function Type()
     {
-        return ["text", "check", "number", "file"];
+        return [
+            "text",
+            "check",
+            "number",
+            "file",
+            "textarea",
+        ];
     }
 
     public static function fieldDoublons($request, $Champ)

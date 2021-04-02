@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Groupe;
 use App\Models\Category;
+use App\Models\Feature;
 use App\Models\Type;
 
-class AddAnnouce extends Controller
+class createAds extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -102,10 +103,28 @@ class AddAnnouce extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showCategory(Groupe $group)
+    public function showCategory(Category $category)
     {
-        $category = Category::where('groupe_id', $group->id)->get();
-        return view('site.subCategoryAd', compact('category'));
+        $subCategory = Type::where('category_id', $category->id)->get();
+        $feature = Feature::where('category_id', $category->id)->get();
+        foreach($feature as $item){
+            $item->field;
+        }
+        return [
+            "subCategory"=> $subCategory,
+            "feature"=> $feature,
+        ];
+    }
+    public function showFeature(Category $category)
+    {
+        $feature = Feature::where('category_id', $category->id)->get();
+        $fields = [];
+        foreach($feature as $item){
+            $fields[] = $item->field;
+        }
+        return [
+            "feature"=>$feature,
+        ];
     }
     
     /**
@@ -114,9 +133,10 @@ class AddAnnouce extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function AddMoreInformation(Category $category)
+    public function AddMoreInformation(Groupe $group)
     {
-        $subCategory = Type::where('category_id', $category->id)->get();
-        return view('site.addMoreInfo', compact('subCategory'));
+        $category = Category::where('groupe_id', $group->id)->get();
+        // $feature = Feature::where('category_id', 2)->get();
+        return view('site.addMoreInfo', compact("category"));
     }
 }

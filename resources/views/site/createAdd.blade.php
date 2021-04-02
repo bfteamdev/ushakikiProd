@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-3">
         <div class="container choiseCategory px-0">
             <h2>Déposer une annonce </h2>
         </div>
@@ -10,7 +10,7 @@
                 <h3 style="width:100%;">choisir la categorie</h3>
                 @foreach ($group as $item)
                     <div class="col-lg-3 mb-4">
-                        <a href="{{ route('ad.subCategory', ['group' => $item->id]) }}" class="rounded cardCategory"
+                        <a href="{{ route('ad.AddMoreInfo', ['group' => $item->id]) }}" class="rounded cardCategory"
                             style="background-color:{{ $item->color }}">
                             <i class="{{ $item->icon }}"></i>
                             <span class="nameCategory">{{ $item->name }}</span>

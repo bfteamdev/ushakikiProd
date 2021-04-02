@@ -53,36 +53,36 @@
                         pariatur corrupti minima doloribus ducimus omnis, maiores beatae enim vel placeat.</p>
                 </div>
                 <h2 class="head">How work it</h2>
-                <div class="work-section-grids text-center">
+                <div class="work-section-grids text-center row" style="display: flex;align-items: baseline;justify-content: center;">
                     <div class="col-md-3 work-section-grid">
-                        <i class="fa fa-pencil-square-o"></i>
+                        <i class="fas fa-edit"></i>
                         <h4>Post an Ad</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
                         <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span>
                     </div>
                     <div class="col-md-3 work-section-grid">
-                        <i class="fa fa-eye"></i>
+                        <i class="fa fa-eye" style="color: var(--color2)"></i>
                         <h4>Find an item</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
                         <span class="arrow2"><img src="{{ asset('app-assets/images/arrow2.png') }}" alt=""></span>
                     </div>
                     <div class="col-md-3 work-section-grid">
-                        <i class="fa fa-phone"></i>
+                        <i class="fa fa-phone" style="color: var(--color3)"></i>
                         <h4>contact the seller</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
-                        <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span>
+                        {{-- <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span> --}}
                     </div>
-                    <div class="col-md-3 work-section-grid">
+                    {{-- <div class="col-md-3 work-section-grid">
                         <i class="fa fa-money"></i>
                         <h4>make transactions</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
-                    </div>
+                    </div> --}}
                     <div class="clearfix"></div>
-                    <a class="work" href="#">Get start Now</a>
+                    <a class="work col-md-2" href="#">Get start Now</a>
                 </div>
             </div>
         </div>
