@@ -21,21 +21,24 @@
                     {{-- <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10"></h3> --}}
                     <div class="mb-4 row">
                         <div class="form-group col-lg-7">
-
+                            
                             <label>Title <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror"
                                 placeholder="Sub-category name" name="title" value="{{ old('title') }}">
                             @error('title')
                                 <div class="invalid-feedback">{{ $errors->first('title') }}</div>
-
                             @enderror
                         </div>
                         <div class="form-group col-lg-5">
                             <label for="exampleSelect1">Category <span class="text-danger">*</span></label>
                             <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
                                 <option value="">Select category</option>
-                                @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}" {{ $item->id === (int)old("category_id") ? "selected":'' }}>{{ $item->name }}</option>
+                                @foreach ($group as $item)
+                                <optgroup label="{{ $item->name }}">
+                                    @foreach ($item->categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id === (int)old("category_id") ? "selected":'' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </optgroup>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -72,6 +75,9 @@
                                                             <option value="check" {{ $item['type'] === "check" ? "selected":'' }}>Check</option>
                                                             <option value="number" {{ $item['type'] === "number" ? "selected":'' }}>Number</option>
                                                             <option value="file" {{ $item['type'] === "file" ? "selected":'' }}>File</option>
+                                                            <option value="radio" {{ $item['type'] === "radio" ? "selected":'' }}>Radio</option>
+                                                            <option value="checkbox" {{ $item['type'] === "checkbox" ? "selected":'' }}>Checkbox</option>
+                                                            <option value="textarea" {{ $item['type'] === "textarea" ? "selected":'' }}>Long text</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-1">
@@ -97,6 +103,9 @@
                                                         <option value="check">Check</option>
                                                         <option value="number">Number</option>
                                                         <option value="file">File</option>
+                                                        <option value="radio">Radio</option>
+                                                        <option value="checkbox">Checkbox</option>
+                                                        <option value="textarea">Long text</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-1">

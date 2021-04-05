@@ -82,7 +82,7 @@
         });
 
     </script>
-    @yield('styles')
+    @yield('style')
 
 </head>
 
@@ -90,9 +90,7 @@
     @include('layout.partials.include.header')
     @yield('content')
     <footer>
-
         @yield('footer')
-
     </footer>
     {{-- Global Theme JS Bundle (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.js') as $script)

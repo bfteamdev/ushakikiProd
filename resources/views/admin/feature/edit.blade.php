@@ -34,12 +34,22 @@
                         </div>
                         <div class="form-group col-lg-5">
                             <label for="exampleSelect1">Category <span class="text-danger">*</span></label>
-                            <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
+                            {{-- <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
                                 <option value="">Select category</option>
                                 @foreach ($categories as $item)
                                     <option value="{{ $item->id }}"
                                         {{ $item->id === $feature->category->id ? 'selected' : '' }}>{{ $item->name }}
                                     </option>
+                                @endforeach
+                            </select> --}}
+                            <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
+                                <option value="">Select category</option>
+                                @foreach ($group as $item)
+                                <optgroup label="{{ $item->name }}">
+                                    @foreach ($item->categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id === $feature->category->id ? "selected":'' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </optgroup>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -121,6 +131,10 @@
                                                                 <option value="file"
                                                                     {{ $item->type === 'file' ? 'selected' : '' }}>File
                                                                 </option>
+                                                                <option value="radio" {{ $item->type === 'radio' ? 'selected' : '' }}>Radio</option>
+                                                                <option value="checkbox" {{ $item->type === 'checkbox' ? 'selected' : '' }}>Checkbox</option>
+                                                                <option value="textarea" {{ $item->type === 'textarea' ? 'selected' : '' }}>Long text</option>
+
                                                             </select>
                                                         </div>
                                                         <div class="col-md-1">
@@ -145,7 +159,10 @@
                                                             <option value="text">Text</option>
                                                             <option value="check">Check</option>
                                                             <option value="number">Number</option>
-                                                            <option value="file" >File</option>
+                                                            <option value="file">File</option>
+                                                            <option value="radio">Radio</option>
+                                                            <option value="checkbox">Checkbox</option>
+                                                            <option value="textarea">Long text</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-1">

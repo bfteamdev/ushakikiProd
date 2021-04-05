@@ -127,6 +127,10 @@ class createAds extends Controller
         ];
     }
     
+    public function storeAds(Request $request){
+        dd(request()->all());
+    }
+
     /**
      * @param Groupe $groupe
      * Display a listing of the resource they passed in param.

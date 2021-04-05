@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Field;
 use App\Models\Feature;
 use App\Models\Category;
+use App\Models\Groupe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,9 +29,9 @@ class FeatureController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $group = Groupe::all();
         $features = new Feature();
-        return view("admin.feature.create", compact("features", "categories"));
+        return view("admin.feature.create", compact("features", "group"));
     }
 
     /**
@@ -45,7 +46,9 @@ class FeatureController extends Controller
         $data = $this->validator();
         // dd($data);
         $categoryCount = Category::where("id", $request['category_id'])->count();
-        $featuresCount = Feature::where("title", $request['title'])->count();
+        $featuresCount = Feature::where("title", $request['title'])
+            ->where("category_id", "=", $request['category_id'])
+            ->count();
         if ($categoryCount === 1) {
             if ($featuresCount === 0) {
                 DB::beginTransaction();
@@ -70,7 +73,7 @@ class FeatureController extends Controller
                     return back()->withInput()->with("error", "Errorrrrrrr");
                 }
             } else {
-                return back()->withInput()->with("error", "The feature name alread exist !!!");
+                return back()->withInput()->with("error", "The feature title alread exist on this category !!!");
             }
         } else {
             return back()->withInput()->with("error", "The category is not defined !!!");
@@ -96,8 +99,8 @@ class FeatureController extends Controller
      */
     public function edit(Feature $feature)
     {
-        $categories = Category::all();
-        return view("admin.feature.edit", compact("feature", "categories"));
+        $group = Groupe::all();
+        return view("admin.feature.edit", compact("feature", "group"));
     }
 
     /**
@@ -111,7 +114,9 @@ class FeatureController extends Controller
     {
         $data = $this->validator();
         $categoryCount = Category::where("id", $request['category_id'])->count();
+
         $featuresCount = Feature::where("title", $request['title'])
+            ->where("category_id", "=", $request['category_id'])
             ->where("id", "!=", $feature->id)
             ->count();
         if ($categoryCount === 1) {
@@ -139,7 +144,7 @@ class FeatureController extends Controller
                 }
                 return back()->withInput()->with("success", "The feature is updated with successfull !!!");
             } else {
-                return back()->withInput()->with("error", "The feature name already exist !!!");
+                return back()->withInput()->with("error", "The feature title alread exist on this category !!!");
             }
         } else {
             return back()->withInput()->with("error", "The category is not defined !!!");
@@ -190,6 +195,8 @@ class FeatureController extends Controller
             "check",
             "number",
             "file",
+            "radio",
+            "checkbox",
             "textarea",
         ];
     }

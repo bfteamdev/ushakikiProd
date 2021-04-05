@@ -11,57 +11,56 @@
 
         {{-- <a class="MyAds" href="login.html"><i class="fa fa-list-ul"></i> My Ads</a>
         <a class="iconCart" href="login.html"><i class="flaticon2-shopping-cart-1"></i></a> --}}
-        
 
-        <a class="MyAds" href="{{ route('ad.category') }}"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a>
+
+        <a class="MyAds" href="{{ route('ad.category') }}"><i class="fas fa-pencil-square-o"></i> Post a new Ad</a>
         {{-- <a class="iconCart" href="login.html"><i class="fa fa-shopping-cart"></i></a> --}}
 
         <div class="auth">
+            @guest
+                @if (Route::has('login'))
+                    {{-- <li class="nav-item"> --}}
+                    <a class="authBtn" href="{{ route('login') }}">Login&nbsp;&nbsp;<i class="fas fa-user-circle"></i></a>
 
-                                @guest
-                                    @if (Route::has('login'))
-                                        {{-- <li class="nav-item"> --}}
-                                            <a class="authBtn" href="{{ route('login') }}">Login&nbsp;&nbsp;<i class="fas fa-user-circle"></i></a>
+                    {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
 
-                                            {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
+                @endif
 
-                                    @endif
+                @if (Route::has('register'))
+                    <a class="authBtn" href="{{ route('register') }}">Register&nbsp;&nbsp;<i
+                            class="fa fa-user-plus"></i></a>
+                    {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
 
-                                    @if (Route::has('register'))
-                                            <a class="authBtn" href="{{ route('register') }}">Register&nbsp;&nbsp;<i class="fa fa-user-plus"></i></a>
-                                            {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->username }}
+                    </a>
 
-                                    @endif
-                                @else
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->username }}
-                                        </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
-                                @endguest
-                            </ul>
-                        </div>
-                   
-                </nav>
-
-               
-            </div>
-
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+            </ul>
         </div>
-        
-     
+
+        </nav>
+
+
     </div>
+
+</div>
+
+
+</div>
 </div>

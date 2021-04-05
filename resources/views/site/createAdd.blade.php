@@ -9,7 +9,7 @@
             <div class="row choiseCategory">
                 <h3 style="width:100%;">choisir la categorie</h3>
                 @foreach ($group as $item)
-                    <div class="col-lg-3 mb-4">
+                    <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                         <a href="{{ route('ad.AddMoreInfo', ['group' => $item->id]) }}" class="rounded cardCategory"
                             style="background-color:{{ $item->color }}">
                             <i class="{{ $item->icon }}"></i>

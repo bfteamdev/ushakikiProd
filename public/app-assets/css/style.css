@@ -23,7 +23,7 @@
 
 body {
 	padding: 0;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Arial Rounded MT', sans-serif;
 	background: #fff;
 }
 
@@ -34,7 +34,7 @@ body a {
 	-o-transition: 0.5s all;
 	-ms-transition: 0.5s all;
 	font-weight: 400;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Arial Rounded MT', sans-serif;
 }
 
 input[type="button"], input[type="submit"] {
@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
 	margin: 0;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Arial Rounded MT', sans-serif;
 }
 
 ul {
@@ -135,7 +135,7 @@ label {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	margin-top: 3rem;
+	margin-top: 2rem;
 }
 
 .bg1 {
@@ -171,11 +171,11 @@ label {
 .rond:hover {
 	text-decoration: none;
 	background-color: #4b4b4b;
-	transform: scale(1.08);
-	-webkit-transform: scale(1.08);
-	-moz-transform: scale(1.08);
-	-ms-transform: scale(1.08);
-	-o-transform: scale(1.08);
+	transform: scale(1.06);
+	-webkit-transform: scale(1.06);
+	-moz-transform: scale(1.06);
+	-ms-transform: scale(1.06);
+	-o-transform: scale(1.06);
 }
 
 .rond i {
@@ -348,6 +348,7 @@ li.dropdown-header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0px;
+	flex-wrap: wrap;
 	background-color: #ffffff;
 	box-shadow: 0px 2px 7px -3px #c5c5c5;
 }
@@ -365,6 +366,7 @@ li.dropdown-header {
 
 .header-right {
 	width: 74%;
+	/* width: 100%; */
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -372,7 +374,7 @@ li.dropdown-header {
 
 .search {
 	position: relative;
-	width: 33%;
+	width: 90%;
 }
 
 .search .searchInput {
@@ -1755,11 +1757,10 @@ h2.head {
 	position: relative;
 	color: #2d2d2d;
 	font-size: 40px;
-	margin: 0px 0;
 	text-align: end;
 	padding-bottom: 8px;
 	font-family: Arial Rounded MT;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 }
 
 h2.head::after {
@@ -2451,13 +2452,13 @@ form#filldetails {
 	margin: 0 auto;
 }
 
-form .field {
+form .fields {
 	width: 100%;
 	position: relative;
 	margin-bottom: 15px;
 }
 
-form .field label {
+form .fields label {
 	text-transform: uppercase;
 	position: absolute;
 	top: 0;
@@ -2476,7 +2477,7 @@ form .field label {
 	font-weight: 400;
 }
 
-form .field label+span {
+form .fields label+span {
 	opacity: 0;
 	color: white;
 	display: block;
@@ -2492,7 +2493,7 @@ form .field label+span {
 	transition: all 333ms ease-in-out;
 }
 
-form .field input[type="text"], form .field textarea {
+form .fields input[type="text"], form .fields textarea {
 	border: none;
 	background: #e8e9ea;
 	width: 100%;
@@ -2505,7 +2506,7 @@ form .field input[type="text"], form .field textarea {
 	text-transform: uppercase;
 }
 
-form .field input[type="text"]#msg, form .field textarea#msg {
+form .fields input[type="text"]#msg, form .fields textarea#msg {
 	resize: none;
 	-webkit-transition: all 333ms ease-in-out;
 	-moz-transition: all 333ms ease-in-out;
@@ -2514,25 +2515,25 @@ form .field input[type="text"]#msg, form .field textarea#msg {
 	transition: all 333ms ease-in-out;
 }
 
-form .field input[type="text"]:focus, form .field input[type="text"].focused, form .field textarea:focus, form .field textarea.focused {
+form .fields input[type="text"]:focus, form .fields input[type="text"].focused, form .fields textarea:focus, form .fields textarea.focused {
 	outline: none;
 }
 
-form .field input[type="text"]:focus#msg, form .field input[type="text"].focused#msg, form .field textarea:focus#msg, form .field textarea.focused#msg {
+form .fields input[type="text"]:focus#msg, form .fields input[type="text"].focused#msg, form .fields textarea:focus#msg, form .fields textarea.focused#msg {
 	padding-bottom: 150px;
 }
 
-form .field input[type="text"]:focus+label, form .field input[type="text"].focused+label, form .field textarea:focus+label, form .field textarea.focused+label {
+form .fields input[type="text"]:focus+label, form .fields input[type="text"].focused+label, form .fields textarea:focus+label, form .fields textarea.focused+label {
 	width: 18%;
 	background: #f3c500;
 	color: #fff;
 }
 
-form .field input[type="text"].focused+label, form .field textarea.focused+label {
+form .fields input[type="text"].focused+label, form .fields textarea.focused+label {
 	color: #f3c500;
 }
 
-form .field:hover label {
+form .fields:hover label {
 	width: 20%;
 	background: #313a3d;
 	color: white;
@@ -3204,12 +3205,22 @@ h2.sear-head.fer {
 	letter-spacing: 1px;
 }
 
+.displayOrder {
+	padding: 8px 11px;
+	color: black;
+	font-size: 15px;
+	background-color: white;
+	border-radius: 50%;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
 /**INPUT*/
 
 .field {
 	position: relative;
 	height: auto;
-	padding: 16px 0 8px 0;
+	padding: 6px 0 10px 0;
 }
 
 .field-label {
@@ -3218,11 +3229,9 @@ h2.sear-head.fer {
 	display: block;
 	color: #424242;
 	line-height: 16px;
-	font-size: 15px;
-	font-weight: 400;
-	-webkit-transform: translate(6px,24px);
-	-ms-transform: translate(6px,24px);
-	transform: translate(6px,24px);
+	font-weight: bold;
+	font-family: "Arial Rounded MT";
+	transform: translate(6px, 24px);
 	-webkit-transition: color 0.3s, -webkit-transform 0.3s;
 	transition: color 0.3s, -webkit-transform 0.3s;
 	-o-transition: transform 0.3s, color 0.3s;
@@ -3240,7 +3249,7 @@ h2.sear-head.fer {
 	height: 32px;
 	padding: 8px 10px;
 	line-height: 16px;
-	font-family: Roboto;
+	font-family: "Arial Rounded MT";
 	font-size: 16px;
 	background: rgb(0 0 0 / 0%);
 	border: none;
@@ -3270,20 +3279,22 @@ h2.sear-head.fer {
 .field::after {
 	background-color: #e2e2e2;
 	border: 1px solid #0d6efd;
-	-webkit-transform: scaleX(0);
-	-ms-transform: scaleX(0);
-	transform: scaleX(0);
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: -webkit-transform 0.5s;
 	-o-transition: transform 0.5s;
 	transition: transform 0.5s;
 	transition: transform 0.5s, -webkit-transform 0.5s;
+	transform: scaleX(0);
+	-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	-o-transform: scaleX(0);
 }
 
 .has-label .field-label {
-	-webkit-transform: translate(0px,-5px) scale(0.75);
-	-ms-transform: translate(0px,-5px) scale(0.75);
-	transform: translate(0px,-5px) scale(0.75);
+	transform: translate(0px, -5px) scale(0.75);
+	-webkit-transform: translate(0px, -5px) scale(0.75);
+	-ms-transform: translate(0px, -5px) scale(0.75);
 	font-weight: bold;
 }
 
@@ -3292,20 +3303,188 @@ h2.sear-head.fer {
 }
 
 .field.is-focused::after {
+	transform: scaleX(1);
 	-webkit-transform: scaleX(1);
 	-ms-transform: scaleX(1);
+}
+
+.field.is-error-focused::after {
 	transform: scaleX(1);
+	-webkit-transform: scaleX(1);
+	-ms-transform: scaleX(1);
 }
 
 .field.error .field-label {
 	color: #e74c3c;
+	color: #191919 !important;
 }
 
 .field.error::after {
-	background-color: #e74c3c;
+	background-color: #e74c3c40;
+	border: 1px solid #e74c3c;
 }
 
 /**INPUT*/
+
+
+
+.dropzone {
+  min-height: auto;
+}
+
+.dropzone.dropzone-default {
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px dashed #EBEDF3;
+  border-radius: 0.42rem;
+}
+.dropzone.dropzone-default .dropzone-msg-title {
+  color: #3F4254;
+  margin: 0 0 5px 0;
+  padding: 6px 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.dropzone.dropzone-default .dropzone-msg-desc {
+  color: #B5B5C3;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.dropzone.dropzone-default .dz-preview .dz-image {
+  border-radius: 0.42rem;
+}
+.dropzone.dropzone-default .dz-remove {
+  color: #7E8299;
+  font-size: 1px;
+  font-weight: 500;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.dropzone.dropzone-default .dz-remove:hover {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  color: #3699FF;
+}
+.dropzone.dropzone-default.dropzone-primary {
+  border-color: #3699FF;
+}
+.dropzone.dropzone-default.dropzone-secondary {
+  border-color: #E4E6EF;
+}
+.dropzone.dropzone-default.dropzone-success {
+  border-color: #1BC5BD;
+}
+.dropzone.dropzone-default.dropzone-info {
+  border-color: #8950FC;
+}
+.dropzone.dropzone-default.dropzone-warning {
+  border-color: #FFA800;
+}
+.dropzone.dropzone-default.dropzone-danger {
+  border-color: #F64E60;
+}
+.dropzone.dropzone-default.dropzone-light {
+  border-color: #F3F6F9;
+}
+.dropzone.dropzone-default.dropzone-dark {
+  border-color: #181C32;
+}
+.dropzone.dropzone-default.dropzone-white {
+  border-color: #ffffff;
+}
+
+.dropzone.dropzone-multi {
+  border: 0;
+  padding: 0;
+}
+.dropzone.dropzone-multi .dz-message {
+  display: none;
+}
+.dropzone.dropzone-multi .dropzone-panel .dropzone-upload,
+.dropzone.dropzone-multi .dropzone-panel .dropzone-remove-all {
+  display: none;
+}
+.dropzone.dropzone-multi .dropzone-item {
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  border-radius: 0.42rem;
+  padding: 0.5rem 1rem;
+  background-color: #F3F6F9;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-file {
+  flex-grow: 1;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-file .dropzone-filename {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #7E8299;
+  text-overflow: ellipsis;
+  margin-right: 0.5rem;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-file .dropzone-filename b {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #B5B5C3;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-file .dropzone-error {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #F64E60;
+  text-overflow: ellipsis;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-progress {
+  width: 15%;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-progress .progress {
+  height: 5px;
+  transition: all 0.2s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dropzone.dropzone-multi .dropzone-item .dropzone-progress .progress {
+    transition: none;
+  }
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar {
+  margin-left: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-start,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-cancel,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-delete {
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-start i,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-cancel i,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-delete i {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  font-size: 0.8rem;
+  color: #7E8299;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-start:hover,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-cancel:hover,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-delete:hover {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-start:hover i,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-cancel:hover i,
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-delete:hover i {
+  color: #3699FF;
+}
+.dropzone.dropzone-multi .dropzone-item .dropzone-toolbar .dropzone-start {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tabAutoGrow{
+	height: auto !important;
+}
 
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
 
@@ -3807,7 +3986,7 @@ section.list-right span.price:after {
 	display: BLOCK;
 	margin: 10px 0 25px 0;
 	padding: 7px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Arial Rounded MT', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 	color: #a8a8a8;
@@ -3822,7 +4001,7 @@ section.list-right span.price:after {
 	color: #585858;
 	padding: 7px;
 	height: 150px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Arial Rounded MT', sans-serif;
 	color: #a8a8a8;
 	outline: none;
 	border: 1px solid #d3d3d3;
@@ -3835,7 +4014,7 @@ section.list-right span.price:after {
 	border: none;
 	background-color: #f3c500;
 	color: #fff;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Arial Rounded MT', sans-serif;
 }
 
 .feed-back-form input[type="submit"]:hover {
@@ -4316,11 +4495,11 @@ label {
 		padding: 40px 0 0 0;
 	}
 	.rond {
-		margin: 0 25px;
-		padding: 54px;
+		margin: 0 15px;
+		padding: 49px 47px;
 	}
 	.rond i {
-		font-size: 7rem;
+		font-size: 6rem;
 	}
 }
 
@@ -4330,10 +4509,11 @@ label {
 	}
 	.rond {
 		margin: 30px 15px;
-		padding: 55px 55px;
+		padding: 55px 39px;
+		width: 22%;
 	}
 	.rond i {
-		font-size: 7rem;
+		font-size: 5rem;
 	}
 }
 
@@ -4355,7 +4535,7 @@ label {
 
 @media (max-width: 1080px) {
 	.banner h1 {
-		font-size: 40px;
+		font-size: 7rem;
 	}
 	.banner p {
 		margin: 8px 0 30px 0;
@@ -4363,7 +4543,16 @@ label {
 	}
 	.main-banner {
 		min-height: 280px;
-		padding: 60px 0 0 0;
+		padding: 20px 0 0 0;
+	}
+	.containerCategory {
+		margin-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	.rond {
+		width: 29%;
+		margin: 13px 45px;
+		padding: 55px 55px;
 	}
 	.focus-image i {
 		font-size: 35px;
@@ -4561,7 +4750,7 @@ label {
 		padding: 55px 0 0 0;
 	}
 	.banner h1 {
-		font-size: 35px;
+		font-size: 5rem;
 	}
 	.banner p {
 		margin: 6px 0 30px 0;
@@ -4570,6 +4759,11 @@ label {
 	.banner a {
 		font-size: 16px;
 		padding: 8px 20px;
+	}
+	.rond {
+		width: 35%;
+		margin: 13px 45px;
+		padding: 45px 55px !important;
 	}
 	.btn-primary {
 		padding: 0 0 0 20px;
@@ -4775,16 +4969,17 @@ label {
 		padding: 10px 0 0px 0;
 	}
 	.work-section-grid {
-		margin-top: 6em;
+		margin-top: 2em;
 		position: relative;
-		width: 25%;
+		width: 32%;
 		float: left;
 	}
 	.work-section-grid h4 {
 		font-size: 20px;
+		margin-top: 55px;
 	}
 	.work-section-grid p {
-		margin-bottom: 75px;
+		margin-bottom: 30px;
 	}
 	.upload {
 		width: 85%;
@@ -4794,7 +4989,7 @@ label {
 @media (max-width: 900px) {
 	.main-banner, .banner {
 		min-height: 240px;
-		padding: 50px 0 0 0;
+		padding: 10px 0 0 0;
 	}
 	.sign-in-form {
 		width: 50%;
@@ -4831,7 +5026,7 @@ label {
 	/*--typo--*/
 	.main-banner, .banner {
 		min-height: 210px;
-		padding: 40px 0 0 0;
+		padding: 10px 0 0 0;
 	}
 	.logo a {
 		font-size: 47px;
@@ -4849,7 +5044,7 @@ label {
 		padding: 5px 0;
 	}
 	.banner h1 {
-		font-size: 33px;
+		font-size: 5rem;
 	}
 	.banner p {
 		margin: 5px 0 30px 0;
@@ -4858,6 +5053,17 @@ label {
 	.banner a {
 		font-size: 16px;
 		padding: 7px 18px;
+	}
+	.rond {
+		width: 39%;
+		margin: 8px 16px;
+		padding: 45px 38px !important;
+	}
+	.rond i {
+		font-size: 4rem;
+	}
+	.rond .nameCategory {
+		font-size: 1.5rem;
 	}
 	.focus-layout h4 {
 		font-size: 17px;
@@ -4956,17 +5162,17 @@ label {
 	.feed-back-form span {
 		font-size: 14px;
 	}
-	form .field input[type="text"], form .field textarea {
+	form .fields input[type="text"], form .fields textarea {
 		padding: 13px 0;
 		padding-left: 22%;
 	}
-	form .field label {
+	form .fields label {
 		padding: 12px 0;
 	}
 	.contact section {
 		margin: 30px auto 45px;
 	}
-	form .field label {
+	form .fields label {
 		font-size: 14px;
 	}
 	form.submit input[type="submit"] {
@@ -5032,7 +5238,11 @@ label {
 		line-height: 75px;
 	}
 	.banner h1 {
-		font-size: 26px;
+		font-size: 4rem;
+	}
+	.banner .separateTitle {
+		width: 65%;
+		margin: 16px 0;
 	}
 	.banner p {
 		margin: 5px 0 25px 0;
@@ -5042,6 +5252,28 @@ label {
 		font-size: 15px;
 		padding: 6px 16px;
 	}
+	.rond {
+		width: 48%;
+		margin: 8px 3px;
+		padding: 45px 30px !important;
+	}
+	.rond i {
+		font-size: 2rem;
+	}
+	.rond .nameCategory {
+		font-size: 1.1rem;
+	}
+	.rond .option {
+		font-size: 11px;
+	}
+	.work-section-grid i {
+    font-size: 45px;
+}
+	span.arrow1 {
+    position: absolute;
+    top: -45px;
+    right: -71px;
+}
 	.col-md-3.biseller-column {
 		width: 50%;
 	}
@@ -5261,10 +5493,13 @@ label {
 	}
 	.work-section-grid {
 		width: 50%;
-		MARGIN-TOP: 5EM;
+		MARGIN-TOP: 3rem;
 	}
 	span.arrow2 {
-		DISPLAY: NONE;
+		/* DISPLAY: NONE; */
+		top: 100%;
+		right: 16px;
+		transform: rotate(322deg);
 	}
 	.work-section-grid h4 {
 		margin-top: 15px;
@@ -5395,7 +5630,7 @@ label {
 		padding: 3px 0 5px;
 	}
 	.main-banner, .banner {
-		padding: 15px 0 0 0;
+		padding: 10px 0 0 0;
 	}
 	.focus-grid {
 		width: 50%;
@@ -5532,6 +5767,37 @@ label {
 	.btn-primary {
 		padding: 0 0 0 12px;
 	}
+	.banner h1 {
+		font-size: 4rem;
+	}
+	.banner .separateTitle {
+		width: 65%;
+		margin: 16px 0;
+	}
+	.search {
+		position: relative;
+		width: 95%;
+		padding-left: 0;
+	}
+	.search i {
+		padding: 12px 14px;
+		right: 0;
+		font-size: 16px;
+	}
+	.rond {
+		width: 48%;
+		margin: 8px 3px;
+		padding: 28px 30px !important;
+	}
+	.rond i {
+		font-size: 2rem;
+	}
+	.rond .nameCategory {
+		font-size: 1.1rem;
+	}
+	.rond .option {
+		font-size: 11px;
+	}
 	.featured-ad {
 		width: 80%;
 		margin: 2% 10%;
@@ -5623,7 +5889,7 @@ label {
 		margin-top: 5%;
 	}
 	.header-right {
-		width: 55%;
+		width: 100%;
 		text-align: right;
 	}
 	a.account {
@@ -5654,8 +5920,22 @@ label {
 		width: 99.5%;
 	}
 	.banner h1 {
-		font-size: 22px;
+		font-size: 3.5rem;
 	}
+	.banner .separateTitle {
+		width: 73%;
+		margin: 16px 0;
+	}
+	.rond {
+		width: 48%;
+		margin: 8px 3px;
+		padding: 16px 19px !important;
+	}
+	.rond i {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 6px;
+}
 	.banner p {
 		font-size: 12.5px;
 	}
