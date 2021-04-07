@@ -94,7 +94,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-       @include('layout.partials.include.header')
+  
+   
+       @include('layout.partials.include.headerLogin')
+  
 
     @yield('content')
     <footer>

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app_login')
 
 @section('content')
 
@@ -9,7 +9,12 @@
                     <h1>Log in</h1>
                 </div>
                 <div class="signin">
-                    <form method="POST" action="{{ route('login') }}">
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ route('login.custom') }}">
                         @csrf
                         <div class="signin-rit">
                             <span class="checkbox1">
@@ -30,8 +35,11 @@
                         <div class="log-input">
                             <div class="log-input-left">
                                 <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="Your Email" onfocus="this.value = '';"
+                                    value="Your Email" 
+                                    onfocus="this.value = '';"
                                     onblur="if (this.value == '') {this.value = 'Your Email';}" />
+                                    {{-- <i class="fas fa-user-circle"></i> --}}
+
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

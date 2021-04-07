@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Client;
+use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -15,15 +15,15 @@ class ClientRegistedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $client;
+    public $user;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Client $client)
+    public function __construct(User $user)
     {
-        $this->client = $client;
+        $this->user = $user;
     }
 
     /**

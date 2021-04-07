@@ -30,7 +30,7 @@ Route::get('/icons/svg', 'PagesController@svg');
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => ['auth','role']], function () {
   // Admin --Group
   Route::resource("/group", "GroupeController");
   // Route::get("svg","GroupeController@icons")->name("group.icons");// Admin --Group
@@ -41,17 +41,28 @@ Route::group(['prefix' => 'admin'], function () {
   // Admin --Features
   Route::resource("/features", "FeatureController");
   // Admin --Client
-  Route::resource("/client", "ClientController")->middleware('auth');
+  Route::resource("/client", "ClientController");
   // Admin --Ads
   Route::resource("/ads", "AnnonceController");
-
-
-  Route::get('/', 'PagesController@index');
+  Route::get('/dashboad', 'PagesController@index')->name('admin.dashboad');
 });
 //website --route
 Route::get('/', "Site\HomeController@index")->name('site.index');
+// Login personaliser
+Route::get('/login/user',"LoginController@index")->name('login.user');
+Route::post('/login/user', "LoginController@login")->name('login.custom');
 
+// Route::post('/loginTest','TestController@login')->name('test');
+// Route::get('/tt','TestController@tt')->name('tt');
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
 Route::get('/createAd', "Site\AddAnnouce@showCategory" )->name('ad.category');
 Route::get('/createAd/sub-category/{id}', "Site\AddAnnouce@showSubCategory" )->name('ad.subCategory');
+//Login admin
+Route::get('/admin', 'AdminPageController@index')->name('admin.login');
+Route::post('/admin/post', 'AdminPageController@authenticated')->name('admin.post');
+Route::get('/admin/logout','AdminPageController@logout')->name('admin.logout');
+Route::get('/admin/reset-password','AdminPageController@forget')->name('admin.forget');
+Route::post('/admin/reset-password/post','AdminPageController@postForget')->name('admin.postForget');
+Route::get('/admin/reset-password/{token}','AdminPageController@getPassword')->name('admin.password');
+Route::post('/admin/reset-password','AdminPageController@updatePassword')->name('admin.postPassword');

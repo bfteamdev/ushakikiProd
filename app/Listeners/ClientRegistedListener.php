@@ -27,7 +27,7 @@ class ClientRegistedListener implements ShouldQueue
      */
     public function handle($event)
     {
-        Mail::to("admin@gmail.com")->send(new ClientRegistedMail($event->client));
-        Mail::to($event->client->email)->send(new ClientRegistedMail($event->client));
+        // Mail::to("admin@gmail.com")->send(new ClientRegistedMail($event->user));
+        Mail::to($event->user->email)->send(new ClientRegistedMail($event->user));
     }
 }

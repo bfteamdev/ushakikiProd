@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role:ROLE_ADMIN');
+    }
     /**
      * Display a listing of the resource.
      *

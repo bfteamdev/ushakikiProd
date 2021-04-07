@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Events\ClientRegistedEvent;
-use App\Models\Client;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $client = Client::all();
+        $client = User::all();
+        // dd($client);
         return view("admin.client.index", compact("client"));
     }
 
@@ -27,7 +33,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $client = new Client();
+        $client = new User();
         return view("admin.client.create", compact("client"));
     }
 
@@ -40,15 +46,15 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $data = $this->validator();
-        $countEmail = Client::where("email", $request['email'])->count();
-        $countUsername = Client::where("phone", $request['username'])->count();
+        $countEmail = User::where("email", $request['email'])->count();
+        $countUsername = User::where("phone", $request['username'])->count();
         if ($countEmail === 0) {
             if ($countUsername === 0) {
                 if ($data['profil'] !== null) {
                     $data['profil'] = $data['profil']->store("profil", "public");
                 }
                 $data['password'] = Hash::make($data['password']);
-                $client = Client::firstOrCreate($data);
+                $client = User::firstOrCreate($data);
                 event(new ClientRegistedEvent($client));
                 return redirect()->route("client.index")->with("success", "The client was successfully registered!!!");
             } else {
@@ -65,7 +71,7 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(User $client)
     {
         return view("admin.client.show", compact("client"));
     }
@@ -76,7 +82,7 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(User $client)
     {
         //
     }
@@ -88,12 +94,12 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, User $client)
     {
         $data = $this->validator2();
         // dd($data);
-        $countEmail = Client::where("email", $request['email'])->where("id", '!=', $client->id)->count();
-        $countUsername = Client::where("username", $request['username'])->where("id", '!=', $client->id)->count();
+        $countEmail = User::where("email", $request['email'])->where("id", '!=', $client->id)->count();
+        $countUsername = User::where("username", $request['username'])->where("id", '!=', $client->id)->count();
         if ($countEmail !== 1) {
             if ($countUsername !== 1) {
                     // $data['profil'] = $data['profil']->store("profil", "public");
@@ -114,7 +120,7 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(User $client)
     {
         $client->delete();
         return redirect()->route("client.index")->with("success", "The client was successfully deleted !!!");
