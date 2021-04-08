@@ -15,29 +15,28 @@
             <input type="search" class="searchInput" name="" id="" placeholder="Search.....">
             <i class="fa fa-search"></i>
         </div>
-        <div class="container containerCategory">
+        <div class="containerCategory">
             <a href="#" class="rond bg1">
-                <i class="far fa-angry"></i>
+                <i class="fas fa-home"></i>
                 <span class="nameCategory">Immobilier</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
-                {{-- <div class="badge">23</div> --}}
             </a>
             <a href="#" class="rond bg2">
-                <i class="fa fa-home"></i>
-                <span class="nameCategory">Immobilier</span>
+                <i class="fas fa-car-alt"></i>
+                <span class="nameCategory">Voiture</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
             <a href="#" class="rond bg3">
-                <i class="fa fa-home"></i>
-                <span class="nameCategory">Immobilier</span>
+                <i class="far fa-sun"></i>
+                <span class="nameCategory">Trucs</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
             <a href="#" class="rond bg4">
-                <i class="fa fa-home"></i>
-                <span class="nameCategory">Immobilier</span>
+                <i class="fas fa-users"></i>
+                <span class="nameCategory">Services</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
@@ -54,36 +53,36 @@
                         pariatur corrupti minima doloribus ducimus omnis, maiores beatae enim vel placeat.</p>
                 </div>
                 <h2 class="head">How work it</h2>
-                <div class="work-section-grids text-center">
+                <div class="work-section-grids text-center row" style="display: flex;align-items: baseline;justify-content: center;">
                     <div class="col-md-3 work-section-grid">
-                        <i class="fa fa-pencil-square-o"></i>
+                        <i class="fas fa-edit"></i>
                         <h4>Post an Ad</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
                         <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span>
                     </div>
                     <div class="col-md-3 work-section-grid">
-                        <i class="fa fa-eye"></i>
+                        <i class="fa fa-eye" style="color: var(--color2)"></i>
                         <h4>Find an item</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
                         <span class="arrow2"><img src="{{ asset('app-assets/images/arrow2.png') }}" alt=""></span>
                     </div>
                     <div class="col-md-3 work-section-grid">
-                        <i class="fa fa-phone"></i>
+                        <i class="fa fa-phone" style="color: var(--color3)"></i>
                         <h4>contact the seller</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
-                        <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span>
+                        {{-- <span class="arrow1"><img src="{{ asset('app-assets/images/arrow1.png') }}" alt=""></span> --}}
                     </div>
-                    <div class="col-md-3 work-section-grid">
+                    {{-- <div class="col-md-3 work-section-grid">
                         <i class="fa fa-money"></i>
                         <h4>make transactions</h4>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         </p>
-                    </div>
+                    </div> --}}
                     <div class="clearfix"></div>
-                    <a class="work" href="#">Get start Now</a>
+                    <a class="work col-md-2" href="#">Get start Now</a>
                 </div>
             </div>
         </div>
@@ -225,29 +224,6 @@
             </div>
             <!-- //slider -->
         </div>
-        {{-- <div class="mobile-app">
-            <div class="container">
-                <div class="col-md-5 app-left">
-                    <a href="mobileapp.html"><img src="{{ asset('app-assets/images/app.png') }}" alt=""></a>
-                </div>
-                <div class="col-md-7 app-right">
-                    <h3>Resale App is the <span>Easiest</span> way for Selling and buying second-hand goods</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor Sed bibendum varius euismod.
-                        Integer eget turpis sit amet lorem rutrum ullamcorper sed sed dui. vestibulum odio at elementum.
-                        Suspendisse et condimentum nibh.</p>
-                    <div class="app-buttons">
-                        <div class="app-button">
-                            <a href="#"><img src="{{ asset('app-assets/images/1.png') }}" alt=""></a>
-                        </div>
-                        <div class="app-button">
-                            <a href="#"><img src="{{ asset('app-assets/images/2.png') }}" alt=""></a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div> --}}
     </div>
 @endsection
 @section('script')
@@ -277,7 +253,6 @@
             });
 
         });
-
     </script>
     <script type="text/javascript" src="{{ asset('app-assets/js/jquery.flexisel.js') }}"></script>
 

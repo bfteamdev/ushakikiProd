@@ -21,8 +21,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $client = User::all();
-        // dd($client);
+
+        $client = User::select("*")->orderBy("id", "desc")->get();
+
         return view("admin.client.index", compact("client"));
     }
 
@@ -58,10 +59,10 @@ class ClientController extends Controller
                 event(new ClientRegistedEvent($client));
                 return redirect()->route("client.index")->with("success", "The client was successfully registered!!!");
             } else {
-                return back()->with("error", "The email username has already been used by another user");
+                return back()->withInput()->with("error", "The email username has already been used by another user");
             }
         } else {
-            return back()->with("error", "The email address has already been used by another user");
+            return back()->withInput()->with("error", "The email address has already been used by another user");
         }
     }
 
@@ -105,12 +106,12 @@ class ClientController extends Controller
                     // $data['profil'] = $data['profil']->store("profil", "public");
                 
                 $client->update($data);
-                return back()->with("success", "The client has been updated successfully!!!");
+                return back()->withInput()->with("success", "The client has been updated successfully!!!");
             } else {
-                return back()->with("error", "The email username has already been used by another user");
+                return back()->withInput()->with("error", "The email username has already been used by another user");
             }
         } else {
-            return back()->with("error", "The email address has already been used by another user");
+            return back()->withInput()->with("error", "The email address has already been used by another user");
         }
     }
 

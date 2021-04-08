@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::select("*")->orderBy("id", "desc")->get();
         return view("admin.category.index", compact("category"));
     }
 
@@ -47,38 +47,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $data = $this->validator();
-        // dd($request['fields']);
-        // dd($data);
         $countGroup = Groupe::where("id", $request['groupe_id'])->count();
         $categoryNameCount = Category::where("name", $request['name'])->count();
-        $featureTitleOrderCount = Feature::where("title", $request['title'])->count();
         if ($countGroup === 1) {
             if ($categoryNameCount === 0) {
-                Category::firstOrCreate([
-                    "groupe_id" => $request['groupe_id'],
-                    "name" => trim($request['name']),
-                    "icon" => $request['icon']
-                ]);
-                $category_id = DB::getPdo()->lastInsertId();
-                if ($featureTitleOrderCount === 0) {
-                    Feature::firstOrCreate([
-                        "category_id" => $category_id,
-                        "title" => $request['title'],
-                        "displayOrder" => $request['displayOrder']
-                    ]);
-                }
-                $feature_id = DB::getPdo()->lastInsertId();
-                if ($request['fields'][0]["name"] !== null) {
-                    $this->addFeatures($request, "fields", $feature_id);
-                }
+                Category::create($data);
                 return redirect()->route("category.index")->with("success", "The category was successfully registered !!");
             } else {
-                return back()->with("error", "The name of this category is already exist !!");
+                return back()->withInput()->with("error", "The name of this category is already exist !!");
             }
         } else {
-            return back()->with("error", "The group does not exist OR is not selected !!");
+            return back()->withInput()->with("error", "The group does not exist OR is not selected !!");
         }
     }
 
@@ -115,37 +95,19 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $data = $this->validator();
-        $id = $category->groupe_id;
-        $feature = Feature::class;
-        $feature_id = Feature::where("category_id", $category->id)->get();
         $countGroup = Groupe::where("id", $request['groupe_id'])->count();
-        $categoryNameCount = Category::where("name", trim($request['name']))
+        $categoryNameCount = Category::where("name", $data['name'])
             ->where("id", "!=", $category->id)
             ->count();
-        // dd($categoryNameCount);
-        $featureTitleOrderCount = Feature::where("title", $request['title'])->count();
         if ($countGroup === 1) {
             if ($categoryNameCount === 0) {
-                $category->features()->delete();
-                if ($featureTitleOrderCount === 0) {
-                    Feature::firstOrCreate([
-                        "category_id" => $category->id,
-                        "title" => $request['title'],
-                        "displayOrder" => $request['displayOrder']
-                    ]);
-                }
-                if ($request['fields'][0]["name"] !== null) {
-                    foreach ($feature_id as $x) {
-                        $this->addFeatures($request, "fields", $x->id);
-                    }
-                }
                 $category->update($data);
-                return back()->with("success", "The category was successfully registered !!");
+                return back()->withInput()->with("success", "The category was successfully registered !!");
             } else {
-                return back()->with("error", "The name of this category is already exist !!");
+                return back()->withInput()->with("error", "The name of this category is already exist !!");
             }
         } else {
-            return back()->with("error", "The group does not exist OR is not selected !!");
+            return back()->withInput()->with("error", "The group does not exist OR is not selected !!");
         }
     }
 
@@ -161,34 +123,12 @@ class CategoryController extends Controller
         return redirect()->route("category.index")->with("success", "The category has been successfully deleted !!");
     }
 
-    public function validator()
+    private function validator()
     {
         return request()->validate([
-            "groupe_id" => "required",
-            "name" => "required",
-            "icon" => "required",
-            "title" => "required",
-            "displayOrder" => "required",
+            "groupe_id" => "required|numeric",
+            "name" => "required|string",
+            "icon" => "required|string"
         ]);
-    }
-
-    private function addFeatures($request, $valuesFeatues, $feature_id)
-    {
-        foreach ($request[$valuesFeatues] as $item) {
-            if (in_array($item['type'], $this->Type())) {
-                Field::firstOrCreate([
-                    "feature_id" => $feature_id,
-                    "name" => $item['name'],
-                    "type" => $item['type'],
-                ]);
-            } else {
-                return back()->with("error", "Type of the information " . $item["name"] . "is not defined");
-            }
-        }
-    }
-
-    private function Type()
-    {
-        return ["text", "check", "number", "file"];
     }
 }
