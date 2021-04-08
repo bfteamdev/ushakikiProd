@@ -22,7 +22,7 @@ type="text/css" />
     </div>
     <div class="container postCard">
         <div class="row choiseCategory">
-            <form action="" method="post">
+            <form action="{{ route("ad.storeAds") }}" method="post">
                 <div id="smartwizard" class="sw sw-justified sw-theme-dots">
                     <ul class="nav" style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
                         <li class="nav-item">
@@ -40,11 +40,11 @@ type="text/css" />
                                 <strong>Step 3</strong> <br>This is step description
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link inactive" href="#step-4">
                                 <strong>Step 4</strong> <br>This is step description
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <form method="post" action="{{ route('ad.storeAds') }}" enctype="multipart/form-data">
                         @csrf
@@ -71,14 +71,17 @@ type="text/css" />
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            {{-- <div class="form-group row">
                                                 <label class="col-form-label text-right col-lg-3 col-sm-12">Default Demo</label>
                                                 <div class="col-lg-9 col-md-9 col-sm-12">
                                                     <div class="summernote" id="kt_summernote_1"></div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
+                                </div>
+                                <div id="loading" class="loading">
+                                    <img src="{{ asset("app-assets/images/loading.gif") }}" alt="loading image">
                                 </div>
                             </div>
                             <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2"
@@ -89,7 +92,7 @@ type="text/css" />
                                         File
                                         Upload</label>
                                     <div class="col-lg-12 col-md-9 col-sm-12">
-                                        <input type="file" multiple name="files[]"
+                                        <input type="file" multiple name="imagesAds[]"
                                             label="Drop files here or click to upload."
                                             help="Upload files here and they won't be sent immediately" is="drop-files"
                                             accept=".jpg,.png,.jpeg" />
@@ -104,7 +107,7 @@ type="text/css" />
                                 the
 
                             </div>
-                            <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4"
+                            {{-- <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4"
                                 style="display: none;">
                                 <h3>Step 4 Content</h3>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
@@ -112,14 +115,15 @@ type="text/css" />
                                 been
                                 the
 
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: center;">
                             {{-- <button class="btn sw-btn-prev disabled" type="button">Previous</button> --}}
                             <button class="btn btn-success nextStep" type="button"
                                 style="margin: 0; padding: 8px 12px;">Oky</button>
-                            {{-- <button class="btn sw-btn-next nextStep" disabled type="button" style="display: none;">Next</button> --}}
-                            <button class="btn sw-btn-next nextStep" type="button">Next</button>
+                            {{-- <button class="btn sw-btn-next " disabled type="button" style="display: none;">Next</button> --}}
+                            <button class="btn sw-btn-next" type="button">Next</button>
+                            <button class="btn btn-danger" type="submit">submit</button>
                         </div>
                     </form>
                 </div>
@@ -210,7 +214,7 @@ type="text/css" />
     let nextStepDisabled = document.querySelector(".sw-btn-next");
     let allInputs;
     let isOkay = [];
-    nextStep.addEventListener("click", function(e) {
+    nextStepDisabled.addEventListener("click", function(e) {
         e.preventDefault()
         allInputs = document.querySelectorAll(".allInputs")
         isOkay = [];
@@ -222,28 +226,38 @@ type="text/css" />
                 input.parentNode.classList.remove("is-error-focused", "error")
             }
         });
+        // debugger;
+        if(!isOkay.includes("")){
+            nextStepDisabled.style.display = null
+            nextStepDisabled.disabled = false
+        }else{
+            nextStepDisabled.style.display = "none"
+            nextStepDisabled.disabled = true
+        }
     });
 
-    var KTSummernoteDemo = function () {
-	// Private functions
-	var demos = function () {
-		$('.summernote').summernote({
-			height: 450
-		});
-	}
 
-	return {
-		// public functions
-		init: function() {
-			demos();
-		}
-	};
-}();
 
-// Initialization
-jQuery(document).ready(function() {
-	KTSummernoteDemo.init();
-});
+    // var KTSummernoteDemo = function () {
+	// // Private functions
+	// var demos = function () {
+	// 	$('.summernote').summernote({
+	// 		height: 450
+	// 	});
+	// }
+
+	// return {
+	// 	// public functions
+	// 	init: function() {
+	// 		    demos();
+	// 	    }
+	//     };
+    // }();
+
+    // // Initialization
+    // jQuery(document).ready(function() {
+    //     KTSummernoteDemo.init();
+    // });
 </script>
 <script src="{{ asset('app-assets/js/createAds.js') }}"></script>
 @endsection

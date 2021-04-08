@@ -13,7 +13,7 @@
         <a class="iconCart" href="login.html"><i class="flaticon2-shopping-cart-1"></i></a> --}}
 
 
-        <a class="MyAds" href="{{ route('ad.category') }}"><i class="fas fa-pencil-square-o"></i> Post a new Ad</a>
+        <a class="MyAds" href="{{ route('ad.category') }}"><i class="far fa-edit"></i> Post a new Ad</a>
         {{-- <a class="iconCart" href="login.html"><i class="fa fa-shopping-cart"></i></a> --}}
 
         <div class="auth">

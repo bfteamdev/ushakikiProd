@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Groupe;
-use App\Models\Category;
-use App\Models\Feature;
 use App\Models\Type;
+use App\Models\Groupe;
+use App\Models\Feature;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class createAds extends Controller
 {
@@ -128,7 +129,17 @@ class createAds extends Controller
     }
     
     public function storeAds(Request $request){
-        dd(request()->all());
+        dd($request->all());
+        DB::beginTransaction();
+        try {
+            foreach ($request['feature'] as $items) {
+                foreach ($items['value'] as $item) {
+                    dd($items);
+                }
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
     }
 
     /**

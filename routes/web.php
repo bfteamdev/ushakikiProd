@@ -53,6 +53,8 @@ Route::get('/', "Site\HomeController@index")->name('site.index');
 
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
+Route::get('/sigin', "HomeController@login");
+// Route::get('/register', "HomeController@register");
 Route::group(["prefix"=>"/createAd"],function(){
   Route::get('/', "Site\CreateAds@showGroup" )->name('ad.category');
   Route::get('/sub-category/{category}', "Site\CreateAds@showCategory" )->name('ad.subCategory');
