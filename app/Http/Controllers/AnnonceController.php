@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      *

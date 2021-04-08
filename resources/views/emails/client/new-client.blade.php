@@ -1,7 +1,7 @@
 @component('mail::message')
 
-<b>{{ $client->name }}</b><br>
+<b>{{ $user->name }}</b><br>
 
-Merci vous etez inscrit {{ $client->email }}
+Merci vous etez inscrit {{ $user->email }}
 Thanks
 @endcomponent

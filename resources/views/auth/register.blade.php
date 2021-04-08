@@ -1,13 +1,13 @@
 @extends('layout.app')
 
 @section('content')
-  
+
     <div id="page-wrapper" class="sign-in-wrapper">
         <div class="graphs">
             <div class="sign-up">
                 <h1>Create an account</h1>
-                <p class="creating">Having hands on experience in creating innovative designs,I do offer design
-                    solutions which harness.</p>
+                {{-- <p class="creating">Having hands on experience in creating innovative designs,I do offer design
+                    solutions which harness.</p> --}}
                 <h2>Personal Information</h2>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -33,7 +33,7 @@
                             <h4>Email Address* :</h4>
                         </div>
                         <div class="sign-up2">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                            <input type="email" class="form-control email @error('email') is-invalid @enderror" name="email"
                                 value="{{ old('email') }}" required autocomplete="email" />
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="sub_home_right">
-                            <p>Go Back to <a href="index.html">Home</a></p>
+                            <p>Go Back to <a href="{{ route('site.index') }}">Home</a></p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -92,3 +92,9 @@
         </div>
     </div>
 @endsection
+<style>
+    .email {
+        margin-top: 16px;
+    }
+
+</style>

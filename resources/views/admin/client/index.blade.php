@@ -41,6 +41,7 @@
                 <thead>
                     <tr>
                         <th title="Field #1" style="width: 60px;">Profil</th>
+                        <th>username</th>
                         <th title="Field #2">First Name</th>
                         <th title="Field #3">Last Name</th>
                         <th title="Field #4">Email</th>
@@ -61,6 +62,7 @@
                                     </span>
                                 </div>
                             </td>
+                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->username }}</td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->firstName }}</td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->lastName }}</td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->email }}</td>

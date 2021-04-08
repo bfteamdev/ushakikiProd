@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role');
+    }
     public function index()
     {
         $page_title = 'Dashboard';
@@ -108,4 +109,8 @@ class PagesController extends Controller
     {
         return view('layout.partials.extras._quick_search_result');
     }
+   public function annonce()
+   {
+       return view('site.dashbaord.myAd'); 
+   }
 }

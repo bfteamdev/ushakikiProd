@@ -3,27 +3,29 @@
 
 <head>
 
-    @yield('title')
+{{-- <title>ushakiki</title> --}}
+@yield('title')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-    {{-- <title>ushakiki</title> --}}
- 
-
+   
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap-select.css') }}">
     <link href="{{ asset('app-assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('app-assets/css/flexslider.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('app-assets/css/font-awesome.min.css') }}" />
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Ushakiki" />
+    <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     <script type="application/x-javascript">
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
         }, false);
+
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
     </script>
     <!-- //for-mobile-apps -->
     <!--fonts-->
@@ -32,13 +34,14 @@
         href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
         rel='stylesheet' type='text/css'>
     <!--//fonts-->
-
+    <!-- js -->
     {{-- Global Theme Styles (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.css') as $style)
         <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($style)) : asset($style) }}"
             rel="stylesheet" type="text/css" />
     @endforeach
     <script type="text/javascript" src="{{ asset('app-assets/js/jquery.min.js') }}"></script>
+    <!-- js -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ asset('app-assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ 'app-assets/js/bootstrap-select.js' }}"></script>
@@ -86,16 +89,21 @@
         });
 
     </script>
-    @yield('style')
+    @yield('styles')
 
 </head>
 
 <body>
-       @include('layout.partials.include.header')
+  
+   
+       @include('layout.partials.include.headerLogin')
+  
 
     @yield('content')
     <footer>
-        @yield('footer')
+
+      @yield('footer')
+
     </footer>
     {{-- Global Theme JS Bundle (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.js') as $script)

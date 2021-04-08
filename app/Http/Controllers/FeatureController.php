@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class FeatureController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *

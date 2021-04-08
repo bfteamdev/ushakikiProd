@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     // private $is_admin=0;
-    protected $guarded=[];
+    protected $guarded = [];
     // protected $fillable = [
     //     'name', 'email', 'password',
     // ];
@@ -38,11 +37,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function isAdmin()
     {
-        if($this->is_admin === 1){
-            return $this->is_admin;
-
+        if($this->admin){
+            return true;
         }
+        return false;
     }
+  
+   
+
 }

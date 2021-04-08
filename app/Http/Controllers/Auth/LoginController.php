@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -17,16 +17,24 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
+    // protected $redirectTo;
+
+    // public function redirectTo()
+    // {
+    //     if (Auth::user()->isAdmin()) {
+    //         return 'admin/dashboad';
+    //     }
+    //     return '/';
+    // }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -37,4 +45,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // protected function authenticated(Request $request)
+    // {
+    // dd(Auth::user()->role);
+    // if (Auth::user()->role === "admin") {
+    //  return redirect()->route("test");
+    //return redirect()->route('login')->with("error","vous n'avez pas un compte user ");
+    //     }
+    // }
 }
