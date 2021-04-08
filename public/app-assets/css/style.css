@@ -3605,9 +3605,9 @@ h2.sear-head.fer {
 }
 
 .signin .passwordReset{
-	position: absolute;
-	top: -3px;
-	right: 8px;
+	/* position: absolute; */
+	/* top: -3px; */
+	/* right: 8px; */
 }
 
 .signin .passwordReset a{

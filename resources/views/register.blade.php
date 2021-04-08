@@ -9,7 +9,7 @@
                 <h2>USHAKIKI</h2>
             </div>
             <div class="loginOrCreate">
-                <span class="login">Creer un compte</span>
+                <span class="register">Creer un compte</span>
                 <span class="register">Ou <a href="{{ route('login.user') }}">Se connecter</a></span>
             </div>
             <div class="col-md-6 col-sm-10">
