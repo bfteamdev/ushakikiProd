@@ -49,16 +49,14 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','role']], function () 
 //website --route
 Route::get('/', "Site\HomeController@index")->name('site.index');
 // Login personaliser
-Route::get('/login/user',"LoginController@index")->name('login.user');
+Route::get('/sigin',"LoginController@index")->name('login.user');
 Route::post('/login/user', "LoginController@login")->name('login.custom');
 
 // Route::post('/loginTest','TestController@login')->name('test');
 // Route::get('/tt','TestController@tt')->name('tt');
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
-<<<<<<< HEAD
-Route::get('/createAd', "Site\AddAnnouce@showCategory" )->name('ad.category');
-Route::get('/createAd/sub-category/{id}', "Site\AddAnnouce@showSubCategory" )->name('ad.subCategory');
+
 //Login admin
 Route::get('/admin', 'AdminPageController@index')->name('admin.login');
 Route::post('/admin/post', 'AdminPageController@authenticated')->name('admin.post');
@@ -69,8 +67,8 @@ Route::get('/admin/reset-password/{token}','AdminPageController@getPassword')->n
 Route::post('/admin/reset-password','AdminPageController@updatePassword')->name('admin.postPassword');
 //Dashboard Client
 Route::get('/home/my-ads', 'PagesController@annonce')->name('dashboard.ads');
-=======
-Route::get('/sigin', "HomeController@login");
+
+// Route::get('/sigin', "HomeController@login");
 // Route::get('/register', "HomeController@register");
 Route::group(["prefix"=>"/createAd"],function(){
   Route::get('/', "Site\CreateAds@showGroup" )->name('ad.category');
@@ -79,4 +77,4 @@ Route::group(["prefix"=>"/createAd"],function(){
   Route::get('/ad-more-information/{group}', "Site\CreateAds@AddMoreInformation")->name('ad.AddMoreInfo');
   Route::post('/ad-more-information', "Site\CreateAds@storeAds")->name('ad.storeAds');
 });
->>>>>>> boris-dev
+
