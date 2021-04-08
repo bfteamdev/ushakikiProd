@@ -33,7 +33,8 @@ class LoginController extends Controller
                 if($user->isAdmin()){
                     return redirect()->back()->with('error','creer un compte user svp');
                 }else{
-                    return  redirect()->route('home');
+                  return  redirect()->intended();
+                    // return  redirect()->route('home');
                 }
              }
              return redirect()->back()->with('error','password or email incorrect');

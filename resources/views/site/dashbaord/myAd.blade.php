@@ -1,5 +1,7 @@
 @extends('layout.app')
-
+@section('style')
+    <link href="{{ asset("css/style.bundle.css") }}" rel="stylesheet">
+    @endsection
 @section('content')
 
     <div class="container">
@@ -45,10 +47,4 @@
 
 
     </div>
-
-
-@endsection
-
-@section('styles')
-    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet">
-@endsection
+    @endsection

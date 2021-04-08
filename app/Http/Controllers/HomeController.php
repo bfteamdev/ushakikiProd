@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,12 +26,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function login()
+
+    public function logout()
     {
-        return view('sigin');
-    }
-    public function register()
-    {
-        return view('register');
+        Auth::logout();
+        return redirect(route('site.index'))->with('success', 'You are logout successfully');
     }
 }

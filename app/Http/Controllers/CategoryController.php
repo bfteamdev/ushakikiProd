@@ -11,11 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role');
-    }
+    
     /**
      * Display a listing of the resource.
      *

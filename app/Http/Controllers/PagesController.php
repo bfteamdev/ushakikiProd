@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    // public function __construct()
-    // {
-    //     // $this->middleware('auth');
-    //     // $this->middleware('role');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role');
+    }
     public function index()
     {
         $page_title = 'Dashboard';

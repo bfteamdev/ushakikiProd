@@ -14,18 +14,21 @@
                 <span class="{{ route('register') }}">Ou <a href="/register">Creer un compte</a></span>
             </div>
             <div class="col-md-5 col-sm-10">
-                <div class="signin">
-                    @if (session()->has('error'))
+                @if (session()->has('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session()->get('error') }}
                     </div>
-                @endif
+                    @endif
+                <div class="signin">
+                 
                     <div class="signin-header">
                         {{-- <div class="header-title">Se connecter</div> --}}
                         <div class="header-img">
                             <img src="{{ asset('app-assets/images/avatar.svg') }}" alt="" srcset="">
                         </div>
                     </div>
+                    
+
                     <form method="POST" action="{{ route('login.custom') }}">
                         @csrf
                     <div class="signin-body">
@@ -66,7 +69,13 @@
                                 <button class="signin-btn" type="submit">Se connecter</button>
                             </div>
                             <div class="col-lg-6">
-                                <span class="passwordReset mt-2"><a href="" class="">Mot de passe oublie ?</a></span>
+                                @if (Route::has('password.request'))
+                                {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Click Here
+                                </a> --}}
+                                <span class="passwordReset mt-2"><a href="{{ route('password.request') }}">Mot de passe oublie ?</a></span>
+
+                            @endif
                             </div>
                             {{-- <input type="submit" value="Log in"> --}}
                         </div>
@@ -76,6 +85,9 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+@include('layout.partials.include.footer')
 @endsection
 @section('script')
     <script type="text/javascript">

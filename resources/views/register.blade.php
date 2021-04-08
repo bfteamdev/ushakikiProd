@@ -10,33 +10,60 @@
             </div>
             <div class="loginOrCreate">
                 <span class="login">Creer un compte</span>
-                <span class="register">Ou <a href="/sigin">Se connecter</a></span>
+                <span class="register">Ou <a href="{{ route('login.user') }}">Se connecter</a></span>
             </div>
             <div class="col-md-6 col-sm-10">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
                 <div class="signin">
                     <div class="signin-body">
                         <div class="col-lg-12">
                             <div class="field">
-                                <label for="nom" class="field-label">Username</label>
-                                <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off">
+                                <label for="username" class="field-label">Username</label>
+                                {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
+                                <input type="text" class="field-input allInputs @error('username') is-invalid @enderror" name="username"
+                                value="{{ old('username') }}"  autocomplete="off" aria-autocomplete="off" />
+
+                            @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="field">
-                                <label for="nom" class="field-label">Adresse e-mail</label>
-                                <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off">
+                                <label for="email" class="field-label">Adresse e-mail</label>
+                                {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
+                                <input type="email" class="field-input allInputs @error('email') is-invalid @enderror" name="email"
+                                value="{{ old('email') }}"
+                                 autocomplete="off" aria-autocomplete="off" />
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="field">
-                                <label for="nom" class="field-label">Mot de passe</label>
-                                <input type="password" class="field-input allInputs" name="" autocomplete="off">
+                                <label for="password" class="field-label">Mot de passe</label>
+                                {{-- <input type="password" class="field-input allInputs" name="" autocomplete="off"> --}}
+                                <input type="password" class="field-input allInputs @error('password') is-invalid @enderror"
+                                name="password" required autocomplete="off" />
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="field">
-                                <label for="nom" class="field-label">Mot de passe de comfirmation</label>
-                                <input type="password" class="field-input allInputs" name="" autocomplete="off">
+                                <label for="password_confirmation" class="field-label">Mot de passe de comfirmation</label>
+                                {{-- <input type="password" class="field-input allInputs" name="" autocomplete="off"> --}}
+                                <input type="password" class="field-input allInputs" name="password_confirmation" required
+                                autocomplete="off" />
                             </div>
                         </div>
                         <div class="col-lg-5 mt-4">
@@ -44,9 +71,13 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+@include('layout.partials.include.footer')
 @endsection
 @section('script')
     <script type="text/javascript">

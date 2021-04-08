@@ -367,6 +367,6 @@
 
 @endsection
 
-@section('styles')
+@section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet">
 @endsection

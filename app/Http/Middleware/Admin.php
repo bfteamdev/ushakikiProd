@@ -19,14 +19,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-
-        if ( Auth::user()->isAdmin()) 
+        if ( Auth::user() && Auth::user()->isAdmin() ) 
         {
             return $next($request);
         }else
         {
              return redirect()->route('admin.login')->with('error',"vous n'etes pas admin ne plus ");
-
         }
     }
    

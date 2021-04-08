@@ -23,49 +23,52 @@
                 <!-- Right Side Of Navbar -->
 
                 <!-- Authentication Links -->
-   
-            @guest
-                @if (Route::has('login'))
-                    {{-- <li class="nav-item"> --}}
-                    <a class="authBtn" href="{{ route('user.login') }}">Login&nbsp;&nbsp;<i class="fas fa-user-circle"></i></a>
-
-                    {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
-
-                @endif
-
-                @if (Route::has('register'))
-                    <a class="authBtn" href="{{ route('register') }}">Register&nbsp;&nbsp;<i
-                            class="fa fa-user-plus"></i></a>
-                    {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
-
-                @endif
-            @else
-                <div class="nav-item dropdown">
-
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->username }}
-                    </a>
 
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                @guest
+                    @if (Route::has('login'))
+                        {{-- <li class="nav-item"> --}}
+                        <a class="authBtn" href="{{ route('login.user') }}">Login&nbsp;&nbsp;<i
+                                class="fas fa-user-circle"></i></a>
+
+                        {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
+
+                    @endif
+
+                    @if (Route::has('register'))
+                        <a class="authBtn" href="{{ route('register') }}">Register&nbsp;&nbsp;<i
+                                class="fa fa-user-plus"></i></a>
+                        {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+
+                    @endif
+                @else
+             
+                    <a href="{{ route('logout.user') }}">Logout</a>
+                  
+                    {{-- <div class="dropdown">
+
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->username }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                        <a class="dropdown-item btn btn-danger" href="{{ route('home') }}">My dashboard</a>
-                    </div>
-                </div>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                                logout
+                            </form>
+                        </div>
+                    </div> --}}
                 @endguest
             </div>
         </div>
 
     </div>
 
-
 </div>
-
+</div>

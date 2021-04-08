@@ -15,13 +15,6 @@ use Illuminate\Support\Facades\Mail;
 class AdminPageController extends Controller
 {
 
-    // protected $redirectTo = '/admin/dashboad';
-    // use AuthenticatesUsers;
-
-    // public function __construct()
-    // {
-    //     $this->middleware('guest', ['except' => 'logout']);
-    // }
     public function index()
     {
         return view('admin.login.loginAdmin');
