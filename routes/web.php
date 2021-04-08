@@ -66,3 +66,5 @@ Route::get('/admin/reset-password','AdminPageController@forget')->name('admin.fo
 Route::post('/admin/reset-password/post','AdminPageController@postForget')->name('admin.postForget');
 Route::get('/admin/reset-password/{token}','AdminPageController@getPassword')->name('admin.password');
 Route::post('/admin/reset-password','AdminPageController@updatePassword')->name('admin.postPassword');
+//Dashboard Client
+Route::get('/home/my-ads', 'PagesController@annonce')->name('dashboard.ads');

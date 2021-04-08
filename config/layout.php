@@ -289,6 +289,7 @@ return [
         ],
         'css' => [
             'plugins/global/plugins.bundle.css',
+            
         ],
         'js' => [
             // 'plugins/global/plugins.bundle.js',

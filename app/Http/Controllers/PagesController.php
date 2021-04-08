@@ -109,5 +109,8 @@ class PagesController extends Controller
     {
         return view('layout.partials.extras._quick_search_result');
     }
-   
+   public function annonce()
+   {
+       return view('site.dashbaord.myAd'); 
+   }
 }
