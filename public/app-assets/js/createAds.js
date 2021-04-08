@@ -15,7 +15,7 @@ class SelectedCategory {
     let selectForms = `<div class="col-md-4 fieldCreate">
                         <div class="field">
                           <label for="nom" class="field-label">Selection la category</label>
-                          <select id="my-select" class="field-input select-${event.target.value} controles" name="type_id" data-feature="${event.target.value}">
+                          <select id="my-select" class="field-input select-${event.target.value} allInputs" name="type_id" data-feature="${event.target.value}">
                           </select>
                         </div>
                       </div>`;
@@ -95,8 +95,7 @@ class SelectedCategory {
           }
         });
       });
-      
-    this.$loading.style.display = "none"
+      this.$loading.style.display = "none"
       //field input HTML
       $(document).ready(function() {
         $('.field-input').focus(function() {
@@ -159,8 +158,11 @@ class SelectedCategory {
           if (res.ok && res.status === 200) {
               res.json()
                   .then(data => {
-                    this.$loading.style.display = "flex"
-                    this.loadNewForm(data,event);
+                    if(data.feature.length !== 0){
+                      this.loadNewForm(data,event);
+                    }else{
+                      this.$loading.style.display = "none"
+                    }
                   })
           } else {
               console.log("Erroor");

@@ -12,7 +12,7 @@
                 <span class="login">Se connecter</span>
                 <span class="register">Ou <a href="/register">Creer un compte</a></span>
             </div>
-            <div class="col-md-5 col-sm-10">
+            <div class="col-lg-5 col-md-7 col-sm-10">
                 <div class="signin">
                     <div class="signin-header">
                         {{-- <div class="header-title">Se connecter</div> --}}

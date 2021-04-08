@@ -6,14 +6,18 @@
         .drop-files__file {
             max-width: 229px !important;
         }
+
         .drop-files__file img {
             height: 220px !important;
         }
+
     </style>
     <!-- CSS -->
-<link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
-type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" integrity="sha512-pDpLmYKym2pnF0DNYDKxRnOk1wkM9fISpSOjt8kWFKQeDmBTjSnBZhTd41tXwh8+bRMoSaFsRnznZUiH9i3pxA==" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+        type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css"
+        integrity="sha512-pDpLmYKym2pnF0DNYDKxRnOk1wkM9fISpSOjt8kWFKQeDmBTjSnBZhTd41tXwh8+bRMoSaFsRnznZUiH9i3pxA=="
+        crossorigin="anonymous" />
 @endsection
 
 <div class="container my-3">
@@ -22,7 +26,7 @@ type="text/css" />
     </div>
     <div class="container postCard">
         <div class="row choiseCategory">
-            <form action="{{ route("ad.storeAds") }}" method="post">
+            <form action="{{ route('ad.storeAds') }}" method="post">
                 <div id="smartwizard" class="sw sw-justified sw-theme-dots">
                     <ul class="nav" style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
                         <li class="nav-item">
@@ -81,7 +85,7 @@ type="text/css" />
                                     </div>
                                 </div>
                                 <div id="loading" class="loading">
-                                    <img src="{{ asset("app-assets/images/loading.gif") }}" alt="loading image">
+                                    <img src="{{ asset('app-assets/images/loading.gif') }}" alt="loading image">
                                 </div>
                             </div>
                             <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2"
@@ -92,7 +96,7 @@ type="text/css" />
                                         File
                                         Upload</label>
                                     <div class="col-lg-12 col-md-9 col-sm-12">
-                                        <input type="file" multiple name="imagesAds[]"
+                                        <input type="file" multiple name="imagesAds[]" id="imagesAds"
                                             label="Drop files here or click to upload."
                                             help="Upload files here and they won't be sent immediately" is="drop-files"
                                             accept=".jpg,.png,.jpeg" />
@@ -120,10 +124,10 @@ type="text/css" />
                         <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: center;">
                             {{-- <button class="btn sw-btn-prev disabled" type="button">Previous</button> --}}
                             <button class="btn btn-success nextStep" type="button"
-                                style="margin: 0; padding: 8px 12px;">Oky</button>
-                            {{-- <button class="btn sw-btn-next " disabled type="button" style="display: none;">Next</button> --}}
-                            <button class="btn sw-btn-next" type="button">Next</button>
-                            <button class="btn btn-danger" type="submit">submit</button>
+                                style="margin: 0; padding: 8px 12px;">Valide</button>
+                            <button class="btn sw-btn-next" disabled type="button" style="display: none;">Suivant</button>
+                            <button class="btn" id="submit" disabled type="submit"
+                                style="background-color: #00a143!important;border:1px solid #00a143 !important; display:none;">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -144,7 +148,9 @@ type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"
     integrity="sha512-VQQXLthlZQO00P+uEu4mJ4G4OAgqTtKG1hri56kQY1DtdLeIqhKUp9W/lllDDu3uN3SnUNawpW7lBda8+dSi7w=="
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js" integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js"
+    integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A=="
+    crossorigin="anonymous"></script>
 <script type="text/javascript">
     $('#smartwizard').smartWizard({
         selected: 0, // Initial selected step, 0 = first step
@@ -213,51 +219,64 @@ type="text/css" />
     let nextStep = document.querySelector(".nextStep");
     let nextStepDisabled = document.querySelector(".sw-btn-next");
     let allInputs;
-    let isOkay = [];
-    nextStepDisabled.addEventListener("click", function(e) {
+    let isOkay = [""];
+    nextStep.addEventListener("click", function(e) {
         e.preventDefault()
         allInputs = document.querySelectorAll(".allInputs")
-        isOkay = [];
+        isOkay = [""];
         allInputs.forEach((input) => {
             isOkay.push(input.value)
             if (input.value === "") {
                 input.parentNode.classList.add("is-error-focused", "error")
             } else {
+                isOkay.shift("")
                 input.parentNode.classList.remove("is-error-focused", "error")
             }
         });
         // debugger;
-        if(!isOkay.includes("")){
+        if (isOkay.includes("") === false) {
             nextStepDisabled.style.display = null
             nextStepDisabled.disabled = false
-        }else{
+        } else {
             nextStepDisabled.style.display = "none"
             nextStepDisabled.disabled = true
         }
     });
 
-
+    let imagesAds = document.querySelector("#imagesAds");
+    let submitBtn = document.querySelector("#submit")
+    imagesAds.addEventListener("change", function(e) {
+        e.preventDefault()
+        if (imagesAds["files"].length >= 1 && imagesAds["files"].length <= 5) {
+            submitBtn.disabled = true
+            submitBtn.style.display = null
+        } else {
+            submitBtn.disabled = false
+            submitBtn.style.display = "none"
+        }
+    })
 
     // var KTSummernoteDemo = function () {
-	// // Private functions
-	// var demos = function () {
-	// 	$('.summernote').summernote({
-	// 		height: 450
-	// 	});
-	// }
+    // // Private functions
+    // var demos = function () {
+    // 	$('.summernote').summernote({
+    // 		height: 450
+    // 	});
+    // }
 
-	// return {
-	// 	// public functions
-	// 	init: function() {
-	// 		    demos();
-	// 	    }
-	//     };
+    // return {
+    // 	// public functions
+    // 	init: function() {
+    // 		    demos();
+    // 	    }
+    //     };
     // }();
 
     // // Initialization
     // jQuery(document).ready(function() {
     //     KTSummernoteDemo.init();
     // });
+
 </script>
 <script src="{{ asset('app-assets/js/createAds.js') }}"></script>
 @endsection
