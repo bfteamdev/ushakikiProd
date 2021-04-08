@@ -3227,7 +3227,8 @@ h2.sear-head.fer {
 	margin: 0;
 	display: block;
 	color: #424242;
-	line-height: 16px;
+	line-height: 17px;
+	font-size: 14px;
 	/*font-weight: 500;
 	*/
 	font-family: "Arial Rounded MT";
@@ -3271,6 +3272,7 @@ h2.sear-head.fer {
 .field::after, .field::before {
 	content: "";
 	height: 38px;
+	/* height: 32px; */
 	width: 100%;
 	position: absolute;
 	bottom: 6px;

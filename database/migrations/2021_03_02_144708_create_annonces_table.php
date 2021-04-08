@@ -18,7 +18,7 @@ class CreateAnnoncesTable extends Migration
             $table->string("title");
             $table->unsignedBigInteger("type_id")->index();
             $table->unsignedBigInteger("user_id")->index();
-            $table->string("state");
+            // $table->string("state");
             $table->string("description");
             $table->string("price");
             $table->string("commune");

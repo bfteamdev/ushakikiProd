@@ -21,30 +21,73 @@ class SelectedCategory {
                       </div>`;
     if(data.subCategory.length !== 0){
       this.$select.removeAttribute("name")
-    parentNodes.insertAdjacentHTML("beforeend", selectForms)
+      parentNodes.insertAdjacentHTML("beforeend", selectForms)
     }else{
       this.$select.setAttribute("name","type_id");
     }
+    //Ajout des champs obligatoire sur le premier card du content
+    parentNodesXL.insertAdjacentHTML("beforeend",
+    `
+    <div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
+    <div class="card-header" style="background-color: #5a5a5a;color: white;display: flex;align-items: center;justify-content: space-between;">
+      <span>Title de l'annonce</span><span class="displayOrder" style="font-size: 14px;font-weight: 100;color: #ffd44a">Champs obligatoire *</span>
+    </div>
+    <div class="card-body">
+      <div class="row cl1ss">
+        <div class="col-md-8">
+          <div class="field">
+            <label for="nom" class="field-label">Title</label>
+            <input type="email" class="field-input allInputs"  name="title"
+                  autocomplete="off">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="field">
+            <label for="nom" class="field-label">Price</label>
+            <input type="email" class="field-input allInputs"  name="price"
+                autocomplete="off">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field">
+            <label for="nom" class="field-label">Commune</label>
+            <input type="email" class="field-input allInputs"  name="commune"
+                autocomplete="off">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="field">
+            <label for="nom" class="field-label">zone</label>
+            <input type="email" class="field-input allInputs"  name="zone"
+                autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </div>
+    `);
+    //change du hauteur du content qui contier les step pour qu'il agrandisse automatiquement 
     document.querySelector(".tabAutoGrow").style.height = "auto"
-    // field();
     if(data.subCategory.length !== 0){
-    data.subCategory.forEach((element) => {
-      document.querySelector(".select-" + event.target.value)
-        .insertAdjacentHTML("beforeend",`<option value="${element.id}">${element.name}</option>`);
+      data.subCategory.forEach((element) => {
+        document.querySelector(".select-" + event.target.value)
+          .insertAdjacentHTML("beforeend",`<option value="${element.id}">${element.name}</option>`);
       });
     }
     data.feature.forEach(async(elms) =>{
+      // Ajout des card avec les title qui correspond au feature
       await parentNodesXL.insertAdjacentHTML("beforeend",
       `<div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
-          <div class="card-header" style="background-color: #5a5a5a;color: white;padding: .8rem 1rem;">
+          <div class="card-header" style="background-color: #5a5a5a;color: white;">
               <span class="displayOrder">${elms.displayOrder} .</span>${elms.title}
           </div>
           <div class="card-body">
               <div class="row cl1ss" data-featureID="${elms.id}">
               </div>
           </div>
-      </div>`
+      </div>
+      `
       );
+      //Ajout des champs qui correspond au feature
       await elms.field.forEach(async(field) =>{
         let allRows = document.querySelectorAll(".cl1ss");
         allRows.forEach(function(row){
@@ -96,7 +139,7 @@ class SelectedCategory {
         });
       });
       this.$loading.style.display = "none"
-      //field input HTML
+      //field input HTML JQUERY
       $(document).ready(function() {
         $('.field-input').focus(function() {
             $(this).parent().addClass('is-focused has-label');
@@ -121,6 +164,46 @@ class SelectedCategory {
           }
         });
       });
+    });
+    parentNodesXL.insertAdjacentHTML("beforeend",
+    `<div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
+      <div class="card-header" style="background-color: #5a5a5a;color: white;display: flex;align-items: center;justify-content: space-between;">
+        <span>Description de l'annonce</span><span class="displayOrder" style="font-size: 14px;font-weight: 100;color: #ffd44a">Champs obligatoire *</span>
+      </div>
+      <div class="card-body">
+        <div class="row cl1ss">
+          <div class="col-md-12">
+              <textarea id="summernote" class="allInputs" name="description"></textarea>
+              <style>
+                .note-toolbar {
+                    border-bottom: 1px solid #d6d6d6 !important;
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>  `
+    );
+    $('#summernote').summernote({
+      placeholder: 'Hello stand alone ui',
+      // height: 350, // set editor height
+      // width: 350, // set editor width
+      minHeight: 100, // set minimum height of editor
+      maxHeight: null, // set maximum height of editor
+      dialogsFade: true, // set fade on dialog
+      prettifyHtml: false,
+      toolbar: [
+          // ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline']],
+          // ['fontname', ['fontname']],
+          // ['color', ['color']],
+          ['para', ['ul', 'ol']],
+          // ['height', ['height']],
+          // ['table', ['table']],
+          // ['insert', ['hr']],
+          // ['view', ['fullscreen', 'codeview']],
+          // ['help', ['help']]
+      ]
     });
   }
 

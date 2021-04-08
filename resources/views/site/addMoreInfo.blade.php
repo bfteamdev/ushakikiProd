@@ -4,11 +4,16 @@
 @section('style')
     <style>
         .drop-files__file {
-            max-width: 229px !important;
+            max-width: 189px !important;
         }
-
         .drop-files__file img {
-            height: 220px !important;
+            height: 166px !important;
+        }
+        a strong {
+            font-size: 13px !important;
+            color: #9e0433 !important;
+            font-weight: bold !important;
+            font-family: 'Arial Rounded MT';
         }
 
     </style>
@@ -31,17 +36,17 @@
                     <ul class="nav" style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
                         <li class="nav-item">
                             <a class="nav-link inactive active" href="#step-1">
-                                <strong>Step 1</strong> <br>This is step description
+                                <strong>DÉTAILS DE L'ANNONCE</strong> <br>Description, prix et contact
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link inactive done" href="#step-2">
-                                <strong>Step 2</strong> <br>This is step description
+                                <strong>PHOTOS</strong> <br>Télécharger des images limites a 5 MAX
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link inactive done" href="#step-3">
-                                <strong>Step 3</strong> <br>This is step description
+                                <strong>PUBLIER</strong> <br>Placez votre annonce en ligne
                             </a>
                         </li>
                         {{-- <li class="nav-item">
@@ -75,12 +80,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            {{-- <div class="form-group row">
-                                                <label class="col-form-label text-right col-lg-3 col-sm-12">Default Demo</label>
-                                                <div class="col-lg-9 col-md-9 col-sm-12">
-                                                    <div class="summernote" id="kt_summernote_1"></div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -105,11 +104,7 @@
                             </div>
                             <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3"
                                 style="display: none;">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has
-                                been
-                                the
-
+                                <h1 style="font-size: 5rem">Merci d'avoir post sur USHAKIKI </h1>
                             </div>
                             {{-- <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4"
                                 style="display: none;">
@@ -122,12 +117,14 @@
                             </div> --}}
                         </div>
                         <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: center;">
-                            {{-- <button class="btn sw-btn-prev disabled" type="button">Previous</button> --}}
+                            <button class="btn sw-btn-prev disabled" type="button">Previous</button>
                             <button class="btn btn-success nextStep" type="button"
                                 style="margin: 0; padding: 8px 12px;">Valide</button>
-                            <button class="btn sw-btn-next" disabled type="button" style="display: none;">Suivant</button>
+                            <button class="btn sw-btn-next" disabled type="button"
+                                style="display: none;">Suivant</button>
                             <button class="btn" id="submit" disabled type="submit"
-                                style="background-color: #00a143!important;border:1px solid #00a143 !important; display:none;">Submit</button>
+                                style="background-color: #00a143!important;border:1px solid #00a143 !important; display:none;">Post
+                                l'annonce</button>
                         </div>
                     </form>
                 </div>
@@ -135,6 +132,13 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
 @endsection
 @section('footer')
 @include('layout.partials.include.footer')
@@ -195,6 +199,72 @@
         hiddenSteps: [] // Hidden steps
     });
     ///wizard
+    let nextStep = document.querySelector(".nextStep");
+    let nextStepDisabled = document.querySelector(".sw-btn-next");
+    let allInputs;
+    let isOkay = [""];
+    nextStep.addEventListener("click", function(e) {
+        e.preventDefault()
+        allInputs = document.querySelectorAll(".allInputs")
+        isOkay = [""];
+        allInputs.forEach((input) => {
+            isOkay.push(input.value)
+            if (input.value === "") {
+                input.parentNode.classList.add("is-error-focused", "error");
+            } else {
+                isOkay.shift("")
+                input.parentNode.classList.remove("is-error-focused", "error")
+            }
+        });
+        // debugger;
+        if (isOkay.includes("") === false) {
+            nextStep.style.display = "none"
+            nextStepDisabled.style.display = null
+            nextStepDisabled.disabled = false
+        } else {
+            nextStep.style.display = null
+            nextStepDisabled.style.display = "none"
+            nextStepDisabled.disabled = true
+        }
+    });
+    nextStepDisabled.addEventListener("click", function() {
+        if (imagesAds["files"].length === 0) {
+            nextStepDisabled.disabled = true;
+        }
+    })
+    let imagesAds = document.querySelector("#imagesAds");
+    let submitBtn = document.querySelector("#submit")
+    imagesAds.addEventListener("change", function(e) {
+        e.preventDefault()
+        if (imagesAds["files"].length >= 1 && imagesAds["files"].length <= 5) {
+            nextStepDisabled.style.display = null;
+            nextStepDisabled.disabled = false;
+            submitBtn.disabled = false;
+            submitBtn.style.display = null;
+        } else {
+            nextStepDisabled.disabled = true
+            submitBtn.disabled = true;
+            submitBtn.style.display = "none";
+        }
+    });
+    // let allStepTree = []
+    // let stepTree = document.querySelectorAll(".stepTree");
+    // nextStep.addEventListener("click", function(e) {
+    //     e.preventDefault();
+    //     allStepTree = []
+    //     stepTree.forEach((step) => {
+    //         allStepTree.push(step.value)
+    //         if (allStepTree.includes("") === false) {
+    //             // isOkay.shift("")
+    //             submitBtn.disabled = true;
+    //             submitBtn.style.display = null;
+    //         } else {
+    //             submitBtn.disabled = false;
+    //             submitBtn.style.display = "none";
+    //         }
+    //     })
+    // });
+    //Form jquery
     $(document).ready(function() {
         $('.field-input').focus(function() {
             $(this).parent().addClass('is-focused has-label');
@@ -214,68 +284,16 @@
                 $(this).parent().addClass('has-label');
             }
         });
-    });
-
-    let nextStep = document.querySelector(".nextStep");
-    let nextStepDisabled = document.querySelector(".sw-btn-next");
-    let allInputs;
-    let isOkay = [""];
-    nextStep.addEventListener("click", function(e) {
-        e.preventDefault()
-        allInputs = document.querySelectorAll(".allInputs")
-        isOkay = [""];
-        allInputs.forEach((input) => {
-            isOkay.push(input.value)
-            if (input.value === "") {
-                input.parentNode.classList.add("is-error-focused", "error")
+        $('.stepTree').keyup(function() {
+            if ($(this).val() == "") {
+                $(this).parent().addClass('is-error-focused error');
+                submitBtn.disabled = false;
+                submitBtn.style.display = "none";
             } else {
-                isOkay.shift("")
-                input.parentNode.classList.remove("is-error-focused", "error")
+                $(this).parent().removeClass('is-error-focused error');
             }
         });
-        // debugger;
-        if (isOkay.includes("") === false) {
-            nextStepDisabled.style.display = null
-            nextStepDisabled.disabled = false
-        } else {
-            nextStepDisabled.style.display = "none"
-            nextStepDisabled.disabled = true
-        }
     });
-
-    let imagesAds = document.querySelector("#imagesAds");
-    let submitBtn = document.querySelector("#submit")
-    imagesAds.addEventListener("change", function(e) {
-        e.preventDefault()
-        if (imagesAds["files"].length >= 1 && imagesAds["files"].length <= 5) {
-            submitBtn.disabled = true
-            submitBtn.style.display = null
-        } else {
-            submitBtn.disabled = false
-            submitBtn.style.display = "none"
-        }
-    })
-
-    // var KTSummernoteDemo = function () {
-    // // Private functions
-    // var demos = function () {
-    // 	$('.summernote').summernote({
-    // 		height: 450
-    // 	});
-    // }
-
-    // return {
-    // 	// public functions
-    // 	init: function() {
-    // 		    demos();
-    // 	    }
-    //     };
-    // }();
-
-    // // Initialization
-    // jQuery(document).ready(function() {
-    //     KTSummernoteDemo.init();
-    // });
 
 </script>
 <script src="{{ asset('app-assets/js/createAds.js') }}"></script>
