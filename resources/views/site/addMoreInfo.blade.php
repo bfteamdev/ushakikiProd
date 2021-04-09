@@ -31,7 +31,7 @@
     </div>
     <div class="container postCard">
         <div class="row choiseCategory">
-            <form action="{{ route('ad.storeAds') }}" method="post">
+            <form action="{{ route('ad.storeAds') }}" method="post" enctype="multipart/form-data">
                 <div id="smartwizard" class="sw sw-justified sw-theme-dots">
                     <ul class="nav" style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
                         <li class="nav-item">

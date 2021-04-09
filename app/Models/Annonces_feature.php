@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Annonces_feature extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

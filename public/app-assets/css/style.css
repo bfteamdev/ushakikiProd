@@ -344,9 +344,10 @@ li.dropdown-header {
 
 .header {
 	width: 100%;
-	display: flex;
-	justify-content: space-between;
+	display: flex !important;
+	justify-content: space-between !important;
 	align-items: center;
+	height: auto !important;
 	padding: 0px;
 	flex-wrap: wrap;
 	background-color: #ffffff;
@@ -444,11 +445,15 @@ li.dropdown-header {
 a.MyAds {
 	float: left;
 	font-size: 15px;
-	color: #333;
+	color: #333 !important;
 	background-color: #dbac14;
 	padding: 10px 17px;
 	text-decoration: none;
 	border-radius: 4px;
+}
+
+a.MyAds i {
+	color: #333 !important;
 }
 
 a.MyAds:hover {
@@ -3543,14 +3548,14 @@ h2.sear-head.fer {
 	color: #757575;
 }
 
-.loginOrCreate .register a{
+.loginOrCreate .register a {
 	font-size: 1.1rem;
 	font-weight: bold;
 	text-decoration: none;
 	color: #0062e2;
 }
 
-.loginOrCreate .register a:hover{
+.loginOrCreate .register a:hover {
 	font-size: 1.2rem;
 	font-weight: bold;
 	text-decoration: none;
@@ -3604,20 +3609,20 @@ h2.sear-head.fer {
 	flex-direction: column;
 }
 
-.signin .passwordReset{
+.signin .passwordReset {
 	/* position: absolute; */
 	/* top: -3px; */
 	/* right: 8px; */
 }
 
-.signin .passwordReset a{
+.signin .passwordReset a {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 15px;
 	color: #882c48;
 }
 
-.signin .passwordReset a:hover{
+.signin .passwordReset a:hover {
 	text-decoration: none;
 	color: #0074d8;
 }
@@ -3651,6 +3656,126 @@ h2.sear-head.fer {
 .signin-btn:hover {
 	background-color: var(--siteColor);
 	color: white;
+}
+
+.profilHeader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* background: linear-gradient(94deg, #dbac14, #ae3e60); */
+	/* background-color: #dbac14; */
+	border: 3px solid #1f1f1f;
+	padding: 3px;
+	border-radius: 40px;
+	text-decoration: none !important;
+	position: relative;
+}
+
+.profilHeader .profilImg {
+	width: 45px !important;
+	position: relative;
+}
+
+.profilImg img {
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid #1f1f1f;
+}
+
+.profilHeader .usernameProfil {
+	display: flex;
+	align-items: center;
+}
+
+.usernameProfil .name {
+	color: #1f1f1f;
+	margin: 0 8px;
+	font-size: 18px;
+}
+
+.usernameProfil i {
+	color: #1f1f1f;
+	margin: 0 7px;
+	font-size: 20px;
+}
+
+.submenu {
+	position: absolute;
+	display: none;
+	width: 100%;
+	top: 115%;
+	background-color: #dbac14;
+	z-index: 1000106;
+	border: 3px solid #dbac14;
+	border-radius: 6px;
+}
+
+.submenu::before{
+	content: "";
+	/* top: -25px; */
+	/* left: 42%; */
+	top: -16px;
+	width: 100%;
+	background-color: #007bff00;
+	height: 15px;
+	position: absolute;
+	/* border-top: 12px solid transparent; */
+	/* border-left: 12px solid transparent; */
+	/* border-right: 12px solid transparent; */
+	/* border-bottom: 13px solid #dbac1400; */
+}
+
+.submenu ul {
+	list-style: none;
+	width: 100%;
+	margin: 0 !important;
+}
+
+.submenu ul li {
+	list-style: none;
+	padding: 6px 16px;
+	width: 100%;
+	border-bottom: 1px solid #333333;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+}
+
+.submenu ul li:last-child {
+	border-bottom: none;
+}
+
+.submenu ul li:hover {
+	background-color: #000000;
+	color: white !important;
+}
+
+.submenu ul li:hover a{
+	color: white !important;
+}
+
+.submenu ul li a {
+	text-decoration: none;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #000000 !important;
+	overflow: hidden;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	/* word-break: break-word; */
+}
+
+.submenu ul li a i{
+margin-right: 6px;
+color: inherit;
+}
+
+.profilHeader:hover .submenu{
+	display: block;
 }
 
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */

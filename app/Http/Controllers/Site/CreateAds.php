@@ -9,9 +9,17 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Annonce;
+use App\Models\Annonces_feature;
+use App\Models\Photo;
+use Illuminate\Support\Facades\Auth;
 
 class createAds extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -98,12 +106,6 @@ class createAds extends Controller
         return view('site.createAdd', compact('group'));
     }
     
-    /**
-     * @param Groupe $groupe
-     * Display a listing of the resource they passed in param.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function showCategory(Category $category)
     {
         $subCategory = Type::where('category_id', $category->id)->get();
@@ -129,13 +131,35 @@ class createAds extends Controller
     }
     
     public function storeAds(Request $request){
-        dd($request->all());
+        // dd(Auth::user()->id);
+        // dd($request->all());
         DB::beginTransaction();
         try {
+            Annonce::create([
+                "type_id"=>$request['type_id'],
+                "user_id"=> (int)Auth::user()->id,
+                "title"=>$request['title'],
+                "price"=>$request['price'],
+                "commune"=>$request['commune'],
+                "zone"=>$request['zone'],
+                "description"=>$request['description']
+            ]);
+            $Ads_id = DB::getPdo()->lastInsertId();
             foreach ($request['feature'] as $items) {
                 foreach ($items['value'] as $item) {
-                    dd($items);
+                    Annonces_feature::create([
+                        "annonce_id" => $Ads_id,
+                        "feature_id" => $items['feature_id'],
+                        "value" => $item
+                    ]);
                 }
+            }
+            foreach ($request['imagesAds'] as $items) {
+                $items = $items->store("AdsImages/".$Ads_id,"public");
+                Photo::create([
+                    "annonce_id" => $Ads_id,
+                    "name" => $items
+                ]);
             }
         } catch (\Throwable $th) {
             DB::rollBack();

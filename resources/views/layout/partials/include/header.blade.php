@@ -41,28 +41,25 @@
 
                     @endif
                 @else
-             
-                    <a href="{{ route('logout.user') }}">Logout</a>
-                  
-                    {{-- <div class="dropdown">
 
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->username }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                                logout
-                            </form>
+                    {{-- <a href="">Logout</a> --}}
+                    <div class="profilHeader">
+                        <div class="profilImg">
+                            <img src="{{ asset('storage/'.Auth::user()->profil) }}" alt="" srcset="">
                         </div>
-                    </div> --}}
+                        <div class="usernameProfil">
+                            <span class="name">{{ Auth::user()->email }}</span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="{{ route("home") }}"><i class="fas fa-user"></i> Dashboard</a></li>
+                                <li><a href="#"><i class="fas fa-user"></i> Profil</a></li>
+                                <li><a href="{{ route("home") }}"><i class="fas fa-home"></i>Mes annonce</a></li>
+                                <li><a href="{{ route('logout.user') }}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 @endguest
             </div>
         </div>
