@@ -9,4 +9,5 @@ class Annonce extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table="annonces";
 }

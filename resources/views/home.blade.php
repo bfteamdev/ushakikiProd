@@ -8,6 +8,11 @@
                 {{ session()->has('error') }}
             </div>
         @endif
+        @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session()->has('success') }}
+            </div>
+        @endif
         <div class="d-flex flex-row my-5">
             <!--begin::Aside-->
           @include('site.dashbaord.sidebar')

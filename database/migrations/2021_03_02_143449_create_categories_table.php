@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger("groupe_id")->index();
             $table->string("name");
+            $table->integer('price')->nullable();
             $table->string("icon");
             $table->timestamps();
 

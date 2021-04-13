@@ -105,7 +105,43 @@
                             </div>
                             <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3"
                                 style="display: none;">
-                                <h1 style="font-size: 5rem">Merci d'avoir post sur USHAKIKI </h1>
+                                <h1 >Information sur le client</h1>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            <label for="">Name</label>
+                                            <input type="text" name="firstName" class="form-control" placeholder="votre nom">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label for="">prenom</label>
+                                            <input type="text" name="lastName" class="form-control" placeholder="votre nom">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="form-group col-lg-6">
+                                            <label for="">Username</label>
+                                            <input type="text" name="username" class="form-control" value="{{ Auth::user()->username }}">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label for="">Email</label>
+                                            <input type="text" name="email" class="form-control" value="{{ Auth::user()->email }}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="form-group col-lg-6">
+                                            <label for="">Phone</label>
+                                            <input type="text" name="phone" class="form-control" placeholder="votre numero de telephone">
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label for="">Orgnaisation</label>
+                                            <input type="text" name="organisation" class="form-control" placeholder="votre organisation">
+                                        </div>
+                                    </div>
+                                   
+                                </form>
+                                
                             </div>
                             {{-- <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4"
                                 style="display: none;">

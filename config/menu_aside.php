@@ -109,5 +109,12 @@ return [
                 ],
             ],
         ],
+        [
+            'title' => 'Settings',
+            'root' => true,
+            'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
+            'page' => 'admin/group',
+            'new-tab' => false,
+        ],
     ]
 ];

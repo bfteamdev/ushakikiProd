@@ -33,6 +33,14 @@
                     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                 @enderror
             </div>
+            <div class="form-group col-lg-12">
+                <label>Price <span class="text-danger"></span></label>
+                <input type="text" class="form-control @error('price') is-invalid @enderror" placeholder="price of category "
+                    name="price" value="{{ old('price') ?? $category->price }}">
+                @error('price')
+                    <div class="invalid-feedback">{{ $errors->first('price') }}</div>
+                @enderror
+            </div>
             <div class="form-group col-lg-12 ">
                 <label>Icon <span class="text-danger">*</span></label>
                 <div class="row">

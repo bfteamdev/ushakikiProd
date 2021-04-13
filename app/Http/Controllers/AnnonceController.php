@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
+use App\Models\Groupe;
 use App\Models\Annonce;
 use App\Models\Category;
-use App\Models\Groupe;
-use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnnonceController extends Controller
 {
@@ -18,7 +19,16 @@ class AnnonceController extends Controller
      */
     public function indexImmobilier()
     {
-        return view("admin.ads.indexImmobilier");
+      
+        $annonce=DB::table('annonces')
+                 ->join('categories','annonces.category_id','=', 'categories.id')
+                 ->join('users','annonces.user_id','=','users.id')
+                 ->where('annonces.category_id','=',4 )
+                 ->select('annonces.*','users.username','categories.name')
+                 ->orderBy('annonces.id','desc')
+                 ->get();
+                // dd($annonce); 
+        return view("admin.ads.indexImmobilier",compact('annonce'));
     }
     public function indexVoiture()
     {
@@ -102,4 +112,5 @@ class AnnonceController extends Controller
     {
         //
     }
+    
 }

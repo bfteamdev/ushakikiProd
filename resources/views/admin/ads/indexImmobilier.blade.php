@@ -109,27 +109,37 @@
                                         <th data-field="Email" class="datatable-cell datatable-cell-sort"><span style="width: 137px;">Create at</span></th>
                                         <th data-field="Email" class="datatable-cell datatable-cell-sort"><span style="width: 137px;">Expired at</span></th>
                                         <th data-field="Status" class="datatable-cell datatable-cell-sort"><span style="width: 137px;">Status</span></th>
+                                        {{-- <th data-field="Status" class="datatable-cell datatable-cell-sort"><span style="width: 137px;">Action</span></th> --}}
+
                                     </tr>
                                 </thead>
                                 <tbody class="datatable-body" style="">
+                                    @foreach ($annonce as $item)
+                                        
+                                 
                                     <tr data-row="0" class="datatable-row datatable-row-even">
                                         <td class="datatable-cell-sorted datatable-cell-center datatable-cell"
                                             data-field="RecordID" aria-label="1"><a class="datatable-toggle-subtable"
                                                 href="#" data-value="1" title="Load sub table" style="width: 30px;"><i
                                                     style="width: 30px;" class="fa fa-caret-right"></i></a></td>
                                         <td data-field="FirstName" aria-label="Tommie" class="datatable-cell"><span
-                                                style="width: 137px;">Tommie</span></td>
+                                                style="width: 137px;">{{ $item->title }}</span></td>
                                         <td data-field="LastName" aria-label="Pee" class="datatable-cell"><span
-                                                style="width: 137px;">Pee</span></td>
+                                                style="width: 137px;">{{ $item->username }}</span></td>
                                         <td data-field="Company" aria-label="Roodel" class="datatable-cell"><span
-                                                style="width: 137px;">Roodel</span></td>
+                                                style="width: 137px;">{{ $item->name }}</span></td>
                                         <td data-field="Email" aria-label="tpee0@slashdot.org" class="datatable-cell"><span
-                                                style="width: 137px;">tpee0@slashdot.org</span></td>
+                                                style="width: 137px;">{{ $item->created_at }}</span></td>
                                         <td data-field="Status" aria-label="4" class="datatable-cell"><span
                                                 style="width: 137px;"><span
-                                                    class="label  label-success label-inline label-pill">Active</span></span>
+                                                    class="label  label-success label-inline label-pill">{{ $item->expired_at }}</span></span>
                                         </td>
+                                        <td data-field="Status" aria-label="4" class="datatable-cell"><span
+                                            style="width: 137px;"><span
+                                                class="label  label-success label-inline label-pill">{{ $item->statu }}</span></span>
+                                    </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -42,10 +42,12 @@
                 <thead>
                     <tr>
                         <th title="Field #1">Icon</th>
-                        <th title="Field #2">Name</th>
-                        <th title="Field #3">Groupe</th>
+                        <th title="Field #1">Name</th>
+                        <th title="Field #2">Groupe</th>
+                        <th title="Field #3">Price</th>
                         <th title="Field #5">ACTION</th>
                         <th title="Field #5">ACTION</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -62,10 +64,13 @@
                             </td>
                             <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->groupe->name }}
                             </td>
+                            <td class="pl-0 text-dark-75 font-weight-bolder mb-1 font-size-lg">{{ $item->price }}
+                            </td>
                             <td class="d-flex">
                                 <a href="{{ route('category.edit', ['category' => $item->id]) }}" class="btn btn-primary" style="padding: 8px 10px;">
                                     <i class="flaticon-edit p-0"></i>
                                 </a>
+
                                 <form action="{{ route('category.destroy', ['category' => $item->id]) }}" method="post"
                                     style="display: inline-block;">
                                     @method("delete")

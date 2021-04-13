@@ -124,7 +124,8 @@ class CategoryController extends Controller
         return request()->validate([
             "groupe_id" => "required|numeric",
             "name" => "required|string",
-            "icon" => "required|string"
+            "icon" => "required|string",
+            "price"=>""
         ]);
     }
 }

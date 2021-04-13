@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Annonce;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -111,6 +113,7 @@ class PagesController extends Controller
     }
    public function annonce()
    {
-       return view('site.dashbaord.myAd'); 
+    $ad= Annonce::select("*")->where('user_id',Auth::user()->id )->get();
+       return view('site.dashbaord.myAd',compact('ad')); 
    }
 }

@@ -182,7 +182,7 @@ class createAds extends Controller
                 ]);
             }
             DB::commit();
-            return redirect()->route("")->withInput()->with("success","L'annonce a ete post avec success");
+            return redirect()->route('home')->withInput()->with("success","L'annonce a ete post avec success");
         } catch (\Throwable $th) {
             DB::rollBack();
         }
