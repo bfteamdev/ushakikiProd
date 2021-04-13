@@ -23,12 +23,11 @@ class SelectedCategory {
       this.$select.removeAttribute("name")
       parentNodes.insertAdjacentHTML("beforeend", selectForms)
     }else{
-      this.$select.setAttribute("name","type_id");
+      this.$select.setAttribute("name","category_id");
     }
     //Ajout des champs obligatoire sur le premier card du content
     parentNodesXL.insertAdjacentHTML("beforeend",
-    `
-    <div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
+    `<div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
     <div class="card-header" style="background-color: #5a5a5a;color: white;display: flex;align-items: center;justify-content: space-between;">
       <span>Title de l'annonce</span><span class="displayOrder" style="font-size: 14px;font-weight: 100;color: #ffd44a">Champs obligatoire *</span>
     </div>
@@ -37,28 +36,28 @@ class SelectedCategory {
         <div class="col-md-8">
           <div class="field">
             <label for="nom" class="field-label">Title</label>
-            <input type="email" class="field-input allInputs"  name="title"
+            <input type="text" class="field-input allInputs" name="title"
                   autocomplete="off">
           </div>
         </div>
         <div class="col-md-4">
           <div class="field">
             <label for="nom" class="field-label">Price</label>
-            <input type="email" class="field-input allInputs"  name="price"
+            <input type="number" class="field-input allInputs" name="price"
                 autocomplete="off">
           </div>
         </div>
         <div class="col-md-6">
           <div class="field">
             <label for="nom" class="field-label">Commune</label>
-            <input type="email" class="field-input allInputs"  name="commune"
+            <input type="text" class="field-input allInputs" name="commune"
                 autocomplete="off">
           </div>
         </div>
         <div class="col-md-6">
           <div class="field">
             <label for="nom" class="field-label">zone</label>
-            <input type="email" class="field-input allInputs"  name="zone"
+            <input type="text" class="field-input allInputs" name="zone"
                 autocomplete="off">
           </div>
         </div>
@@ -100,7 +99,7 @@ class SelectedCategory {
                 <div class="field">
                   <label for="nom" class="field-label">${field.name}</label>
                   <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id:''}][feature_id]${field.feature_id}" value="${fieldFeatureEqual ? field.feature_id:''}">
-                  <input type="${field.type}" class="field-input allInputs" id="${field.name}" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][]" autocomplete="off">
+                  <input type="${field.type}" class="field-input allInputs" id="${field.name}" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][${field.id}]" autocomplete="off">
                 </div>
               </div>`
               );
@@ -110,7 +109,8 @@ class SelectedCategory {
                 <div class="" style="height: 39px;display: flex;align-items: center;margin-top: 24px;margin-bottom: 0;">
                   <label for="nom" class="mr-3" style="font-size: 20px;">${field.name}</label>
                   <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id:''}][feature_id]${field.feature_id}" value="${fieldFeatureEqual ? field.feature_id:''}">
-                  <input type="${field.type}" class="allInputs" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][]" value="1">
+                  <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][${field.id}]" value="0">
+                  <input type="${field.type}" class="allInputs" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][${field.id}]" value="1">
                 </div>
               </div>`
               );
@@ -120,7 +120,7 @@ class SelectedCategory {
                 <div class="field">
                   <label for="nom" class="field-label">${field.name}</label>
                   <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id:''}][feature_id]${field.feature_id}" value="${fieldFeatureEqual ? field.feature_id:''}">
-                  <textarea id="my-textarea" class="field-input allInputs" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][]" rows="3"></textarea>
+                  <textarea id="my-textarea" class="field-input allInputs" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][${field.id}]" rows="3"></textarea>
                 </div>
               </div>`
               );
@@ -130,7 +130,7 @@ class SelectedCategory {
                 <div id="field" class="field has-label">
                   <label for="nom" class="field-label">${field.name}</label>
                   <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id:''}][feature_id]${field.feature_id}" value="${fieldFeatureEqual ? field.feature_id:''}">
-                  <input id="my-select" type="date" class="field-input" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][]">
+                  <input id="my-select" type="date" class="field-input" name="feature[${fieldFeatureEqual ? field.feature_id:''}][value][${field.id}]">
                 </div>
               </div>`
               );

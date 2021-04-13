@@ -41,8 +41,6 @@
 
                     @endif
                 @else
-
-                    {{-- <a href="">Logout</a> --}}
                     <div class="profilHeader">
                         <div class="profilImg">
                             <img src="{{ asset('storage/'.Auth::user()->profil) }}" alt="" srcset="">

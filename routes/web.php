@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,12 @@ Route::group(['prefix' => 'admin','middleware' => ['role']], function () {
   // Admin --Client
   Route::resource("/client", "ClientController");
   // Admin --Ads
-  Route::resource("/ads", "AnnonceController");
+  Route::prefix('ads')->group(function () {
+    Route::get("/immobilier", "AnnonceController@indexImmobilier")->name("ads.immobilier");
+    Route::get("/voiture", "AnnonceController@indexVoiture")->name("ads.voiture");
+    Route::get("/truc", "AnnonceController@indexTruc")->name("ads.truc");
+    Route::get("/service", "AnnonceController@indexService")->name("ads.service");
+  });
   Route::get('/dashboad', 'PagesController@index')->name('admin.dashboad');
 });
 //website --route

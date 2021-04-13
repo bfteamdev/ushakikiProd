@@ -71,12 +71,20 @@ return [
             'new-tab' => false,
             "submenu" => [
                 [
-                    'title' => 'Ads',
-                    'page' => 'admin/ads',
+                    'title' => 'Immobilier',
+                    'page' => 'admin/ads/immobilier',
                 ],
                 [
-                    'title' => 'Create Ads',
-                    'page' => 'admin/ads/create',
+                    'title' => 'Voiture',
+                    'page' => 'admin/ads/voiture',
+                ],
+                [
+                    'title' => 'Trucs',
+                    'page' => 'admin/ads/truc',
+                ],
+                [
+                    'title' => 'Service',
+                    'page' => 'admin/ads/service',
                 ],
             ],
         ],

@@ -16,9 +16,21 @@ class AnnonceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexImmobilier()
     {
-        return view("admin.ads.index");
+        return view("admin.ads.indexImmobilier");
+    }
+    public function indexVoiture()
+    {
+        return view("admin.ads.indexVoiture");
+    }
+    public function indexTruc()
+    {
+        return view("admin.ads.indexTruc");
+    }
+    public function indexService()
+    {
+        return view("admin.ads.indexService");
     }
     
 

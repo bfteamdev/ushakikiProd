@@ -4,10 +4,11 @@
 <head>
 
     @yield('title')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     {{-- <title>ushakiki</title> --}}
- 
+
 
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap-select.css') }}">
@@ -21,9 +22,11 @@
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
         }, false);
+
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
     </script>
     <!-- //for-mobile-apps -->
     <!--fonts-->
@@ -91,12 +94,14 @@
 </head>
 
 <body>
-       @include('layout.partials.include.header')
-
-    @yield('content')
-    <footer>
-        @yield('footer')
-    </footer>
+    @include('layout.partials.include.header')
+    <div>
+        @include('sweetalert::alert')
+        @yield('content')
+        <footer>
+            @yield('footer')
+        </footer>
+    </div>
     {{-- Global Theme JS Bundle (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.js') as $script)
         <script src="{{ asset($script) }}" type="text/javascript"></script>

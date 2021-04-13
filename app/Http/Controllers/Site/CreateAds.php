@@ -13,12 +13,13 @@ use App\Models\Annonce;
 use App\Models\Annonces_feature;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Auth;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class createAds extends Controller
 {
     public function __construct()
     {
-        $this->middleware("auth");
+        $this->middleware("auth")->except(["showGroup"]);
     }
     /**
      * Display a listing of the resource.
@@ -105,62 +106,83 @@ class createAds extends Controller
         $group = Groupe::all();
         return view('site.createAdd', compact('group'));
     }
-    
+
     public function showCategory(Category $category)
     {
         $subCategory = Type::where('category_id', $category->id)->get();
         $feature = Feature::where('category_id', $category->id)->get();
-        foreach($feature as $item){
+        foreach ($feature as $item) {
             $item->field;
         }
         return [
-            "subCategory"=> $subCategory,
-            "feature"=> $feature,
+            "subCategory" => $subCategory,
+            "feature" => $feature,
         ];
     }
     public function showFeature(Category $category)
     {
         $feature = Feature::where('category_id', $category->id)->get();
         $fields = [];
-        foreach($feature as $item){
+        foreach ($feature as $item) {
             $fields[] = $item->field;
         }
         return [
-            "feature"=>$feature,
+            "feature" => $feature,
         ];
     }
-    
-    public function storeAds(Request $request){
+
+    public function storeAds(Request $request)
+    {
         // dd(Auth::user()->id);
         // dd($request->all());
+        $typeTrue = $request['type_id'] ? true : false;
+        $convertToMarkDown = new HtmlConverter(array('strip_tags' => true));
+        $description = $convertToMarkDown->convert(trim($request['description']));
         DB::beginTransaction();
         try {
-            Annonce::create([
-                "type_id"=>$request['type_id'],
-                "user_id"=> (int)Auth::user()->id,
-                "title"=>$request['title'],
-                "price"=>$request['price'],
-                "commune"=>$request['commune'],
-                "zone"=>$request['zone'],
-                "description"=>$request['description']
-            ]);
+            if ($typeTrue) {
+                Annonce::create([
+                    "type_id" => $request['type_id'],
+                    "user_id" => (int)Auth::user()->id,
+                    "title" => $request['title'],
+                    "price" => $request['price'],
+                    "commune" => $request['commune'],
+                    "zone" => $request['zone'],
+                    "description" => $description,
+                    "expired_at" => Now()
+                ]);
+            } else {
+                Annonce::create([
+                    "category_id" => $request['category_id'],
+                    "user_id" => (int)Auth::user()->id,
+                    "title" => $request['title'],
+                    "price" => $request['price'],
+                    "commune" => $request['commune'],
+                    "zone" => $request['zone'],
+                    "description" => $description,
+                    "expired_at" => Now()
+                ]);
+            }
             $Ads_id = DB::getPdo()->lastInsertId();
             foreach ($request['feature'] as $items) {
-                foreach ($items['value'] as $item) {
+                foreach ($items['value'] as $key => $value) {
                     Annonces_feature::create([
                         "annonce_id" => $Ads_id,
                         "feature_id" => $items['feature_id'],
-                        "value" => $item
+                        "field_id" => $key,
+                        "value" => $value
                     ]);
                 }
             }
             foreach ($request['imagesAds'] as $items) {
-                $items = $items->store("AdsImages/".$Ads_id,"public");
+                $items = $items->store("AdsImages/" . $Ads_id, "public");
                 Photo::create([
                     "annonce_id" => $Ads_id,
                     "name" => $items
                 ]);
             }
+            DB::commit();
+            return redirect()->route("")->withInput()->with("success","L'annonce a ete post avec success");
         } catch (\Throwable $th) {
             DB::rollBack();
         }

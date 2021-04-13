@@ -17,11 +17,13 @@ class CreateAnnoncesFeaturesTable extends Migration
             $table->id();
             $table->unsignedBigInteger("annonce_id")->index();
             $table->unsignedBigInteger("feature_id")->index();
+            $table->unsignedBigInteger("field_id")->index();
             $table->string("value");
             $table->timestamps();
 
             $table->foreign("annonce_id")->references("id")->on("annonces");
             $table->foreign("feature_id")->references("id")->on("features");
+            $table->foreign("field_id")->references("id")->on("fields");
         });
     }
 

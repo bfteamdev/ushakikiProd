@@ -51,7 +51,7 @@
                     <!--begin::Login Header-->
                     <div class="d-flex flex-center mb-15">
                         <a href="#">
-                            <img src="{{ asset('media/logos/logo-letter-13.png') }}" class="max-h-75px" alt="" />
+                            <img src="{{ asset('media/logos/logo-lightt.png') }}" class="max-h-75px" alt="" />
                         </a>
                     </div>
                     <!--end::Login Header-->
