@@ -3231,7 +3231,7 @@ h2.sear-head.fer {
 	position: relative;
 	margin: 0;
 	display: block;
-	color: #424242;
+	color: #6d6d6d;
 	line-height: 17px;
 	font-size: 14px;
 	/*font-weight: 500;
@@ -3261,11 +3261,12 @@ h2.sear-head.fer {
 	line-height: 16px;
 	font-family: "Arial Rounded MT";
 	font-size: 16px;
-	background: rgb(0 0 0 / 0%);
+	background: #00000000;
 	border: none;
 	-webkit-appearance: none;
 	outline: none;
 	z-index: 11;
+	color: #4e4e4e;
 }
 
 .field-area {
@@ -3307,6 +3308,7 @@ h2.sear-head.fer {
 	-webkit-transform: translate(0px, -5px) scale(0.75);
 	-ms-transform: translate(0px, -5px) scale(0.75);
 	font-weight: bold;
+	color: black;
 }
 
 .is-focused .field-label {

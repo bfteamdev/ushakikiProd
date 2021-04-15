@@ -37,7 +37,7 @@
                                 <div class="field">
                                     <label for="nom" class="field-label">Adresse e-mail</label>
                                     {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
-                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror" name="email" autocomplete="off" aria-autocomplete="off" />
+                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror" name="email"/>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
                             <div class="col-lg-12">
                                 <div class="field">
                                     <label for="nom" class="field-label">Mot de passe</label>
-                                    <input type="password" class="field-input allInputs @error('password') is-invalid @enderror" name="password" autocomplete="off" autocomplete="off" />
+                                    <input type="password" class="field-input allInputs @error('password') is-invalid @enderror" name="password"/>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
