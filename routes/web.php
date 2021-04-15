@@ -71,7 +71,7 @@ Route::post('/admin/reset-password/post','AdminPageController@postForget')->name
 Route::get('/admin/reset-password/{token}','AdminPageController@getPassword')->name('admin.password');
 Route::post('/admin/reset-password','AdminPageController@updatePassword')->name('admin.postPassword');
 //Dashboard Client
-Route::get('/home/my-ads', 'PagesController@annonce')->name('dashboard.ads');
+Route::get('/home/my-ads', 'AnnonceController@annonce')->name('dashboard.ads');
 Route::get('ad/', "Site\CreateAds@showGroup" )->name('ad.category');
 //Creation d'annonce
 Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
@@ -80,4 +80,8 @@ Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
   Route::get('/ad-more-information/{group}', "Site\CreateAds@AddMoreInformation")->name('ad.AddMoreInfo');
   Route::post('/ad-more-information', "Site\CreateAds@storeAds")->name('ad.storeAds');
 });
+Route::prefix('category')->group(function () {
+  Route::get('/car','PagesController@carCategory')->name('category.car');
+});
+
 

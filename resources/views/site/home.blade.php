@@ -22,7 +22,7 @@
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
-            <a href="#" class="rond bg2">
+            <a href="{{ route('category.car') }}" class="rond bg2">
                 <i class="fas fa-car-alt"></i>
                 <span class="nameCategory">Voiture</span>
                 <div class="separateName"></div>

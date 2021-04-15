@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['carCategory']);
         // $this->middleware('role');
     }
     public function index()
@@ -111,9 +111,10 @@ class PagesController extends Controller
     {
         return view('layout.partials.extras._quick_search_result');
     }
-   public function annonce()
+  
+   public function carCategory()
    {
-    $ad= Annonce::select("*")->where('user_id',Auth::user()->id )->get();
-       return view('site.dashbaord.myAd',compact('ad')); 
+       return view('site.category.car');
+
    }
 }
