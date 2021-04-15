@@ -271,7 +271,7 @@
         autoAdjustHeight: true, // Automatically adjust content height
         cycleSteps: false, // Allows to cycle the navigation of steps
         backButtonSupport: true, // Enable the back button support
-        enableURLhash: true, // Enable selection of the step based on url hash
+        enableURLhash: false, // Enable selection of the step based on url hash
         transition: {
             animation: 'none', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
             speed: '400', // Transion animation speed
