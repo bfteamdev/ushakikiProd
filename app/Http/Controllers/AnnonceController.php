@@ -8,6 +8,7 @@ use App\Models\Annonce;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
@@ -41,6 +42,11 @@ class AnnonceController extends Controller
     public function indexService()
     {
         return view("admin.ads.indexService");
+    }
+    public function annonce()
+    {
+     $ad= Annonce::select("*")->where('user_id',Auth::user()->id )->get();
+        return view('site.dashbaord.myAd',compact('ad')); 
     }
     
 
