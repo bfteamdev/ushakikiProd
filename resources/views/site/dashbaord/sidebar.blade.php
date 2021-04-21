@@ -3,9 +3,7 @@
     <div class="card card-custom card-stretch">
         <!--begin::Body-->
         <div class="card-body pt-4">
-
             <!--end::Contact-->
-
             <!--begin::Nav-->
             <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
                 <div class="navi-item mb-2">
