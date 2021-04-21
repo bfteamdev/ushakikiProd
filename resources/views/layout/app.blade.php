@@ -6,9 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"
         rel="preload" as="style">
-    <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap-select.css') }}" rel="preload" as="style">
     <link href="{{ asset('app-assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" rel="preload"
         as="style" />
+    <link rel="preload" href="{{ asset('app-assets/font/arial-rounded-mt.ttf')}}" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="{{ asset('app-assets/font/berlin-sans-fb-3.ttf')}}" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="{{ asset('app-assets/font/Intro Inline.otf')}}" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="{{ asset('app-assets/font/Intro.otf')}}" as="font" crossorigin="anonymous" />
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -83,5 +86,6 @@
     <script src="{{ asset('app-assets/js/jquery.uls.languagefilter.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.regionfilter.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.core.js') }}" rel="preload" as="script"></script>
+    <script src="{{ asset('app-assets/js/script.js') }}" rel="preload" as="script"></script>
     @yield('script')
 </body>

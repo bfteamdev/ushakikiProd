@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Type;
 use App\Models\Groupe;
+use App\Models\Annonce;
 use App\Models\Feature;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,5 +24,10 @@ class Category extends Model
 
     public function features(){
         return $this->hasMany(Feature::class);
+    }
+    
+    public function Ads()
+    {
+        return $this->hasMany(Annonce::class);
     }
 }

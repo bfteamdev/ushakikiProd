@@ -191,6 +191,7 @@ class createAds extends Controller
             return redirect()->route('home')->withInput()->with("success","L'annonce a ete post avec success");
         } catch (\Throwable $th) {
             DB::rollBack();
+            return back()->withInput()->with("error","Une erreur est survenue lors du post d'annonce veillerz reassayez !!!");
         }
     }
 

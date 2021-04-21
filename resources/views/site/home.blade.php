@@ -1,5 +1,8 @@
 @extends('layout.app')
 @section('title')Home @endsection
+@php
+use App\Classes\UrlRandom;
+@endphp
 @section('content')
     <div class="main-banner banner text-center">
         <div class="container d-flex flex-column align-items-center"
@@ -13,30 +16,14 @@
             <i class="fa fa-search"></i>
         </div>
         <div class="containerCategory">
-            <a href="#" class="rond bg1">
-                <i class="fas fa-home"></i>
-                <span class="nameCategory">Immobilier</span>
+            @foreach ($group as $key => $item)
+            <a href="{{ route('category.show',["group"=>$item->id,"name"=>$item->name]) }}" class="rond bg{{ $key+1 }}">
+                <i class="{{ $item->icon }}"></i>
+                <span class="nameCategory">{{ $item->name }}</span>
                 <div class="separateName"></div>
                 <span class="option">Achat / vente / location</span>
             </a>
-            <a href="{{ route('category.car') }}" class="rond bg2">
-                <i class="fas fa-car-alt"></i>
-                <span class="nameCategory">Voiture</span>
-                <div class="separateName"></div>
-                <span class="option">Achat / vente / location</span>
-            </a>
-            <a href="#" class="rond bg3">
-                <i class="far fa-sun"></i>
-                <span class="nameCategory">Trucs</span>
-                <div class="separateName"></div>
-                <span class="option">Achat / vente / location</span>
-            </a>
-            <a href="#" class="rond bg4">
-                <i class="fas fa-users"></i>
-                <span class="nameCategory">Services</span>
-                <div class="separateName"></div>
-                <span class="option">Achat / vente / location</span>
-            </a>
+            @endforeach
         </div>
     </div>
     <div class="content">
@@ -138,7 +125,7 @@
                                     </div>
                                     <div class="carousel-item" data-bs-interval="10000">
                                         <div class="d-flex row">
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p1.jpg') }}" />
                                                     <span class="price">&#36; 450</span>
@@ -148,7 +135,7 @@
                                                     <span>1 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p2.jpg') }}" />
                                                     <span class="price">&#36; 399</span>
@@ -158,7 +145,7 @@
                                                     <span>3 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p3.jpg') }}" />
                                                     <span class="price">&#36; 199</span>
@@ -168,7 +155,7 @@
                                                     <span>8 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p4.jpg') }}" />
                                                     <span class="price">&#36; 159</span>
@@ -182,7 +169,7 @@
                                     </div>
                                     <div class="carousel-item" data-bs-interval="10000">
                                         <div class="d-flex row">
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p1.jpg') }}" />
                                                     <span class="price">&#36; 450</span>
@@ -192,7 +179,7 @@
                                                     <span>1 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p2.jpg') }}" />
                                                     <span class="price">&#36; 399</span>
@@ -202,7 +189,7 @@
                                                     <span>3 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p3.jpg') }}" />
                                                     <span class="price">&#36; 199</span>
@@ -212,7 +199,7 @@
                                                     <span>8 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 biseller-column" >
+                                            <div class="col-md-3">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p4.jpg') }}" />
                                                     <span class="price">&#36; 159</span>

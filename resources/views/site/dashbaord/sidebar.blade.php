@@ -1,21 +1,14 @@
 <div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
-    <!--begin::Profile Card-->
     <div class="card card-custom card-stretch">
-        <!--begin::Body-->
         <div class="card-body pt-4">
-
-            <!--end::Contact-->
-
-            <!--begin::Nav-->
             <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
                 <div class="navi-item mb-2">
-                    <a href="{{ route('dashboard.ads') }}" class="navi-link py-4 ">
+                    <a href="{{ route('dashboard.ads') }}" class="navi-link py-4  @yield('adsActive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <polygon points="0 0 24 0 24 24 0 24"></polygon>
                                         <path
@@ -29,20 +22,18 @@
                                 <!--end::Svg Icon-->
                             </span> </span>
                         <span class="navi-text font-size-lg">
-                           Mes Annonces
+                            Mes Annonces
                         </span>
                     </a>
                 </div>
-               
+
                 <div class="navi-item mb-2">
-                    <a href="custom/apps/profile/profile-1/account-information.html"
-                        class="navi-link py-4 active">
+                    <a href="#" class="navi-link py-4 @yield('Xactive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"></rect>
                                         <path
@@ -60,15 +51,14 @@
                         </span>
                     </a>
                 </div>
-               
+
                 <div class="navi-item mb-2">
-                    <a href="custom/apps/profile/profile-1/email-settings.html" class="navi-link py-4 ">
+                    <a href="#" class="navi-link py-4  @yield('Xactive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"></rect>
                                         <path
@@ -87,36 +77,12 @@
                     </a>
                 </div>
                 <div class="navi-item mb-2">
-                    <a href="#" class="navi-link py-4" data-toggle="tooltip" title="" data-placement="right"
-                        data-original-title="Coming soon...">
-                        <span class="navi-icon mr-2">
-                            <span class="svg-icon">
-                                <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-top-panel-6.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24"></rect>
-                                        <rect fill="#000000" x="2" y="5" width="19" height="4" rx="1"></rect>
-                                        <rect fill="#000000" opacity="0.3" x="2" y="11" width="19" height="10"
-                                            rx="1"></rect>
-                                    </g>
-                                </svg>
-                                <!--end::Svg Icon-->
-                            </span> </span>
-                        <span class="navi-text font-size-lg">
-                            Saved Credit Cards
-                        </span>
-                    </a>
-                </div>
-                <div class="navi-item mb-2">
-                    <a href="custom/apps/profile/profile-1/personal-information.html" class="navi-link py-4 ">
+                    <a href="#" class="navi-link py-4  @yield('Xactive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <polygon points="0 0 24 0 24 24 0 24"></polygon>
                                         <path
@@ -135,13 +101,12 @@
                     </a>
                 </div>
                 <div class="navi-item mb-2">
-                    <a href="custom/apps/profile/profile-1/change-password.html" class="navi-link py-4 ">
+                    <a href="#" class="navi-link py-4  @yield('Xactive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg--><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                    viewBox="0 0 24 24" version="1.1">
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"></rect>
                                         <path
@@ -165,12 +130,7 @@
                         </span>
                     </a>
                 </div>
-            
-           
             </div>
-            <!--end::Nav-->
         </div>
-        <!--end::Body-->
     </div>
-    <!--end::Profile Card-->
 </div>

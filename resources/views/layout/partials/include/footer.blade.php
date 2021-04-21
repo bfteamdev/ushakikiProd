@@ -2,14 +2,14 @@
     <div class="container">
         <div class="foo-grids row" style="display: flex;align-items: baseline;justify-content: center;">
             <div class="col-md-3 footer-grid">
-                <h4 class="footer-head">Who We Are</h4>
+                <spna class="footer-head">Who We Are</spna>
                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when
                     looking at its layout.</p>
                 <p>The point of using Lorem Ipsum is that it has a more-or-less normal letters, as opposed to using
                     'Content here.</p>
             </div>
             <div class="col-md-3 footer-grid">
-                <h4 class="footer-head">Help</h4>
+                <span class="footer-head">Help</span>
                 <ul>
                     <li><a href="howitworks.html">How it Works</a></li>
                     <li><a href="sitemap.html">Sitemap</a></li>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div class="col-md-3 footer-grid">
-                <h4 class="footer-head">Information</h4>
+                <span class="footer-head">Information</span>
                 <ul>
                     <li><a href="regions.html">Locations Map</a></li>
                     <li><a href="terms.html">Terms of Use</a></li>
@@ -29,7 +29,7 @@
                 </ul>
             </div>
             <div class="col-md-3 footer-grid">
-                <h4 class="footer-head">Contact Us</h4>
+                <span class="footer-head">Contact Us</span>
                 <span class="hq">Our headquarters</span>
                 <address>
                     <ul class="location">
