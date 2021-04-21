@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Annonce;
 use App\Models\Annonces_feature;
 use App\Models\Photo;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use League\HTMLToMarkdown\HtmlConverter;
 
@@ -135,6 +137,7 @@ class createAds extends Controller
     {
         // dd(Auth::user()->id);
         // dd($request->all());
+        $expiredAt = Carbon::now()->addDays($request['expired_at']);
         $typeTrue = $request['type_id'] ? true : false;
         $convertToMarkDown = new HtmlConverter(array('strip_tags' => true));
         $description = $convertToMarkDown->convert(trim($request['description']));
@@ -149,7 +152,7 @@ class createAds extends Controller
                     "commune" => $request['commune'],
                     "zone" => $request['zone'],
                     "description" => $description,
-                    "expired_at" => Now()
+                    "expired_at" => $expiredAt
                 ]);
             } else {
                 Annonce::create([
@@ -160,7 +163,7 @@ class createAds extends Controller
                     "commune" => $request['commune'],
                     "zone" => $request['zone'],
                     "description" => $description,
-                    "expired_at" => Now()
+                    "expired_at" => $expiredAt
                 ]);
             }
             $Ads_id = DB::getPdo()->lastInsertId();
@@ -181,10 +184,14 @@ class createAds extends Controller
                     "name" => $items
                 ]);
             }
+            DB::table('users')
+            ->where("id",(int)Auth::user()->id)
+            ->update($request['user']);
             DB::commit();
             return redirect()->route('home')->withInput()->with("success","L'annonce a ete post avec success");
         } catch (\Throwable $th) {
             DB::rollBack();
+            return back()->withInput()->with("error","Une erreur est survenue lors du post d'annonce veillerz reassayez !!!");
         }
     }
 

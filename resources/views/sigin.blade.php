@@ -1,7 +1,5 @@
 @extends('layout.app_login')
-@section('title')
-    <title>Login</title>
-@endsection
+@section('title') Login @endsection
 @section('content')
     <div id="page-wrapper" class="sign-in-wrapper">
         <div class="container d-flex justify-content-center align-items-center flex-column">
@@ -35,9 +33,9 @@
                         <div class="signin-body">
                             <div class="col-lg-12">
                                 <div class="field">
-                                    <label for="nom" class="field-label">Adresse e-mail</label>
+                                    <label for="email" class="field-label">Adresse e-mail</label>
                                     {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
-                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror" name="email" autocomplete="off" aria-autocomplete="off" />
+                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror" id="email" name="email"/>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,8 +45,8 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="field">
-                                    <label for="nom" class="field-label">Mot de passe</label>
-                                    <input type="password" class="field-input allInputs @error('password') is-invalid @enderror" name="password" autocomplete="off" autocomplete="off" />
+                                    <label for="password" class="field-label">Mot de passe</label>
+                                    <input type="password" class="field-input allInputs @error('password') is-invalid @enderror" id="password" name="password"/>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

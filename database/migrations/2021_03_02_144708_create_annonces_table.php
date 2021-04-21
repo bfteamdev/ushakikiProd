@@ -20,7 +20,7 @@ class CreateAnnoncesTable extends Migration
             $table->unsignedBigInteger("type_id")->index()->nullable();
             $table->unsignedBigInteger("user_id")->index();
             $table->string("statu")->default("active");
-            $table->string("description");
+            $table->text("description");
             $table->string("price");
             $table->string("commune");
             $table->string("zone");

@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "Intro Inline";
-	src: url("../font/Intro Inline.otf"), url("../font/Intro Inline.otf");
+	src: url("../font/Intro Inline.otf"), url("../font/Intro.otf");
 }
 
 @font-face {
@@ -12,7 +12,9 @@
 	font-family: "Berlin Sans FB";
 	src: url("../font/berlin-sans-fb-3.ttf");
 }
-
+*{
+	box-sizing: border-box;
+}
 :root {
 	--siteColor: #0772ff;
 	--color1: #DBAC14;
@@ -453,12 +455,12 @@ a.MyAds {
 }
 
 a.MyAds i {
-	color: #333 !important;
+	color: inherit !important;
 }
 
 a.MyAds:hover {
 	background-color: #0177df;
-	color: white;
+	color: white !important;
 }
 
 a.iconCart {
@@ -484,7 +486,7 @@ a.iconCart:hover {
 	float: left;
 	font-size: 15px;
 	color: #fff;
-	background-color: #AAAAAA;
+	background-color: #ae3e60;
 	padding: 6px 20px;
 	text-decoration: none;
 	margin: 0 6px;
@@ -1341,6 +1343,7 @@ span.price:after {
 
 .footer-top {
 	padding: 60px 0;
+	width: 100%;
 	box-shadow: 0px -1px 8px -4px #adadad;
 }
 
@@ -1355,14 +1358,14 @@ span.price:after {
 	padding: 30px 0;
 }
 
-h4.footer-head {
+.footer-head {
 	font-size: 28px;
-	color: #01a185;
+	color: #886800;
 	margin-bottom: 16px;
 }
 
 .footer-grid p {
-	color: #979797;
+	color: #4e4e4e;
 	font-size: 13px;
 	line-height: 26px;
 	margin-top: 15px;
@@ -1374,14 +1377,14 @@ h4.footer-head {
 }
 
 .footer-grid ul li a {
-	color: #979797;
+	color: #4e4e4e;
 	font-size: 13px;
 	font-weight: 400;
 	text-decoration: none;
 }
 
 span.hq {
-	color: rgba(89, 194, 175, 0.79);
+	color: #886800;
 	font-size: 1em;
 	margin-bottom: 1em;
 	display: block;
@@ -1409,10 +1412,10 @@ span.glyphicon.glyphicon-map-marker {
 }
 
 span.glyphicon.glyphicon-map-marker, span.glyphicon.glyphicon-earphone, .glyphicon.glyphicon-envelope {
-	color: #fff;
-	font-size: 12px;
-	background-color: rgba(89, 194, 175, 0.68);
-	padding: 6px;
+	color: #282004;
+	font-size: 14px;
+	background-color: rgb(219 172 20);
+	padding: 9px 10px;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -1424,7 +1427,7 @@ span.glyphicon.glyphicon-map-marker, span.glyphicon.glyphicon-earphone, .glyphic
 ul.location li:nth-child(2) {
 	float: right;
 	width: 85%;
-	color: #979797;
+	color: #4e4e4e;
 	font-size: 0.95em;
 	line-height: 2em;
 	text-transform: lowercase;
@@ -1432,7 +1435,7 @@ ul.location li:nth-child(2) {
 }
 
 .copyrights p, .diff p {
-	color: #979797;
+	color: #f5f5f5;
 	font-size: 14px;
 	margin-top: 0;
 }
@@ -1635,9 +1638,9 @@ ul.resp-tabs-list.hor_1 a:hover {
 }
 
 span.total {
-	color: #fff;
+	color: #000;
 	font-size: 13px;
-	background: #01a185;
+	background: #dbac14;
 	padding: 10px 20px;
 	margin: 3% 5%;
 	width: 90%;
@@ -1659,22 +1662,25 @@ span.total strong {
 .category {
 	padding: 20px;
 	border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
 }
 
 .category-img {
 	float: left;
-	width: 25%;
+	width: 17%;
 	text-align: center;
 }
 
+.category-img i{
+	font-size: 5rem;
+}
+/* 
 .category-img img {
 	width: 75%;
-}
+} */
 
-.category-info {
-	float: left;
-	width: 30%;
-}
+.category-info {top: 8px;position: relative;}
 
 .category-info h4 {
 	color: #000;
@@ -1705,20 +1711,20 @@ span.total strong {
 
 .sub-categories ul li {
 	list-style-type: none;
-	margin: 20px 0;
+	margin: 8px 0;
 	float: left;
-	width: 50%;
+	width: 100%;
 }
 
 .sub-categories ul li a {
 	text-transform: capitalize;
 	text-decoration: none;
-	color: #244a6f;
-	font-size: 15px;
+	color: #0d6efd;
+	font-size: 20px;
 }
 
 .sub-categories ul li a:hover {
-	color: #01a185;
+	color: #dbac14;
 }
 
 /*-- //Categories --*/
@@ -2272,7 +2278,7 @@ span.arrow2 img {
 }
 
 .work-section-grid p {
-	color: #7b7b7b;
+	color: #464646;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 1.8em;
@@ -2872,7 +2878,7 @@ h3.rate {
 }
 
 .select-box {
-	background: rgba(1, 161, 133, 0.39);
+	background: var(--color1);
 	padding: 30px 30px;
 	margin: 40px 0;
 	border-radius: 6px;
@@ -3047,7 +3053,9 @@ ul.dropdown-menu6 li a {
 }
 
 .side-bar {
-	background-color: #f9f9f9;
+	/* background-color: #aaaaaa; */
+	box-shadow: 0px 0px 20px -8px #00000066;
+	border: 1px solid #cccccc33;
 	padding: 25px 15px;
 }
 
@@ -3160,7 +3168,8 @@ h2.sear-head.fer {
 
 .cardSubCategory {
 	display: flex;
-	padding: 5px 10px;
+	padding: 5px 20px;
+	margin-bottom: 20px;
 	align-items: center;
 	justify-content: space-between;
 	text-decoration: none;
@@ -3180,11 +3189,6 @@ h2.sear-head.fer {
 	background-color: #323232 !important;
 }
 
-.cardSubCategory:hover .nameCategory, .totalAds span {
-	text-decoration: none;
-	color: white !important;
-}
-
 .cardSubCategory i {
 	font-size: 35px;
 	color: inherit;
@@ -3197,18 +3201,35 @@ h2.sear-head.fer {
 	color: #4a4a4a;
 }
 
+.cardSubCategory .nameCategory::first-letter{
+	text-transform: uppercase;
+}
+
 .cardSubCategory .totalAds {
 	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
+	/* flex-direction: column; */
+	align-items: center;
 }
 
 .cardSubCategory .totalAds span {
-	color: #656565;
-	font-size: 9px;
-	font-weight: bold;
-	font-style: italic;
+	color: #4a3900;
+	font-size: 14px;
 	letter-spacing: 1px;
+}
+
+.cardSubCategory .totalAds span:first-child {
+	font-size: 17px;
+	font-weight: bold;
+	margin-right: 8px;
+}
+.cardSubCategory:hover .nameCategory{
+	text-decoration: none;
+	color: white ;
+}
+
+.cardSubCategory:hover .totalAds span {
+	text-decoration: none;
+	color: white !important;
 }
 
 .displayOrder {
@@ -3231,7 +3252,7 @@ h2.sear-head.fer {
 	position: relative;
 	margin: 0;
 	display: block;
-	color: #424242;
+	color: #6d6d6d;
 	line-height: 17px;
 	font-size: 14px;
 	/*font-weight: 500;
@@ -3261,11 +3282,12 @@ h2.sear-head.fer {
 	line-height: 16px;
 	font-family: "Arial Rounded MT";
 	font-size: 16px;
-	background: rgb(0 0 0 / 0%);
+	background: #00000000;
 	border: none;
 	-webkit-appearance: none;
 	outline: none;
 	z-index: 11;
+	color: #4e4e4e;
 }
 
 .field-area {
@@ -3307,6 +3329,7 @@ h2.sear-head.fer {
 	-webkit-transform: translate(0px, -5px) scale(0.75);
 	-ms-transform: translate(0px, -5px) scale(0.75);
 	font-weight: bold;
+	color: black;
 }
 
 .is-focused .field-label {
@@ -3770,12 +3793,19 @@ h2.sear-head.fer {
 }
 
 .submenu ul li a i{
-margin-right: 6px;
-color: inherit;
+
+margin-right: 6px;
+
+color: inherit;
 }
 
 .profilHeader:hover .submenu{
 	display: block;
+}
+
+.boxView{
+	box-shadow: 0px 0px 20px -8px #00000066;
+	border: 1px solid #cccccc33;
 }
 
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
@@ -3888,6 +3918,7 @@ h2.sear-head.fer {
 	border-bottom-color: transparent;
 	position: relative;
 	z-index: 1;
+	text-decoration: none;
 	margin-bottom: -1px !important;
 	border-top: 1px solid;
 	border: 1px solid #ccc !important;
@@ -3907,7 +3938,7 @@ h2.sear-head.fer {
 }
 
 div#myTabContent {
-	border: 1px solid #ccc !important;
+	/* border: 1px solid #ccc !important; */
 	padding: 15px;
 	position: relative;
 }
@@ -3983,7 +4014,8 @@ div#myTabContent {
 	float: left;
 	margin-right: 0;
 	padding-bottom: 0;
-	border: 1px solid #d1e0ee;
+	border: 1px solid #dbac14;
+	border-radius: 5px;
 	padding: 0;
 	width: 20%;
 	background-color: #fff;
@@ -3996,7 +4028,7 @@ div#myTabContent {
 #container .list li p {
 	overflow: hidden;
 	word-wrap: break-word;
-	color: #c1c1c1;
+	color: #464646;
 	font-size: 13px;
 	margin-top: 15px;
 }
@@ -4004,10 +4036,10 @@ div#myTabContent {
 #container .list li .title {
 	overflow: hidden;
 	word-wrap: break-word;
-	font-size: 20px;
+	font-size: 16px;
 	text-decoration: none;
-	color: #000;
-	font-weight: 500;
+	color: #444;
+	font-weight: bold;
 	letter-spacing: 1px;
 }
 
@@ -4062,7 +4094,7 @@ span.cityname {
 #container .list li .adprice {
 	display: block;
 	font-size: 22px;
-	color: rgba(1, 161, 133, 0.57);
+	color: #0348af;
 	margin: 10px 0 0 0;
 }
 
@@ -4932,7 +4964,7 @@ label {
 	.trend-ads h2 {
 		font-size: 38px;
 	}
-	h4.footer-head {
+	.footer-head {
 		font-size: 26px;
 	}
 	#container .list li .title {
@@ -5120,7 +5152,7 @@ label {
 	.footer-grid ul li {
 		margin: 10px 0;
 	}
-	h4.footer-head {
+	.footer-head {
 		font-size: 25px;
 		margin-top: 35px;
 	}
@@ -5174,7 +5206,7 @@ label {
 	.category-info {
 		width: 50%;
 	}
-	.category-info h4 {
+	.category-info .name{
 		font-size: 20px;
 	}
 	.featured-ad {
@@ -5612,7 +5644,7 @@ label {
 	.col-md-3.footer-grid {
 		width: 100%;
 	}
-	h4.footer-head {
+	.footer-head {
 		margin-bottom: 10px;
 	}
 	ul.location li:nth-child(2) {

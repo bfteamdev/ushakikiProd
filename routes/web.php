@@ -17,7 +17,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 
 
+
 // Demo routes
+
 
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
@@ -49,7 +51,6 @@ Route::get('/', "Site\HomeController@index")->name('site.index');
 Route::get('/sigin',"LoginController@index")->name('login.user');
 Route::post('/login/user', "LoginController@login")->name('login.custom');
 
-
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
 Route::get('/logout',"HomeController@logout")->name('logout.user');
@@ -72,7 +73,8 @@ Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
   Route::post('/ad-more-information', "Site\CreateAds@storeAds")->name('ad.storeAds');
 });
 Route::prefix('category')->group(function () {
-  Route::get('/car','PagesController@carCategory')->name('category.car');
+  Route::get('/{group}/{name}','PagesController@showCategory')->name('category.show');
+  Route::get('/{name}/','PagesController@showCategory')->name('category.show');
 });
 
 

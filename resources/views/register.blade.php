@@ -15,69 +15,66 @@
             <div class="col-md-6 col-sm-10">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                <div class="signin">
-                    <div class="signin-body">
-                        <div class="col-lg-12">
-                            <div class="field">
-                                <label for="username" class="field-label">Username</label>
-                                {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
-                                <input type="text" class="field-input allInputs @error('username') is-invalid @enderror" name="username"
-                                value="{{ old('username') }}"  autocomplete="off" aria-autocomplete="off" />
+                    <div class="signin">
+                        <div class="signin-body">
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="username" class="field-label">Username</label>
+                                    <input type="text" class="field-input allInputs @error('username') is-invalid @enderror"
+                                        name="username" value="{{ old('username') }}" id="username" />
 
-                            @error('username')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="field">
-                                <label for="email" class="field-label">Adresse e-mail</label>
-                                {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
-                                <input type="email" class="field-input allInputs @error('email') is-invalid @enderror" name="email"
-                                value="{{ old('email') }}"
-                                 autocomplete="off" aria-autocomplete="off" />
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="email" class="field-label">Adresse e-mail</label>
+                                    <input type="email" class="field-input allInputs @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" id="email" />
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="field">
-                                <label for="password" class="field-label">Mot de passe</label>
-                                {{-- <input type="password" class="field-input allInputs" name="" autocomplete="off"> --}}
-                                <input type="password" class="field-input allInputs @error('password') is-invalid @enderror"
-                                name="password" required autocomplete="off" />
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="password" class="field-label">Mot de passe</label>
+                                    <input type="password"
+                                        class="field-input allInputs @error('password') is-invalid @enderror"
+                                        name="password" required id="password" />
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="field">
-                                <label for="password_confirmation" class="field-label">Mot de passe de comfirmation</label>
-                                {{-- <input type="password" class="field-input allInputs" name="" autocomplete="off"> --}}
-                                <input type="password" class="field-input allInputs" name="password_confirmation" required
-                                autocomplete="off" />
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="password_confirmation" class="field-label">Mot de passe de
+                                        comfirmation</label>
+                                    <input type="password" class="field-input allInputs" name="password_confirmation"
+                                        required id="password_confirmation" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-5 mt-4">
-                            <button class="signin-btn" type="submit">S'iscrire</button>
+                            <div class="col-lg-5 mt-4">
+                                <button class="signin-btn" type="submit">S'iscrire</button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
 @section('footer')
-@include('layout.partials.include.footer')
+    @include('layout.partials.include.footer')
 @endsection
 @section('script')
     <script type="text/javascript">
