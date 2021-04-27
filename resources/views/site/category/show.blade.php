@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            @if (sizeof($item->type) > 1)
+                            @if (sizeof($item->type) >= 1)
                                 <div class="category"
                                     style="padding: 7px 20px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
                                     Les sous-categories</div>
@@ -62,7 +62,6 @@
                                     </div>
                                 </div>
                             @else
-
                                 <div class="category"
                                     style="padding: 24px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
                                     <div class="col-lg-12">

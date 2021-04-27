@@ -24,4 +24,11 @@ class PagesController extends Controller
        $ads = Annonce::where("category_id","!=",null)->get();
        return view('site.category.show',compact("category","group","ads"));
    }
+  
+   public function showAdType(Groupe $group)
+   {
+       $category = Category::where("groupe_id",$group->id)->get();
+       $ads = Annonce::where("category_id","!=",null)->get();
+       return view('site.category.show',compact("category","group","ads"));
+   }
 }
