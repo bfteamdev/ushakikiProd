@@ -233,7 +233,7 @@ class SelectedCategory {
       });
     }
     if (valuesExist === false) {
-      let request = fetch("http://localhost:8000/createAd/sub-category/" + event.target.value);
+      let request = fetch("http://localhost:8001/createAd/sub-category/" + event.target.value);
       request.then(res => {
         if (res.ok && res.status === 200) {
           res.json()

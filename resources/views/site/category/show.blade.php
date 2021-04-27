@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            @if (sizeof($item->type) > 1)
+                            @if (sizeof($item->type) >= 1)
                                 <div class="category"
                                     style="padding: 7px 20px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
                                     Les sous-categories</div>
@@ -49,7 +49,8 @@
                                         <div class="row">
                                             @foreach ($item->type as $count => $items)
                                                 <div class="col-lg-6">
-                                                    <a href="#" class="cardSubCategory">
+                                                    <a href="{{ route('category.ads',
+                                                    ["name"=>$item->name,"products"=>$items->id]) }}" class="cardSubCategory">
                                                         <span class="nameCategory">{{ $items->name }}</span>
                                                         <div class="totalAds">
                                                             <span>{{ $items->Ads->count() }}</span>
@@ -66,7 +67,7 @@
                                 <div class="category"
                                     style="padding: 24px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
                                     <div class="col-lg-12">
-                                        <a href="#" class="cardSubCategory" style="margin-bottom:0% !important;">
+                                        <a href="{{ route('category.ads.not',['name'=>$item->name,'products'=>$item->id]) }}" class="cardSubCategory" style="margin-bottom:0% !important;">
                                             <span class="nameCategory">Voir touts les annonces sur cette category</span>
                                             <div class="totalAds">
                                                 <span>
