@@ -1,6 +1,7 @@
 <div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
     <div class="card card-custom card-stretch">
         <div class="card-body pt-4">
+
             <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
                 <div class="navi-item mb-2">
                     <a href="{{ route('dashboard.ads') }}" class="navi-link py-4  @yield('adsActive')">

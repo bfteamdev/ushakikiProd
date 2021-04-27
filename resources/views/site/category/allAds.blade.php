@@ -444,46 +444,7 @@
                             </div>
                         </form>
                     </div>
-                    {{-- <div class="featured-ads">
-                        <h2 class="sear-head fer">Featured Ads</h2>
-                        <div class="featured-ad">
-                            <a href="single.html">
-                                <div class="featured-ad-left">
-                                    <img src="{{ asset('app-assets/images/f1.jpg') }}" title="ad image" alt="" />
-                                </div>
-                                <div class="featured-ad-right">
-                                    <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-                                    <p>$ 450</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div>
-                        <div class="featured-ad">
-                            <a href="single.html">
-                                <div class="featured-ad-left">
-                                    <img src="{{ asset('app-assets/images/f2.jpg') }}" title="ad image" alt="" />
-                                </div>
-                                <div class="featured-ad-right">
-                                    <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-                                    <p>$ 380</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div>
-                        <div class="featured-ad">
-                            <a href="single.html">
-                                <div class="featured-ad-left">
-                                    <img src="{{ asset('app-assets/images/f3.jpg') }}" title="ad image" alt="" />
-                                </div>
-                                <div class="featured-ad-right">
-                                    <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-                                    <p>$ 560</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div> --}}
+                  
                 </div>
                 <div class="ads-display col-md-9">
                     <div class="wrapper boxView">
@@ -494,85 +455,32 @@
                                     <div id="container">
                                         <div class="clearfix"></div>
                                         <ul class="list">
-                                            <a href="single.html">
+                                            @foreach ($annonce as $item)                                   
+                                            <a href="{{ route('category.product.one',['name'=>$item->category->name ?? $item->type->name,'id'=>$item->id]) }}">
                                                 <li>
-                                                    <img src="{{ asset('app-assets/images/c1.jpg') }}" title="" alt="" />
+                                                    <img src="{{ asset('storage/'.$item->viewPhoto->name) }}" title="" alt="" />
                                                     <section class="list-left">
-                                                        <h5 class="title">There are many variations of passages of Lorem
-                                                            Ipsum</h5>
-                                                        <span class="adprice">$290</span>
-                                                        <p class="catpath">Cars » Other Vehicles</p>
+                                                        <h5 class="title">{{$item->title}}</h5>
+                                                        <span class="adprice">{{ $item->price}}fbu</span>
+                                                        <p class="catpath">{{ $name }} » Other {{ $name }}</p>
                                                     </section>
                                                     <section class="list-right">
-                                                        <span class="date">Today, 17:55</span>
-                                                        <span class="cityname">City name</span>
+                                                        <span class="date">Poster: {{ $item->created_at }}</span>
+                                                        <span class="cityname">{{ $item->commune }} {{ $item->zone  }}</span>
                                                     </section>
                                                     <div class="clearfix"></div>
                                                 </li>
                                             </a>
-                                            <a href="single.html">
-                                                <li>
-                                                    <img src="{{ asset('app-assets/images/c2.jpg') }}" title="" alt="" />
-                                                    <section class="list-left">
-                                                        <h5 class="title">It is a long established fact that a reader
-                                                        </h5>
-                                                        <span class="adprice">$310</span>
-                                                        <p class="catpath">Cars » Other Vehicles</p>
-                                                    </section>
-                                                    <section class="list-right">
-                                                        <span class="date">Today, 17:45</span>
-                                                        <span class="cityname">City name</span>
-                                                    </section>
-                                                    <div class="clearfix"></div>
-                                                </li>
-                                            </a>
-                                            <a href="single.html">
-                                                <li>
-                                                    <img src="{{ asset('app-assets/images/c3.jpg') }}" title="" alt="" />
-                                                    <section class="list-left">
-                                                        <h5 class="title">Contrary to popular belief, Lorem Ipsum is not
-                                                        </h5>
-                                                        <span class="adprice">$190</span>
-                                                        <p class="catpath">Cars » Other Vehicles</p>
-                                                    </section>
-                                                    <section class="list-right">
-                                                        <span class="date">Today, 17:30</span>
-                                                        <span class="cityname">City name</span>
-                                                    </section>
-                                                    <div class="clearfix"></div>
-                                                </li>
-                                            </a>
-                                            <a href="single.html">
-                                                <li>
-                                                    <img src="{{ asset('app-assets/images/c4.jpg') }}" title="" alt="" />
-                                                    <section class="list-left">
-                                                        <h5 class="title">The standard chunk of Lorem Ipsum used since
-                                                            the</h5>
-                                                        <span class="adprice">$480</span>
-                                                        <p class="catpath">Cars » Other Vehicles</p>
-                                                    </section>
-                                                    <section class="list-right">
-                                                        <span class="date">Today, 17:25</span>
-                                                        <span class="cityname">City name</span>
-                                                    </section>
-                                                    <div class="clearfix"></div>
-                                                </li>
-                                            </a>
+                                      
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
-                                <ul class="pagination pagination-sm">
-                                    <li><a href="#">Prev</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                                    <li><a href="#">7</a></li>
-                                    <li><a href="#">8</a></li>
-                                    <li><a href="#">Next</a></li>
-                                </ul>
+                                {{-- <ul class="d-flex justify-content-center"> --}}
+                                    {{-- <ul class="d-flex justify-content-center">
+                                        {!! $annonce->links() !!}
+                                    </ul> --}}
+                                {{-- </ul> --}}
                             </div>
                         </div>
                     </div>

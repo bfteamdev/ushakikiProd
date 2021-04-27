@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +12,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Demo routes
 
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
@@ -68,7 +68,11 @@ Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
 });
 Route::prefix('category')->group(function () {
   Route::get('/{group}/{name}','PagesController@showCategory')->name('category.show');
-  Route::get('/{name}/','PagesController@showCategory')->name('category.show');
+  Route::get('/{name}/sub-category/{products}','PagesController@showProducts')->name('category.ads');
+  Route::get('/{name}/parent-category/{products}','PagesController@showProductsNotSub')->name('category.ads.not');
+  Route::get('/{name}/product/{id}','PagesController@showOne')->name('category.product.one');
 });
+
+
 
 

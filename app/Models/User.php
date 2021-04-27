@@ -46,5 +46,14 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+    /**
+     * Get all of the annonces for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function annonces()
+    {
+        return $this->hasMany(Annonce::class);
+    }
   
 }
