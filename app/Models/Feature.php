@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Category;
+use App\Models\Annonces_feature;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,5 +17,9 @@ class Feature extends Model
     }
     public function field(){
         return $this->hasMany(Field::class);
+    }
+    public function annonce_feature()
+    {
+        return $this->hasMany(Annonces_feature::class);
     }
 }

@@ -17,12 +17,13 @@ use App\Classes\UrlRandom;
         </div>
         <div class="containerCategory">
             @foreach ($group as $key => $item)
-            <a href="{{ route('category.show',["group"=>$item->id,"name"=>$item->name]) }}" class="rond bg{{ $key+1 }}">
-                <i class="{{ $item->icon }}"></i>
-                <span class="nameCategory">{{ $item->name }}</span>
-                <div class="separateName"></div>
-                <span class="option">Achat / vente / location</span>
-            </a>
+                <a href="{{ route('category.show', ['group' => $item->id, 'name' => $item->name]) }}"
+                    class="rond bg{{ $key + 1 }}">
+                    <i class="{{ $item->icon }}"></i>
+                    <span class="nameCategory">{{ $item->name }}</span>
+                    <div class="separateName"></div>
+                    <span class="option">Achat / vente / location</span>
+                </a>
             @endforeach
         </div>
     </div>
@@ -232,7 +233,7 @@ use App\Classes\UrlRandom;
     </div>
 @endsection
 @section('style')
-    <style rel="preload" as="style" >
+    <style rel="preload" as="style">
         .carousel-control-next,
         .carousel-control-prev {
             /* right: -80px !important; */
@@ -241,21 +242,15 @@ use App\Classes\UrlRandom;
         }
 
         .carousel-control-prev {
-            /* left: -80px !important; */
+            height: 45px;
+            top: 40%;
+            left: -60px !important
         }
-/* 
-        .carousel-control-prev-icon {
-            width: 4rem !important;
-            height: 4rem !important;
-            background: url({{ asset('app-assets/images/themes1.png') }}) no-repeat 31px 0px !important;
+        .carousel-control-next {
+            height: 45px;
+            top: 40%;
+            right: -60px !important
         }
-
-        .carousel-control-next-icon {
-            width: 4rem !important;
-            height: 4rem !important;
-            background: url({{ asset('app-assets/images/themes1.png') }}) no-repeat -19px 0px !important;
-        } */
-
     </style>
 @endsection
 @section('footer')
