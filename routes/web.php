@@ -73,6 +73,4 @@ Route::prefix('category')->group(function () {
   Route::get('/{name}/product/{id}','PagesController@showOne')->name('category.product.one');
 });
 
-
-
-
+Route::post("/message/{idReceiver}",'MessageController@store')->name("message.store");

@@ -32,8 +32,8 @@
         <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($style)) : asset($style) }}"
             rel="stylesheet" type="text/css" rel="preload" as="style"/>
     @endforeach
+    @livewireStyles
     @yield('style')
-
 </head>
 
 <body>
@@ -63,5 +63,6 @@
     <script src="{{ asset('app-assets/js/jquery.uls.regionfilter.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.core.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/script.js') }}" rel="preload" as="script"></script>
+    @livewireScripts
     @yield('script')
 </body>

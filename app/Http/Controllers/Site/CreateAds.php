@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Annonce;
 use App\Models\Annonces_feature;
+use App\Models\Commune;
 use App\Models\Photo;
 use App\Models\User;
 use Carbon\Carbon;
@@ -116,9 +117,11 @@ class createAds extends Controller
         foreach ($feature as $item) {
             $item->field;
         }
+        $commune = Commune::all();
         return [
             "subCategory" => $subCategory,
             "feature" => $feature,
+            "commune" => $commune,
         ];
     }
     public function showFeature(Category $category)

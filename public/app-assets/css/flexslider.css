@@ -96,7 +96,7 @@ html[xmlns] .flexslider .slides {
   width: 78%;
   height: 390px;
   margin: 0% auto;
-  image-rendering: pixelated;
+  /* image-rendering: pixelated; */
   object-fit: cover;
 }
 .flex-viewport {

@@ -1,155 +1,120 @@
-Province de Bubanza
-  Commune de Bubanza
-  Commune de Gihanga
-  Commune de Musigati
-  Commune de Mpanda
-  Commune de Rugazi
-
-Province de Bujumbura Mairie
-  Muha
-  Commune de Mukaza
-  Commune de Ntahangwa
-
-Province de Bujumbura 
-  Commune de Isale
-  Commune de Kabezi
-  Commune de Kanyosha (Bujumbura rural)
-  Commune de Mubimbi
-  Commune de Mugongomanga
-  Commune de Mukike
-  Commune de Mutambu
-  Commune de Mutimbuzi
-  Commune de Nyabiraba
-
-Province de Bururi
-  Commune de Bururi
-  Commune de Matana
-  Commune de Mugamba
-  Commune de Rutovu
-  Commune de Songa
-  Commune de Vyanda
-
-Province de Cankuzo
-  Commune de Cankuzo
-  Commune de Cendajuru
-  Commune de Gisagara
-  Commune de Kigamba
-  Commune de Mishiha
-
-Province de Cibitoke
-  Commune de Buganda
-  Commune de Bukinanyana
-  Commune de Mabayi
-  Commune de Mugina
-  Commune de Murwi
-  Commune de Rugombo
-  Commune de Buhayira
-
-Province de Gitega
-  Commune de Bugendana
-  Commune de Bukirasazi
-  Commune de Buraza
-  Commune de Giheta
-  Commune de Gishubi
-  Commune de Gitega
-  Commune de Itaba
-  Commune de Makebuko
-  Commune de Mutaho
-  Commune de Nyarusange
-  Commune de Ryansoro
-
-Province de Karuzi
-  Commune de Bugenyuzi
-  Commune de Buhiga
-  Commune de Gihogazi
-  Commune de Gitaramuka
-  Commune de Mutumba
-  Commune de Nyabikere
-  Commune de Shombo
-
-Province de Kayanza
-  Commune de Butaganzwa
-  Commune de Gahombo
-  Commune de Gatara
-  Commune de Kabarore
-  Commune de Kayanza
-  Commune de Matongo
-  Commune de Muhanga
-  Commune de Muruta
-  Commune de Rango
-
-Province de Kirundo
-  Commune de Bugabira
-  Commune de Busoni
-  Commune de Bwambarangwe
-  Commune de Gitobe
-  Commune de Kirundo
-  Commune de Ntega
-  Commune de Vumbi
-
-Province de Makamba
-  Commune de Kayogoro
-  Commune de Kibago
-  Commune de Mabanda
-  Commune de Makamba
-  Commune de Nyanza-Lac
-  Commune de Vugizo
-
-Province de Muramvya
-  Commune de Bukeye
-  Commune de Kiganda
-  Commune de Mbuye
-  Commune de Muramvya
-  Commune de Rutegama
-
-Province de Muyinga
-  Commune de Buhinyuza
-  Commune de Butihinda
-  Commune de Gashoho
-  Commune de Gasorwe
-  Commune de Giteranyi
-  Commune de Muyinga
-  Commune de Mwakiro
-
-Province de Mwaro
-  Commune de Bisoro
-  Commune de Gisozi
-  Commune de Kayokwe
-  Commune de Ndava
-  Commune de Nyabihanga
-  Commune de Rusaka
-
-Province de Ngozi
-  Commune de Busiga
-  Commune de Gashikanwa
-  Commune de Kiremba
-  Commune de Marangara
-  Commune de Mwumba
-  Commune de Ngozi
-  Commune de Nyamurenza
-  Commune de Ruhororo
-  Commune de Tangara
-
-Province de Rumonge
-  Commune de Bugarama
-  Commune de Burambi
-  Commune de Buyengero
-  Commune de Muhuta
-  Commune de Rumonge
-
-Province de Rutana
-  Commune de Bukemba
-  Commune de Giharo
-  Commune de Gitanga
-  Commune de Mpinga-Kayove
-  Commune de Musongati
-  Commune de Rutana
-
-Province de Ruyigi
-  Commune de Butaganzwa
-  Commune de Butezi
-  Commune de Bweru
-  Commune de Gisuru
-  Commune de Kinyinya
-  Commune de Nyabitsinda
-  Commune de Ruyigi
+Bubanza
+Gihanga
+Musigati
+Mpanda
+Rugazi
+Muha
+Mukaza
+Ntahangwa
+Isale
+Kabezi
+Kanyosha (Bujumbura rural)
+Mubimbi
+Mugongomanga
+Mukike
+Mutambu
+Mutimbuzi
+Nyabiraba
+Bururi
+Matana
+Mugamba
+Rutovu
+Songa
+Vyanda
+Cankuzo
+Cendajuru
+Gisagara
+Kigamba
+Mishiha
+Buganda
+Bukinanyana
+Mabayi
+Mugina
+Murwi
+Rugombo
+Buhayira
+Bugendana
+Bukirasazi
+Buraza
+Giheta
+Gishubi
+Gitega
+Itaba
+Makebuko
+Mutaho
+Nyarusange
+Ryansoro
+Bugenyuzi
+Buhiga
+Gihogazi
+Gitaramuka
+Mutumba
+Nyabikere
+Shombo
+Butaganzwa
+Gahombo
+Gatara
+Kabarore
+Kayanza
+Matongo
+Muhanga
+Muruta
+Rango
+Bugabira
+Busoni
+Bwambarangwe
+Gitobe
+Kirundo
+Ntega
+Vumbi
+Kayogoro
+Kibago
+Mabanda
+Makamba
+Nyanza-Lac
+Vugizo
+Bukeye
+Kiganda
+Mbuye
+Muramvya
+Rutegama
+Buhinyuza
+Butihinda
+Gashoho
+Gasorwe
+Giteranyi
+Muyinga
+Mwakiro
+Bisoro
+Gisozi
+Kayokwe
+Ndava
+Nyabihanga
+Rusaka
+Busiga
+Gashikanwa
+Kiremba
+Marangara
+Mwumba
+Ngozi
+Nyamurenza
+Ruhororo
+Tangara
+Bugarama
+Burambi
+Buyengero
+Muhuta
+Rumonge
+Bukemba
+Giharo
+Gitanga
+Mpinga-Kayove
+Musongati
+Rutana
+Butaganzwa
+Butezi
+Bweru
+Gisuru
+Kinyinya
+Nyabitsinda
+Ruyigi

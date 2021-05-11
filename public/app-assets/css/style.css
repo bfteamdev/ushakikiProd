@@ -3913,6 +3913,11 @@ h2.sear-head.fer {
 	transform: translate(-60px, -46px);
 	border: 4px solid #151515;
 	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+
+.chat:hover {
+	background-color: #ffffff;
 }
 
 .chat i {
@@ -3921,12 +3926,15 @@ h2.sear-head.fer {
 
 .popupChat {
 	position: fixed;
+	display: none;
 	bottom: 0;
 	/* width: 92%; */
 	height: 60%;
 	right: 0;
 	transform: translate(-60px, -46px);
 	z-index: 1000;
+	opacity: 0;
+	transition: all .3s ease-in-out;
 }
 
 .popupChat .message {
@@ -4049,6 +4057,7 @@ h2.sear-head.fer {
 	padding: 6px 12px;
 	border-radius: 5px;
 	display: flex;
+	margin-bottom: 10px;
 	flex-direction: column;
 }
 
@@ -4081,13 +4090,14 @@ h2.sear-head.fer {
 
 .message-input textarea {
 	width: 100%;
-	background-color: #efefef;
-	border: 1px solid #ccc;
+	background-color: transparent;
+	border: 2px solid #ccc !important;
 	border-radius: 4px;
 	outline: none;
 	padding: 2px 10px;
 	font-size: 15px;
 	height: 85px;
+	transition: border .2s ease-in-out;
 }
 
 .message-input textarea::-webkit-scrollbar {
@@ -4095,9 +4105,12 @@ h2.sear-head.fer {
 	background-color: #d8d8d8;
 }
 
-.message-input textarea::-webkit-scrollbar-thumb {
-	width: 10px;
-	background-color: #151515;
+.message-input .error{
+border: 2px solid #ff0000;
+}
+
+.message-input .error::placeholder{
+	color: red;
 }
 
 .message-footer .message-send {
