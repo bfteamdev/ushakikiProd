@@ -43,4 +43,12 @@ class HomeController extends Controller
         return view('site.dashbaord.message');
 
     }
+    public function profilView()
+    {
+        return view('site.dashbaord.profil');
+    }
+    public function changePassword()
+    {
+        return view('site.dashbaord.changePassword');
+    }
 }

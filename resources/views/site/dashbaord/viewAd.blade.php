@@ -121,12 +121,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <input type="submit" class="btn btn-primary font-weight-bold mr-2" value="Submit">
-                                        {{-- <a href="" class="btn btn-dark font-weight-bold mr-2">Back</a> --}}
-                                    </div>
-                                </div>
+                                <a href="" class="btn btn-light-dark font-weight-bold mr-2">Back</a>
+                                <button type="submit" class="btn btn-light-primary font-weight-bold mr-2">Edit</button>
                             </div>
 
                         </form>

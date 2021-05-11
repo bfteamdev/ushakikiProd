@@ -68,6 +68,10 @@ Route::get('ad/{id}','AnnonceController@viewAnnonce')->name('dashboard.ads.show'
 Route::patch('ad/{id}','AnnonceController@updateAd')->name('dashboard.ads.update');
 //Message
 Route::get('/message','Site\HomeController@messageView')->name('dashboard.message');
+//Profil
+Route::get('/profil','Site\HomeController@profilView')->name('dashboard.profil');
+//Change Password
+Route::get('/change-password','Site\HomeController@changePassword')->name('dashboard.change.password');
 //Creation d'annonce
 Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
   Route::get('/sub-category/{category}', "Site\CreateAds@showCategory" )->name('ad.subCategory');
