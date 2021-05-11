@@ -6,6 +6,7 @@ use App\Models\Groupe;
 use App\Models\Annonce;
 use App\Classes\UrlRandom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,14 +16,31 @@ class HomeController extends Controller
     public function index()
     {
         $group = Groupe::all();
-        return view('site.home',compact("group"));
+        return view('site.home', compact("group"));
     }
     public function viewAllProduct(Annonce $annonce)
     {
-        $ad=Annonce::where('category_id',$annonce->id)->where('type_id',$annonce->id)->get();
+        $ad=Annonce::where('category_id', $annonce->id)->where('type_id', $annonce->id)->get();
         // dd($ad);
-        $category = Category::where("groupe_id",$group->id)->get();
+        $category = Category::where("groupe_id", $group->id)->get();
+        return view('site.category.allAds', compact('ad', 'annonce', 'category'));
+    }
+    public function searchHome()
+    {
+        $title=request('annonce');
+        if ($title !=null) {
+            $search=DB::table('annonces')->where('title', 'like', "%$title%")->get();
+            foreach ($search as $item) {
+                $image=DB::table('photos')->where('annonce_id', $item->id)->first();
+                $type=DB::table('types')->where('id', $item->type_id)->get();
+                $category=DB::table('categories')->where('id', $item->category_id)->get();
+            }
+        }        
+        return view('site.search.home.search', compact('search', 'image', 'type', 'category'));
+    }
+    public function messageView()
+    {
+        return view('site.dashbaord.message');
 
-        return view('site.category.allAds',compact('ad','annonce','category'));
     }
 }

@@ -63,7 +63,16 @@
                                     <span class="passwordReset"><a href="{{ route('password.request') }}">Mot de
                                             passe oublie ?</a></span>
                                 @endif
-                            </div>
+                            </div>                            
+                                <div class="col-lg-12 mt-4 d-flex justify-content-between align-items-center " >
+                                    <div class="col-lg-6">
+                                        <a href="{{ route('login.facebook') }}" class="btn btn-primary ">Login with facebook</a>
+                                    </div>
+                                    <div class="col-lg-6 mt-4">
+                                        <a href="{{ route('login.google') }}" class="btn btn-danger ">Login with google</a>
+                                    </div>
+
+                                </div>
                         </div>
                     </form>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Type;
+use App\Models\Photo;
 use App\Models\Groupe;
 use App\Models\Annonce;
 use App\Models\Category;
@@ -43,13 +44,7 @@ class AnnonceController extends Controller
     {
         return view("admin.ads.indexService");
     }
-    public function annonce()
-    {
-     $ad= Annonce::select("*")->where('user_id',Auth::user()->id )->get();
-        return view('site.dashbaord.myAd',compact('ad')); 
-    }
-    
-
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -117,6 +112,39 @@ class AnnonceController extends Controller
     public function destroy(Annonce $annonce)
     {
         //
+    }
+    //Dashboard clients
+    public function annonceByUser()
+    {
+     $ad= Annonce::select("*")->where('user_id',Auth::user()->id )->orderBy('id','desc')->get();
+    //  dd($ad);
+        return view('site.dashbaord.myAd',compact('ad')); 
+    }
+    public function viewAnnonce($id)
+    {
+        $add=Annonce::findOrFail($id);
+        $photo=Photo::where('annonce_id',$add->id)->get();
+        $group=Groupe::all();
+        return view('site.dashbaord.viewAd',compact('add','group','photo'));
+
+    }
+    public function updateAd(Request $request, $id)
+    {
+        // dd($request->all());
+        $data=$request->validate([
+            'title'=>'required',
+            'category_id'=>'required',
+            'description'=>'required',
+            'price'=>'required',
+        ]);
+        $add=Annonce::findOrFail($id);
+        $add->update([
+            'title'=>$request->title,
+            'category_id'=>$request->category_id,
+            'description'=>$request->description,
+            'price'=>$request->price
+        ]);
+        return back()->with('success','the ad is updated succussfuly');
     }
     
 }
