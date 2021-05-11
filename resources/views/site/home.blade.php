@@ -11,10 +11,13 @@ use App\Classes\UrlRandom;
             <div class="separateTitle"></div>
             {{-- <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a> --}}
         </div>
-        <div class="container search">
-            <input type="search" class="searchInput" name="" id="" placeholder="Search.....">
-            <i class="fa fa-search"></i>
-        </div>
+        <form action="{{ route('search.home') }}" method="GET">
+            @csrf
+            <div class="container search">
+                <input type="search" class="searchInput" name="annonce" id="" placeholder="Search.....">
+               <button type="submit"><i class="fa fa-search"></i></button> 
+            </div>
+        </form>
         <div class="containerCategory">
             @foreach ($group as $key => $item)
                 <a href="{{ route('category.show', ['group' => $item->id, 'name' => $item->name]) }}"

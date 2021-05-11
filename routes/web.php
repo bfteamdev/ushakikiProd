@@ -44,6 +44,11 @@ Route::get('/', "Site\HomeController@index")->name('site.index');
 // Login personaliser
 Route::get('/sigin',"LoginController@index")->name('login.user');
 Route::post('/login/user', "LoginController@login")->name('login.custom');
+//Login with Facebook and Google
+Route::get('/login/google','LoginController@redirectToGoogle')->name('login.google');
+Route::get('login/google/callback', 'LoginController@handleGoogleCallback');
+Route::get('/login/facebook','LoginController@redirectToFacebook')->name('login.facebook');
+Route::get('login/facebook/callback', 'LoginController@handleFacebookCallback');
 
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
@@ -57,8 +62,16 @@ Route::post('/admin/reset-password/post','AdminPageController@postForget')->name
 Route::get('/admin/reset-password/{token}','AdminPageController@getPassword')->name('admin.password');
 Route::post('/admin/reset-password','AdminPageController@updatePassword')->name('admin.postPassword');
 //Dashboard Client
-Route::get('/home/my-ads', 'AnnonceController@annonce')->name('dashboard.ads');
+Route::get('/home/my-ads', 'AnnonceController@annonceByUser')->name('dashboard.ads');
 Route::get('ad/', "Site\CreateAds@showGroup" )->name('ad.category');
+Route::get('ad/{id}','AnnonceController@viewAnnonce')->name('dashboard.ads.show');
+Route::patch('ad/{id}','AnnonceController@updateAd')->name('dashboard.ads.update');
+//Message
+Route::get('/message','Site\HomeController@messageView')->name('dashboard.message');
+//Profil
+Route::get('/profil','Site\HomeController@profilView')->name('dashboard.profil');
+//Change Password
+Route::get('/change-password','Site\HomeController@changePassword')->name('dashboard.change.password');
 //Creation d'annonce
 Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
   Route::get('/sub-category/{category}', "Site\CreateAds@showCategory" )->name('ad.subCategory');
@@ -74,3 +87,6 @@ Route::prefix('category')->group(function () {
 });
 
 Route::post("/message/{idReceiver}",'MessageController@store')->name("message.store");
+
+//site- search Home
+Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');

@@ -1,7 +1,6 @@
 <div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
     <div class="card card-custom card-stretch">
         <div class="card-body pt-4">
-
             <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
                 <div class="navi-item mb-2">
                     <a href="{{ route('dashboard.ads') }}" class="navi-link py-4  @yield('adsActive')">
@@ -27,7 +26,6 @@
                         </span>
                     </a>
                 </div>
-
                 <div class="navi-item mb-2">
                     <a href="#" class="navi-link py-4 @yield('Xactive')">
                         <span class="navi-icon mr-2">
@@ -54,7 +52,7 @@
                 </div>
 
                 <div class="navi-item mb-2">
-                    <a href="#" class="navi-link py-4  @yield('Xactive')">
+                    <a href="{{ route('dashboard.message') }}" class="navi-link py-4  @yield('messageActive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg--><svg
@@ -73,12 +71,12 @@
                                 <!--end::Svg Icon-->
                             </span> </span>
                         <span class="navi-text font-size-lg">
-                            Email settings
+                            Message
                         </span>
                     </a>
                 </div>
                 <div class="navi-item mb-2">
-                    <a href="#" class="navi-link py-4  @yield('Xactive')">
+                    <a href="{{ route('dashboard.profil') }}" class="navi-link py-4  @yield('profilActive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg--><svg
@@ -102,7 +100,7 @@
                     </a>
                 </div>
                 <div class="navi-item mb-2">
-                    <a href="#" class="navi-link py-4  @yield('Xactive')">
+                    <a href="{{ route('dashboard.change.password') }}" class="navi-link py-4  @yield('changeActive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg--><svg

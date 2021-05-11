@@ -59,9 +59,12 @@
                                 <strong>PUBLIER</strong> <br>Placez votre annonce en ligne
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
+                        {{-- @if ()
+                            
+                        @endif
+                        <li class="nav-item">
                             <a class="nav-link inactive" href="#step-4">
-                                <strong>Step 4</strong> <br>This is step description
+                                <strong>Payement </strong> <br>Payer votre annonce
                             </a>
                         </li> --}}
                     </ul>
