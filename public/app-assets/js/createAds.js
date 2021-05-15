@@ -46,19 +46,19 @@ class SelectedCategory {
           <div class="col-md-8">
             <div class="field">
               <label for="nom" class="field-label">Title</label>
-              <input type="text" class="field-input allInputs" name="title" autocomplete="off">
+              <input type="text" class="field-input allInputs" name="title" >
             </div>
           </div>
           <div class="col-md-4">
             <div class="field">
               <label for="nom" class="field-label">Price</label>
-              <input type="number" class="field-input allInputs" name="price" autocomplete="off">
+              <input type="number" class="field-input allInputs" name="price" >
             </div>
           </div>
           <div class="col-md-6">
             <div class="field">
               <label for="nom" class="field-label">Commune</label>
-              <input type="text" list="communes"class="field-input allInputs" name="commune" autocomplete="off">
+              <input type="text" list="communes"class="field-input allInputs" name="commune" >
               <datalist id="communes">
               </datalist>
             </div>
@@ -66,7 +66,7 @@ class SelectedCategory {
           <div class="col-md-6">
             <div class="field">
               <label for="nom" class="field-label">zone</label>
-              <input type="text" class="field-input allInputs" name="zone" autocomplete="off">
+              <input type="text" class="field-input allInputs" name="zone" >
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@ class SelectedCategory {
                 <div class="field">
                   <label for="nom" class="field-label">${field.name}</label>
                   <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id : ''}][feature_id]${field.feature_id}" value="${fieldFeatureEqual ? field.feature_id : ''}">
-                  <input type="${field.type}" class="field-input allInputs" id="${field.name}" name="feature[${fieldFeatureEqual ? field.feature_id : ''}][value][${field.id}]" autocomplete="off">
+                  <input type="${field.type}" class="field-input allInputs" id="${field.name}" name="feature[${fieldFeatureEqual ? field.feature_id : ''}][value][${field.id}]" >
                 </div>
               </div>`
               );

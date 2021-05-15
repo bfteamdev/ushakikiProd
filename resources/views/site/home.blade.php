@@ -11,11 +11,25 @@ use App\Classes\UrlRandom;
             <div class="separateTitle"></div>
             {{-- <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a> --}}
         </div>
-        <form action="{{ route('search.home') }}" method="GET">
+        <form id="formSearch"action="{{ route('search.home') }}" method="GET">
             @csrf
-            <div class="container search">
-                <input type="search" class="searchInput" name="annonce" id="" placeholder="Search.....">
-               <button type="submit"><i class="fa fa-search"></i></button> 
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="search col-lg-5 col-md-8 col-sm-10">
+                    <input type="search" class="searchInput" name="q" id="search" placeholder="Search....." autocomplete="off">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <ul class="autosearch">
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                        <li>ushakiki</li>
+                    </ul>
+                </div>
             </div>
         </form>
         <div class="containerCategory">
@@ -249,13 +263,18 @@ use App\Classes\UrlRandom;
             top: 40%;
             left: -60px !important
         }
+
         .carousel-control-next {
             height: 45px;
             top: 40%;
             right: -60px !important
         }
+
     </style>
 @endsection
 @section('footer')
     @include('layout.partials.include.footer')
+@endsection
+@section('script')
+    <script src="{{ asset("app-assets/js/search.js") }}"></script>
 @endsection

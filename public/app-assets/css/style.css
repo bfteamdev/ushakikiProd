@@ -379,19 +379,23 @@ li.dropdown-header {
 
 .search {
 	position: relative;
-	width: 90%;
 }
 
 .search .searchInput {
+	width: 100%;
 	border: 2px solid white;
 	border-radius: 4px;
 	padding: 8px 25px;
 	font-size: 15px;
 	font-weight: 600;
-	width: 100%;
 	outline: none;
 	color: white;
 	background-color: transparent;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
 }
 
 .search .searchInput::placeholder {
@@ -402,15 +406,84 @@ li.dropdown-header {
 	border: 2px solid #003bfd;
 } */
 
-.search i {
+.search button {
 	position: absolute;
-	padding: 12px 22px;
+	padding: 6px 19px;
 	height: 100%;
 	background-color: white;
 	color: black;
-	right: 0;
+	right: 0px;
 	border-radius: 4px;
 	font-size: 18px;
+	border: 0;
+	outline: none;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+}
+
+.searchFocused .searchInput {
+	border: 2px solid var(--bs-cyan);
+}
+
+.searchFocused button {
+	background-color: var(--bs-cyan);
+	color: white;
+}
+
+.search .autosearch {
+	position: absolute;
+	/*display: none; */
+	top: 48px;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	text-align: start;
+	list-style: none;
+	background-color: white;
+	box-shadow: 0 0 20px -3px #00000078;
+	z-index: 900;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+
+.autosearch li {
+	padding: 8px 20px;
+	border-bottom: 1px solid #c5c5c5;
+	transition: background .2s ease-in-out;
+	-webkit-transition: background .2s ease-in-out;
+	-moz-transition: background .2s ease-in-out;
+	-ms-transition: background .2s ease-in-out;
+	-o-transition: background .2s ease-in-out;
+}
+
+.autosearch li:hover{
+	cursor: pointer;
+	background-color: #dbac14;
+	color: #252525;
+}
+
+.autosearch li:first-child{
+	border-radius: 4px 4px 0px 0px;
+	-webkit-border-radius: 4px 4px 0px 0px;
+	-moz-border-radius: 4px 4px 0px 0px;
+	-ms-border-radius: 4px 4px 0px 0px;
+	-o-border-radius: 4px 4px 0px 0px;
+}
+
+.autosearch li:last-child{
+	border-bottom: none;
+	border-radius: 0px 0px 4px 4px;
+	-webkit-border-radius: 0px 0px 8px 8px;
+	-moz-border-radius: 0px 0px 8px 8px;
+	-ms-border-radius: 0px 0px 8px 8px;
+	-o-border-radius: 0px 0px 8px 8px;
 }
 
 .logo a {
@@ -4081,7 +4154,7 @@ h2.sear-head.fer {
 	flex-direction: column;
 	background-color: #ffffff;
 	border-top: 1px solid rgba(0, 0, 0, .125);
-	border-radius:  0px 0px 8px 8px;
+	border-radius: 0px 0px 8px 8px;
 	position: relative;
 }
 
@@ -4106,11 +4179,11 @@ h2.sear-head.fer {
 	background-color: #d8d8d8;
 }
 
-.message-input .error{
-border: 2px solid #ff0000;
+.message-input .error {
+	border: 2px solid #ff0000;
 }
 
-.message-input .error::placeholder{
+.message-input .error::placeholder {
 	color: red;
 }
 
@@ -4144,13 +4217,15 @@ border: 2px solid #ff0000;
 	-o-transition: all .15s ease-in-out;
 }
 
-.message-footer .message-send:hover{
+.message-footer .message-send:hover {
 	background-color: #ae3e60;
 	color: white;
 }
-.grayBg{
+
+.grayBg {
 	box-shadow: 0px 0px 15px -4px #929292 !important;
 }
+
 .chatAll {
 	display: block;
 	opacity: 1;
@@ -4160,16 +4235,14 @@ border: 2px solid #ff0000;
 	transform: none !important;
 }
 
-.chatAll .message {
-}
+.chatAll .message {}
 
 .chatAll .message .message-header {
 	border-radius: 5px 5px 0px 0px;
 	background-color: rgb(219 172 20);
 }
 
-.chatAll .message .message-footer {
-}
+.chatAll .message .message-footer {}
 
 a.boxUser {
 	box-shadow: 0px 0px 10px -4px #000000c7;
@@ -4178,7 +4251,7 @@ a.boxUser {
 	cursor: pointer;
 }
 
-.boxUser:hover{
+.boxUser:hover {
 	cursor: pointer;
 	transform: scale3d(1.02, 1.02, 1.02);
 	-webkit-transform: scale3d(1.02, 1.02, 1.02);
@@ -4191,6 +4264,7 @@ a.boxUser {
 	-ms-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
 }
+
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
 
 @media screen and (max-width: 479px) {
@@ -5969,6 +6043,12 @@ label {
 	}
 }
 
+@media (max-width: 547px) {
+	.search {
+		width: 90%;
+	}
+}
+
 @media (max-width: 480px) {
 	/*--typo--*/
 	.main-banner, .banner {
@@ -6507,6 +6587,10 @@ label {
 	}
 	.header-right {
 		width: 100%;
+	}
+	.search button {
+		padding: 0px 2px;
+		height: 100%;
 	}
 	.btn-primary {
 		padding: 0 0 0 12px;

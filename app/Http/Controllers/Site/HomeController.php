@@ -34,19 +34,7 @@ class HomeController extends Controller
         // $category = Category::where("groupe_id", $group->id)->get();
         return view('site.category.allAds', compact('ad', 'annonce', 'category'));
     }
-    public function searchHome()
-    {
-        $title = request('annonce');
-        if ($title != null) {
-            $search = DB::table('annonces')->where('title', 'like', "%$title%")->get();
-            foreach ($search as $item) {
-                $image = DB::table('photos')->where('annonce_id', $item->id)->first();
-                $type = DB::table('types')->where('id', $item->type_id)->get();
-                $category = DB::table('categories')->where('id', $item->category_id)->get();
-            }
-        }
-        return view('site.search.home.search', compact('search', 'image', 'type', 'category'));
-    }
+
     public function messageView()
     {
         return view('site.dashbaord.allUserSendMessage');
