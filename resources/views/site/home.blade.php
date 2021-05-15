@@ -11,7 +11,7 @@ use App\Classes\UrlRandom;
             <div class="separateTitle"></div>
             {{-- <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a> --}}
         </div>
-        <form id="formSearch"action="{{ route('search.home') }}" method="GET">
+        <form id="formSearch"action="{{ route('AutoSearchController.search') }}" method="GET">
             @csrf
             <div class="d-flex justify-content-center align-items-center">
                 <div class="search col-lg-5 col-md-8 col-sm-10">
