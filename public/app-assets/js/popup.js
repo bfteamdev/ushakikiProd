@@ -2,17 +2,21 @@ let chatBtn = document.querySelector("#chat")
 let popupChat = document.querySelector("#popupChat")
 let closePopup = document.querySelector("#closePopup")
 let form = document.querySelector("#form")
-scrollBottom.scrollTop = scrollBottom.scrollHeight
+if (scrollBottom) {
+  scrollBottom.scrollTop = scrollBottom.scrollHeight;
+}
 
-chatBtn.addEventListener('click', (e) => {
-  popupChat.style.display = "block"
-  setTimeout(() => {
-    popupChat.style.opacity = 1
-  }, 50);
-});
-closePopup.addEventListener('click', (e) => {
-  popupChat.style.display = "none"
-});
+if (chatBtn) {
+  chatBtn.addEventListener('click', (e) => {
+    popupChat.style.display = "block"
+    setTimeout(() => {
+      popupChat.style.opacity = 1
+    }, 50);
+  });
+  closePopup.addEventListener('click', (e) => {
+    popupChat.style.display = "none"
+  });
+}
 
 class sendMessage {
   constructor(form) {

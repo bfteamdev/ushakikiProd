@@ -220,6 +220,12 @@
             </form>
         </div>
 @endsection
+{{-- @if (Auth::check())
+<script>
+    let scrollBottom = document.querySelector(".message-body")
+    scrollBottom.scrollTop = scrollBottom.scrollHeight;
+</script>
+@endif --}}
 @section('script')
         <script defer src="{{ asset('app-assets/js/jquery.flexslider.js') }}"></script>
         {{-- <link rel="stylesheet" href="{{ asset('app-assets/css/flexslider.css') }}" type="text/css"
@@ -233,8 +239,10 @@
                     controlNav: "thumbnails"
                 });
             });
-            let scrollBottom = document.querySelector(".message-body")
-            scrollBottom.scrollTop = scrollBottom.scrollHeight
+        let scrollBottom = document.querySelector(".message-body")
+        if(scrollBottom){
+            scrollBottom.scrollTop = scrollBottom.scrollHeight;
+        }
         </script>
-        <script src="{{ asset('app-assets/js/popup.js') }}"></script>
+        <script src="{{ asset('app-assets/js/popup.js') }}"rel="preload" as="script"></script>
 @endsection

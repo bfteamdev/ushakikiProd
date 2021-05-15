@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
-    protected $guarded= [];
+    protected $guarded = [];
+    public function client()
+    {
+        $this->belongsTo(Client::class,"sender_id");
+    }
 }

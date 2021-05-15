@@ -3814,7 +3814,7 @@ h2.sear-head.fer {
 	width: 100%;
 	top: 115%;
 	background-color: #dbac14;
-	z-index: 1000106;
+	z-index: 999999999999999999999;
 	border: 3px solid #dbac14;
 	border-radius: 6px;
 }
@@ -3837,13 +3837,15 @@ h2.sear-head.fer {
 .submenu ul {
 	list-style: none;
 	width: 100%;
-	margin: 0 !important;
+	padding: 0 !important;
+	margin: 0px !important;
 }
 
 .submenu ul li {
 	list-style: none;
 	padding: 6px 16px;
 	width: 100%;
+	margin: 0 !important;
 	border-bottom: 1px solid #333333;
 	transition: all .3s ease-in-out;
 	-webkit-transition: all .3s ease-in-out;
@@ -3932,7 +3934,6 @@ h2.sear-head.fer {
 	height: 60%;
 	right: 0;
 	transform: translate(-60px, -46px);
-	z-index: 1000;
 	opacity: 0;
 	transition: all .3s ease-in-out;
 }
@@ -4146,6 +4147,49 @@ border: 2px solid #ff0000;
 .message-footer .message-send:hover{
 	background-color: #ae3e60;
 	color: white;
+}
+.grayBg{
+	box-shadow: 0px 0px 15px -4px #929292 !important;
+}
+.chatAll {
+	display: block;
+	opacity: 1;
+	padding: 0 !important;
+	height: 100%;
+	position: relative !important;
+	transform: none !important;
+}
+
+.chatAll .message {
+}
+
+.chatAll .message .message-header {
+	border-radius: 5px 5px 0px 0px;
+	background-color: rgb(219 172 20);
+}
+
+.chatAll .message .message-footer {
+}
+
+a.boxUser {
+	box-shadow: 0px 0px 10px -4px #000000c7;
+	padding: 12px 25px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.boxUser:hover{
+	cursor: pointer;
+	transform: scale3d(1.02, 1.02, 1.02);
+	-webkit-transform: scale3d(1.02, 1.02, 1.02);
+	-moz-transform: scale3d(1.02, 1.02, 1.02);
+	-ms-transform: scale3d(1.02, 1.02, 1.02);
+	-o-transform: scale3d(1.02, 1.02, 1.02);
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
 }
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
 

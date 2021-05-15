@@ -68,6 +68,7 @@ Route::get('ad/{id}','AnnonceController@viewAnnonce')->name('dashboard.ads.show'
 Route::patch('ad/{id}','AnnonceController@updateAd')->name('dashboard.ads.update');
 //Message
 Route::get('/message','Site\HomeController@messageView')->name('dashboard.message');
+Route::get('/message/{idSender}','Site\HomeController@messageViewOne')->name('dashboard.messageViewOne');
 //Profil
 Route::get('/profil','Site\HomeController@profilView')->name('dashboard.profil');
 //Change Password
