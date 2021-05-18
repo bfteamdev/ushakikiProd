@@ -19,6 +19,7 @@
         "laravel/ui": "^3.2",
         "league/html-to-markdown": "^5.0",
         "livewire/livewire": "^2.4",
+        "pusher/pusher-php-server": "^5.0",
         "realrashid/sweet-alert": "^3.2"
     },
     "require-dev": {
