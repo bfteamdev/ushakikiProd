@@ -429,13 +429,14 @@ li.dropdown-header {
 }
 
 .searchFocused button {
-	background-color: var(--bs-cyan);
+	background-color: var(--color1);
 	color: white;
 }
 
 .search .autosearch {
 	position: absolute;
-	/*display: none; */
+	/*display: none;
+	*/opacity: 0;
 	top: 48px;
 	left: 0;
 	right: 0;
@@ -451,6 +452,11 @@ li.dropdown-header {
 	-moz-border-radius: 4px;
 	-ms-border-radius: 4px;
 	-o-border-radius: 4px;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
 }
 
 .autosearch li {

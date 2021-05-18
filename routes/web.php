@@ -90,4 +90,4 @@ Route::prefix('category')->group(function () {
 Route::post("/message/{idReceiver}",'MessageController@store')->name("message.store");
 
 //site- search Home
-Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
+Route::post('search_ads', 'Site\AutoSearchController@search')->name('AutoSearchController.search');

@@ -83,17 +83,20 @@ class AutoSearchController extends Controller
     {
         //
     }
-    public function searchHome()
+    public function search(Request $request)
     {
-        $title = request('q');
-        if ($title != null) {
+        $title = trim(strtolower(htmlspecialchars($request->q)));
+        if (!empty($title)) {
             $search = DB::table('annonces')->where('title', 'like', "%$title%")->get();
             foreach ($search as $item) {
                 $image = DB::table('photos')->where('annonce_id', $item->id)->first();
                 $type = DB::table('types')->where('id', $item->type_id)->get();
                 $category = DB::table('categories')->where('id', $item->category_id)->get();
             }
+            return json_encode($search);
+            // return view('site.search.home.search', compact('search', 'image', 'type', 'category'));
+        }else{
+            return false;
         }
-        return view('site.search.home.search', compact('search', 'image', 'type', 'category'));
     }
 }
