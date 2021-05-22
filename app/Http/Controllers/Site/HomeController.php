@@ -18,13 +18,7 @@ class HomeController extends Controller
         $group = Groupe::all();
         return view('site.home', compact("group"));
     }
-    public function viewAllProduct(Annonce $annonce)
-    {
-        $ad=Annonce::where('category_id', $annonce->id)->where('type_id', $annonce->id)->get();
-        // dd($ad);
-        $category = Category::where("groupe_id", $group->id)->get();
-        return view('site.category.allAds', compact('ad', 'annonce', 'category'));
-    }
+  
     public function searchHome()
     {
         $title=request('annonce');
@@ -40,7 +34,7 @@ class HomeController extends Controller
     }
     public function messageView()
     {
-        return view('site.dashbaord.message');
+        return view('site.dashbaord.message.message');
 
     }
     public function profilView()

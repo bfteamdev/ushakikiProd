@@ -222,7 +222,6 @@
                                             <!--end::Scroll-->
                                         </div>
                                         <!--end::Body-->
-
                                         <!--begin::Footer-->
                                         <div class="card-footer align-items-center">
                                             <!--begin::Compose-->
