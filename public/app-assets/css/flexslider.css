@@ -93,8 +93,11 @@ html[xmlns] .flexslider .slides {
 }
 .flexslider .slides img {
   height: auto;
-  width: 33%;
-    margin: 5% auto;
+  width: 78%;
+  height: 390px;
+  margin: 0% auto;
+  /* image-rendering: pixelated; */
+  object-fit: cover;
 }
 .flex-viewport {
   max-height: 2000px;

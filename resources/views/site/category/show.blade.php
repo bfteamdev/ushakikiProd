@@ -9,11 +9,21 @@
             border-top: 4px solid #dbac14 !important;
         }
 
+        h2.head::after {
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: 0;
+            width: 78px;
+            height: 3px;
+            background-color: #2d2d2d;
+        }
+
     </style>
 @endsection
 @section('content')
     <div class="container">
-        <h2 class="head">Main Categories</h2>
+        <h2 class="head" style="text-align: left;">Main Categories</h2>
         <div class="category-list">
             <div id="parentVerticalTab" class="resp-vtabs hor_1" style="display: block; width: 100%; margin: 0px;">
                 <ul class="resp-tabs-list hor_1" style="margin-top: 3px;">
@@ -21,7 +31,7 @@
                         <li class="resp-tab-item hor_1" aria-controls="hor_1_tab_item-{{ $key }}" role="tab"
                             style="background-color: #f5f5f5;">
                             <i class="{{ $item->icon }}" style="font-size: 1.4rem;
-                                                                margin-right: 10px;"></i>{{ $item->name }}
+                                                                    margin-right: 10px;"></i>{{ $item->name }}
                         </li>
                     @endforeach
                 </ul>
@@ -49,8 +59,8 @@
                                         <div class="row">
                                             @foreach ($item->type as $count => $items)
                                                 <div class="col-lg-6">
-                                                    <a href="{{ route('category.ads',
-                                                    ["name"=>$item->name,"products"=>$items->id]) }}" class="cardSubCategory">
+                                                    <a href="{{ route('category.ads', ['name' => $item->name, 'products' => $items->id]) }}"
+                                                        class="cardSubCategory">
                                                         <span class="nameCategory">{{ $items->name }}</span>
                                                         <div class="totalAds">
                                                             <span>{{ $items->Ads->count() }}</span>
@@ -63,11 +73,11 @@
                                     </div>
                                 </div>
                             @else
-
                                 <div class="category"
                                     style="padding: 24px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
                                     <div class="col-lg-12">
-                                        <a href="{{ route('category.ads.not',['name'=>$item->name,'products'=>$item->id]) }}" class="cardSubCategory" style="margin-bottom:0% !important;">
+                                        <a href="{{ route('category.ads.not', ['name' => $item->name, 'products' => $item->id]) }}"
+                                            class="cardSubCategory" style="margin-bottom:0% !important;">
                                             <span class="nameCategory">Voir touts les annonces sur cette category</span>
                                             <div class="totalAds">
                                                 <span>
@@ -75,7 +85,7 @@
                                                         {{ $item->Ads->count() }}
                                                     @endif
                                                 </span>
-                                                <span>{{ $item->Ads->count() <= 1 ? 'Annonce':"Annonces" }}</span>
+                                                <span>{{ $item->Ads->count() <= 1 ? 'Annonce' : 'Annonces' }}</span>
                                             </div>
                                         </a>
                                     </div>

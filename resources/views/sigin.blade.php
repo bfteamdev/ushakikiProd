@@ -35,7 +35,8 @@
                                 <div class="field">
                                     <label for="email" class="field-label">Adresse e-mail</label>
                                     {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
-                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror" id="email" name="email"/>
+                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror"
+                                        id="email" name="email" />
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -46,7 +47,9 @@
                             <div class="col-lg-12">
                                 <div class="field">
                                     <label for="password" class="field-label">Mot de passe</label>
-                                    <input type="password" class="field-input allInputs @error('password') is-invalid @enderror" id="password" name="password"/>
+                                    <input type="password"
+                                        class="field-input allInputs @error('password') is-invalid @enderror" id="password"
+                                        name="password" />
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -63,16 +66,11 @@
                                     <span class="passwordReset"><a href="{{ route('password.request') }}">Mot de
                                             passe oublie ?</a></span>
                                 @endif
-                            </div>                            
-                                <div class="col-lg-12 mt-4 d-flex justify-content-between align-items-center " >
-                                    <div class="col-lg-6">
-                                        <a href="{{ route('login.facebook') }}" class="btn btn-primary ">Login with facebook</a>
-                                    </div>
-                                    <div class="col-lg-6 mt-4">
-                                        <a href="{{ route('login.google') }}" class="btn btn-danger ">Login with google</a>
-                                    </div>
-
-                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-4 d-flex justify-content-between align-items-center mt-4">
+                                <a href="{{ route('login.facebook') }}" class="btn btn-primary m-0"><i class="fab fa-facebook"></i>&nbsp; Login with facebook</a>
+                                <a href="{{ route('login.google') }}" class="btn btn-danger "><i class="fab fa-google"></i>&nbsp; Login with google</a>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessagesTable extends Migration
+class CreateCommuneTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('commune', function (Blueprint $table) {
             $table->id();
-            $table->integer("sender_id");
-            $table->integer("receiver_id");
-            $table->text("message");
-            $table->boolean("read")->default(1);
+            $table->unsignedBigInteger("province_id")->nullable();
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('commune');
     }
 }

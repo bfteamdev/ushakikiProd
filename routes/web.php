@@ -68,6 +68,7 @@ Route::get('ad/{id}','AnnonceController@viewAnnonce')->name('dashboard.ads.show'
 Route::patch('ad/{id}','AnnonceController@updateAd')->name('dashboard.ads.update');
 //Message
 Route::get('/message','Site\HomeController@messageView')->name('dashboard.message');
+Route::get('/message/{idSender}','Site\HomeController@messageViewOne')->name('dashboard.messageViewOne');
 //Profil
 Route::get('/profil','Site\HomeController@profilView')->name('dashboard.profil');
 //Change Password
@@ -86,9 +87,7 @@ Route::prefix('category')->group(function () {
   Route::get('/{name}/product/{id}','PagesController@showOne')->name('category.product.one');
 });
 
+Route::post("/message/{idReceiver}",'MessageController@store')->name("message.store");
+
 //site- search Home
-Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
-
-
-
-
+Route::post('search_ads', 'Site\AutoSearchController@search')->name('AutoSearchController.search');

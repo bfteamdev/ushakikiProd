@@ -11,21 +11,26 @@ use App\Classes\UrlRandom;
             <div class="separateTitle"></div>
             {{-- <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a> --}}
         </div>
-        <form action="{{ route('search.home') }}" method="GET">
+        <form id="formSearch" action="{{ route('AutoSearchController.search') }}" method="post">
             @csrf
-            <div class="container search">
-                <input type="search" class="searchInput" name="annonce" id="" placeholder="Search.....">
-               <button type="submit"><i class="fa fa-search"></i></button> 
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="search col-lg-5 col-md-8 col-sm-10">
+                    <input type="search" class="searchInput" name="q" id="search" placeholder="Search....." autocomplete="off">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <ul class="autosearch">
+                    </ul>
+                </div>
             </div>
         </form>
         <div class="containerCategory">
             @foreach ($group as $key => $item)
-            <a href="{{ route('category.show',["group"=>$item->id,"name"=>$item->name]) }}" class="rond bg{{ $key+1 }}">
-                <i class="{{ $item->icon }}"></i>
-                <span class="nameCategory">{{ $item->name }}</span>
-                <div class="separateName"></div>
-                <span class="option">Achat / vente / location</span>
-            </a>
+                <a href="{{ route('category.show', ['group' => $item->id, 'name' => $item->name]) }}"
+                    class="rond bg{{ $key + 1 }}">
+                    <i class="{{ $item->icon }}"></i>
+                    <span class="nameCategory">{{ $item->name }}</span>
+                    <div class="separateName"></div>
+                    <span class="option">Achat / vente / location</span>
+                </a>
             @endforeach
         </div>
     </div>
@@ -235,7 +240,7 @@ use App\Classes\UrlRandom;
     </div>
 @endsection
 @section('style')
-    <style rel="preload" as="style" >
+    <style rel="preload" as="style">
         .carousel-control-next,
         .carousel-control-prev {
             /* right: -80px !important; */
@@ -244,23 +249,22 @@ use App\Classes\UrlRandom;
         }
 
         .carousel-control-prev {
-            /* left: -80px !important; */
-        }
-/* 
-        .carousel-control-prev-icon {
-            width: 4rem !important;
-            height: 4rem !important;
-            background: url({{ asset('app-assets/images/themes1.png') }}) no-repeat 31px 0px !important;
+            height: 45px;
+            top: 40%;
+            left: -60px !important
         }
 
-        .carousel-control-next-icon {
-            width: 4rem !important;
-            height: 4rem !important;
-            background: url({{ asset('app-assets/images/themes1.png') }}) no-repeat -19px 0px !important;
-        } */
+        .carousel-control-next {
+            height: 45px;
+            top: 40%;
+            right: -60px !important
+        }
 
     </style>
 @endsection
 @section('footer')
     @include('layout.partials.include.footer')
+@endsection
+@section('script')
+    <script src="{{ asset("app-assets/js/search.js") }}"></script>
 @endsection

@@ -37,8 +37,7 @@ class SelectedCategory {
     }
     //Ajout des champs obligatoire sur le premier card du content
     parentNodesXL.insertAdjacentHTML("beforeend",
-      `
-    <div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
+      `<div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
       <div class="card-header" style="background-color: #5a5a5a;color: white;display: flex;align-items: center;justify-content: space-between;">
         <span>Title de l'annonce</span><span class="displayOrder" style="font-size: 14px;font-weight: 100;color: #ffd44a">Champs obligatoire *</span>
       </div>
@@ -47,25 +46,27 @@ class SelectedCategory {
           <div class="col-md-8">
             <div class="field">
               <label for="nom" class="field-label">Title</label>
-              <input type="text" class="field-input allInputs" name="title" autocomplete="off">
+              <input type="text" class="field-input allInputs" name="title" >
             </div>
           </div>
           <div class="col-md-4">
             <div class="field">
               <label for="nom" class="field-label">Price</label>
-              <input type="number" class="field-input allInputs" name="price" autocomplete="off">
+              <input type="number" class="field-input allInputs" name="price" >
             </div>
           </div>
           <div class="col-md-6">
             <div class="field">
               <label for="nom" class="field-label">Commune</label>
-              <input type="text" class="field-input allInputs" name="commune" autocomplete="off">
+              <input type="text" list="communes"class="field-input allInputs" name="commune" >
+              <datalist id="communes">
+              </datalist>
             </div>
           </div>
           <div class="col-md-6">
             <div class="field">
               <label for="nom" class="field-label">zone</label>
-              <input type="text" class="field-input allInputs" name="zone" autocomplete="off">
+              <input type="text" class="field-input allInputs" name="zone" >
             </div>
           </div>
         </div>
@@ -74,6 +75,12 @@ class SelectedCategory {
     `);
     //change du hauteur du content qui contier les step pour qu'il agrandisse automatiquement 
     document.querySelector(".tabAutoGrow").style.height = "auto"
+    if (data.commune.length !== 0) {
+      data.commune.forEach((element) => {
+        document.querySelector("#communes")
+          .insertAdjacentHTML("beforeend", `<option value="${element.name}">`);
+      });
+    }
     if (data.subCategory.length !== 0) {
       data.subCategory.forEach((element) => {
         document.querySelector(".select-" + event.target.value)
@@ -107,7 +114,7 @@ class SelectedCategory {
                 <div class="field">
                   <label for="nom" class="field-label">${field.name}</label>
                   <input type="hidden" name="feature[${fieldFeatureEqual ? field.feature_id : ''}][feature_id]${field.feature_id}" value="${fieldFeatureEqual ? field.feature_id : ''}">
-                  <input type="${field.type}" class="field-input allInputs" id="${field.name}" name="feature[${fieldFeatureEqual ? field.feature_id : ''}][value][${field.id}]" autocomplete="off">
+                  <input type="${field.type}" class="field-input allInputs" id="${field.name}" name="feature[${fieldFeatureEqual ? field.feature_id : ''}][value][${field.id}]" >
                 </div>
               </div>`
               );
