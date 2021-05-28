@@ -2,13 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>USHAKIKI | @yield('title')</title>
+    <title>USHAKIKI @yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"
         rel="preload" as="style">
     <link href="{{ asset('app-assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all" rel="preload" as="style" />
     <link href="{{ asset('app-assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" rel="preload"
         as="style" />
+
+{{-- <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> --}}
+<link rel="icon" type="image/png" sizes="96x96" href="{{ asset("app-assets/logo/favicon-96x96.png") }}">
+
     <link rel="preload" href="{{ asset('app-assets/font/arial-rounded-mt.ttf') }}" as="font" crossorigin="anonymous" />
     <link rel="preload" href="{{ asset('app-assets/font/berlin-sans-fb-3.ttf') }}" as="font" crossorigin="anonymous" />
     <link rel="preload" href="{{ asset('app-assets/font/Intro Inline.otf') }}" as="font" crossorigin="anonymous" />

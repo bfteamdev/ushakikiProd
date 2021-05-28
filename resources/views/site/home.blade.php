@@ -11,11 +11,11 @@ use App\Classes\UrlRandom;
             <div class="separateTitle"></div>
             {{-- <a href="#" class="post"><i class="fa fa-pencil-square-o"></i> Post a new Ad</a> --}}
         </div>
-        <form id="formSearch" action="{{ route('AutoSearchController.search') }}" method="post">
+        <form id="formSearch" action="{{ route('search.home') }}" method="GET">
             @csrf
             <div class="d-flex justify-content-center align-items-center">
                 <div class="search col-lg-5 col-md-8 col-sm-10">
-                    <input type="search" class="searchInput" name="q" id="search" placeholder="Search....." autocomplete="off">
+                    <input type="search" class="searchInput" name="q" id="search" placeholder="Search....." autocomplete="off" data-link="{{ route('AutoSearchController.search') }}">
                     <button type="submit"><i class="fa fa-search"></i></button>
                     <ul class="autosearch">
                     </ul>

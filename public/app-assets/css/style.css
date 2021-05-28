@@ -360,12 +360,12 @@ li.dropdown-header {
 
 .logo {
 	float: left;
-	/* width: 200px; */
+	width: 254px;
 }
 
 .logo img {
-	width: 100%;
-	height: 80px;
+	width: 33%;
+	height: 94px;
 	object-fit: cover;
 }
 
@@ -392,10 +392,10 @@ li.dropdown-header {
 	color: white;
 	background-color: transparent;
 	transition: all .2s ease-in-out;
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
 }
 
 .search .searchInput::placeholder {
@@ -425,12 +425,12 @@ li.dropdown-header {
 }
 
 .searchFocused .searchInput {
-	border: 2px solid var(--bs-cyan);
+	border: 2px solid var(--color1);
 }
 
 .searchFocused button {
 	background-color: var(--color1);
-	color: white;
+	color: #ffffff;
 }
 
 .search .autosearch {
@@ -492,37 +492,34 @@ li.dropdown-header {
 	-o-border-radius: 0px 0px 8px 8px;
 }
 
-.logo a {
+.logo {
 	font-family: "Intro Inline", sans-serif;
-	/* font-size: 60px; */
 	color: #01a185;
 	text-decoration: none;
 	display: flex;
-	align-items: baseline;
+	align-items: center;
+	margin: 0 20px;
 }
 
-.logo a .cl1 {
-	color: var(--color1);
-	font-size: 40px;
-}
-
-.logo a .cl1::first-letter {
+.logo .cl1 {
+	color: var(--color4);
 	font-size: 60px;
 }
 
-.logo a .cl2 {
+
+.logo .cl2 {
+	color: var(--color1);
+	font-size: 60px;
+}
+
+.logo .cl3 {
 	color: var(--color2);
-	font-size: 40px;
+	font-size: 60px;
 }
 
-.logo a .cl3 {
+.logo .cl4 {
 	color: var(--color3);
-	font-size: 40px;
-}
-
-.logo a .cl4 {
-	color: var(--color4);
-	font-size: 40px;
+	font-size: 60px;
 }
 
 a.MyAds {
@@ -1866,8 +1863,8 @@ h2.head {
 h2.head::after {
 	content: '';
 	position: absolute;
-	/* right: 7px; */
-	left: 0px;
+	right: 7px;
+	/* left: 0px; */
 	bottom: 0;
 	width: 78px;
 	height: 3px;

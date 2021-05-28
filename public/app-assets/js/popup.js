@@ -36,9 +36,9 @@ class sendMessage {
       },
     });
     if (this.message.value.trim() !== "") {
+      this.message.value = "";
       this.message.style.border = "none";
       link.then((response) => {
-        this.message.value = "";
         if (!response.redirected) {
           if (response.ok && response.status === 200) {
             response.json().then((data) => {
