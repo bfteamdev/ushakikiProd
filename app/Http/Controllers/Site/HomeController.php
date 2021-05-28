@@ -27,13 +27,6 @@ class HomeController extends Controller
         $group = Groupe::all();
         return view('site.home', compact("group"));
     }
-    public function viewAllProduct(Annonce $annonce)
-    {
-        $ad = Annonce::where('category_id', $annonce->id)->where('type_id', $annonce->id)->get();
-        // dd($ad);
-        // $category = Category::where("groupe_id", $group->id)->get();
-        return view('site.category.allAds', compact('ad', 'annonce', 'category'));
-    }
 
     public function messageView()
     {
@@ -56,6 +49,7 @@ class HomeController extends Controller
     }
     public function messageViewOne($idSender)
     {
+
         $userInfo = User::findOrFail($idSender);
         $messageUnReady = DB::table('messages')
             ->where("sender_id", $idSender)
@@ -65,6 +59,7 @@ class HomeController extends Controller
             ->where("read", 1)
             ->update(["read" => 0]);
         return view('site.dashbaord.message', compact("userInfo"));
+
     }
     public function profilView()
     {
