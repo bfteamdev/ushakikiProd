@@ -19,7 +19,7 @@
             <!--end::Aside-->
 
             <!--begin::Content-->
-            <div class="flex-row-fluid ml-lg-8">
+            <div class="flex-row-fluid ml-lg-8 grayBg">
                 <!--begin::Card-->
                 <div class="card card-custom">
 

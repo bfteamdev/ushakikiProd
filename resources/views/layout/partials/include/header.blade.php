@@ -1,12 +1,12 @@
 <div class="header">
-    <div class="logo">
-        <a href="/">
-            <span class="cl1">US</span>
+
+        <a class="logo" href="/">
+            <img src="{{ asset("app-assets/logo/ushakikiLogo.png") }}" alt="" srcset="">
+            <span class="cl1">S</span>
             <span class="cl2">HA</span>
             <span class="cl3">KI</span>
             <span class="cl4">KI</span>
         </a>
-    </div>
     <div class="header-right">
 
 

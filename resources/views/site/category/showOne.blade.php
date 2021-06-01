@@ -207,8 +207,9 @@
                     @if (Auth::check())
                         @livewire('chat', ['receiver_id' => $ads->user->id,"sender_id"=>Auth::user()->id], key($user->id))
                     @else
+                    <div class="message-body">
                         <div class="message-body-sender equare">Bonjour</div>
-                        <div class="message-body-receiver equare">Bjr</div> 
+                        <div class="message-body-receiver equare">Bjr</div> </div>
                     @endif
                     <div class="message-footer">
                         <div class="message-input">

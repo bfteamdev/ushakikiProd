@@ -32,6 +32,21 @@ class HomeController extends Controller
     {
         return view('site.dashbaord.allUserSendMessage');
     }
+    public function searchHome(Request $request)
+    {
+        $title = trim(htmlspecialchars($request->q));
+        if ($title != null) {
+            $search = DB::table('annonces')->where('title', 'like', "%$title%")->get();
+            foreach ($search as $item) {
+                $image = DB::table('photos')->where('annonce_id', $item->id)->first();
+                $type = DB::table('types')->where('id', $item->type_id)->get();
+                $category = DB::table('categories')->where('id', $item->category_id)->get();
+            }
+            return view('site.search.home.search', compact('search', 'image', 'type', 'category'));
+        }else{
+            return back();
+        }
+    }
     public function messageViewOne($idSender)
     {
 
@@ -42,7 +57,7 @@ class HomeController extends Controller
             ->orWhere("receiver_id", $idSender)
             ->orWhere("sender_id", Auth::user()->id)
             ->where("read", 1)
-            ->update(["read"=>0]);
+            ->update(["read" => 0]);
         return view('site.dashbaord.message', compact("userInfo"));
 
     }

@@ -91,3 +91,5 @@ Route::post("/message/{idReceiver}",'MessageController@store')->name("message.st
 
 //site- search Home
 Route::post('search_ads', 'Site\AutoSearchController@search')->name('AutoSearchController.search');
+//site- search Home
+Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
