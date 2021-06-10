@@ -152,7 +152,7 @@
     </div>
 @endsection
 @section('script')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
     <script type="text/javascript">
         function readURL(input) {
             debugger
@@ -166,12 +166,12 @@
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }
-        // debugger
+        debugger
         let imgs = document.querySelectorAll(".file");
-        // $(".image").change(function() {
-        //     debugger
-        //     readURL(this);
-        // });
+        $(".file").change(function() {
+            debugger
+            readURL(this);
+        });
         imgs.forEach((item) => {
             item.addEventListener("change", function(e) {
                 debugger

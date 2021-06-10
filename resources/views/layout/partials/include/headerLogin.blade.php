@@ -1,13 +1,13 @@
 <div class="header">
-    <div class="logo">
-        <a class="logo" href="/">
-            <img src="{{ asset("app-assets/logo/ushakikiLogo.png") }}" alt="" srcset="">
-            <span class="cl1">S</span>
-            <span class="cl2">HA</span>
-            <span class="cl3">KI</span>
-            <span class="cl4">KI</span>
-        </a>
-    </div>
+
+    <a class="logo" href="/">
+        <img src="{{ asset('app-assets/logo/ushakikiLogo.png') }}" alt="" srcset="">
+        <span class="cl1">S</span>
+        <span class="cl2">HA</span>
+        <span class="cl3">KI</span>
+        <span class="cl4">KI</span>
+    </a>
+
     <div class="header-right">
         <a class="MyAds" href="{{ route('ad.category') }}"><i class="far fa-edit"></i>Ajouter votre annonce</a>
         <div class="auth">

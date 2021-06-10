@@ -78,12 +78,10 @@
                                     <tbody>
                                         @foreach ($ad as $item)
                                             <tr>
+                                                <td><img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
+                                                        style="width: 165px; height: 100px;  display: block; object-fit:cover;" title=""
+                                                        alt="" /></td>
 
-                                                <td>
-                                                    <img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
-                                                        style="width: 165px; height: 100px;  display: block;" title=""
-                                                        alt="" />
-                                                </td>
                                                 <td style="font-size: 14px;">{{ $item->title }}</td>
                                                 <td style="font-size: 14px;">{{ $item->created_at }}</td>
                                                 <td style="font-size: 14px;">{{ $item->expired_at }}</td>

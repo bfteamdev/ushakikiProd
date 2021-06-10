@@ -34,7 +34,7 @@ class LoginController extends Controller
     }
     public function index()
     {
-        return view('sigin');
+        return view('auth.sigin');
     }
     public function login(Request $request)
     {

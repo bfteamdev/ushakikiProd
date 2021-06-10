@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string("town")->nullable();
             $table->boolean("status")->default(1);
             $table->string("profil")->default("profil/blank.png");
-            $table->string("provider_id")->nullable()
+            $table->string("provider_id")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,100 +1,107 @@
 @extends('layout.app')
-
+@section('title')
+    Register
+@endsection
 @section('content')
-
     <div id="page-wrapper" class="sign-in-wrapper">
-        <div class="graphs">
-            <div class="sign-up">
-                <h1>Create an account</h1>
-                {{-- <p class="creating">Having hands on experience in creating innovative designs,I do offer design
-                    solutions which harness.</p> --}}
-                <h2>Personal Information</h2>
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <div class="headLogo">
+                <h2>USHAKIKI</h2>
+            </div>
+            <div class="loginOrCreate">
+                <span class="register">Creer un compte</span>
+                <span class="register">Ou <a href="{{ route('login.user') }}">Se connecter</a></span>
+            </div>
+            <div class="col-md-6 col-sm-10">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    <div class="sign-u">
+                    <div class="signin">
+                        <div class="signin-body">
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="username" class="field-label">Username</label>
+                                    <input type="text" class="field-input allInputs @error('username') is-invalid @enderror"
+                                        name="username" value="{{ old('username') }}" id="username" />
 
-                        <div class="sign-up1">
-                            <h4> username* :</h4>
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="email" class="field-label">Adresse e-mail</label>
+                                    <input type="email" class="field-input allInputs @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" id="email" />
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="password" class="field-label">Mot de passe</label>
+                                    <input type="password"
+                                        class="field-input allInputs @error('password') is-invalid @enderror"
+                                        name="password" required id="password" />
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="password_confirmation" class="field-label">Mot de passe de
+                                        comfirmation</label>
+                                    <input type="password" class="field-input allInputs" name="password_confirmation"
+                                        required id="password_confirmation" />
+                                </div>
+                            </div>
+                            <div class="col-lg-5 mt-4">
+                                <button class="signin-btn" type="submit">S'iscrire</button>
+                            </div>
                         </div>
-                        <div class="sign-up2">
-                            <input type="text" class="form-control @error('username') is-invalid @enderror" name="username"
-                                value="{{ old('username') }}" placeholder=" " required=" " />
-
-                            @error('username')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="sign-u">
-                        <div class="sign-up1">
-                            <h4>Email Address* :</h4>
-                        </div>
-                        <div class="sign-up2">
-                            <input type="email" class="form-control email @error('email') is-invalid @enderror" name="email"
-                                value="{{ old('email') }}" required autocomplete="email" />
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="sign-u">
-                        <div class="sign-up1">
-                            <h4>Password* :</h4>
-                        </div>
-                        <div class="sign-up2">
-
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                name="password" required autocomplete="new-password" />
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="sign-u">
-                        <div class="sign-up1">
-                            <h4>Confirm Password* :</h4>
-                        </div>
-                        <div class="sign-up2">
-
-                            <input type="password" class="form-control" name="password_confirmation" required
-                                autocomplete="new-password" />
-
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="sub_home">
-                        <div class="sub_home_left">
-                            {{-- <button type="submit" class="btn btn-primary">
-                                Create
-                            </button> --}}
-                            <input type="submit" value="Create">
-
-                        </div>
-
-                        <div class="sub_home_right">
-                            <p>Go Back to <a href="{{ route('site.index') }}">Home</a></p>
-                        </div>
-                        <div class="clearfix"> </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
-<style>
-    .email {
-        margin-top: 16px;
-    }
+@section('footer')
+    @include('layout.partials.include.footer')
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.field-input').focus(function() {
+                $(this).parent().addClass('is-focused has-label');
+            });
+            $('.field-input').blur(function() {
+                if ($(this).val() == '') {
+                    $(this).parent().removeClass('has-label');
+                }
+                $(this).parent().removeClass('is-focused');
+            });
+            $('.field-input').each(function() {
+                if ($(this).val() != '') {
+                    $(this).parent().addClass('has-label');
+                }
+            });
 
-</style>
+            $('.allInputs').keyup(function() {
+                if ($(this).val() == "") {
+                    $(this).parent().addClass('is-error-focused error');
+                } else {
+                    $(this).parent().removeClass('is-error-focused error');
+                }
+            });
+        });
+
+    </script>
+@endsection

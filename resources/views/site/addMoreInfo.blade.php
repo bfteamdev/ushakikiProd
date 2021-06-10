@@ -28,10 +28,10 @@
     </style>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
-        type="text/css" rel="preload" as="style"/>
+        type="text/css" rel="preload" as="style" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css"
         integrity="sha512-pDpLmYKym2pnF0DNYDKxRnOk1wkM9fISpSOjt8kWFKQeDmBTjSnBZhTd41tXwh8+bRMoSaFsRnznZUiH9i3pxA=="
-        crossorigin="anonymous"rel="preload" as="style"/>
+        crossorigin="anonymous" rel="preload" as="style" />
 @endsection
 
 <div class="container my-3">
@@ -42,6 +42,8 @@
         <div class="row choiseCategory">
             <form action="{{ route('ad.storeAds') }}" method="post" enctype="multipart/form-data" id="form">
                 @csrf
+                @method("POST")
+                <input type="hidden" name="group_id" value="{{ $group->id }}">
                 <div id="smartwizard" class="sw sw-justified sw-theme-dots">
                     <ul class="nav" style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
                         <li class="nav-item">
@@ -59,14 +61,13 @@
                                 <strong>PUBLIER</strong> <br>Placez votre annonce en ligne
                             </a>
                         </li>
-                        {{-- @if ()
-                            
-                        @endif
-                        <li class="nav-item">
-                            <a class="nav-link inactive" href="#step-4">
-                                <strong>Payement </strong> <br>Payer votre annonce
-                            </a>
-                        </li> --}}
+                        {{-- @if ($group->price > 0)
+                            <li class="nav-item" id="payment">
+                                <a class="nav-link inactive" href="#step-4">
+                                    <strong>Payement </strong> <br>Payer votre annonce
+                                </a>
+                            </li>
+                        @endif --}}
                     </ul>
                     <form method="post" action="{{ route('ad.storeAds') }}" enctype="multipart/form-data">
                         @csrf
@@ -84,7 +85,7 @@
                                                     <label for="nom" class="field-label">Selectionne la
                                                         sous-category</label>
                                                     <select id="my-select" class="field-input selectCategory"
-                                                        autocomplete="off" aria-autocomplete="none">
+                                                        autocomplete="off" aria-autocomplete="none" name="category_id">
                                                         <option value="">Selectionne la sous-category</option>
                                                         @foreach ($category as $item)
                                                             <option value="{{ $item->id }}">{{ $item->name }}
@@ -219,15 +220,18 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4"
-                                style="display: none;">
-                                <h3>Step 4 Content</h3>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has
-                                been
-                                the
+                            {{-- @if ($group->price > 0)
+                                <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4"
+                                    style="display: none;">
+                                    <h3>Step 4 Content</h3>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum
+                                    has
+                                    been
+                                    the
 
-                            </div> --}}
+                                </div>
+                            @endif --}}
                         </div>
                         <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: center;">
                             <button class="btn sw-btn-prev disabled" type="button">Previous</button>
@@ -247,10 +251,12 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" rel="preload" as="script">
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
+    rel="preload" as="script">
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" rel="preload" as="script">
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
+    rel="preload" as="script">
 </script>
 @endsection
 @section('footer')
@@ -259,8 +265,11 @@
 
 @section('script')
 <!-- JavaScript -->
-<script type="module" src="//unpkg.com/@grafikart/drop-files-element" rel="preload" as="script"></script>
-<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript" rel="preload" as="script">
+
+<script src="{{ asset('app-assets/js/grafkart.js') }}" rel="preload" as="script" type="module"></script>
+{{-- <script type="module" src="//unpkg.com/@grafikart/drop-files-element" rel="preload" as="script"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"
+    rel="preload" as="script">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js"
     integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A=="
@@ -274,7 +283,7 @@
         autoAdjustHeight: true, // Automatically adjust content height
         cycleSteps: false, // Allows to cycle the navigation of steps
         backButtonSupport: true, // Enable the back button support
-        enableURLhash: false, // Enable selection of the step based on url hash
+        enableURLhash: true, // Enable selection of the step based on url hash
         transition: {
             animation: 'none', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
             speed: '400', // Transion animation speed
@@ -296,7 +305,7 @@
             enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
         },
         keyboardSettings: {
-            keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+            keyNavigation: false, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
             keyLeft: [37], // Left key code
             keyRight: [39] // Right key code
         },
@@ -315,6 +324,7 @@
     let imagesAds = document.querySelector("#imagesAds");
     let endStep = document.querySelectorAll(".endStep");
     let submitBtn = document.querySelector("#submit")
+    let payment = document.querySelector("#payment")
     let stepTree = document.querySelectorAll(".stepTree");
     let form = document.querySelector("#form")
 
@@ -358,15 +368,22 @@
     })
     imagesAds.addEventListener("change", function(e) {
         e.preventDefault()
-        if (imagesAds["files"].length >= 1 && imagesAds["files"].length <= 5) {
-            nextStepDisabled.style.display = null;
-            nextStepDisabled.disabled = false;
-            submitBtn.disabled = false;
-            submitBtn.style.display = null;
+        if (payment) {
+            if (imagesAds["files"].length >= 1 && imagesAds["files"].length <= 5) {
+                nextStepDisabled.style.display = null;
+                nextStepDisabled.disabled = false;
+            }
         } else {
-            nextStepDisabled.disabled = true
-            submitBtn.disabled = true;
-            submitBtn.style.display = "none";
+            if (imagesAds["files"].length >= 1 && imagesAds["files"].length <= 5) {
+                nextStepDisabled.style.display = null;
+                nextStepDisabled.disabled = false;
+                submitBtn.disabled = false;
+                submitBtn.style.display = null;
+            } else {
+                nextStepDisabled.disabled = true
+                submitBtn.disabled = true;
+                submitBtn.style.display = "none";
+            }
         }
     });
 
@@ -390,11 +407,12 @@
                 e.preventDefault();
                 step.parentNode.classList.add("is-error-focused", "error");
                 // isOkay.shift("")
-            }else{
+            } else {
                 e.currentTarget.click();
             }
         })
     });
+
 </script>
 <script src="{{ asset('app-assets/js/createAds.js') }}" rel="preload" as="script"></script>
 @endsection
