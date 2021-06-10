@@ -3279,6 +3279,7 @@ h2.sear-head.fer {
 }
 
 .cardCategory {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	padding: 10px 15px;
@@ -3307,6 +3308,21 @@ h2.sear-head.fer {
 	font-size: 19px;
 	color: inherit;
 	margin: 16px 0;
+}
+
+.free{
+	position: absolute;
+	font-weight: bold;
+	font-size: 16px;
+	letter-spacing: 1px;
+	padding: 7px 13px;
+	border-radius: 4px;
+	top: -11px;
+	right: -9px;
+	color: black;
+	background: #fff;
+	box-shadow: 0px 0px 14px -4px #212529;
+	/* transform: rotate(35deg); */
 }
 
 .choiseCategory h2 {

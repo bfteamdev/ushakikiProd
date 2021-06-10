@@ -63,7 +63,7 @@ Route::get('/admin/reset-password/{token}','AdminPageController@getPassword')->n
 Route::post('/admin/reset-password','AdminPageController@updatePassword')->name('admin.postPassword');
 //Dashboard Client
 Route::get('/home/my-ads', 'AnnonceController@annonceByUser')->name('dashboard.ads');
-Route::get('ad/', "Site\CreateAds@showGroup" )->name('ad.category');
+Route::get('createa-ad/', "Site\CreateAds@showGroup" )->name('ad.category');
 Route::get('ad/{id}','AnnonceController@viewAnnonce')->name('dashboard.ads.show');
 Route::patch('ad/{id}','AnnonceController@updateAd')->name('dashboard.ads.update');
 //Message
@@ -79,7 +79,11 @@ Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
   Route::get('/sub-feature/{category}', "Site\CreateAds@showFeature" )->name('ad.subFeature');
   Route::get('/ad-more-information/{group}', "Site\CreateAds@AddMoreInformation")->name('ad.AddMoreInfo');
   Route::post('/ad-more-information', "Site\CreateAds@storeAds")->name('ad.storeAds');
+  Route::get('/detail-of-order', "Site\CreateAds@viewDetail")->name('ad.viewDetail');
 });
+Route::post('/call_back_url', [
+  'uses' => 'Site\CreateAds@confirmcommande'
+]);
 Route::prefix('category')->group(function () {
   Route::get('/{group}/{name}','PagesController@showCategory')->name('category.show');
   Route::get('/{name}/sub-category/{products}','PagesController@showProducts')->name('category.ads');
