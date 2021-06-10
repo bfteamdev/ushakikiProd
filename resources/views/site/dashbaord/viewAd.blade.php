@@ -1,5 +1,7 @@
 @extends('layout.app')
 @section('adsActive') active @endsection
+@section('edit') active @endsection
+
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style">
 @endsection
@@ -17,11 +19,13 @@
                 <div class="flex-row-fluid col-lg-12">
                     <div class="card card-custom">
                         <div class="card-header py-3">
-                            <h2 class=" text-center">Edit Ad</h2>
+                            @include('site.dashbaord.header')<br>
+                            {{-- <h2 class=" text-center">Edit Ad</h2> --}}
                         </div>
                         <form action="{{ route('dashboard.ads.update',['id'=>$add->id]) }}" method="post">
                             @csrf
                             @method('patch')
+                            
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-lg-12 ">
@@ -116,12 +120,27 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="">Description</label>
-                                        <textarea name="description" id="" class="form-control" rows="5"></textarea>
+                                        <textarea name="description" id="" class="form-control" rows="5">{{ $add->description }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label class="col-3 col-form-label">Status</label>
+                                        <div class="col-3">
+                                            <span class="switch switch-outline switch-icon switch-success">
+                                                <label>
+                                                    <input type="hidden" name="statu" value="inactive" class="disables">
+                                                    <input type="checkbox" name="statu" value="active"
+                                                        {{ $add->statu === 'active' ? 'checked' : '' }} class="disables">
+                                                    <span></span>
+                                                </label>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="" class="btn btn-light-dark font-weight-bold mr-2">Back</a>
+                                <a href="{{ route('dashboard.ads') }}" class="btn btn-light-dark font-weight-bold mr-2">Back</a>
                                 <button type="submit" class="btn btn-light-primary font-weight-bold mr-2">Edit</button>
                             </div>
 

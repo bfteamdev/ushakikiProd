@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Annonce;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +26,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $category=Category::all();
+        return view('home',compact('category'));
+    }
+    public function viewAdByCategory($id)
+    {
+        $cat=Category::findOrFail($id);
+            $annonce=Annonce::where('category_id',$cat->id)
+                            ->where('user_id',Auth::user()->id)         
+                            ->get();
+                            // dd($annonce);
+        return view('subCat',compact('annonce'));
     }
 
     public function logout()

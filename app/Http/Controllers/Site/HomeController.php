@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\User;
+use App\Models\Client;
 use App\Models\Groupe;
 use App\Models\Annonce;
+use App\Models\Message;
 use App\Models\Category;
 use App\Classes\UrlRandom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Client;
-use App\Models\Message;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
+
 
 class HomeController extends Controller
 {
@@ -65,8 +67,54 @@ class HomeController extends Controller
     {
         return view('site.dashbaord.profil');
     }
+    public function updateProfil(Request $request)
+    {
+        // dd($request->all());
+        $data=$request->validate([
+            'firstName'=>'required',
+            'lastName'=>'required',
+            'username'=>'required',
+            'email'=>'required|email',
+            'phone'=>'required',
+            'organisation' =>'',
+            'town' => '',
+        ]);
+        $user= User::findOrFail(Auth::user()->id);
+        // dd($user);
+        $user->update([
+           'firstName'=>$request->firstName,
+            'lastName'=>$request->lastName,
+            'username'=>$request->username,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'organisation'=>$request->organisation,
+            'town'=>$request->town,
+        ]);
+        return redirect()->back()->with("success",'the profit is updated successfuly');
+    }
     public function changePassword()
     {
         return view('site.dashbaord.changePassword');
+    }
+    public function changePasswordUpdate(Request $request)
+    {
+        $password = $request->input('password');
+        $new_password=$request->input('new_password');
+        $user= User::findOrFail(Auth::user()->id);
+        // dd($user);
+        $request = request()->validate([
+                'password' => 'required',
+                'new_password' => ['required'],
+                'confirmation_password' => ['same:new_password'],
+        ]);
+        if (Hash::check($password, optional($user)->password)) { 
+            $user->update([
+                'password'=> Hash::make($new_password),
+                ]);
+            return back()->with('success','admin is update successufly');
+
+        }else{
+            return back()->with('error','the old password is not correct');
+        }
     }
 }

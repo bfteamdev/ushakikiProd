@@ -52,6 +52,7 @@ Route::get('login/facebook/callback', 'LoginController@handleFacebookCallback');
 
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
+Route::get('/home/category/{id}/annonce',"HomeController@viewAdByCategory")->name('ad.by.category');
 Route::get('/logout',"HomeController@logout")->name('logout.user');
 //Login admin
 Route::get('/admin', 'AdminPageController@index')->name('admin.login');
@@ -66,13 +67,18 @@ Route::get('/home/my-ads', 'AnnonceController@annonceByUser')->name('dashboard.a
 Route::get('ad/', "Site\CreateAds@showGroup" )->name('ad.category');
 Route::get('ad/{id}','AnnonceController@viewAnnonce')->name('dashboard.ads.show');
 Route::patch('ad/{id}','AnnonceController@updateAd')->name('dashboard.ads.update');
+Route::get('/my-ads/search','AnnonceController@searchAdByUser')->name('dashboard.ads.search');
+//Renew ads
+Route::get('ad/{id}/renew','AnnonceController@viewRenew')->name('dashboard.ad.renew');
 //Message
 Route::get('/message','Site\HomeController@messageView')->name('dashboard.message');
 Route::get('/message/{idSender}','Site\HomeController@messageViewOne')->name('dashboard.messageViewOne');
 //Profil
 Route::get('/profil','Site\HomeController@profilView')->name('dashboard.profil');
+Route::patch('/profil','Site\HomeController@updateProfil')->name('dashboard.profil.update');
 //Change Password
 Route::get('/change-password','Site\HomeController@changePassword')->name('dashboard.change.password');
+Route::patch('/change-password','Site\HomeController@changePasswordUpdate')->name('dashboard.change.password.update');
 //Creation d'annonce
 Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
   Route::get('/sub-category/{category}', "Site\CreateAds@showCategory" )->name('ad.subCategory');

@@ -26,7 +26,7 @@
                         </span>
                     </a>
                 </div>
-                <div class="navi-item mb-2">
+                {{-- <div class="navi-item mb-2">
                     <a href="#" class="navi-link py-4 @yield('Xactive')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
@@ -49,7 +49,7 @@
                             Account Information
                         </span>
                     </a>
-                </div>
+                </div> --}}
 
                 <div class="navi-item mb-2">
                     <a href="{{ route('dashboard.message') }}" class="navi-link py-4  @yield('messageActive')">
@@ -124,9 +124,9 @@
                         <span class="navi-text font-size-lg">
                             Change Password
                         </span>
-                        <span class="navi-label">
+                        {{-- <span class="navi-label">
                             <span class="label label-light-danger label-rounded font-weight-bold">5</span>
-                        </span>
+                        </span> --}}
                     </a>
                 </div>
             </div>

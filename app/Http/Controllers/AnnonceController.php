@@ -130,21 +130,48 @@ class AnnonceController extends Controller
     }
     public function updateAd(Request $request, $id)
     {
-        // dd($request->all());
+        // dd($request->statu);
         $data=$request->validate([
             'title'=>'required',
             'category_id'=>'required',
             'description'=>'required',
+            'commune'=>'required',
+            'zone'=>'required',
             'price'=>'required',
+            'statu'=>'required'
         ]);
         $add=Annonce::findOrFail($id);
-        $add->update([
+        $upAd=$add->update([
             'title'=>$request->title,
             'category_id'=>$request->category_id,
             'description'=>$request->description,
-            'price'=>$request->price
+            'commune'=>$request->commune,
+            'zone'=>$request->zone,
+            'price'=>$request->price,
+            'statu'=>$request->statu,
+
         ]);
+        // dd($upAd);
         return back()->with('success','the ad is updated succussfuly');
+    }
+    public function viewRenew($id){
+        $add=Annonce::findOrFail($id);
+    //    dd($add->category->groupe->name);
+        return view('site.dashbaord.renewAd',compact('add'));
+    }
+    public function searchAdByUser()
+    {
+        $q = request("q");
+		$typeSearch = request("type");
+		if (!empty($q) && !empty($typeSearch)) {
+			$search = Annonce::where($typeSearch, "like", "%$q%")
+                     ->where('user_id',Auth::user()->id)
+                     ->paginate(10);
+            // dd($search);
+			return view( 'site.dashbaord.searchMyAd' , compact("search"));
+		} else {
+			return redirect()->route('dashboard.ads');
+		}
     }
     
 }

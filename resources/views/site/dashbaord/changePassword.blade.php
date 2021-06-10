@@ -33,21 +33,42 @@
                             <div class="card-header py-3">
                                 <h2 class=" text-center">Change Password</h2>
                             </div>
-                            <form action="" method="post">
+                            <form action="{{ route('dashboard.change.password.update') }}" method="post">
                                 @csrf
                                 @method('patch')
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-lg-12">
+                                            <label for="">Old password</label>
+                                            <input type="password" name="password"class="form-control @error('password') is-invalid @enderror">
+                                            @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('password') }}
+                                            </div>                                                
+                                            @enderror
+                                        </div>                                       
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-12">
                                             <label for="">New password</label>
-                                            <input type="password" name="firstName"class="form-control">
+                                            <input type="password" name="new_password"class="form-control @error('new_password') is-invalid @enderror">
+                                            @error('new_password')
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('new_password') }}
+                                            </div>
+                                            @enderror
                                         </div>
                                         
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label for="">Confirm password </label>
-                                            <input type="password" name="username" class="form-control">
+                                            <input type="password" name="confirmation_password" class="form-control @error('confirmation_password') is-invalid @enderror">
+                                            @error('confirmation_password')
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('confirmation_password') }}
+                                                </div>
+                                            @enderror
                                         </div>                                        
                                     </div>
                                 </div>
