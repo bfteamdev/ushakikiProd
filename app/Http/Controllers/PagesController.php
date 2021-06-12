@@ -28,19 +28,19 @@ class PagesController extends Controller
         $category = Category::where("groupe_id", $group->id)->get();
         //    dd($category);
         $ads = Annonce::where("category_id", "!=", null)->get();
-        return view('site.category.show', compact("category", "group", "ads"));
+        return view('website.category.show', compact("category", "group", "ads"));
     }
 
     public function showProducts($name, $products)
     {
 
         $annonce = Annonce::where('type_id', $products)->get();
-        return view('site.category.allAds', compact('annonce', 'name'));
+        return view('website.category.allAds', compact('annonce', 'name'));
     }
     public function showProductsNotSub($name, $products)
     {
         $annonce = Annonce::where('category_id', $products)->get();
-        return view('site.category.allAds', compact('annonce', 'name'));
+        return view('website.category.allAds', compact('annonce', 'name'));
     }
     public function showOne($name, $id)
     {
@@ -56,6 +56,6 @@ class PagesController extends Controller
             $idFeat[] = $x->feature_id;
         }
         $idFeat = array_unique($idFeat);
-        return view('site.category.showOne', compact('ads', "description", "adsFeatures", "idFeat", "features"));
+        return view('website.category.showOne', compact('ads', "description", "adsFeatures", "idFeat", "features"));
     }
 }

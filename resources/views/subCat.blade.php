@@ -15,7 +15,7 @@
         @endif
         <div class="d-flex flex-row my-5">
             <!--begin::Aside-->
-            @include('site.dashbaord.sidebar')
+            @include('website.dashbaord.sidebar')
             <!--end::Aside-->
             <!--begin::Content-->
             <div class="flex-row-fluid ml-lg-8 grayBg">

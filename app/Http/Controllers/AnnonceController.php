@@ -118,14 +118,14 @@ class AnnonceController extends Controller
     {
      $ad= Annonce::select("*")->where('user_id',Auth::user()->id )->orderBy('id','desc')->get();
     //  dd($ad);
-        return view('site.dashbaord.myAd',compact('ad')); 
+        return view('website.dashbaord.myAd',compact('ad')); 
     }
     public function viewAnnonce($id)
     {
         $add=Annonce::findOrFail($id);
         $photo=Photo::where('annonce_id',$add->id)->get();
         $group=Groupe::all();
-        return view('site.dashbaord.viewAd',compact('add','group','photo'));
+        return view('website.dashbaord.viewAd',compact('add','group','photo'));
 
     }
     public function updateAd(Request $request, $id)
@@ -157,7 +157,7 @@ class AnnonceController extends Controller
     public function viewRenew($id){
         $add=Annonce::findOrFail($id);
     //    dd($add->category->groupe->name);
-        return view('site.dashbaord.renewAd',compact('add'));
+        return view('website.dashbaord.renewAd',compact('add'));
     }
     public function searchAdByUser()
     {

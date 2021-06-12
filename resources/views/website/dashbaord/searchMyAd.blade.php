@@ -27,13 +27,14 @@
                     </div>
                 @endif
                 <div class="d-flex flex-row my-5">
-                    @include('site.dashbaord.sidebar')
+                    @include('website.dashbaord.sidebar')
                     <div class="flex-row-fluid col-lg-12">
                         <div class="card card-custom">
-                            <div class="card-header justify-content-between">
+                            <div class="card-header d-flex justify-content-between">
                                 {{-- <div class="card-title "> --}}
-                                    <h2 class="card-label mt-5">Mes Annonces</h2>
-                                    <a href="{{ route('ad.category') }}" class="btn btn-primary mb-5">ajouter un annonce</a>
+                                    <h2 class="card-label mt-5">Resultat de votre recherche</h2>  
+                                    <a href="{{ route('dashboard.ads') }}" class="btn btn-primary mb-5">Go Back</a>
+    
                                 {{-- </div> --}}
                             </div>
                             <div class="mt-2">
@@ -63,7 +64,7 @@
                                 </form>
                             </div>
                             <div class="card-body">
-                                @if (sizeof($ad) != null)
+                                @if (sizeof($search) != null)
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -76,12 +77,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($ad as $item)
+                                        @foreach ($search as $item)
                                             <tr>
-                                                <td><img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
-                                                        style="width: 165px; height: 100px;  display: block; object-fit:cover;" title=""
-                                                        alt="" /></td>
 
+                                                <td>
+                                                    <img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
+                                                        style="width: 165px; height: 100px;  display: block;" title=""
+                                                        alt="" />
+                                                </td>
                                                 <td style="font-size: 14px;">{{ $item->title }}</td>
                                                 <td style="font-size: 14px;">{{ $item->created_at }}</td>
                                                 <td style="font-size: 14px;">{{ $item->expired_at }}</td>
@@ -110,7 +113,7 @@
                                 </table>
                                     
                                 @else
-                                    <span class="h3">Vous n'avez aucun annonce commence maintenant</span>
+                                    <span class="h3">Il n'y a aucun annonce correspond a votre recherche</span>
                                 @endif
                             </div>
                         </div>

@@ -113,7 +113,7 @@ class createAds extends Controller
     public function showGroup()
     {
         $group = Groupe::all();
-        return view('site.createAdd', compact('group'));
+        return view('website.createAdd', compact('group'));
     }
 
     public function showCategory(Category $category)
@@ -304,6 +304,6 @@ class createAds extends Controller
     {
         $category = Category::where('groupe_id', $group->id)->get();
         // $feature = Feature::where('category_id', 2)->get();
-        return view('site.addMoreInfo', compact("category", "group"));
+        return view('website.addMoreInfo', compact("category", "group"));
     }
 }
