@@ -34,12 +34,12 @@
                 <address>
                     <ul class="location">
                         <li><span class="glyphicon glyphicon-map-marker fas fa-map-marker-alt"></span></li>
-                        <li>CENTER FOR FINANCIAL ASSISTANCE TO DEPOSED NIGERIAN ROYALTY</li>
+                        <li>USHAKIKI</li>
                         <div class="clearfix"></div>
                     </ul>
                     <ul class="location">
                         <li><span class="glyphicon glyphicon-earphone fas fa-phone-alt"></span></li>
-                        <li>+0 561 111 235</li>
+                        <li>+257 xxx xxx</li>
                         <div class="clearfix"></div>
                     </ul>
                     <ul class="location">
@@ -72,7 +72,7 @@
             </ul>
         </div>
         <div class="copyrights">
-            <p> © 2020. All Rights Reserved | Design by USHAKIKI
+            <p> © 2021. All Rights Reserved | Design by USHAKIKI
         </div>
         <div class="clearfix"></div>
     </div>

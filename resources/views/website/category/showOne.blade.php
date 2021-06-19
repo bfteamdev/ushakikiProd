@@ -65,7 +65,7 @@
                                 style="background-color: var(--color1); color:var(--dark)">
                                 Description
                             </div>
-                            <div class="card-body">
+                            <div class="card-body cardScroll">
                                 <?= $description ?>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                         <div class="item-price">
                             <div class="product-price">
                                 <p class="p-price">Price</p>
-                                <h3 class="rate">{{ $ads->price }} Fbu</h3>
+                                <h3 class="rate">{{ number_format($ads->price) }}&nbsp;Fbu</h3>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="condition">
@@ -128,7 +128,7 @@
                     <div class="col-md-2 border">
                         <a href="single.html">
                             <img src="{{ asset('app-assets/images/p1.jpg') }}" />
-                            <span class="price">&#36; 450</span>
+                            {{-- <span class="price">&#36; 450</span> --}}
                         </a>
                         <div class="ad-info">
                             <h5>There are many variations of passages</h5>
@@ -138,7 +138,7 @@
                     <div class="col-md-2 border">
                         <a href="single.html">
                             <img src="{{ asset('app-assets/images/p2.jpg') }}" />
-                            <span class="price">&#36; 399</span>
+                            {{-- <span class="price">&#36; 399</span> --}}
                         </a>
                         <div class="ad-info">
                             <h5>Lorem Ipsum is simply dummy</h5>
@@ -148,7 +148,7 @@
                     <div class="col-md-2 border">
                         <a href="single.html">
                             <img src="{{ asset('app-assets/images/p3.jpg') }}" />
-                            <span class="price">&#36; 199</span>
+                            {{-- <span class="price">&#36; 199</span> --}}
                         </a>
                         <div class="ad-info">
                             <h5>It is a long established fact that a reader</h5>
@@ -158,7 +158,7 @@
                     <div class="col-md-2 border">
                         <a href="single.html">
                             <img src="{{ asset('app-assets/images/p4.jpg') }}" />
-                            <span class="price">&#36; 159</span>
+                            {{-- <span class="price">&#36; 159</span> --}}
                         </a>
                         <div class="ad-info">
                             <h5>passage of Lorem Ipsum you need to be</h5>
@@ -168,7 +168,7 @@
                     <div class="col-md-2 border">
                         <a href="single.html">
                             <img src="{{ asset('app-assets/images/p3.jpg') }}" />
-                            <span class="price">&#36; 199</span>
+                            {{-- <span class="price">&#36; 199</span> --}}
                         </a>
                         <div class="ad-info">
                             <h5>It is a long established fact that a reader</h5>
@@ -178,7 +178,7 @@
                     <div class="col-md-2 border">
                         <a href="single.html">
                             <img src="{{ asset('app-assets/images/p4.jpg') }}" />
-                            <span class="price">&#36; 159</span>
+                            {{-- <span class="price">&#36; 159</span> --}}
                         </a>
                         <div class="ad-info">
                             <h5>passage of Lorem Ipsum you need to be</h5>

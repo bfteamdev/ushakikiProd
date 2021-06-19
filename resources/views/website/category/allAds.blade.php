@@ -138,7 +138,7 @@
                                                     <img src="{{ asset('storage/'.$item->viewPhoto->name) }}" title="" alt="" />
                                                     <section class="list-left">
                                                         <h5 class="title">{{$item->title}}</h5>
-                                                        <span class="adprice">{{ $item->price}}fbu</span>
+                                                        <span class="adprice">{{ number_format($item->price)}}&nbsp;Fbu</span>
                                                         <p class="catpath">{{ $name }} » Other {{ $name }}</p>
                                                     </section>
                                                     <section class="list-right">

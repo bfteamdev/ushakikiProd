@@ -240,7 +240,7 @@ class SelectedCategory {
       });
     }
     if (valuesExist === false) {
-      let request = fetch("http://localhost:8000/createAd/sub-category/" + event.target.value);
+      let request = fetch(document.getElementById("form").dataset.defaultlink+"/createAd/sub-category/" + event.target.value);
       request.then(res => {
         if (res.ok && res.status === 200) {
           res.json()
