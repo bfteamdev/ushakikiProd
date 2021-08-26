@@ -29,7 +29,7 @@
                 <div class="d-flex flex-row my-5">
                     @include('website.dashbaord.sidebar')
                     <div class="flex-row-fluid col-lg-12">
-                        <div class="card card-custom">
+                        <div class="card card-custom grayBg">
                             <div class="card-header justify-content-between">
                                 {{-- <div class="card-title "> --}}
                                     <h2 class="card-label mt-5">Mes Annonces</h2>

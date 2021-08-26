@@ -41,6 +41,9 @@
         <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($style)) : asset($style) }}"
             rel="stylesheet" type="text/css" rel="preload" as="style" />
     @endforeach
+    @foreach (config('layout.resourcesUSHAKIKI.js') as $script)
+    <link href="{{ asset($script) }}" type="text/javascript" rel="preload" as="script">
+@endforeach
     @livewireStyles
     @yield('style')
 </head>

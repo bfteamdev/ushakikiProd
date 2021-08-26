@@ -289,7 +289,6 @@ return [
         ],
         'css' => [
             'plugins/global/plugins.bundle.css',
-            'app-assets/css/bootstrap.min.css',
             
         ],
         'js' => [

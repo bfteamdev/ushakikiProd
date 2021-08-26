@@ -33,14 +33,11 @@ class PagesController extends Controller
 
     public function showProducts($name, $products)
     {
-
-        $annonce = Annonce::where('type_id', $products)->get();
-        return view('website.category.allAds', compact('annonce', 'name'));
+        return view('website.category.allAds', compact('products',"name"));
     }
     public function showProductsNotSub($name, $products)
     {
-        $annonce = Annonce::where('category_id', $products)->get();
-        return view('website.category.allAds', compact('annonce', 'name'));
+        return view('website.category.allAds', compact('products', 'name'));
     }
     public function showOne($name, $id)
     {
