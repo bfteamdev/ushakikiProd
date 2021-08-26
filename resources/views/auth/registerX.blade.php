@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="sub_home_right">
-                            <p>Go Back to <a href="{{ route('site.index') }}">Home</a></p>
+                            <p>Go Back to <a href="{{ route('website.index') }}">Home</a></p>
                         </div>
                         <div class="clearfix"> </div>
                     </div>

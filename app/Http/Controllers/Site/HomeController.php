@@ -27,12 +27,12 @@ class HomeController extends Controller
     public function index()
     {
         $group = Groupe::all();
-        return view('site.home', compact("group"));
+        return view('website.home', compact("group"));
     }
 
     public function messageView()
     {
-        return view('site.dashbaord.allUserSendMessage');
+        return view('website.dashbaord.allUserSendMessage');
     }
     public function searchHome(Request $request)
     {
@@ -44,7 +44,7 @@ class HomeController extends Controller
                 $type = DB::table('types')->where('id', $item->type_id)->get();
                 $category = DB::table('categories')->where('id', $item->category_id)->get();
             }
-            return view('site.search.home.search', compact('search', 'image', 'type', 'category'));
+            return view('website.search.home.search', compact('search', 'image', 'type', 'category'));
         }else{
             return back();
         }
@@ -60,12 +60,12 @@ class HomeController extends Controller
             ->orWhere("sender_id", Auth::user()->id)
             ->where("read", 1)
             ->update(["read" => 0]);
-        return view('site.dashbaord.message', compact("userInfo"));
+        return view('website.dashbaord.message', compact("userInfo"));
 
     }
     public function profilView()
     {
-        return view('site.dashbaord.profil');
+        return view('website.dashbaord.profil');
     }
     public function updateProfil(Request $request)
     {
@@ -94,7 +94,7 @@ class HomeController extends Controller
     }
     public function changePassword()
     {
-        return view('site.dashbaord.changePassword');
+        return view('website.dashbaord.changePassword');
     }
     public function changePasswordUpdate(Request $request)
     {

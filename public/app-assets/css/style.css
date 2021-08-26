@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
 	font-family: "Intro Inline";
 	src: url("../font/Intro Inline.otf"), url("../font/Intro.otf");
 }
@@ -11,7 +11,7 @@
 @font-face {
 	font-family: "Berlin Sans FB";
 	src: url("../font/berlin-sans-fb-3.ttf");
-}
+} */
 
 * {
 	box-sizing: border-box;
@@ -360,7 +360,7 @@ li.dropdown-header {
 
 .logo {
 	float: left;
-	width: 254px;
+	/* width: 254px; */
 }
 
 .logo img {
@@ -502,23 +502,23 @@ li.dropdown-header {
 }
 
 .logo .cl1 {
-	color: var(--color4);
+	color: var(--color1);
 	font-size: 60px;
 }
 
 
 .logo .cl2 {
-	color: var(--color1);
-	font-size: 60px;
-}
-
-.logo .cl3 {
 	color: var(--color2);
 	font-size: 60px;
 }
 
-.logo .cl4 {
+.logo .cl3 {
 	color: var(--color3);
+	font-size: 60px;
+}
+
+.logo .cl4 {
+	color: var(--color4);
 	font-size: 60px;
 }
 
@@ -1325,7 +1325,7 @@ span.price {
 	right: 10px;
 	text-align: right;
 	top: 5px;
-	z-index: 2;
+	z-index: -1;
 	line-height: 1;
 	letter-spacing: 3px;
 	transition: 0.5s all;
@@ -1444,7 +1444,9 @@ span.price:after {
 	color: #886800;
 	margin-bottom: 16px;
 }
-
+.footer-grid ul{
+	padding: 0;
+}
 .footer-grid p {
 	color: #4e4e4e;
 	font-size: 13px;
@@ -2786,10 +2788,10 @@ form.submit {
 }
 
 .product-view p {
-	font-size: 13px;
-	color: #929292;
-	margin: 15px 0;
-	word-spacing: 3px;
+	font-size: 1rem;
+	color: #4c4c4c;
+	margin: 0px 0;
+	/* word-spacing: 3px; */
 }
 
 .product-view p i {
@@ -3161,10 +3163,10 @@ h3.rate {
 }
 
 h3.sear-head {
-	color: rgba(1, 161, 133, 0.91);
+	color: #866600;
 	margin-bottom: 10px;
 	font-size: 22px;
-	font-weight: 400;
+	font-weight: bold;
 }
 
 .search-hotel {
@@ -4284,6 +4286,22 @@ a.boxUser {
 	-o-transition: all .3s ease-in-out;
 }
 
+.cardScroll{
+	height: 500px;
+  overflow: auto;
+}
+.cardScroll::-webkit-scrollbar {
+	width: 3px;
+	background-color: #d8d8d8;
+}
+.cardScroll::-webkit-scrollbar-thumb {
+	background-color: #151515;
+}
+
+.no-result{
+	font-size: 2rem;
+	text-decoration: none;
+}
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
 
 @media screen and (max-width: 479px) {
@@ -4494,6 +4512,8 @@ div#myTabContent {
 	border-radius: 5px;
 	padding: 0;
 	width: 20%;
+	height: 115px;
+	object-fit: cover;
 	background-color: #fff;
 }
 
@@ -4506,7 +4526,8 @@ div#myTabContent {
 	word-wrap: break-word;
 	color: #464646;
 	font-size: 13px;
-	margin-top: 15px;
+	margin-top: 10px;
+	margin-bottom: 0px !important;
 }
 
 #container .list li .title {
@@ -4552,7 +4573,7 @@ span.adprice {
 	font-size: 14px;
 	display: block;
 	width: 100%;
-	margin: 15px 0 5px 0;
+	/* margin: 15px 0 5px 0; */
 	color: #404040;
 	font-weight: 400;
 }
@@ -4571,7 +4592,7 @@ span.cityname {
 	display: block;
 	font-size: 22px;
 	color: #0348af;
-	margin: 10px 0 0 0;
+	margin: 8px 0 0 0;
 }
 
 #container .list li .list-right.title {

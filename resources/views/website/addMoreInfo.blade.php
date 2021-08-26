@@ -40,7 +40,8 @@
     </div>
     <div class="container postCard">
         <div class="row choiseCategory">
-            <form action="{{ route('ad.storeAds') }}" method="post" enctype="multipart/form-data" id="form">
+            <form action="{{ route('ad.storeAds') }}" method="post" enctype="multipart/form-data" id="form"
+                data-defaultLink="{{ env('APP_URL') }}">
                 @csrf
                 @method("POST")
                 <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -185,37 +186,31 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <h4 class="h2Step text-center">Delai de voitre annonce</h4>
+                                        <h4 class="h2Step text-center">Delai de votre annonce</h4>
                                         <div class="row mb-4"
-                                            style="display: flex;height: 100%;justify-content: center;align-items: center">
-                                            <div class="col-12">
-                                                <div class="border py-4">
-                                                    <div
-                                                        style="display: flex;height: 100%;justify-content: space-evenly;align-items: center;">
-                                                        <div class="mb-0">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="expired_at" id="exampleRadios1" value="7" checked>
-                                                            <label class="form-check-label ml-3" for="exampleRadios1">
-                                                                7 Jours
-                                                            </label>
-                                                        </div>
-                                                        <div class="mb-0">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="expired_at" id="exampleRadios2" value="15">
-                                                            <label class="form-check-label ml-3" for="exampleRadios2">
-                                                                15 Jours
-                                                            </label>
-                                                        </div>
-                                                        <div class="mb-0">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="expired_at" id="exampleRadios3" value="30">
-                                                            <label class="form-check-label ml-3" for="exampleRadios3">
-                                                                30 Jours
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                            style="display: flex;justify-content: center;align-items: center;margin-top: 20px;">
+                                                <div class="p-3">
+                                                    <table class="table table-sm">
+                                                        <tbody>
+                                                            @foreach ($priceDays as $key => $value)
+                                                                <tr align="center">
+                                                                    <td style="font-size: 1.2rem;" scope="row" class="{{ $key === 30 ? 'border-bottom-0' : '' }} border-right">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="expired_at"
+                                                                            id="expired{{ $key }}"
+                                                                            value="{{ $key }}"
+                                                                            {{ $key === 7 ? 'checked' : '' }}>
+                                                                        <label class="form-check-label ml-3"
+                                                                            for="expired{{ $key }}">
+                                                                            {{ $key }} Jours
+                                                                        </label>
+                                                                    </td>
+                                                                    <th style="font-size: 1.2rem;" class="{{ $key === 30 ? 'border-bottom-0' : '' }}">{{ number_format($value) }}&nbsp;Fbu</th>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

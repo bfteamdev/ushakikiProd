@@ -14,11 +14,11 @@
             </div>
         @endif
         <div class="d-flex flex-row my-5">
-            @include('site.dashbaord.sidebar')
+            @include('website.dashbaord.sidebar')
             <div class="flex-row-fluid col-lg-12">
                 <div class="card card-custom">
                     <div class="card-header py-3">
-                        @include('site.dashbaord.header')<br>
+                        @include('website.dashbaord.header')<br>
                         {{-- <h2 class=" text-center">Edit Ad</h2> --}}
                     </div>
                     <form action="" method="post">

@@ -22,7 +22,7 @@
             <!--begin::Container-->
             <div class="container">
                 <div class="row my-5">
-                    @include('site.dashbaord.sidebar')
+                    @include('website.dashbaord.sidebar')
                     <div class="row col-lg-8 ml-4 p-0 grayBg" style="height:756px;max-height:756px;">
                         <div id="popupChat" class="popupChat col-lg-12 chatAll">
                             <form id="form" action="{{ route('message.store', ['idReceiver' => $userInfo->id]) }}"

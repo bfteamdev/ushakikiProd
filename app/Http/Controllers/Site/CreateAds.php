@@ -23,14 +23,14 @@ use League\HTMLToMarkdown\HtmlConverter;
 class createAds extends Controller
 {
     private $howMultipliy = [];
+    private $priceDays = [
+        "100"=>7,
+        "150"=>15,
+        "250"=>30
+    ];
     public function __construct()
     {
         $this->middleware("auth")->except(["showGroup"]);
-        $this->howMultipliy = [
-            "1" => 7,
-            "2" => 15,
-            "3" => 30
-        ];
     }
     /**
      * Display a listing of the resource.
@@ -115,7 +115,7 @@ class createAds extends Controller
     public function showGroup()
     {
         $group = Groupe::all();
-        return view('site.createAdd', compact('group'));
+        return view('website.createAdd', compact('group'));
     }
 
     public function showCategory(Category $category)
@@ -301,6 +301,13 @@ class createAds extends Controller
             file_put_contents(__DIR__ . '/assurancelogs.txt', "erreur", FILE_APPEND);
         }
     }
+    private function returPriceForDays($group){
+        return [
+            "7" => (($group->price * 100) /100),
+            "15" => (($group->price * 150) /100),
+            "30" => (($group->price * 250) /100)
+        ];
+    }
     /**
      * @param Groupe $groupe
      * Display a listing of the resource they passed in param.
@@ -310,7 +317,8 @@ class createAds extends Controller
     public function AddMoreInformation(Groupe $group)
     {
         $category = Category::where('groupe_id', $group->id)->get();
+        $priceDays = $this->returPriceForDays($group);
         // $feature = Feature::where('category_id', 2)->get();
-        return view('site.addMoreInfo', compact("category", "group"));
+        return view('website.addMoreInfo', compact("category", "group","priceDays"));
     }
 }
