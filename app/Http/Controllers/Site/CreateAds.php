@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Site;
 
+use Carbon\Carbon;
 use App\Models\Type;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Photo;
 use App\Models\Groupe;
+use App\Models\Annonce;
+use App\Models\Commune;
 use App\Models\Feature;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Annonces_feature;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Annonce;
-use App\Models\Annonces_feature;
-use App\Models\Commune;
-use App\Models\Photo;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use League\HTMLToMarkdown\HtmlConverter;
 
@@ -245,6 +247,11 @@ class createAds extends Controller
                 $expiredAt = Carbon::now()->addDays(7);
                 $amount = $group->price;
             }
+           Order::create([
+               "orderReference"=>"#".random_int(10000,99999),
+               "user_id"=>(int)Auth::user()->id,
+               "annonce_id"=>$Ads_id, 
+           ]);
             $client_token =  $request['title'] . '_' . (int)Auth::user()->id . '_' . $Ads_id . '_' . $expiredAt . '_' . $description;
             $client_token_encode = base64_encode($client_token);
             $return_url = "http://localhost:8000/home/my-ads";

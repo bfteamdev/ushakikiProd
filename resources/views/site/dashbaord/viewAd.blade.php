@@ -27,6 +27,9 @@
                             @method('patch')
                             
                             <div class="card-body">
+                                <hr  class="my-4">
+                                <h3 class="h2">Ad pictures</h3>
+                                <hr class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-12 ">
                                         @foreach ($photo as $item)
@@ -42,6 +45,10 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="separator separator-dashed my-8"></div>
+                                <hr  class="my-4">
+                                <h3 class="h2">Ad information</h3>
+                                <hr  class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="">Title</label>
@@ -64,6 +71,7 @@
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
                                                         @foreach ($item->categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                             @foreach ($category->type as $type)
                                                                 <option value="{{ $type->id }}"
                                                                     {{ $type->id === $add->type_id ? 'selected' : '' }}>
@@ -137,6 +145,58 @@
                                             </span>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="separator separator-dashed my-8"></div>
+                                <hr  class="my-4">
+                                <h3 class="h2">Features</h3>
+                                <hr class="my-4">
+                                <div class="row">
+                                    @if (sizeof($features) === 3 )
+                                    @foreach ($features as $feature)
+            
+                                    <div class="form-group col-lg-4">
+                                        <label for="">{{ $feature->field->name }}</label>
+                                        <input type="{{ $feature->field->type }}" name="value[{{  $feature->id }}]"
+                                            class="form-control @error('value') is-invalid @enderror"
+                                            value="{{ $feature->value }}" >
+                                        @error('value')
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('value') }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @endforeach
+                                        
+                                    @elseif( sizeof($features) === 2 )
+                                          @foreach ($features as $feature)
+            
+                                    <div class="form-group col-lg-6">
+                                        <label for="">{{ $feature->field->name }}</label>
+                                        <input type="{{ $feature->field->type }}" name="value[{{  $feature->id }}]"
+                                            class="form-control @error('value') is-invalid @enderror"
+                                            value="{{ $feature->value }}" >
+                                        @error('value')
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('value') }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @endforeach
+                                    @else
+                                      @foreach ($features as $feature)
+                                    <div class="form-group col-lg-3">
+                                        <label for="">{{ $feature->field->name }}</label>
+                                        <input type="{{ $feature->field->type }}" name="value[{{  $feature->id }}]"
+                                            class="form-control @error('value') is-invalid @enderror"
+                                            value="{{ $feature->value }}" >
+                                        @error('value')
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('value') }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="card-footer">

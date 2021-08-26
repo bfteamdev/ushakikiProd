@@ -32,12 +32,31 @@ Route::group(['prefix' => 'admin','middleware' => ['role']], function () {
   Route::resource("/client", "ClientController");
   // Admin --Ads
   Route::prefix('ads')->group(function () {
+    //immobilier
     Route::get("/immobilier", "AnnonceController@indexImmobilier")->name("ads.immobilier");
+    Route::get("/immobilier/{id}","AnnonceController@showImmobilier")->name("ads.immobilier.show");
+    Route::patch("/immobilier/{id}","AnnonceController@updateImmobilier")->name('ads.immobilier.update');
+    Route::get("/immobilier_search","AnnonceController@searchImmobilier")->name('ads.immobilier.search');
+    //voiture
     Route::get("/voiture", "AnnonceController@indexVoiture")->name("ads.voiture");
+    Route::get("/voiture/{id}","AnnonceController@showVoiture")->name('ads.voiture.show');
+    Route::patch("/voiture/{id}", "AnnonceController@updateVoiture")->name('ads.voiture.update');
+    Route::get("/voiture_search","AnnonceController@searchVoiture")->name('ads.voiture.search');
+    //truc
     Route::get("/truc", "AnnonceController@indexTruc")->name("ads.truc");
+    Route::get("/truc/{id}","AnnonceController@showTruc")->name("ads.truc.show");
+    Route::patch("/truc/{id}","AnnonceController@updateTruc")->name("ads.truc.update");
+    Route::get("truc_search","AnnonceController@searchTruc")->name("ads.truc.search");
+    //Service
     Route::get("/service", "AnnonceController@indexService")->name("ads.service");
+    Route::get("/service/{id}","AnnonceController@showService")->name("ads.service.show");
+    Route::patch("/service/{id}","AnnonceController@updateService")->name("ads.service.update");
+    Route::get("/service_search","AnnonceController@searchService")->name("ads.service.search");
   });
   Route::get('/dashboad', 'PagesController@index')->name('admin.dashboad');
+  //Admin-order
+  Route::resource('/order', 'OrderController');
+  Route::get("/order_search","OrderController@search")->name("order.search");
 });
 //website --route
 Route::get('/', "Site\HomeController@index")->name('site.index');
@@ -52,7 +71,8 @@ Route::get('login/facebook/callback', 'LoginController@handleFacebookCallback');
 
 Auth::routes();
 Route::get('/home', "HomeController@index")->name('home');
-Route::get('/home/category/{id}/annonce',"HomeController@viewAdByCategory")->name('ad.by.category');
+Route::get('/home/category/{id}',"HomeController@viewAdByCategory")->name('ad.by.category');
+Route::get('/home/category/{id}/{name}',"HomeController@viewAdBySubCategory")->name('ad.by.type');
 Route::get('/logout',"HomeController@logout")->name('logout.user');
 //Login admin
 Route::get('/admin', 'AdminPageController@index')->name('admin.login');

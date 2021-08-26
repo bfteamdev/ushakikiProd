@@ -39,6 +39,7 @@ class PagesController extends Controller
     }
     public function showProductsNotSub($name, $products)
     {
+        // dd($name);
         $annonce = Annonce::where('category_id', $products)->get();
         return view('site.category.allAds', compact('annonce', 'name'));
     }
@@ -46,16 +47,20 @@ class PagesController extends Controller
     {
         // $pro = Annonce::findOrFail($products);
         $ads = Annonce::findOrFail($id);
+        // dd($ads);
         $Parsedown = new Parsedown();
         $Parsedown->setSafeMode(true);
         $description = $Parsedown->text($ads->description);
         $adsFeatures = Annonces_feature::where('annonce_id', $id)->get();
+        // dd($adsFeatures);
         $features = Feature::all();
+        // dd($features);
         $idFeat = [];
         foreach ($adsFeatures as $x) {
             $idFeat[] = $x->feature_id;
         }
         $idFeat = array_unique($idFeat);
+        // dd($idFeat);
         return view('site.category.showOne', compact('ads', "description", "adsFeatures", "idFeat", "features"));
     }
 }

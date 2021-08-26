@@ -52,7 +52,7 @@
                             <ul>
                                 <li><a href="{{ route("home") }}"><i class="fas fa-user"></i> Dashboard</a></li>
                                 <li><a href="{{ route('dashboard.profil') }}"><i class="fas fa-user"></i> Profil</a></li>
-                                <li><a href="{{ route("home") }}"><i class="fas fa-home"></i>Mes annonce</a></li>
+                                <li><a href="{{ route('dashboard.ads') }}"><i class="fas fa-home"></i>Mes annonce</a></li>
                                 <li><a href="{{ route('logout.user') }}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 
                             </ul>

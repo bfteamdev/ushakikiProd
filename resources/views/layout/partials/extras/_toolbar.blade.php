@@ -8,9 +8,9 @@
     </li>
 
     {{-- Item --}}
-    <li class="nav-item mb-2" data-toggle="tooltip" title="Logout" data-placement="left">
-        <a class="btn btn-sm btn-icon btn-bg-light btn-text-primary btn-hover-primary" href="{{ route('admin.logout') }}">
-            <i class="fas fa-sign-out-alt text-danger"></i>
+    <li class="nav-item mb-2" data-toggle="tooltip" title="settings" data-placement="left">
+        <a class="btn btn-sm btn-icon btn-bg-light btn-text-primary btn-hover-primary" href="#">
+            <i class="flaticon2-gear"></i>
         </a>
     </li>
 

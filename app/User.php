@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Order;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -45,7 +46,15 @@ class User extends Authenticatable
         }
         return false;
     }
-  
+  /**
+   * Get all of the orders fer
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function orders()
+  {
+      return $this->hasMany(Order::class);
+  }
    
 
 }

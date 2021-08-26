@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\Type;
+use App\Models\Order;
 use App\Models\Photo;
 use App\Models\Category;
+use App\Models\Annonces_feature;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,6 +15,7 @@ class Annonce extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = "annonces";
+    protected $dates = ['expired_at'];
 
     public function category()
     {
@@ -50,5 +53,23 @@ class Annonce extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    /**
+     * Get the order ad with the Annonce
+     *
+     * @return \IlluminaOrderatabase\Eloquent\Relations\HasOne
+     */
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
+    /**
+     * Get all of the comments for the Annonce
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function features_A()
+    {
+        return $this->hasMany(Annonces_feature::class);
     }
 }
