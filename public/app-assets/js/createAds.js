@@ -1,13 +1,13 @@
 
-function debounce(callback, delay){
+function debounce(callback, delay) {
   let timer;
-  return function(){
-      let args = arguments;
-      let context = this;
-      clearTimeout(timer);
-      timer = setTimeout(function(){
-          callback.apply(context, args);
-      }, delay)
+  return function () {
+    let args = arguments;
+    let context = this;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      callback.apply(context, args);
+    }, delay)
   }
 }
 class SelectedCategory {
@@ -15,11 +15,11 @@ class SelectedCategory {
     this.$select = $select;
     this.$loading = $load;
     this.$thisClass = this;
-    this.onChange = debounce(this.onChange.bind(this),900);
+    this.onChange = debounce(this.onChange.bind(this), 900);
     this.loadNewForm = this.loadNewForm.bind(this);
     this.$select.addEventListener('change', this.onChange);
   }
-  loadNewForm(data, event) {
+  loadNewForm(data, commune, event) {
     let parentNodes = this.$select.parentNode.parentNode.parentNode;
     let parentNodesXL = this.$select.parentNode.parentNode.parentNode.parentNode.parentElement.parentNode;
     let selectForms = `<div class="col-md-4 fieldCreate">
@@ -29,7 +29,7 @@ class SelectedCategory {
                           </select>
                         </div>
                       </div>`;
-    if (data.subCategory.length !== 0) {
+    if (data.type.length !== 0) {
       this.$select.removeAttribute("name")
       parentNodes.insertAdjacentHTML("beforeend", selectForms)
     } else {
@@ -75,19 +75,19 @@ class SelectedCategory {
     `);
     //change du hauteur du content qui contier les step pour qu'il agrandisse automatiquement 
     document.querySelector(".tabAutoGrow").style.height = "auto"
-    if (data.commune.length !== 0) {
-      data.commune.forEach((element) => {
+    if (commune.length !== 0) {
+      commune.forEach((element) => {
         document.querySelector("#communes")
           .insertAdjacentHTML("beforeend", `<option value="${element.name}">`);
       });
     }
-    if (data.subCategory.length !== 0) {
-      data.subCategory.forEach((element) => {
+    if (data.type.length !== 0) {
+      data.type.forEach((element) => {
         document.querySelector(".select-" + event.target.value)
           .insertAdjacentHTML("beforeend", `<option value="${element.id}">${element.name}</option>`);
       });
     }
-    data.feature.forEach(async (elms) => {
+    data.features.forEach(async (elms) => {
       // Ajout des card avec les title qui correspond au feature
       await parentNodesXL.insertAdjacentHTML("beforeend",
         `<div class="card mb-4 deleteAll" style="border: 1px solid #5a5a5a;">
@@ -240,13 +240,13 @@ class SelectedCategory {
       });
     }
     if (valuesExist === false) {
-      let request = fetch(document.getElementById("form").dataset.defaultlink+"/createAd/sub-category/" + event.target.value);
+      let request = fetch(document.getElementById("form").dataset.defaultlink + "/createAd/sub-category/" + event.target.value);
       request.then(res => {
         if (res.ok && res.status === 200) {
           res.json()
-            .then(data => {
-              if (data.feature.length !== 0) {
-                this.loadNewForm(data, event);
+            .then((data) => {
+              if (data[0].features.length !== 0) {
+                this.loadNewForm(data[0], data.commune, event);
               } else {
                 this.$loading.style.display = "none"
               }

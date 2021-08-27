@@ -364,13 +364,13 @@ li.dropdown-header {
 }
 
 .logo img {
-	width: 33%;
+	width: 16%;
 	height: 94px;
 	object-fit: cover;
 }
 
 .header-right {
-	width: 74%;
+	width: 70%;
 	/* width: 100%; */
 	display: flex;
 	align-items: center;

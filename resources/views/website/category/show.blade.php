@@ -57,14 +57,14 @@
                                 <div class="sub-categories">
                                     <div class="container">
                                         <div class="row">
-                                            @foreach ($item->type as $count => $items)
+                                            @foreach ($item->type as $items)
                                                 <div class="col-lg-6">
                                                     <a href="{{ route('category.ads', ['name' => $item->name, 'products' => $items->id]) }}"
                                                         class="cardSubCategory">
                                                         <span class="nameCategory">{{ $items->name }}</span>
                                                         <div class="totalAds">
-                                                            <span>{{ $items->Ads->count() }}</span>
-                                                            <span>{{ $items->Ads->count() <= 1 ? 'Annonce' : 'Annonces' }}</span>
+                                                            <span>{{ $items->ads_count }}</span>
+                                                            <span>{{ $items->ads_count <= 1 ? 'Annonce' : 'Annonces' }}</span>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -82,10 +82,10 @@
                                             <div class="totalAds">
                                                 <span>
                                                     @if (sizeof($item->type) < 1)
-                                                        {{ $item->Ads->count() }}
+                                                        {{ $item->ads_count }}
                                                     @endif
                                                 </span>
-                                                <span>{{ $item->Ads->count() <= 1 ? 'Annonce' : 'Annonces' }}</span>
+                                                <span>{{ $item->ads_count <= 1 ? 'Annonce' : 'Annonces' }}</span>
                                             </div>
                                         </a>
                                     </div>

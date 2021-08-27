@@ -19,11 +19,11 @@ class Category extends Model
     }
 
     public function type(){
-        return $this->hasMany(Type::class);
+        return $this->hasMany(Type::class,)->with(["Ads"])->withCount("Ads");
     }
 
     public function features(){
-        return $this->hasMany(Feature::class);
+        return $this->hasMany(Feature::class)->with("field");
     }
     
     public function Ads()

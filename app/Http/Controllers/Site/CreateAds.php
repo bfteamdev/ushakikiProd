@@ -22,9 +22,9 @@ class createAds extends Controller
 {
     private $howMultipliy = [];
     private $priceDays = [
-        "100"=>7,
-        "150"=>15,
-        "250"=>30
+        "100" => 7,
+        "150" => 15,
+        "250" => 30
     ];
     public function __construct()
     {
@@ -118,16 +118,9 @@ class createAds extends Controller
 
     public function showCategory(Category $category)
     {
-        $subCategory = Type::where('category_id', $category->id)->get();
-        $feature = Feature::where('category_id', $category->id)->get();
-        foreach ($feature as $item) {
-            $item->field;
-        }
-        $commune = Commune::all();
         return [
-            "subCategory" => $subCategory,
-            "feature" => $feature,
-            "commune" => $commune,
+            $category->with(["type", "features"])->firstOrFail(),
+            "commune" => Commune::all(),
         ];
     }
     public function showFeature(Category $category)
@@ -144,12 +137,18 @@ class createAds extends Controller
 
     public function storeAds(Request $request)
     {
-        // dd(Auth::user()->id);
-        // dd($request->all());
-        $expiredAt = Carbon::now()->addDays($request['expired_at']);
         $typeTrue = $request['type_id'] ? true : false;
+        //Info ad
+        $title = trim(htmlentities($request['title']));
+        $price = trim(htmlentities($request['price']));
+        $commune = trim(htmlentities($request['commune']));
+        $zone = trim(htmlentities($request['zone']));
+        //Description conversion
         $convertToMarkDown = new HtmlConverter(array('strip_tags' => true));
+        //End-description conversion
         $description = $convertToMarkDown->convert(trim($request['description']));
+        $expiredAt = Carbon::now()->addDays($request['expired_at']);
+        //End info ad
         $group = Groupe::findOrFail($request->group_id);
         $typeName = null;
         $categoryName = null;
@@ -167,10 +166,10 @@ class createAds extends Controller
                     Annonce::create([
                         "type_id" => $request['type_id'],
                         "user_id" => (int)Auth::user()->id,
-                        "title" => $request['title'],
-                        "price" => $request['price'],
-                        "commune" => $request['commune'],
-                        "zone" => $request['zone'],
+                        "title" => $title,
+                        "price" => $$price,
+                        "commune" => $commune,
+                        "zone" => $zone,
                         "description" => $description,
                         "expired_at" => $expiredAt
                     ]);
@@ -178,10 +177,10 @@ class createAds extends Controller
                     Annonce::create([
                         "category_id" => $request['category_id'],
                         "user_id" => (int)Auth::user()->id,
-                        "title" => $request['title'],
-                        "price" => $request['price'],
-                        "commune" => $request['commune'],
-                        "zone" => $request['zone'],
+                        "title" => $title,
+                        "price" => $price,
+                        "commune" => $commune,
+                        "zone" => $zone,
                         "description" => $description,
                         "expired_at" => $expiredAt
                     ]);
@@ -191,10 +190,10 @@ class createAds extends Controller
                     Annonce::create([
                         "type_id" => $request['type_id'],
                         "user_id" => (int)Auth::user()->id,
-                        "title" => $request['title'],
-                        "price" => $request['price'],
-                        "commune" => $request['commune'],
-                        "zone" => $request['zone'],
+                        "title" => $title,
+                        "price" => $price,
+                        "commune" => $commune,
+                        "zone" => $zone,
                         "statu" => "inactive",
                         "description" => $description,
                         "expired_at" => $expiredAt
@@ -203,10 +202,10 @@ class createAds extends Controller
                     Annonce::create([
                         "category_id" => $request['category_id'],
                         "user_id" => (int)Auth::user()->id,
-                        "title" => $request['title'],
-                        "price" => $request['price'],
-                        "commune" => $request['commune'],
-                        "zone" => $request['zone'],
+                        "title" => $title,
+                        "price" => $price,
+                        "commune" => $commune,
+                        "zone" => $zone,
                         "statu" => "inactive",
                         "description" => $description,
                         "expired_at" => $expiredAt
@@ -218,9 +217,9 @@ class createAds extends Controller
                 foreach ($items['value'] as $key => $value) {
                     Annonces_feature::create([
                         "annonce_id" => $Ads_id,
-                        "feature_id" => $items['feature_id'],
-                        "field_id" => $key,
-                        "value" => $value
+                        "feature_id" => trim(htmlentities($items['feature_id'])),
+                        "field_id" => trim(htmlentities($key)),
+                        "value" => trim(htmlentities($value))
                     ]);
                 }
             }
@@ -228,7 +227,7 @@ class createAds extends Controller
                 $items = $items->store("AdsImages/" . $Ads_id, "public");
                 Photo::create([
                     "annonce_id" => $Ads_id,
-                    "name" => $items
+                    "name" => trim(htmlentities($items))
                 ]);
             }
             DB::table('users')
@@ -255,10 +254,10 @@ class createAds extends Controller
                 ],
                 "type" => $typeName,
                 "category" => $categoryName,
-                "title" => $request['title'],
-                "price" => $request['price'],
-                "commune" => $request['commune'],
-                "zone" => $request['zone'],
+                "title" => $title,
+                "price" => $price,
+                "commune" => $commune,
+                "zone" => $zone,
                 "startDate" => Carbon::now(),
                 "endDate" => $expiredAt,
                 "amount" => $amount,
@@ -294,11 +293,12 @@ class createAds extends Controller
             file_put_contents(__DIR__ . '/assurancelogs.txt', "erreur", FILE_APPEND);
         }
     }
-    private function returPriceForDays($group){
+    private function returPriceForDays($group)
+    {
         return [
-            "7" => (($group->price * 100) /100),
-            "15" => (($group->price * 150) /100),
-            "30" => (($group->price * 250) /100)
+            "7" => (($group->price * 100) / 100),
+            "15" => (($group->price * 150) / 100),
+            "30" => (($group->price * 250) / 100)
         ];
     }
     /**
@@ -312,6 +312,6 @@ class createAds extends Controller
         $category = Category::where('groupe_id', $group->id)->get();
         $priceDays = $this->returPriceForDays($group);
         // $feature = Feature::where('category_id', 2)->get();
-        return view('website.addMoreInfo', compact("category", "group","priceDays"));
+        return view('website.addMoreInfo', compact("category", "group", "priceDays"));
     }
 }

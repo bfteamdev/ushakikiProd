@@ -41,7 +41,7 @@
     <div class="container postCard">
         <div class="row choiseCategory">
             <form action="{{ route('ad.storeAds') }}" method="post" enctype="multipart/form-data" id="form"
-                data-defaultLink="{{ env('APP_URL') }}">
+                data-defaultLink="{{ route("site.index") }}">
                 @csrf
                 @method("POST")
                 <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -278,7 +278,7 @@
         autoAdjustHeight: true, // Automatically adjust content height
         cycleSteps: false, // Allows to cycle the navigation of steps
         backButtonSupport: true, // Enable the back button support
-        enableURLhash: true, // Enable selection of the step based on url hash
+        enableURLhash: false, // Enable selection of the step based on url hash
         transition: {
             animation: 'none', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
             speed: '400', // Transion animation speed
