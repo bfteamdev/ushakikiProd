@@ -81,7 +81,7 @@ Route::get('/change-password','Site\HomeController@changePassword')->name('dashb
 Route::patch('/change-password','Site\HomeController@changePasswordUpdate')->name('dashboard.change.password.update');
 //Creation d'annonce
 Route::group(["prefix"=>"/createAd",'middleware' => ['auth']],function(){
-  Route::get('/sub-category/{category}', "Site\CreateAds@showCategory" )->name('ad.subCategory');
+  Route::get('/sub_category/{category}', "Site\CreateAds@showCategory" )->name('ad.subCategory');
   Route::get('/sub-feature/{category}', "Site\CreateAds@showFeature" )->name('ad.subFeature');
   Route::get('/ad-more-information/{group}', "Site\CreateAds@AddMoreInformation")->name('ad.AddMoreInfo');
   Route::post('/ad-more-information', "Site\CreateAds@storeAds")->name('ad.storeAds');

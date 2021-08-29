@@ -119,7 +119,7 @@ class createAds extends Controller
     public function showCategory(Category $category)
     {
         return [
-            $category->with(["type", "features"])->firstOrFail(),
+            $category->where("id", $category->id)->with(["type", "features"])->firstOrFail(),
             "commune" => Commune::all(),
         ];
     }
