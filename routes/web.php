@@ -114,7 +114,7 @@ Route::prefix('/')->group(function () {
   //site- search Home
   Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
   //-----------------------Dashboard Client-----------------
-  Route::prefix('Dashboard')->group(function () {
+  Route::prefix('dashboard')->group(function () {
     Route::get('', "HomeController@index")->name('home');
     Route::get('/category/{id}', "HomeController@viewAdByCategory")->name('ad.by.category');
     Route::get('/category/{id}/{name}', "HomeController@viewAdBySubCategory")->name('ad.by.type');
