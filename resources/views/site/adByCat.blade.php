@@ -27,7 +27,7 @@
                     </div>
                 @endif
                 <div class="d-flex flex-row my-5">
-                    @include('site.dashbaord.sidebar')
+                    @include('website.dashbaord.sidebar')
                     <div class="flex-row-fluid col-lg-12">
                         <div class="card card-custom">
                             <div class="card-header justify-content-between">

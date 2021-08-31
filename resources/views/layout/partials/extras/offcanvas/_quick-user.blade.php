@@ -45,7 +45,7 @@
 		{{-- Nav --}}
 		<div class="navi navi-spacer-x-0 p-0">
 		    {{-- Item --}}
-		    <a href="#" class="navi-item">
+		    <a href="{{ route('profil.show') }}" class="navi-item">
 		        <div class="navi-link">
 		            <div class="symbol symbol-40 bg-light mr-3">
 		                <div class="symbol-label">
@@ -65,7 +65,7 @@
 		    </a>
 
 		    {{-- Item --}}
-		    <a href="#"  class="navi-item">
+		    <a href="{{ route('profil.change') }}"  class="navi-item">
 		        <div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
 						<div class="symbol-label">

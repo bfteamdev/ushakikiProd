@@ -1,5 +1,7 @@
 @extends('layout.default')
 @section('content')
+@section('activeInfo') active @endsection
+
     <div class="d-flex flex-row">
         <!--begin::Aside-->
         <div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
@@ -12,7 +14,8 @@
         <div class="flex-row-fluid ml-lg-8">
             <!--begin::Card-->
             <!--begin::Form-->
-            <form class="form" action="{{ route('client.update', ['client' => $client->id]) }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ route('client.update', ['client' => $client->id]) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method("patch")
                 <div class="card card-custom card-stretch">
@@ -24,8 +27,10 @@
                             <span class="text-muted font-weight-bold font-size-sm mt-1">Informaiton personnel </span>
                         </div>
                         <div class="card-toolbar">
-                            <button class="btn btn-danger mr-3 EditPP" type="button" id="EditPP">Edit &nbsp;<i class="fas fa-lock"></i></button>
-                            <button type="submit" class="btn btn-primary mr-2 unlockUpdate" disabled>Update &nbsp;<i class="flaticon-refresh"></i></button>
+                            <button class="btn btn-danger mr-3 EditPP" type="button" id="EditPP">Edit &nbsp;<i
+                                    class="fas fa-lock"></i></button>
+                            <button type="submit" class="btn btn-primary mr-2 unlockUpdate" disabled>Update &nbsp;<i
+                                    class="flaticon-refresh"></i></button>
                         </div>
                     </div>
                     <!--end::Header-->
@@ -58,7 +63,8 @@
                                         data-action="change" data-toggle="tooltip" title=""
                                         data-original-title="Change avatar">
                                         <i class="fa fa-pen icon-sm text-muted"></i>
-                                        <input type="file" name="profil" accept=".png, .jpg, .jpeg" class="disables" />
+                                        <input type="file" name="profil" accept=".png, .jpg, .jpeg"
+                                            class="disables" />
                                         <input type="hidden" name="profilremove" class="disables" />
                                     </label>
 
@@ -172,6 +178,5 @@
                 input.disabled = !ed
             }
         })
-
     </script>
 @endsection

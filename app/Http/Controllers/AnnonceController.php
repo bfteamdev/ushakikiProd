@@ -515,9 +515,9 @@ class AnnonceController extends Controller
         $add=Annonce::findOrFail($id);
         $photo=Photo::where('annonce_id',$add->id)->get();
         $group=Groupe::all();
-        //$features=Annonces_feature::where('annonce_id',$add->id)->get();
+        $features=Annonces_feature::where('annonce_id',$add->id)->get();
         // dd($features);
-        return view('website.dashbaord.viewAd',compact('add','group','photo'));
+        return view('website.dashbaord.viewAd',compact('add','group','photo','features'));
     }
     public function updateAd(Request $request, $id)
     {
@@ -569,7 +569,7 @@ class AnnonceController extends Controller
 			$search = Annonce::where($typeSearch, "like", "%$q%")
                      ->where('user_id',Auth::user()->id)
                      ->paginate(10);
-			return view( 'site.dashbaord.searchMyAd' , compact("search"));
+			return view( 'website.dashbaord.searchMyAd' , compact("search"));
 		} else {
 			return redirect()->route('dashboard.ads');
 		}

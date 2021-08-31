@@ -38,7 +38,7 @@
         <!--begin::Nav-->
         <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
             <div class="navi-item mb-2">
-                <a href="custom/apps/profile/profile-1/personal-information.html" class="navi-link py-4 active">
+                <a href="{{ route('client.show',['client'=>$client->id]) }}" class="navi-link py-4 @yield('activeInfo')">
                     <span class="navi-icon mr-2">
                         <span class="svg-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg--><svg
@@ -62,7 +62,7 @@
                 </a>
             </div>
             <div class="navi-item mb-2">
-                <a href="custom/apps/profile/profile-1/change-password.html" class="navi-link py-4 ">
+                <a href="{{ route('client.change.password',['client'=>$client->id]) }}" class="navi-link py-4 @yield('activePass') ">
                     <span class="navi-icon mr-2">
                         <span class="svg-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg--><svg
@@ -89,7 +89,7 @@
                 </a>
             </div>
             <div class="navi-item mb-2">
-                <a href="custom/apps/profile/profile-1/email-settings.html" class="navi-link py-4 ">
+                <a href="{{ route('client.ad',['client'=>$client->id]) }}" class="navi-link py-4  @yield('activeAd')">
                     <span class="navi-icon mr-2">
                         <span class="svg-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg--><svg

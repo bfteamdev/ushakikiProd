@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $group = Groupe::all();
+        // dd($group);
         return view('website.home', compact("group"));
     }
 

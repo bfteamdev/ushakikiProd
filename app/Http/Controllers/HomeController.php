@@ -27,21 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $cat=Category::findOrFail($id);
-        // $nbre=Annonce::where('category_id',$cat)
-        //         ->where('user_id',Auth::user()->id)         
-        //         ->count();
-        // dd($nbre);        
-        $category=Category::all();
+
+        $category=Category::withCount('ads')->withCount('type')->get();
         return view('home',compact('category'));
     }
   
     public function viewAdByCategory($id)
     {
         $cat=Category::findOrFail($id);
-            $type=Type::where('category_id',$cat->id)
-                            ->get();
-            // dd($type);
+            $type=Type::withCount('ads')
+                        ->where('category_id',$cat->id)
+                        ->get();
+            // dd($type);                
          if (sizeof($type) == 0) {
             $annonce=Annonce::where('category_id',$cat->id)
             ->where('user_id',Auth::user()->id)         
@@ -58,13 +55,12 @@ class HomeController extends Controller
             $annonce=Annonce::where('type_id',$type->id)
                             ->where('user_id',Auth::user()->id)         
                             ->get();
-                            // dd($annonce);
         return view('site.adByType',compact('annonce'));
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect(route('website.index'))->with('success', 'You are logout successfully');
+        return redirect(route('site.index'))->with('success', 'You are logout successfully');
     }
 }

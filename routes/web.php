@@ -30,6 +30,16 @@ Route::group(['prefix' => 'admin','middleware' => ['role']], function () {
   Route::resource("/features", "FeatureController");
   // Admin --Client
   Route::resource("/client", "ClientController");
+  Route::get("/client-change-password/{client}","ClientController@resetShow")->name("client.change.password");
+  Route::patch("/client-change-password/{client}","ClientController@changePassword")->name("client.update.password");
+  Route::get("/client-ad/{client}","ClientController@ad")->name("client.ad");
+  // Admin --profil
+  Route::get("/profil","AdminPageController@ProfilShow")->name('profil.show');
+  Route::patch("/profil","AdminPageController@ProfilUpdate")->name('profil.update');
+  Route::get("/password-update","AdminPageController@ModifierPasswordShow")->name('profil.change');
+  Route::patch("/password-update","AdminPageController@ModifierPasswordUpdate")->name('profil.admin.update.password');
+  
+
   // Admin --Ads
   Route::prefix('ads')->group(function () {
     //immobilier

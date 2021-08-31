@@ -19,13 +19,14 @@ class Annonce extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id');
     }
 
     public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class,'type_id');
     }
+    
     /**
      * Get all of the comments for the Annonce
      *

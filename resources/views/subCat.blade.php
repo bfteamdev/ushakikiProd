@@ -40,6 +40,8 @@
                                                 <div class="focus-layout">
                                                     <div class="focus-image"><i class="{{ $item->category->icon }}"></i></div>
                                                     <h4 class="clrchg">{{ $item->name }}</h4>
+                                                    <br>
+                                                    <h3>{{ $item->ads_count }}</h3>
                                                 </div>
                                             </div>
                                         </a>
