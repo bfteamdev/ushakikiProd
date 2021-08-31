@@ -7,6 +7,7 @@
     <style>
         .borderImgUnique {
             padding: 5px;
+            margin: 0 2px;
             width: 178px;
             border: 2px solid #dbac14;
             border-radius: 8px;
@@ -43,20 +44,23 @@
 
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="form-group col-lg-12 " style="overflow: auto;height: 235px;padding:0 !important;">
+                                    <div class="form-group col-lg-12 "
+                                        style="overflow: auto;height: 235px;padding: 0 !important;display: flex;justify-content: start;align-items: center;">
                                         @foreach ($photo as $item)
-                                            <label for="file{{ $item->id }}" class="borderImgUnique">
+                                            <div class="borderImgUnique">
                                                 <div class="d-flex align-items-center justify-content-center mb-1 w-100">
                                                     <input type="radio" name="default">
                                                     <span class="font-weight-boldest">&nbsp;set default</span>
                                                 </div>
-                                                <input type="file" accept="image/*" name="image" class="file"
-                                                    id="file{{ $item->id }}" onchange="readURL(this, 'blah');"
-                                                    style="display: none;">
-                                                <img id="image{{ $item->id }}"
-                                                    src="{{ asset('storage/' . $item->name) }}"
-                                                    alt="image-xxxx-xxxx{{ $item->id }}" class="borderImg" />
-                                            </label>
+                                                <label for="file{{ $item->id }}">
+                                                    <input type="file" accept="image/*" name="image" class="file"
+                                                        id="file{{ $item->id }}" onchange="readURL(this, 'blah');"
+                                                        style="display: none;">
+                                                    <img id="image{{ $item->id }}"
+                                                        src="{{ asset('storage/' . $item->name) }}"
+                                                        alt="image-xxxx-xxxx{{ $item->id }}" class="borderImg" />
+                                                </label>
+                                            </div>
                                         @endforeach
                                         @error('images')
                                             <div class="invalid-feedback">
@@ -69,8 +73,8 @@
                                     <div class="form-group col-lg-6">
                                         <label for="">Title</label>
                                         <input type="text" name="title" class="form-control @error('title')
-                                                                                                                                                                               is-invalid
-                                                                                                       @enderror"
+                                                                                                                                                                                       is-invalid
+                                                                                                           @enderror"
                                             value="{{ $add->title }}">
                                         @error('title')
                                             <div class="invalid-feedback">
@@ -82,8 +86,8 @@
                                         <label for="">categorie</label>
                                         @if ($add->type_id != null)
                                             <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                                                                                                        is-invalid
-                                                                                                         @enderror">
+                                                                                                                                                                                is-invalid
+                                                                                                             @enderror">
                                                 <option value="">selection la categorie</option>
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
@@ -101,8 +105,8 @@
                                             </select>
                                         @else
                                             <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                                                                                                     is-invalid
-                                                                                                     @enderror">
+                                                                                                                                                                             is-invalid
+                                                                                                         @enderror">
                                                 <option value="">selection la categorie</option>
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
