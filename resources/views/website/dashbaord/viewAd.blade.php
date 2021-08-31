@@ -4,6 +4,21 @@
 
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style">
+    <style>
+        .borderImgUnique {
+            padding: 5px;
+            width: 178px;
+            border: 2px solid #dbac14;
+            border-radius: 8px;
+        }
+
+        .borderImg {
+            width: 165px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+    </style>
 @endsection
 @section('content')
     <div class="d-flex flex-column-fluid">
@@ -22,18 +37,26 @@
                             @include('website.dashbaord.header')<br>
                             {{-- <h2 class=" text-center">Edit Ad</h2> --}}
                         </div>
-                        <form action="{{ route('dashboard.ads.update',['id'=>$add->id]) }}" method="post">
+                        <form action="{{ route('dashboard.ads.update', ['id' => $add->id]) }}" method="post">
                             @csrf
                             @method('patch')
-                            
+
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="form-group col-lg-12 ">
+                                    <div class="form-group col-lg-12 " style="overflow: auto;height: 235px;padding:0 !important;">
                                         @foreach ($photo as $item)
-                                            <input type="file" accept="image/*" name="image" class="file"
-                                                onchange="readURL(this, 'blah');" style="display: none;">
-                                            <img class="blah" src="{{ asset('storage/' . $item->name) }}" alt="your image"
-                                                alt="No image" width="160" />
+                                            <label for="file{{ $item->id }}" class="borderImgUnique">
+                                                <div class="d-flex align-items-center justify-content-center mb-1 w-100">
+                                                    <input type="radio" name="default">
+                                                    <span class="font-weight-boldest">&nbsp;set default</span>
+                                                </div>
+                                                <input type="file" accept="image/*" name="image" class="file"
+                                                    id="file{{ $item->id }}" onchange="readURL(this, 'blah');"
+                                                    style="display: none;">
+                                                <img id="image{{ $item->id }}"
+                                                    src="{{ asset('storage/' . $item->name) }}"
+                                                    alt="image-xxxx-xxxx{{ $item->id }}" class="borderImg" />
+                                            </label>
                                         @endforeach
                                         @error('images')
                                             <div class="invalid-feedback">
@@ -46,8 +69,9 @@
                                     <div class="form-group col-lg-6">
                                         <label for="">Title</label>
                                         <input type="text" name="title" class="form-control @error('title')
-                                                                                                       is-invalid
-                                                                   @enderror" value="{{ $add->title }}">
+                                                                                                                                                                               is-invalid
+                                                                                                       @enderror"
+                                            value="{{ $add->title }}">
                                         @error('title')
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('title') }}
@@ -58,8 +82,8 @@
                                         <label for="">categorie</label>
                                         @if ($add->type_id != null)
                                             <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                                is-invalid
-                                                                     @enderror">
+                                                                                                                                                                        is-invalid
+                                                                                                         @enderror">
                                                 <option value="">selection la categorie</option>
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
@@ -77,8 +101,8 @@
                                             </select>
                                         @else
                                             <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                             is-invalid
-                                                                 @enderror">
+                                                                                                                                                                     is-invalid
+                                                                                                     @enderror">
                                                 <option value="">selection la categorie</option>
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
@@ -120,7 +144,8 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12">
                                         <label for="">Description</label>
-                                        <textarea name="description" id="" class="form-control" rows="5">{{ $add->description }}</textarea>
+                                        <textarea name="description" id="" class="form-control"
+                                            rows="5">{{ $add->description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -140,7 +165,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('dashboard.ads') }}" class="btn btn-light-dark font-weight-bold mr-2">Back</a>
+                                <a href="{{ route('dashboard.ads') }}"
+                                    class="btn btn-light-dark font-weight-bold mr-2">Back</a>
                                 <button type="submit" class="btn btn-light-primary font-weight-bold mr-2">Edit</button>
                             </div>
 
@@ -155,29 +181,23 @@
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
     <script type="text/javascript">
         function readURL(input) {
-            debugger
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('.blah').each(function() {
-                        $(this).attr('src', e.target.result);
-                    });
+                    $("#" + input.nextElementSibling.getAttribute("id")).attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }
-        debugger
-        let imgs = document.querySelectorAll(".file");
-        $(".file").change(function() {
-            debugger
-            readURL(this);
-        });
-        imgs.forEach((item) => {
-            item.addEventListener("change", function(e) {
-                debugger
-                readURL(this);
+        let img = document.querySelectorAll(".file")
+        img.forEach((item) => {
+            item.addEventListener("change", (e) => {
+                // debugger;
+                readURL(e.target);
             })
         })
-
+        // $("#file").change(function() {
+        //     readURL(this);
+        // });
     </script>
 @endsection

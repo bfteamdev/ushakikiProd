@@ -2,6 +2,23 @@
 @section('adsActive') active @endsection
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style">
+    <style>
+        .page-link {
+            padding: 6px 13px !important;
+            font-size: 16px !important;
+            border: 2px solid #000000 !important;
+        }
+
+        .page-link:hover {
+            background-color: #dbac14 !important;
+        }
+
+        .page-item.active .page-link {
+            background-color: #dbac14 !important;
+            border-color: #dbac14 !important;
+        }
+
+    </style>
 @endsection
 @section('content')
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
@@ -14,7 +31,7 @@
                         id="kt_subheader_mobile_toggle">
                         <span></span>
                     </button>
-    
+
                 </div>
             </div>
         </div>
@@ -32,8 +49,8 @@
                         <div class="card card-custom grayBg">
                             <div class="card-header justify-content-between">
                                 {{-- <div class="card-title "> --}}
-                                    <h2 class="card-label mt-5">Mes Annonces</h2>
-                                    <a href="{{ route('ad.category') }}" class="btn btn-primary mb-5">ajouter un annonce</a>
+                                <h2 class="card-label mt-5">Mes Annonces</h2>
+                                <a href="{{ route('ad.category') }}" class="btn btn-primary mb-5">ajouter un annonce</a>
                                 {{-- </div> --}}
                             </div>
                             <div class="mt-2">
@@ -63,52 +80,54 @@
                                 </form>
                             </div>
                             <div class="card-body">
-                                @if (sizeof($ad) != null)
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Date d'enreg</th>
-                                            <th scope="col">Date d'échéance</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($ad as $item)
+                                @if (sizeof($ads) != null)
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <td><img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
-                                                        style="width: 165px; height: 100px;  display: block; object-fit:cover;" title=""
-                                                        alt="" /></td>
-
-                                                <td style="font-size: 14px;">{{ $item->title }}</td>
-                                                <td style="font-size: 14px;">{{ $item->created_at }}</td>
-                                                <td style="font-size: 14px;">{{ $item->expired_at }}</td>
-                                                <td style="font-size: 14px;"><span
-                                                        class="badge badge-{{ $item->statu === 'active' ? 'success' : 'danger' }}">{{ $item->statu }}</span>
-                                                </td>
-                                                <td style="font-size: 14px;" class="d-flex">
-                                                    {{-- <a href="{{ route('ssl.edit',['ssl'=>$item->id]) }}" class="badge badge-info"> view more </a> --}}
-                                                    <a href="{{ route('dashboard.ads.show', ['id' => $item->id]) }}"
-                                                        class="btn" style="padding: 0; padding: 0 7px;">
-                                                        <i class="icon-lg text-dark ml-3 far fa-eye "></i>
-                                                    </a> |
-                                                    <form action="" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn"
-                                                            style="padding: 0; padding: 0 7px;"
-                                                            onclick="return(confirm('do you want to delete this Ad??'))">
-                                                            <i class="flaticon2-trash text-danger"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Date d'enreg</th>
+                                                <th scope="col">Date d'échéance</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                    
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($ads as $item)
+                                                <tr>
+                                                    <td><img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
+                                                            style="width: 165px; height: 100px;  display: block; object-fit:contain;"
+                                                            title="" alt="" /></td>
+
+                                                    <td style="font-size: 14px;">{{ $item->title }}</td>
+                                                    <td style="font-size: 14px;">{{ $item->created_at }}</td>
+                                                    <td style="font-size: 14px;">{{ $item->expired_at }}</td>
+                                                    <td style="font-size: 14px;"><span
+                                                            class="badge badge-{{ $item->statu === 'active' ? 'success' : 'danger' }}">{{ $item->statu }}</span>
+                                                    </td>
+                                                    <td style="font-size: 14px;" class="d-flex">
+                                                        {{-- <a href="{{ route('ssl.edit',['ssl'=>$item->id]) }}" class="badge badge-info"> view more </a> --}}
+                                                        <a href="{{ route('dashboard.ads.show', ['id' => $item->id]) }}"
+                                                            class="btn" style="padding: 0; padding: 0 7px;">
+                                                            <i class="icon-lg text-dark ml-3 far fa-eye "></i>
+                                                        </a> |
+                                                        <form action="" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn"
+                                                                style="padding: 0; padding: 0 7px;"
+                                                                onclick="return(confirm('do you want to delete this Ad??'))">
+                                                                <i class="flaticon2-trash text-danger"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="d-felx justify-content-center">
+                                        {{ $ads->links('pagination::bootstrap-4') }}
+                                    </div>
                                 @else
                                     <span class="h3">Vous n'avez aucun annonce commence maintenant</span>
                                 @endif
@@ -121,6 +140,6 @@
     </div>
 @endsection
 @section('script')
-<script src="{{ asset("js/pages/widgets.js") }}"></script>
- <script src="{{ asset("js/pages/custom/profile/profile.js") }}"></script>
+    <script src="{{ asset('js/pages/widgets.js') }}"></script>
+    <script src="{{ asset('js/pages/custom/profile/profile.js') }}"></script>
 @endsection
