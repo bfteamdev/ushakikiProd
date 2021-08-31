@@ -14,18 +14,21 @@ class Category extends Model
     use HasFactory;
     protected $fillable = ['groupe_id', "name", "icon", "price"];
 
-    public function groupe(){
+    public function groupe()
+    {
         return $this->belongsTo(Groupe::class);
     }
 
-    public function type(){
+    public function type()
+    {
         return $this->hasMany(Type::class,)->with(["Ads"])->withCount("Ads");
     }
 
-    public function features(){
+    public function features()
+    {
         return $this->hasMany(Feature::class)->with("field");
     }
-    
+
     public function Ads()
     {
         return $this->hasMany(Annonce::class);

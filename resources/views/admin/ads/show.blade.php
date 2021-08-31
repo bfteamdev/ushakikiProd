@@ -56,7 +56,6 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="price">Price</label>
-
                         <input type="text" name="price"  class="form-control"  value="{{ old('price') }}">
 
                     </div>

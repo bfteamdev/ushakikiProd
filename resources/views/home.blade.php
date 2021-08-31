@@ -34,16 +34,23 @@
                         <div class="container">
                             <div class="row">
                                 @foreach ($category as $item)
+                                {{-- @foreach ($nbre as $nbres ) --}}
                                     <div class="col-md-2 focus-grid mt-2">
                                         <a href="{{ route("ad.by.category",['id'=>$item->id]) }}">
                                             <div class="focus-border">
                                                 <div class="focus-layout">
                                                     <div class="focus-image"><i class="{{ $item->icon }}"></i></div>
-                                                    <h4 class="clrchg">{{ $item->name }}</h4>
+                                                    <h4 class="clrchg">{{ $item->name }}</h4><br>
+                                                    @if ($item->type_count !=0)                                                        
+                                                    <h3>{{ $item->type_count }}</h3>
+                                                    @else
+                                                    <h3>{{ $item->ads_count }}</h3>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
+                                    {{-- @endforeach --}}
                                 @endforeach
                             </div>
                             <div class="clearfix"></div>

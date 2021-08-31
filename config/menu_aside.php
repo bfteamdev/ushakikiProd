@@ -99,14 +99,7 @@ return [
                     'title' => 'Order',
                     'page' => 'admin/order',
                 ],
-                [
-                    'title' => 'Order pending',
-                    'page' => '',
-                ],
-                [
-                    'title' => 'Order deleted',
-                    'page' => '',
-                ],
+                
             ],
         ],
         [

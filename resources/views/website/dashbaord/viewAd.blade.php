@@ -1,7 +1,6 @@
 @extends('layout.app')
 @section('adsActive') active @endsection
 @section('edit') active @endsection
-
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style">
     <style>
@@ -43,6 +42,9 @@
                             @method('patch')
 
                             <div class="card-body">
+                                <hr class="my-4">
+                                <h3 class="h2">Ad pictures</h3>
+                                <hr class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-12 "
                                         style="overflow: auto;height: 235px;padding: 0 !important;display: flex;justify-content: start;align-items: center;">
@@ -69,12 +71,15 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="separator separator-dashed my-8"></div>
+                                <hr class="my-4">
+                                <h3 class="h2">Ad information</h3>
+                                <hr class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="">Title</label>
-                                        <input type="text" name="title" class="form-control @error('title')
-                                                                                                                                                                                       is-invalid
-                                                                                                           @enderror"
+                                        <input type="text" name="title"
+                                            class="form-control @error('title') is-invalid @enderror"
                                             value="{{ $add->title }}">
                                         @error('title')
                                             <div class="invalid-feedback">
@@ -85,13 +90,14 @@
                                     <div class="form-group col-lg-6">
                                         <label for="">categorie</label>
                                         @if ($add->type_id != null)
-                                            <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                                                                                                                is-invalid
-                                                                                                             @enderror">
+                                            <select name="category_id" id=""
+                                                class="form-control @error('category_id') is-invalid @enderror">
                                                 <option value="">selection la categorie</option>
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
                                                         @foreach ($item->categories as $category)
+                                                            <option value="{{ $category->id }}">{{ $category->name }}
+                                                            </option>
                                                             @foreach ($category->type as $type)
                                                                 <option value="{{ $type->id }}"
                                                                     {{ $type->id === $add->type_id ? 'selected' : '' }}>
@@ -104,9 +110,9 @@
                                                 </optgroup>
                                             </select>
                                         @else
-                                            <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                                                                                                             is-invalid
-                                                                                                         @enderror">
+                                            <select name="category_id" id=""
+                                                class="form-control @error('category_id')is-invalid @enderror">
+
                                                 <option value="">selection la categorie</option>
                                                 @foreach ($group as $item)
                                                     <optgroup label="{{ $item->name }}">
@@ -167,6 +173,154 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="separator separator-dashed my-8"></div>
+                                <hr class="my-4">
+                                <h3 class="h2">Features</h3>
+                                <hr class="my-4">
+                                {{-- ........................actuel.......................... --}}
+                                {{-- <div class="row">
+                                    @if (sizeof($features) === 3)
+                                        @foreach ($features as $feature)
+                                        <div class="form-group col-lg-4">
+                                            <label for="">{{ $feature->field->name }}</label>
+                                            <input type="{{ $feature->field->type }}"
+                                                name="value[{{ $feature->id }}]"
+                                                class="form-control @error('value') is-invalid @enderror"
+                                                value="{{ $feature->value }}">
+                                            @error('value')
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('value') }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        @endforeach
+                                    @elseif( sizeof($features) === 2 )
+                                        @foreach ($features as $feature)
+
+                                            <div class="form-group col-lg-6">
+                                                <label for="">{{ $feature->field->name }}</label>
+                                                <input type="{{ $feature->field->type }}"
+                                                    name="value[{{ $feature->id }}]"
+                                                    class="form-control @error('value') is-invalid @enderror"
+                                                    value="{{ $feature->value }}">
+                                                @error('value')
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('value') }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        @foreach ($features as $feature)
+                                            <div class="form-group col-lg-3">
+                                                <label for="">{{ $feature->field->name }}</label>
+                                                <input type="{{ $feature->field->type }}"
+                                                    name="value[{{ $feature->id }}]"
+                                                    class="form-control @error('value') is-invalid @enderror"
+                                                    value="{{ $feature->value }}">
+                                                @error('value')
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('value') }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div> --}}
+                                {{-- ........................---------.......................... --}}
+                                <div id="kt_repeater_3">
+                                    <div class="form-group row">
+                                        <div data-repeater-list="features" class="col-lg-12">
+                                            {{-- <label for="">* features</label> --}}
+                                            {{-- @dump($ssl->sslPrice) --}}
+                                            @if (sizeof($features) === 3)
+
+                                                <div data-repeater-item class="form-group row">
+                                                    @foreach ($features as $feature)
+                                                        <div class="form-group col-lg-3">
+                                                            <label for="">{{ $feature->field->name }}</label>
+                                                            <input type="{{ $feature->field->type }}"
+                                                                name="value[{{ $feature->id }}]"
+                                                                class="form-control @error('value') is-invalid @enderror"
+                                                                value="{{ $feature->value }}">
+                                                            @error('value')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $errors->first('value') }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    @endforeach
+                                                    <div class="col-md-1 mt-5" style="position: relative;top: 11px;">
+                                                        <a href="javascript:;" data-repeater-delete=""
+                                                            class="btn btn-sm font-weight-bolder btn-light-danger">
+                                                            <i class="flaticon2-trash text-danger"></i>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            @elseif( sizeof($features) === 2 )
+
+                                                <div data-repeater-item class="form-group row">
+                                                    @foreach ($features as $feature)
+                                                        <div class="form-group col-lg-6">
+                                                            <label for="">{{ $feature->field->name }}</label>
+                                                            <input type="{{ $feature->field->type }}"
+                                                                name="value[{{ $feature->id }}]"
+                                                                class="form-control @error('value') is-invalid @enderror"
+                                                                value="{{ $feature->value }}">
+                                                            @error('value')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $errors->first('value') }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-md-1 mt-5" style="position: relative;top: 11px;">
+                                                            <a href="javascript:;" data-repeater-delete=""
+                                                                class="btn btn-sm font-weight-bolder btn-light-danger">
+                                                                <i class="flaticon2-trash text-danger"></i>
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @else
+
+                                                <div data-repeater-item class="form-group row">
+                                                    @foreach ($features as $feature)
+                                                        <div class="form-group col-lg-3">
+                                                            <label for="">{{ $feature->field->name }}</label>
+                                                            <input type="{{ $feature->field->type }}"
+                                                                name="value[{{ $feature->id }}]"
+                                                                class="form-control @error('value') is-invalid @enderror"
+                                                                value="{{ $feature->value }}">
+                                                            @error('value')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $errors->first('value') }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    @endforeach
+                                                    <div class="col-md-1 mt-5" style="position: relative;top: 11px;">
+                                                        <a href="javascript:;" data-repeater-delete=""
+                                                            class="btn btn-sm font-weight-bolder btn-light-danger">
+                                                            <i class="flaticon2-trash text-danger"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-form-label text-right"></label>
+                                        <div class="col-lg-12">
+                                            <a href="javascript:;" data-repeater-create=""
+                                                class="btn btn-sm font-weight-bolder btn-info"
+                                                style="float: right;margin-right:4rem;">
+                                                <i class="la la-plus"></i>Add features
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- .................................................................... --}}
                             </div>
                             <div class="card-footer">
                                 <a href="{{ route('dashboard.ads') }}"
@@ -193,6 +347,7 @@
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }
+
         let img = document.querySelectorAll(".file")
         img.forEach((item) => {
             item.addEventListener("change", (e) => {
@@ -203,5 +358,82 @@
         // $("#file").change(function() {
         //     readURL(this);
         // });
+
+        // ..............................KTFormRepeater...........................................
+        // Class definition
+        var KTFormRepeater = function() {
+
+            // Private functions
+            var demo3 = function() {
+                $('#kt_repeater_3').repeater({
+                    initEmpty: false,
+
+                    defaultValues: {
+                        'text-input': 'foo'
+                    },
+
+                    show: function() {
+                        $(this).slideDown();
+                    },
+
+                    hide: function(deleteElement) {
+                        if (confirm('Are you sure you want to delete this element?')) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    }
+                });
+            }
+            var demo2 = function() {
+                $('#kt_repeater_2').repeater({
+                    initEmpty: false,
+
+                    defaultValues: {
+                        'text-input': 'foo'
+                    },
+
+                    show: function() {
+                        $(this).slideDown();
+                    },
+
+                    hide: function(deleteElement) {
+                        if (confirm('Are you sure you want to delete this element?')) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    }
+                });
+            }
+            var demo1 = function() {
+                $('#kt_repeater_1').repeater({
+                    initEmpty: false,
+
+                    defaultValues: {
+                        'text-input': 'foo'
+                    },
+
+                    show: function() {
+                        $(this).slideDown();
+                    },
+
+                    hide: function(deleteElement) {
+                        if (confirm('Are you sure you want to delete this element?')) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    }
+                });
+            }
+
+            return {
+                // public functions
+                init: function() {
+                    demo3();
+                    demo2();
+                    demo1();
+                }
+            };
+        }();
+
+        jQuery(document).ready(function() {
+            KTFormRepeater.init();
+        });
     </script>
 @endsection

@@ -1,6 +1,6 @@
 <div class="card-header card-header-tabs-line">
     <div class="card-title">
-        <h3 class="card-label">Card Title With Icons</h3>
+        <h3 class="card-label">@yield("titre")</h3>
     </div>
     <div class="card-toolbar">
         <ul class="nav nav-tabs nav-bold nav-tabs-line">

@@ -45,17 +45,22 @@ class PagesController extends Controller
     }
     public function showProductsNotSub($name, $products)
     {
+
+        // $annonce = Annonce::where('category_id', $products)->get();
         return view('website.category.allAds', compact('products', 'name'));
     }
     public function showOne($name, $id)
     {
         // $pro = Annonce::findOrFail($products);
         $ads = Annonce::findOrFail($id);
+        // dd($ads);
         $Parsedown = new Parsedown();
         $Parsedown->setSafeMode(true);
         $description = $Parsedown->text($ads->description);
         $adsFeatures = Annonces_feature::where('annonce_id', $id)->get();
+        // dd($adsFeatures);
         $features = Feature::all();
+        // dd($features);
         $idFeat = [];
         foreach ($adsFeatures as $x) {
             $idFeat[] = $x->feature_id;

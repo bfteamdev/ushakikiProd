@@ -33,13 +33,15 @@
                     <div class="categories">
                         <div class="container">
                             <div class="row">
-                                @foreach ($category as $item)
+                                @foreach ($type as $item)
                                     <div class="col-md-2 focus-grid mt-2">
-                                        <a href="{{ route("ad.by.category",['id'=>$item->id]) }}">
+                                        <a href="{{ route('ad.by.type',['id'=>$item->id,'name'=>$item->name]) }}">
                                             <div class="focus-border">
                                                 <div class="focus-layout">
-                                                    <div class="focus-image"><i class="{{ $item->icon }}"></i></div>
+                                                    <div class="focus-image"><i class="{{ $item->category->icon }}"></i></div>
                                                     <h4 class="clrchg">{{ $item->name }}</h4>
+                                                    <br>
+                                                    <h3>{{ $item->ads_count }}</h3>
                                                 </div>
                                             </div>
                                         </a>

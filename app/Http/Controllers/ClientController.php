@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ClientRegistedEvent;
 use App\User;
+use App\Models\Groupe;
+use App\Models\Annonce;
 use Illuminate\Http\Request;
+use App\Events\ClientRegistedEvent;
 use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
@@ -151,4 +153,29 @@ class ClientController extends Controller
             "status" => ""
         ]);
     }
+    public function resetShow(User $client)
+    {
+        return view('admin.client.changePassword',compact('client'));
+    }
+    public function changePassword(Request $request,User $client)
+    {
+        $request = request()->validate([
+            "password" => 'required|string|min:6',
+        ]);
+        // dd($client);
+        $request['password'] = Hash::make($request['password']);
+        $client->update($request);
+        return back()->withInput()->with("success", "The passwprd is reset with successful !!!");
+    }
+    public function ad(User $client)
+    {
+        // dd($client);
+        $group=Groupe::all();
+        $annonce=Annonce::where('user_id',$client->id)->paginate(10);
+        // foreach($annonce as $item){
+        //     // dd($item->type->category['name']);
+        // }
+        return view('admin.client.ad',compact('client','group','annonce'));
+    }
+
 }
