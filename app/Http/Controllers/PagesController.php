@@ -25,10 +25,18 @@ class PagesController extends Controller
 
     public function showCategory(Groupe $group)
     {
-        //$category = Category::where("groupe_id", $group->id)->get();
-        $category = Category::where("groupe_id", $group->id)->with(["type","Ads"])->withCount(["type","Ads"])->get();
+        $category = Category::where("groupe_id", $group->id)->with(["type", "Ads"])->withCount(["type", "Ads"])->get();
         // return $category;
-        return view('website.category.show', compact("category", "group"));
+        $adsCount = [];
+        foreach ($category as $item) {
+            $adsCount[$item->id][] = $item->ads_count;
+            foreach ($item->type as $items) {
+                if ($item->id === $items->category_id) {
+                    $adsCount[$item->id][] = $items->ads_count;
+                }
+            }
+        }
+        return view('website.category.show', compact("category", "group", "adsCount"));
     }
 
     public function showProducts($name, $products)

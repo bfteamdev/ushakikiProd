@@ -436,7 +436,8 @@ li.dropdown-header {
 .search .autosearch {
 	position: absolute;
 	/*display: none;
-	*/opacity: 0;
+	*/
+	opacity: 0;
 	top: 48px;
 	left: 0;
 	right: 0;
@@ -469,13 +470,13 @@ li.dropdown-header {
 	-o-transition: background .2s ease-in-out;
 }
 
-.autosearch li:hover{
+.autosearch li:hover {
 	cursor: pointer;
 	background-color: #dbac14;
 	color: #252525;
 }
 
-.autosearch li:first-child{
+.autosearch li:first-child {
 	border-radius: 4px 4px 0px 0px;
 	-webkit-border-radius: 4px 4px 0px 0px;
 	-moz-border-radius: 4px 4px 0px 0px;
@@ -483,7 +484,7 @@ li.dropdown-header {
 	-o-border-radius: 4px 4px 0px 0px;
 }
 
-.autosearch li:last-child{
+.autosearch li:last-child {
 	border-bottom: none;
 	border-radius: 0px 0px 4px 4px;
 	-webkit-border-radius: 0px 0px 8px 8px;
@@ -505,7 +506,6 @@ li.dropdown-header {
 	color: var(--color1);
 	font-size: 60px;
 }
-
 
 .logo .cl2 {
 	color: var(--color2);
@@ -1444,9 +1444,11 @@ span.price:after {
 	color: #886800;
 	margin-bottom: 16px;
 }
-.footer-grid ul{
+
+.footer-grid ul {
 	padding: 0;
 }
+
 .footer-grid p {
 	color: #4e4e4e;
 	font-size: 13px;
@@ -1772,13 +1774,14 @@ span.total strong {
 .category-info h4 {
 	color: #000;
 	font-size: 22px;
+	font-weight: bold;
 }
 
 .category-info span {
 	color: #000;
-	font-size: 12px;
+	font-size: 15px;
 	display: block;
-	margin: 10px 0;
+	margin: 4px 0;
 }
 
 .category-info a {
@@ -3312,7 +3315,7 @@ h2.sear-head.fer {
 	margin: 16px 0;
 }
 
-.free{
+.free {
 	position: absolute;
 	font-weight: bold;
 	font-size: 16px;
@@ -4286,22 +4289,25 @@ a.boxUser {
 	-o-transition: all .3s ease-in-out;
 }
 
-.cardScroll{
+.cardScroll {
 	height: 500px;
-  overflow: auto;
+	overflow: auto;
 }
+
 .cardScroll::-webkit-scrollbar {
 	width: 3px;
 	background-color: #d8d8d8;
 }
+
 .cardScroll::-webkit-scrollbar-thumb {
 	background-color: #151515;
 }
 
-.no-result{
+.no-result {
 	font-size: 2rem;
 	text-decoration: none;
 }
+
 /** * Responsive Bootstrap Tabs by @hayatbiralem * 15 May 2015 */
 
 @media screen and (max-width: 479px) {
@@ -6940,4 +6946,22 @@ label {
 	.category {
 		padding: 20px 0px;
 	}
+}
+
+/* Pagination color */
+
+.page-link {
+	color: #1b1b1b!important;
+	/*  */
+	margin: 0 6px !important;
+	border-radius: 50% !important;
+	padding: 6px 13px !important;
+	border: 1px solid #1b1b1b !important;
+}
+.page-link:hover {
+	background-color: #dbac14 !important;
+}
+.page-item.active .page-link {
+	background-color: #dbac14 !important;
+	border-color: #dbac14 !important;
 }

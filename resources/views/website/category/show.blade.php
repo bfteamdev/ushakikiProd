@@ -30,8 +30,8 @@
                     @foreach ($category as $key => $item)
                         <li class="resp-tab-item hor_1" aria-controls="hor_1_tab_item-{{ $key }}" role="tab"
                             style="background-color: #f5f5f5;">
-                            <i class="{{ $item->icon }}" style="font-size: 1.4rem;
-                                                                    margin-right: 10px;"></i>{{ $item->name }}
+                            <i class="{{ $item->icon }}"
+                                style="font-size: 1.4rem;  margin-right: 10px;"></i>{{ $item->name }}
                         </li>
                     @endforeach
                 </ul>
@@ -41,16 +41,37 @@
                     @foreach ($category as $key => $item)
                         <div class="resp-tab-content hor_1" aria-labelledby="hor_1_tab_item-{{ $key }}"
                             style="border-color: rgb(193, 193, 193);">
-                            <div class="category">
-                                <div class="category-img">
-                                    <i class="{{ $item->icon }}"></i>
+                            <a href="{{ route('category.ads', ['name' => $item->name, 'products' => $item->id]) }}" style="color: #212529;text-decoration: none;">
+                                <div class="category">
+                                    <div class="category-img">
+                                        <i class="{{ $item->icon }}"></i>
+                                    </div>
+                                    <div class="category-info">
+                                        <h4>{{ $item->name }}</h4>
+                                        <span>{{ number_format(array_sum($adsCount[$item->id])) }}&nbsp;Ads</span>
+                                        <span style="font-size: 12px;">View all Ads</span>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="category-info">
-                                    <h4>{{ $item->name }}</h4>
+                            </a>
+                            @if ($item->ads_count > 0)
+                                <div class="category"
+                                    style="padding: 24px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
+                                    <div class="col-lg-12">
+                                        <a href="{{ route('category.ads', ['name' => $item->name, 'products' => $item->id]) }}"
+                                            class="cardSubCategory" style="margin-bottom:0% !important;">
+                                            <span class="nameCategory">Voir touts les annonces sur cette category</span>
+                                            <div class="totalAds">
+                                                <span>
+                                                    {{ $item->ads_count }}
+                                                </span>
+                                                <span>{{ $item->ads_count <= 1 ? 'Annonce' : 'Annonces' }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            @if (sizeof($item->type) >= 1)
+                            @endif
+                            @if ($item->type_count > 0)
                                 <div class="category"
                                     style="padding: 7px 20px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
                                     Les sous-categories</div>
@@ -70,24 +91,6 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="category"
-                                    style="padding: 24px;font-weight: bold;font-size: 1.4rem;font-variant: petite-caps;color: #6d6d6d;">
-                                    <div class="col-lg-12">
-                                        <a href="{{ route('category.ads.not', ['name' => $item->name, 'products' => $item->id]) }}"
-                                            class="cardSubCategory" style="margin-bottom:0% !important;">
-                                            <span class="nameCategory">Voir touts les annonces sur cette category</span>
-                                            <div class="totalAds">
-                                                <span>
-                                                    @if (sizeof($item->type) < 1)
-                                                        {{ $item->ads_count }}
-                                                    @endif
-                                                </span>
-                                                <span>{{ $item->ads_count <= 1 ? 'Annonce' : 'Annonces' }}</span>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                             @endif
@@ -121,7 +124,6 @@
                 }
             });
         });
-
     </script>
     <script src="{{ asset('app-assets/js/easyResponsiveTabs.js') }}" rel="preload" as="script"></script>
 @endsection

@@ -8,10 +8,17 @@
         </div>
         <div class="search-hotel">
             <h3 class="sear-head">Trie par prix</h3>
-            @foreach ($tablePrice as $item)
+            <div class="form-check">
+                <label>
+                    <input type="radio" wire:model.debounce.300ms="trieByPrice" value="">&nbsp;All
+                </label>
+            </div>
+            @foreach ($tablePrice as $key => $item)
                 <div class="form-check">
-                    <label for="{{ $item }}"><input type="checkbox" id="{{ $item }}">
-                        &nbsp;{{ $item }}</label>
+                    <label>
+                        <input type="radio" wire:model.debounce.300ms="trieByPrice"
+                            value="{{ $key . '-' . $key * $item }}">&nbsp;{{ number_format($key) . ' - ' . number_format($key * $item) }}
+                    </label>
                 </div>
             @endforeach
         </div>
@@ -54,14 +61,9 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        {{ $annonce->links() }}
+                    <div class="d-felx justify-content-center">
+                        {{ $annonce->links('pagination::bootstrap-4') }}
                     </div>
-                    {{-- <ul class="d-flex justify-content-center"> --}}
-                    {{-- <ul class="d-flex justify-content-center">
-                            {!! $annonce->links() !!}
-                        </ul> --}}
-                    {{-- </ul> --}}
                 </div>
             </div>
         </div>
