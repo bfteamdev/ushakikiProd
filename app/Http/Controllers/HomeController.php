@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Type;
 use App\Models\Annonce;
 use App\Models\Category;
 use App\Models\Groupe;
-use Illuminate\Http\Request;
+use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -29,21 +28,8 @@ class HomeController extends Controller
     public function index()
     {
 
-
-        $category=Category::with(["type", "Ads"])->withCount(["type", "Ads"])->get();
-        $adsCount = [];
-        foreach ($category as $item) {
-            $adsCount[$item->id][] = $item->ads_count;
-            foreach ($item->type as $items) {
-                if ($item->id === $items->category_id) {
-                    $adsCount[$item->id][] = $items->ads_count;
-                }
-            }
-        }
-        // return $adsCount;
-        return view('website.dashbaord.home',compact('category','adsCount'));
-
-
+        $group = Groupe::with("categories")->get();
+        return view('website.dashbaord.home', compact('group'));
     }
 
     public function viewAdByCategory($id)
@@ -64,7 +50,7 @@ class HomeController extends Controller
                 ->get();
             return view('site.adByCat', compact('annonce'));
         } else {
-            return view('subCat', compact('type', "cat","adsCount"));
+            return view('subCat', compact('type', "cat", "adsCount"));
         }
     }
     public function viewAdBySubCategory($id)

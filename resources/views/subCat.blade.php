@@ -44,7 +44,6 @@
                                                     <br>
                                                     <span>{{ $item->ads_count }}&nbsp;Ads</span>
                                                 </div> --}}
-
                                 <div class="groupCatg col-lg-12">
                                     <div class="groupName">{{ $cat->name }}</div>
                                     <div class="d-flex flex-wrap" style="width: 100%; margin:12px 4px;">
@@ -62,11 +61,9 @@
                                                             <h3
                                                                 style="width: 100%;margin: 0;font-size: 15px;font-weight: bold;text-align: end;color: #383838;">
                                                                 {{ count($adsCount[$item->id]) }}</h3>
-
                                                         </div>
                                                     </div>
                                                 </a>
-]
                                             </div>
                                         @endforeach
                                     </div>
@@ -75,20 +72,13 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-
                 </div>
                 <!--end::Card-->
             </div>
             <!--end::Content-->
         </div>
-
-
-
     </div>
-
-
 @endsection
-
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet">
 @endsection

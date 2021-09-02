@@ -31,18 +31,6 @@
                     <div class="categories">
                         <div class="container">
                             <div class="row">
-
-                                @foreach ($category as $item)
-                                    {{-- @foreach ($nbre as $nbres) --}}
-                                    <div class="col-md-2 focus-grid mt-2">
-                                        <a href="{{ route('ad.by.category', ['id' => $item->id]) }}">
-                                            <div class="focus-border">
-                                                <div class="focus-layout">
-                                                    <div class="focus-image"><i class="{{ $item->icon }}"></i></div>
-                                                    <h4 class="clrchg">{{ $item->name }}</h4><br>
-                                                    <span>{{ number_format(array_sum($adsCount[$item->id])) }}&nbsp;Ads</span>
-
-{{-- 
                                 @foreach ($group as $item)
                                     <div class="groupCatg col-lg-12">
                                         <div class="groupName">{{ $item->name }}</div>
@@ -67,8 +55,7 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                    </a> --}}
-
+                                                    </a>
                                                 </div>
                                             @endforeach
                                         </div>

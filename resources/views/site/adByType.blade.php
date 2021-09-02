@@ -79,30 +79,32 @@
                                         @foreach ($annonce as $item)
                                             <tr>
                                                 <td><img src="{{ asset('storage/' . $item->viewPhoto->name) }}"
-                                                        style="width: 165px; height: 100px;  display: block; object-fit:cover;" title=""
+                                                        style="width: 80px;height: 80px;display: block;object-fit: contain;" title=""
                                                         alt="" /></td>
 
-                                                <td style="font-size: 14px;">{{ $item->title }}</td>
-                                                <td style="font-size: 14px;">{{ $item->created_at }}</td>
-                                                <td style="font-size: 14px;">{{ $item->expired_at }}</td>
-                                                <td style="font-size: 14px;"><span
+                                                <td style="font-size: 16px;">{{ $item->title }}</td>
+                                                <td style="font-size: 16px;">{{ $item->created_at }}</td>
+                                                <td style="font-size: 16px;">{{ $item->expired_at }}</td>
+                                                <td style="font-size: 16px;"><span
                                                         class="badge badge-{{ $item->statu === 'active' ? 'success' : 'danger' }}">{{ $item->statu }}</span>
                                                 </td>
-                                                <td style="font-size: 14px;" class="d-flex">
-                                                    {{-- <a href="{{ route('ssl.edit',['ssl'=>$item->id]) }}" class="badge badge-info"> view more </a> --}}
-                                                    <a href="{{ route('dashboard.ads.show', ['id' => $item->id]) }}"
-                                                        class="btn" style="padding: 0; padding: 0 7px;">
-                                                        <i class="icon-lg text-dark ml-3 far fa-eye "></i>
-                                                    </a> |
-                                                    <form action="" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn"
-                                                            style="padding: 0; padding: 0 7px;"
-                                                            onclick="return(confirm('do you want to delete this Ad??'))">
-                                                            <i class="flaticon2-trash text-danger"></i>
-                                                        </button>
-                                                    </form>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        {{-- <a href="{{ route('ssl.edit',['ssl'=>$item->id]) }}" class="badge badge-info"> view more </a> --}}
+                                                        <a href="{{ route('dashboard.ads.show', ['id' => $item->id]) }}"
+                                                            class="btn" style="padding: 0; padding: 0 7px;">
+                                                            <i class="icon-lg text-dark ml-3 far fa-eye "></i>
+                                                        </a> |
+                                                        <form action="" method="post" style="display: block;">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn"
+                                                                style="padding: 0; padding: 0 7px;"
+                                                                onclick="return(confirm('do you want to delete this Ad??'))">
+                                                                <i class="flaticon2-trash text-danger"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
