@@ -41,11 +41,18 @@
                                                 <h5 class="title">{{ $item->title }}</h5>
                                                 <span
                                                     class="adprice">{{ number_format($item->price) }}&nbsp;Fbu</span>
-                                                <p class="catpath">{{ $name }} » Other {{ $name }}</p>
+                                                <p class="catpath">{{ $name }} » Other
+                                                    {{ $name }}</p>
                                             </section>
                                             <section class="list-right">
                                                 <span class="date">Poster: {{ $item->created_at }}</span>
                                                 {{-- <span class="cityname">{{ $item->commune }} {{ $item->zone  }}</span> --}}
+                                            </section>
+                                            <section class="list-right">
+                                                <div class="">
+                                                    <a href="#" class="btn btn-primary m-0" id="facebook-btn">
+                                                        <i class="fab fa-facebook-square" aria-hidden="true" style=" color:#3b5998"></i>&nbsp; share</a>
+                                                </div>
                                             </section>
                                             <div class="clearfix"></div>
                                         </li>
@@ -70,3 +77,5 @@
     </div>
     <div class="clearfix"></div>
 </div>
+
+

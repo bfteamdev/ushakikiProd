@@ -28,3 +28,22 @@
         </div>
     </div>
 @endsection
+@section('script')
+<script>
+    const btn_fb=document.getElementById('facebook-btn');
+    let postUrl=encodeURI(document.location.href);
+    let postTitle=encodeURI('{{ $name }}');
+    btn_fb.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}&title=${postTitle}`);
+    btn_fb.addEventListener('click',()=>{
+        navigator.share({
+            title:postTitle
+            url:postUrl
+        }).then((result)=>{
+            alert("thank you for sharing")
+        }).catch(err)=>{
+            console.log(err);
+        }
+    })
+</script>
+
+@endsection

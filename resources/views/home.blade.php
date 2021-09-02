@@ -1,7 +1,6 @@
 @extends('layout.app')
-
 @section('content')
-
+@section('dashboardActive') active @endsection
     <div class="container">
         @if (session()->has('error'))
             <div class="alert alert-danger" role="alert">
@@ -41,11 +40,7 @@
                                                 <div class="focus-layout">
                                                     <div class="focus-image"><i class="{{ $item->icon }}"></i></div>
                                                     <h4 class="clrchg">{{ $item->name }}</h4><br>
-                                                    @if ($item->type_count !=0)                                                        
-                                                    <h3>{{ $item->type_count }}</h3>
-                                                    @else
-                                                    <h3>{{ $item->ads_count }}</h3>
-                                                    @endif
+                                                    <span>{{ number_format(array_sum($adsCount[$item->id])) }}&nbsp;Ads</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -56,20 +51,13 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-
                 </div>
                 <!--end::Card-->
             </div>
             <!--end::Content-->
         </div>
-
-
-
     </div>
-
-
 @endsection
-
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet">
 @endsection

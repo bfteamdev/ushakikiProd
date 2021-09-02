@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Models\Type;
-use App\Models\Photo;
-use App\Models\Groupe;
 use App\Models\Annonce;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Models\Annonces_feature;
-use Illuminate\Support\Facades\DB;
+use App\Models\Category;
+use App\Models\Groupe;
+use App\Models\Photo;
+use App\Models\Type;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AnnonceController extends Controller
 {
@@ -53,7 +53,7 @@ class AnnonceController extends Controller
             'description' => 'required',
             'commune' => 'required',
             'zone' => 'required',
-            'statu' => 'required'
+            'statu' => 'required',
         ]);
         $imo = Annonce::findOrFail($id);
         // dd($imo);
@@ -64,7 +64,7 @@ class AnnonceController extends Controller
             'statu' => $request->statu,
             'description' => $request->description,
             'commune' => $request->commune,
-            'zone' => $request->zone
+            'zone' => $request->zone,
         ]);
         foreach ($request->value as $key => $item) {
             if (empty($item)) {
@@ -154,7 +154,7 @@ class AnnonceController extends Controller
             'description' => 'required',
             'commune' => 'required',
             'zone' => 'required',
-            'statu' => 'required'
+            'statu' => 'required',
         ]);
         $voiture = Annonce::findOrFail($id);
         $voiture->update([
@@ -164,7 +164,7 @@ class AnnonceController extends Controller
             'statu' => $request->statu,
             'description' => $request->description,
             'commune' => $request->commune,
-            'zone' => $request->zone
+            'zone' => $request->zone,
         ]);
         foreach ($request->value as $key => $item) {
             if (empty($item)) {
@@ -233,7 +233,7 @@ class AnnonceController extends Controller
             ->select('annonces.*', 'users.username', 'categories.name')
             ->orderBy('annonces.id', 'desc')
             ->get();
-        //  dd($annonce);                                      
+        //  dd($annonce);
         return view("admin.ads.truc.index", compact('annonce', 'group'));
     }
     public function showTruc($id)
@@ -253,7 +253,7 @@ class AnnonceController extends Controller
             'description' => 'required',
             'commune' => 'required',
             'zone' => 'required',
-            'statu' => 'required'
+            'statu' => 'required',
         ]);
         $truc = Annonce::findOrFail($id);
         $truc->update([
@@ -263,7 +263,7 @@ class AnnonceController extends Controller
             'statu' => $request->statu,
             'description' => $request->description,
             'commune' => $request->commune,
-            'zone' => $request->zone
+            'zone' => $request->zone,
         ]);
         foreach ($request->value as $key => $item) {
             if (empty($item)) {
@@ -354,7 +354,7 @@ class AnnonceController extends Controller
             'description' => 'required',
             'commune' => 'required',
             'zone' => 'required',
-            'statu' => 'required'
+            'statu' => 'required',
         ]);
         $service = Annonce::findOrFail($id);
         $service->update([
@@ -364,7 +364,7 @@ class AnnonceController extends Controller
             'statu' => $request->statu,
             'description' => $request->description,
             'commune' => $request->commune,
-            'zone' => $request->zone
+            'zone' => $request->zone,
         ]);
         foreach ($request->value as $key => $item) {
             if (empty($item)) {
@@ -509,7 +509,7 @@ class AnnonceController extends Controller
     }
     public function updateAd(Request $request, $id)
     {
-        // dd($request->statu);
+        // dd($request->all());
         $data = $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -517,9 +517,10 @@ class AnnonceController extends Controller
             'commune' => 'required',
             'zone' => 'required',
             'price' => 'required',
-            'statu' => 'required'
+            'statu' => 'required',
         ]);
         $add = Annonce::findOrFail($id);
+
         $upAd = $add->update([
             'title' => $request->title,
             'category_id' => $request->category_id,
@@ -530,7 +531,6 @@ class AnnonceController extends Controller
             'statu' => $request->statu,
 
         ]);
-
         foreach ($request->value as $key => $item) {
             if (empty($item)) {
                 return back()->with('error', 'same field is not completed');
@@ -543,18 +543,26 @@ class AnnonceController extends Controller
                     ]);
             }
         }
+        foreach ($request['imagesAds'] as $key => $itemI) {
+            $itemI = $itemI->store("AdsImages/" . $add->id, "public");
+            $image = DB::table('photos')
+                ->where('id', $key)
+                ->where('annonce_id', $add->id)
+                ->update([
+                    'name' => trim(htmlentities($itemI)),
+                ]);
+        }
         return back()->with('success', 'the ad is updated succussfuly');
+
     }
     public function viewRenew($id)
     {
         $add = Annonce::findOrFail($id);
-        //    dd($add->category->groupe->name);
         return view('website.dashbaord.renewAd', compact('add'));
     }
     public function searchAdByUser()
     {
         $q = request("q");
-
         $typeSearch = request("type");
         if (!empty($q) && !empty($typeSearch)) {
             $search = Annonce::where($typeSearch, "like", "%$q%")

@@ -37,7 +37,7 @@
                             @include('website.dashbaord.header')<br>
                             {{-- <h2 class=" text-center">Edit Ad</h2> --}}
                         </div>
-                        <form action="{{ route('dashboard.ads.update', ['id' => $add->id]) }}" method="post">
+                        <form action="{{ route('dashboard.ads.update', ['id' => $add->id]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
@@ -55,7 +55,7 @@
                                                     <span class="font-weight-boldest">&nbsp;set default</span>
                                                 </div>
                                                 <label for="file{{ $item->id }}">
-                                                    <input type="file" accept="image/*" name="image" class="file"
+                                                    <input type="file" accept="image/*"  name="imagesAds[{{ $item->id }}]" class="file"
                                                         id="file{{ $item->id }}" onchange="readURL(this, 'blah');"
                                                         style="display: none;">
                                                     <img id="image{{ $item->id }}"
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="separator separator-dashed my-8"></div>
                                 <hr class="my-4">
-                                <h3 class="h2">Ad information</h3>
+                                <h3 class="h2">Ad informations</h3>
                                 <hr class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
@@ -336,7 +336,6 @@
     </div>
 @endsection
 @section('script')
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -347,19 +346,13 @@
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }
-
         let img = document.querySelectorAll(".file")
         img.forEach((item) => {
             item.addEventListener("change", (e) => {
-                // debugger;
                 readURL(e.target);
             })
-        })
-        // $("#file").change(function() {
-        //     readURL(this);
-        // });
-
-        // ..............................KTFormRepeater...........................................
+        })  
+      // ..............................KTFormRepeater...........................................
         // Class definition
         var KTFormRepeater = function() {
 
