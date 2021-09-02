@@ -33,20 +33,31 @@
                     <div class="categories">
                         <div class="container">
                             <div class="row">
-                                @foreach ($type as $item)
-                                    <div class="col-md-2 focus-grid mt-2">
-                                        <a href="{{ route('ad.by.type',['id'=>$item->id,'name'=>$item->name]) }}">
-                                            <div class="focus-border">
-                                                <div class="focus-layout">
-                                                    <div class="focus-image"><i class="{{ $item->category->icon }}"></i></div>
-                                                    <h4 class="clrchg">{{ $item->name }}</h4>
-                                                    <br>
-                                                    <h3>{{ $item->ads_count }}</h3>
-                                                </div>
+                                <div class="groupCatg col-lg-12">
+                                    <div class="groupName">{{ $cat->name }}</div>
+                                    <div class="d-flex flex-wrap" style="width: 100%; margin:12px 4px;">
+                                        @foreach ($type as $item)
+                                            <div class="focus-grid">
+                                                <a
+                                                    href="{{ route('ad.by.type', ['id' => $item->id, 'name' => $item->name]) }}">
+                                                    <div class="focus-layout focus-border">
+                                                        <div class="focus-image"><i
+                                                                class="{{ $item->category->icon }}"></i>
+                                                        </div>
+                                                        <div class="d-flex flex-wrap justify-content-between ml-3">
+                                                            <h4 class="clrchg" style="width: 100%; text-align: end;">
+                                                                {{ $item->name }}</h4>
+                                                            <h3
+                                                                style="width: 100%;margin: 0;font-size: 15px;font-weight: bold;text-align: end;color: #383838;">
+                                                                {{ count($adsCount[$item->id]) }}</h3>
+
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </a>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
