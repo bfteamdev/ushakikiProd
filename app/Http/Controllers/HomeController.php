@@ -39,7 +39,7 @@ class HomeController extends Controller
             }
         }
         // return $adsCount;
-        return view('home',compact('category','adsCount'));
+        return view('website.dashbaord.home',compact('category','adsCount'));
 
     }
   
