@@ -1,7 +1,6 @@
 @extends('layout.app')
 @section('homeDashboard') active @endsection
 @section('content')
-@section('dashboardActive') active @endsection
     <div class="container">
         @if (session()->has('error'))
             <div class="alert alert-danger" role="alert">
@@ -32,6 +31,7 @@
                     <div class="categories">
                         <div class="container">
                             <div class="row">
+
                                 @foreach ($category as $item)
                                     {{-- @foreach ($nbre as $nbres) --}}
                                     <div class="col-md-2 focus-grid mt-2">
@@ -42,20 +42,43 @@
                                                     <h4 class="clrchg">{{ $item->name }}</h4><br>
                                                     <span>{{ number_format(array_sum($adsCount[$item->id])) }}&nbsp;Ads</span>
 
+{{-- 
+                                @foreach ($group as $item)
+                                    <div class="groupCatg col-lg-12">
+                                        <div class="groupName">{{ $item->name }}</div>
+                                        <div class="d-flex flex-wrap" style="width: 100%; margin:12px 4px;">
+                                            @foreach ($item->categories as $items)
+                                                <div class="focus-grid">
+                                                    <a href="{{ route('ad.by.category', ['id' => $items->id]) }}">
+                                                        <div class="focus-layout focus-border">
+                                                            <div class="focus-image"><i class="{{ $items->icon }}"></i>
+                                                            </div>
+                                                            <div class="d-flex flex-wrap justify-content-between ml-3">
+                                                                <h4 class="clrchg" style="width: 100%; text-align: end;">
+                                                                    {{ $items->name }}</h4>
+                                                                @if ($items->type_count != 0)
+                                                                    <h3
+                                                                        style="width: 100%;margin: 0;font-size: 15px;font-weight: bold;text-align: end;color: #383838;">
+                                                                        {{ $items->type_count }}</h3>
+                                                                @else
+                                                                    <h3
+                                                                        style="width: 100%;margin: 0;font-size: 15px;font-weight: bold;text-align: end;color: #383838;">
+                                                                        {{ $items->ads_count }}</h3>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </a> --}}
+
                                                 </div>
-                                            </div>
-                                        </a>
+                                            @endforeach
+                                        </div>
                                     </div>
-                                    {{-- @endforeach --}}
                                 @endforeach
                             </div>
-                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-                <!--end::Card-->
             </div>
-            <!--end::Content-->
         </div>
     </div>
 @endsection

@@ -623,7 +623,8 @@ span.active.uls-trigger {
 }
 
 .focus-grid {
-	margin-top: 30px;
+	/* margin-top: 30px; */
+	width: 33.333333%;
 }
 
 .focus-grid h4 {
@@ -666,32 +667,42 @@ span.active.uls-trigger {
 }
 
 .focus-layout {
-	margin: 5px;
-	padding: 20px 0;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;
-	-ms-transition: 0.5s all;
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: auto;
+	margin: 5px 6px;
+	padding: 8px 20px;
+	border-radius: 6px;
+	transition: 0.3s all;
+	-webkit-transition: 0.3s all;
+	-moz-transition: 0.3s all;
+	-o-transition: 0.3s all;
+	-ms-transition: 0.3s all;
+	/* text-align: center; */
 }
 
 .focus-layout:hover {
-	background-color: #01a185;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;
-	-ms-transition: 0.5s all;
+	background-color: #383838;
+	transition: 0.3s all;
+	-webkit-transition: 0.3s all;
+	-moz-transition: 0.3s all;
+	-o-transition: 0.3s all;
+	-ms-transition: 0.3s all;
+}
+
+.focus-layout:hover h3{
+	color: white !important;
 }
 
 .focus-layout h4 {
 	margin: 0 0 0 0;
 	color: #4c4c4c;
 	font-size: 18px;
-	text-align: center;
-	height: 35px;
-	margin-top: 20px;
+	/* text-align: center; */
+	/* height: 35px; */
+	/* margin-left: 20px; */
 }
 
 .focus-layout:hover h4.clrchg {
@@ -712,13 +723,14 @@ span.active.uls-trigger {
 }
 
 .focus-image i {
-	font-size: 40px;
+	font-size: 22px;
 	color: #fff;
-	background: darkslategrey;
+	background: #383838;
 	border-radius: 50%;
-	width: 90px;
-	height: 90px;
-	line-height: 95px;
+	width: 50px;
+	height: 50px;
+	line-height: 26px;
+	padding: 12px 12px;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
@@ -6970,4 +6982,19 @@ label {
 .page-item.active .page-link {
 	background-color: #dbac14 !important;
 	border-color: #dbac14 !important;
+}
+
+.groupCatg {
+	border: 2px solid #e0e0e0;
+	border-radius: 6px;
+	margin-bottom: 16px;
+	padding: 0 !important;
+}
+
+.groupCatg .groupName{
+	width: 100%;
+	padding: 3px 17px;
+	background-color: #e0e0e0;
+	color: #080808;
+	font-size: 20px;
 }

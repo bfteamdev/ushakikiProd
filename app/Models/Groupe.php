@@ -10,7 +10,14 @@ class Groupe extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function categories(){
-        return $this->hasMany(Category::class);
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class)->with("type")->withCount(["type", "ads"]);
+    }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
     }
 }
