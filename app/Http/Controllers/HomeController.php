@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
 
         $category=Category::withCount('ads')->withCount('type')->get();
-        return view('home',compact('category'));
+        return view('website.dashbaord.home',compact('category'));
     }
   
     public function viewAdByCategory($id)

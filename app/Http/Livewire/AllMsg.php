@@ -14,8 +14,8 @@ class AllMsg extends Component
     public function render()
     {
         $usersSend = [];
-        $usersSendMessages = Message::where("sender_id", "!=", Auth::user()->id)
-            ->where("receiver_id", Auth::user()->id)
+        $usersSendMessages = Message::where("sender_id", Auth::user()->id)
+            ->OrWhere("receiver_id", Auth::user()->id)
             ->get();
         foreach ($usersSendMessages as $user) {
             $usersSend[] = $user->sender_id;

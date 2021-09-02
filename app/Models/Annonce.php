@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Parsedown;
 use App\Models\Type;
 use App\Models\Order;
 use App\Models\Photo;
@@ -19,14 +20,14 @@ class Annonce extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class, 'category_id')->with(["groupe"]);
     }
 
     public function type()
     {
-        return $this->belongsTo(Type::class,'type_id');
+        return $this->belongsTo(Type::class, 'type_id')->with("category");
     }
-    
+
     /**
      * Get all of the comments for the Annonce
      *
@@ -69,8 +70,15 @@ class Annonce extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function features_A()
+    public function featuresAds()
     {
-        return $this->hasMany(Annonces_feature::class);
+        return $this->hasMany(Annonces_feature::class)->with(["feature", "field"]);
+    }
+
+    public function getDescriptionAttribute($value)
+    {
+        $Parsedown = new Parsedown();
+        $Parsedown->setSafeMode(true);
+        return $Parsedown->text($value);
     }
 }

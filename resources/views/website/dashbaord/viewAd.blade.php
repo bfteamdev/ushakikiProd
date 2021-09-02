@@ -2,7 +2,7 @@
 @section('adsActive') active @endsection
 @section('edit') active @endsection
 @section('style')
-    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style">
+    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style" />
     <style>
         .borderImgUnique {
             padding: 5px;
@@ -18,7 +18,17 @@
             object-fit: contain;
         }
 
+        .form-group {
+            margin-bottom: 6px !important;
+        }
+
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css"
+        integrity="sha512-pDpLmYKym2pnF0DNYDKxRnOk1wkM9fISpSOjt8kWFKQeDmBTjSnBZhTd41tXwh8+bRMoSaFsRnznZUiH9i3pxA=="
+        crossorigin="anonymous" rel="preload" as="style" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js"
+        integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A=="
+        crossorigin="anonymous" rel="preload" as="script"></script>
 @endsection
 @section('content')
     <div class="d-flex flex-column-fluid">
@@ -40,14 +50,13 @@
                         <form action="{{ route('dashboard.ads.update', ['id' => $add->id]) }}" method="post">
                             @csrf
                             @method('patch')
-
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                                 <hr class="my-4">
                                 <h3 class="h2">Ad pictures</h3>
                                 <hr class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-12 "
-                                        style="overflow: auto;height: 235px;padding: 0 !important;display: flex;justify-content: start;align-items: center;">
+                                        style="overflow: auto;max-height: 235px;padding: 0 !important;display: flex;justify-content: start;align-items: center;">
                                         @foreach ($photo as $item)
                                             <div class="borderImgUnique">
                                                 <div class="d-flex align-items-center justify-content-center mb-1 w-100">
@@ -71,7 +80,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="separator separator-dashed my-8"></div>
                                 <hr class="my-4">
                                 <h3 class="h2">Ad information</h3>
                                 <hr class="my-4">
@@ -173,7 +181,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="separator separator-dashed my-8"></div>
                                 <hr class="my-4">
                                 <h3 class="h2">Features</h3>
                                 <hr class="my-4">
@@ -234,7 +241,6 @@
                                             {{-- <label for="">* features</label> --}}
                                             {{-- @dump($ssl->sslPrice) --}}
                                             @if (sizeof($features) === 3)
-
                                                 <div data-repeater-item class="form-group row">
                                                     @foreach ($features as $feature)
                                                         <div class="form-group col-lg-3">
@@ -259,7 +265,6 @@
 
                                                 </div>
                                             @elseif( sizeof($features) === 2 )
-
                                                 <div data-repeater-item class="form-group row">
                                                     @foreach ($features as $feature)
                                                         <div class="form-group col-lg-6">
@@ -283,7 +288,6 @@
                                                     @endforeach
                                                 </div>
                                             @else
-
                                                 <div data-repeater-item class="form-group row">
                                                     @foreach ($features as $feature)
                                                         <div class="form-group col-lg-3">
@@ -336,8 +340,31 @@
     </div>
 @endsection
 @section('script')
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
-    <script type="text/javascript">
+    {{-- <script>
+        $('#summernote').summernote({
+            placeholder: 'Hello stand alone ui',
+            // height: 350, // set editor height
+            // width: 350, // set editor width
+            minHeight: 100, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            dialogsFade: true, // set fade on dialog
+            prettifyHtml: false,
+            toolbar: [
+                // ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline']],
+                // ['fontname', ['fontname']],
+                // ['color', ['color']],
+                ['para', ['ul', 'ol']],
+                // ['height', ['height']],
+                // ['table', ['table']],
+                // ['insert', ['hr']],
+                // ['view', ['fullscreen', 'codeview']],
+                // ['help', ['help']]
+            ]
+        });
+    </script> --}}
+    <script src="{{ asset('js/input_repeat.js') }}" rel="preload" as="script" defer></script>
+    <script type="text/javascript" rel="preload" as="script">
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -347,35 +374,23 @@
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }
-
         let img = document.querySelectorAll(".file")
         img.forEach((item) => {
             item.addEventListener("change", (e) => {
-                // debugger;
                 readURL(e.target);
             })
         })
-        // $("#file").change(function() {
-        //     readURL(this);
-        // });
-
         // ..............................KTFormRepeater...........................................
-        // Class definition
         var KTFormRepeater = function() {
-
-            // Private functions
             var demo3 = function() {
                 $('#kt_repeater_3').repeater({
                     initEmpty: false,
-
                     defaultValues: {
                         'text-input': 'foo'
                     },
-
                     show: function() {
                         $(this).slideDown();
                     },
-
                     hide: function(deleteElement) {
                         if (confirm('Are you sure you want to delete this element?')) {
                             $(this).slideUp(deleteElement);
@@ -383,57 +398,15 @@
                     }
                 });
             }
-            var demo2 = function() {
-                $('#kt_repeater_2').repeater({
-                    initEmpty: false,
-
-                    defaultValues: {
-                        'text-input': 'foo'
-                    },
-
-                    show: function() {
-                        $(this).slideDown();
-                    },
-
-                    hide: function(deleteElement) {
-                        if (confirm('Are you sure you want to delete this element?')) {
-                            $(this).slideUp(deleteElement);
-                        }
-                    }
-                });
-            }
-            var demo1 = function() {
-                $('#kt_repeater_1').repeater({
-                    initEmpty: false,
-
-                    defaultValues: {
-                        'text-input': 'foo'
-                    },
-
-                    show: function() {
-                        $(this).slideDown();
-                    },
-
-                    hide: function(deleteElement) {
-                        if (confirm('Are you sure you want to delete this element?')) {
-                            $(this).slideUp(deleteElement);
-                        }
-                    }
-                });
-            }
-
             return {
-                // public functions
                 init: function() {
                     demo3();
-                    demo2();
-                    demo1();
                 }
             };
         }();
-
         jQuery(document).ready(function() {
             KTFormRepeater.init();
         });
+        //Textarea
     </script>
 @endsection

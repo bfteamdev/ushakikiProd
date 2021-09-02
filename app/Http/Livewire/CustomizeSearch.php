@@ -27,17 +27,12 @@ class CustomizeSearch extends Component
     public function render()
     {
         $price = strlen($this->trieByPrice) === 0 ?  [1, 999999999] : explode("-", $this->trieByPrice);
-        return view(
-            'livewire.customize-search',
-            [
-                "annonce" => Annonce::where('type_id', $this->products)
-                    ->OrWhere('category_id', $this->products)
-                    ->where("title", "like", "%{$this->q}%")
-                    ->whereBetween("price", [(int)$price[0], (int)$price[1]])
-                    ->with(["category", "type"])
-                    ->paginate(10),
-                "price"
-            ]
-        );
+        $annonce = Annonce::with(["category", "type"])
+            ->OrWhere('category_id', $this->products)
+            ->OrWhere('type_id', $this->products)
+            ->whereBetween("price", [(int)$price[0], (int)$price[1]])
+            ->where("title", "like", "%{$this->q}%")
+            ->paginate(10);
+        return view('livewire.customize-search',  compact("annonce", "price"));
     }
 }

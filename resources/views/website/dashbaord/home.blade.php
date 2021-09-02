@@ -1,5 +1,5 @@
 @extends('layout.app')
-
+@section('homeDashboard') active @endsection
 @section('content')
 
     <div class="container">
@@ -26,7 +26,6 @@
                         {{-- <h2 class=" text-center">Mes Annonces</h2> --}}
                         <div class="card-title align-items-start flex-column">
                             <h3 class="card-label font-weight-bolder text-dark">My dashboard</h3>
-                            <span class="text-muted font-weight-bold font-size-sm mt-1">Change your account settings</span>
                         </div>
                     </div>
                     <!--end::Header-->
@@ -34,17 +33,17 @@
                         <div class="container">
                             <div class="row">
                                 @foreach ($category as $item)
-                                {{-- @foreach ($nbre as $nbres ) --}}
+                                    {{-- @foreach ($nbre as $nbres) --}}
                                     <div class="col-md-2 focus-grid mt-2">
-                                        <a href="{{ route("ad.by.category",['id'=>$item->id]) }}">
+                                        <a href="{{ route('ad.by.category', ['id' => $item->id]) }}">
                                             <div class="focus-border">
                                                 <div class="focus-layout">
                                                     <div class="focus-image"><i class="{{ $item->icon }}"></i></div>
                                                     <h4 class="clrchg">{{ $item->name }}</h4><br>
-                                                    @if ($item->type_count !=0)                                                        
-                                                    <h3>{{ $item->type_count }}</h3>
+                                                    @if ($item->type_count != 0)
+                                                        <h3>{{ $item->type_count }}</h3>
                                                     @else
-                                                    <h3>{{ $item->ads_count }}</h3>
+                                                        <h3>{{ $item->ads_count }}</h3>
                                                     @endif
                                                 </div>
                                             </div>
