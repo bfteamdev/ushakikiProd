@@ -3,7 +3,8 @@
         <div class="card-body pt-4">
             <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
                 <div class="navi-item mb-2">
-                    <a href="{{ route('home') }}" class="navi-link py-4 @yield('dashboardActive')">
+
+                    <a href="{{ route('home') }}" class="navi-link py-4  @yield('homeDashboard')">
                         <span class="navi-icon mr-2">
                             <span class="svg-icon">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg--><svg

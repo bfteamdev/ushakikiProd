@@ -27,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $category=Category::with(["type", "Ads"])->withCount(["type", "Ads"])->get();
         $adsCount = [];
         foreach ($category as $item) {
@@ -39,6 +40,7 @@ class HomeController extends Controller
         }
         // return $adsCount;
         return view('home',compact('category','adsCount'));
+
     }
   
     public function viewAdByCategory($id)

@@ -2850,9 +2850,9 @@ form.submit {
 	content: '';
 	position: absolute;
 	z-index: 1;
-	left: -138px;
+	left: -135px;
 	background-color: rgba(0, 0, 0, 0);
-	border: 70px solid rgba(0, 0, 0, 0);
+	border: 67px solid rgba(0, 0, 0, 0);
 	border-right-color: var(--color1);
 	height: 0;
 	width: 0;
@@ -2862,7 +2862,7 @@ form.submit {
 
 p.p-price {
 	float: left;
-	width: 50%;
+	/* width: 50%; */
 	margin: 0;
 	font-size: 16px;
 	font-weight: 400;
@@ -2875,14 +2875,14 @@ p.p-price {
 h3.rate {
 	float: left;
 	color: #0466f7;
-	font-size: 24px;
+	font-size: 20px;
 	margin: 0;
 }
 
 .condition h4, .itemtype h4 {
 	margin: 0;
 	floaT: left;
-	font-size: 22px;
+	font-size: 16px;
 }
 
 .condition p, .itemtype p {
@@ -2891,10 +2891,14 @@ h3.rate {
 }
 
 .product-price {
+	display: flex;
+	justify-content: space-between;
 	padding: 10px 0;
 }
 
 .condition {
+	display: flex;
+	justify-content: space-between;
 	padding: 8px 0;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
@@ -2902,6 +2906,8 @@ h3.rate {
 
 .itemtype {
 	padding: 8px 0;
+	display: flex;
+	justify-content: space-between;
 }
 
 .interested {

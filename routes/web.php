@@ -105,7 +105,7 @@ Route::prefix('/')->group(function () {
     Route::get('/{group}/{name}', 'PagesController@showCategory')->name('category.show');
     Route::get('/{name}/sub-category/{products}', 'PagesController@showProducts')->name('category.ads');
     Route::get('/{name}/parent-category/{products}', 'PagesController@showProductsNotSub')->name('category.ads.not');
-    Route::get('/{name}/product/{id}', 'PagesController@showOne')->name('category.product.one');
+    Route::get('/{name}/product/{id}', 'PagesController@showOne')->name('category.product.one')->middleware("auth");
   });
 
   Route::post("/message/{idReceiver}", 'MessageController@store')->name("message.store");

@@ -31,6 +31,6 @@ class Category extends Model
 
     public function Ads()
     {
-        return $this->hasMany(Annonce::class);
+        return $this->hasMany(Annonce::class)->with(["category","type"]);
     }
 }

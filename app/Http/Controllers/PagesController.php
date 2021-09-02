@@ -51,21 +51,16 @@ class PagesController extends Controller
     }
     public function showOne($name, $id)
     {
-        // $pro = Annonce::findOrFail($products);
-        $ads = Annonce::findOrFail($id);
-        // dd($ads);
-        $Parsedown = new Parsedown();
-        $Parsedown->setSafeMode(true);
-        $description = $Parsedown->text($ads->description);
-        $adsFeatures = Annonces_feature::where('annonce_id', $id)->get();
-        // dd($adsFeatures);
-        $features = Feature::all();
-        // dd($features);
+        $ads = Annonce::where("id", $id)->with(["photos", "featuresAds", "category", "type"])->first();
+        // return $ads;
         $idFeat = [];
-        foreach ($adsFeatures as $x) {
+        foreach ($ads->featuresAds as $x) {
             $idFeat[] = $x->feature_id;
         }
         $idFeat = array_unique($idFeat);
-        return view('website.category.showOne', compact('ads', "description", "adsFeatures", "idFeat", "features"));
+        $groupe = $ads->type->category->groupe;
+        $category = $ads->type->category;
+        $type = $ads->type;
+        return view('website.category.showOne', compact('ads',"idFeat","groupe","category","type"));
     }
 }

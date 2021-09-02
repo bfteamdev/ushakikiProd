@@ -41,7 +41,7 @@
                 <div class="row my-5">
                     @include('website.dashbaord.sidebar')
                     <div class="col-lg-9 p-0 grayBg">
-                      @livewire('all-msg')
+                        @livewire('all-msg')
                     </div>
                 </div>
             </div>
