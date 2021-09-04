@@ -107,7 +107,15 @@ return [
             'root' => true,
             'icon' => 'media/svg/icons/Code/Compiling.svg', // or can be 'flaticon-home' or any flaticon-*
             'page' => 'admin/group',
+            "bullet" => "dot",
             'new-tab' => false,
+            "submenu" => [
+                [
+                    'title' => 'Faq',
+                    'page' => 'admin/faq',
+                ],
+                
+            ],
         ],
     ]
 ];

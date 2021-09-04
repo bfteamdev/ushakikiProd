@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -39,8 +40,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role']], function () {
   Route::patch("/profil", "AdminPageController@ProfilUpdate")->name('profil.update');
   Route::get("/password-update", "AdminPageController@ModifierPasswordShow")->name('profil.change');
   Route::patch("/password-update", "AdminPageController@ModifierPasswordUpdate")->name('profil.admin.update.password');
-
-
   // Admin --Ads
   Route::prefix('ads')->group(function () {
     //immobilier
@@ -68,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role']], function () {
   //Admin-order
   Route::resource('/order', 'OrderController');
   Route::get("/order_search", "OrderController@search")->name("order.search");
+  Route::resource('/faq', "FaqController");
 });
 //Login admin
 Route::get('/admin', 'AdminPageController@index')->name('admin.login');
