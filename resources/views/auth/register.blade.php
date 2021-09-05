@@ -1,7 +1,4 @@
 @extends('layout.app')
-@section('title')
-    Register
-@endsection
 @section('content')
     <div id="page-wrapper" class="sign-in-wrapper">
         <div class="container d-flex justify-content-center align-items-center flex-column">

@@ -1,5 +1,4 @@
 @extends('layout.app')
-@section('title') Category-car @endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('app-assets/css/bootstrap-select.css') }}">
     <style rel="preload" as="style">

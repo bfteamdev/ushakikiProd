@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\Annonces_feature;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
@@ -41,6 +42,15 @@ class PagesController extends Controller
 
     public function showProducts($name, $products)
     {
+        // Session::put("session", [
+        //     "x" => 2000,
+        //     "y" => 4000,
+        //     "z" => 6000
+        // ]);
+        // Session::push("session","FAQ");
+        // dd(Session::get("session"));
+        // Session::forget("session");
+        // dd(Session::get("session","no-session"));
         return view('website.category.allAds', compact('products', "name"));
     }
     public function showProductsNotSub($name, $products)
@@ -61,6 +71,6 @@ class PagesController extends Controller
         $groupe = $ads->type->category->groupe;
         $category = $ads->type->category;
         $type = $ads->type;
-        return view('website.category.showOne', compact('ads',"idFeat","groupe","category","type"));
+        return view('website.category.showOne', compact('ads', "idFeat", "groupe", "category", "type"));
     }
 }

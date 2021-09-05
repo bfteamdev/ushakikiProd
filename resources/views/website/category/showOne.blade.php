@@ -3,7 +3,7 @@ use App\Models\Feature;
 @endphp
 @extends('layout.app')
 @section('style')
-    <link rel="stylesheet" href="{{ asset('app-assets/css/flexslider.css') }}" media="screen" rel="preload" as="style"/>
+    <link rel="stylesheet" href="{{ asset('app-assets/css/flexslider.css') }}" media="screen" rel="preload" as="style" />
     <style rel="preload" as="style">
         .breadcrumb-item a.active {
             color: black !important;
@@ -51,8 +51,8 @@ use App\Models\Feature;
                     <div class="flexslider">
                         <ul class="slides">
                             @foreach ($ads->photos as $items)
-                                <li data-thumb="{{ asset('storage/' . $items->name) }}" class="clone" aria-hidden="true"
-                                    style="width: 625px; float: left; display: block;">
+                                <li data-thumb="{{ asset('storage/' . $items->name) }}" class="clone"
+                                    aria-hidden="true" style="width: 625px; float: left; display: block;">
                                     <img src="{{ asset('storage/' . $items->name) }}"
                                         alt="imageOfAd-xxxxx-{{ $items->id }}" draggable="false">
                                 </li>
@@ -144,67 +144,22 @@ use App\Models\Feature;
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="d-flex row">
-                <div class="col-md-2 border">
-                    <a href="single.html">
-                        <img src="{{ asset('app-assets/images/p1.jpg') }}" />
-                        {{-- <span class="price">&#36; 450</span> --}}
-                    </a>
-                    <div class="ad-info">
-                        <h5>There are many variations of passages</h5>
-                        <span>1 hour ago</span>
+            <div class="suggestion">
+                <h1>Suggestion</h1>
+                @for ($i = 0; $i < 5; $i++)
+                    <div class="suggestion_Ads col-xs-12 col-sm-6 col-md-3 col-lg-2">
+                        <a href="#">
+                            <div class="ads-bottom">
+                                <img
+                                    src="{{ asset('storage/AdsImages/9/LEqrgbGCX3jrrDLRO8tagF5has6n5XCLKPQeJmtV.png') }}" />
+                                <div class="ad-info">
+                                    <span class="title">There are many variations of passages</span>
+                                    <span class="priceAds">450</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-2 border">
-                    <a href="single.html">
-                        <img src="{{ asset('app-assets/images/p2.jpg') }}" />
-                        {{-- <span class="price">&#36; 399</span> --}}
-                    </a>
-                    <div class="ad-info">
-                        <h5>Lorem Ipsum is simply dummy</h5>
-                        <span>3 hour ago</span>
-                    </div>
-                </div>
-                <div class="col-md-2 border">
-                    <a href="single.html">
-                        <img src="{{ asset('app-assets/images/p3.jpg') }}" />
-                        {{-- <span class="price">&#36; 199</span> --}}
-                    </a>
-                    <div class="ad-info">
-                        <h5>It is a long established fact that a reader</h5>
-                        <span>8 hour ago</span>
-                    </div>
-                </div>
-                <div class="col-md-2 border">
-                    <a href="single.html">
-                        <img src="{{ asset('app-assets/images/p4.jpg') }}" />
-                        {{-- <span class="price">&#36; 159</span> --}}
-                    </a>
-                    <div class="ad-info">
-                        <h5>passage of Lorem Ipsum you need to be</h5>
-                        <span>19 hour ago</span>
-                    </div>
-                </div>
-                <div class="col-md-2 border">
-                    <a href="single.html">
-                        <img src="{{ asset('app-assets/images/p3.jpg') }}" />
-                        {{-- <span class="price">&#36; 199</span> --}}
-                    </a>
-                    <div class="ad-info">
-                        <h5>It is a long established fact that a reader</h5>
-                        <span>8 hour ago</span>
-                    </div>
-                </div>
-                <div class="col-md-2 border">
-                    <a href="single.html">
-                        <img src="{{ asset('app-assets/images/p4.jpg') }}" />
-                        {{-- <span class="price">&#36; 159</span> --}}
-                    </a>
-                    <div class="ad-info">
-                        <h5>passage of Lorem Ipsum you need to be</h5>
-                        <span>19 hour ago</span>
-                    </div>
-                </div>
+                @endfor
             </div>
         </div>
     </div>

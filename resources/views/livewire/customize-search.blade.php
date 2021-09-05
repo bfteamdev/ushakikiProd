@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="search-hotel">
-            <h3 class="sear-head">Trie par prix</h3>
+            <span class="sear-head">Trie par prix</span>
             <div class="form-check">
                 <label>
                     <input type="radio" wire:model.debounce.300ms="trieByPrice" value="">&nbsp;All
@@ -21,6 +21,23 @@
                     </label>
                 </div>
             @endforeach
+            <div class="featured-ads">
+                <span class="sear-head">Featured Ads</span>
+                @foreach ($sidebarAds as $item)
+                    <div class="featured-ad">
+                        <a href="#">
+                            <div class="featured-ad-left">
+                                <img src="{{ asset('storage/' . $item->viewPhoto->name) }}" title="ad image" alt="">
+                            </div>
+                            <div class="featured-ad-right">
+                                <h4>{{ $item->title }}</h4>
+                                <p>{{ number_format($item->price) }}&nbsp;<em>BIF</em></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
     <div class="ads-display col-md-9">
@@ -41,7 +58,8 @@
                                                 <h5 class="title">{{ $item->title }}</h5>
                                                 <span
                                                     class="adprice">{{ number_format($item->price) }}&nbsp;Fbu</span>
-                                                <p class="catpath">{{ $name }} » Other {{ $name }}</p>
+                                                <p class="catpath">{{ $name }} » Other
+                                                    {{ $name }}</p>
                                             </section>
                                             <section class="list-right">
                                                 <span class="date">Poster: {{ $item->created_at }}</span>
