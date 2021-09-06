@@ -544,7 +544,8 @@ a.MyAds:hover {
 	color: white !important;
 }
 
-a.iconCart {
+button.iconCart {
+	border: none;
 	float: left;
 	font-size: 15px;
 	color: #fff;
@@ -552,10 +553,174 @@ a.iconCart {
 	padding: 8px 12px;
 	text-decoration: none;
 	border-radius: 50%;
+	outline: none;
 }
 
-a.iconCart:hover {
+button.iconCart:hover {
+	cursor: pointer;
 	background-color: #b94603;
+}
+
+.favorite_Ads {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	padding: 10px 8px;
+	background-color: #ffffff;
+	z-index: 999999999999999999;
+	box-shadow: 0px 0px 20px -10px #000000cc;
+	transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	transform: translate(100%);
+	-webkit-transform: translate(100%);
+	-moz-transform: translate(100%);
+	-ms-transform: translate(100%);
+	-o-transform: translate(100%);
+}
+
+.favorite_Ads.active{
+	transform: none;
+	padding: 0;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+}
+
+.favorite_Ads .allFavo {
+	overflow-y: auto;
+	margin-top: 10px;
+}
+
+.allFavo::-webkit-scrollbar {
+	width: 3px;
+	background-color: #d8d8d8;
+}
+
+.allFavo::-webkit-scrollbar-thumb {
+	width: 10px;
+	background-color: #151515;
+}
+
+.favorite_Ads h1 {
+	font-size: 2rem;
+	font-weight: bold;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #212529;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.favorite_Ads h1 button{
+	cursor: pointer;
+	font-size: 13px;
+	margin-right: 11px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #ffffff;
+	padding: 7px 9px;
+	border-radius: 50%;
+	background-color: #1f1f1f;
+	border: none;
+	outline: none;
+}
+
+.favorite_Ads h1 button:hover{
+	cursor: pointer;
+	background-color: red;
+
+}
+
+.favorite_Ads .adFavorite {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	margin: 10px 0px;
+	box-shadow: 0 0 8px -4px #000000d1;
+	border-radius: 7px;
+	text-decoration: none;
+	color: #272727;
+}
+
+.favorite_Ads .adFavorite:first-child {
+	margin-top: 0;
+}
+
+.adFavorite img {
+	width: 28%;
+	height: 72px;
+	border: 1px solid #dbac14;
+	padding: 3px;
+	border-radius: 7px;
+}
+
+.adFavorite .detail {
+	width: 72%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	margin-left: 5px;
+}
+
+.detail .detailTitle {
+	font-size: 15px;
+	color: #333333;
+	margin-right: 18px;
+}
+
+.adFavorite i {
+	position: absolute;
+	font-size: 16px;
+	top: 6px;
+	right: 10px;
+}
+
+.detail .detailPrice {
+	align-self: flex-end;
+	margin-right: 10px;
+	font-size: 14px;
+}
+
+@media (max-width: 576px) {
+	.favorite_Ads {
+		width: 100%;
+	}
+}
+
+@media (min-width: 576px) {
+	.favorite_Ads {
+		width: 60%;
+	}
+}
+
+@media (min-width: 768px) {
+	.favorite_Ads {
+		width: 50%;
+	}
+}
+
+@media (min-width: 992px) {
+	.favorite_Ads {
+		width: 40%;
+	}
+}
+
+@media (min-width: 1366px) {
+	.favorite_Ads {
+		width: 20%;
+	}
 }
 
 .auth {
@@ -2352,7 +2517,7 @@ ul.all-cat-list li a:hover {
 
 span.arrow1 {
 	position: absolute;
-	top: -23px;
+	top: -90px;
 	right: -60px;
 }
 
@@ -2363,7 +2528,7 @@ span.arrow1 img {
 
 span.arrow2 {
 	position: absolute;
-	top: 55px;
+	top: 0px;
 	right: -66px;
 }
 
@@ -2509,6 +2674,8 @@ img.closeq {
 	padding: 0 0 0 28px;
 	background: none;
 	font-weight: normal;
+	display: flex;
+	align-items: center;
 }
 
 .faq-list .marker {
@@ -2518,6 +2685,7 @@ img.closeq {
 	display: block;
 	font-weight: bold;
 	margin: 0;
+	font-size: 19px;
 }
 
 p.m_13 {
@@ -4608,8 +4776,30 @@ span.adprice {
 
 #container .list li .list-right {
 	width: 19%;
-	float: right;
+	/* float: right; */
 	text-align: right;
+}
+
+#container .list li .favorite {
+	margin-top: 5px;
+	padding: 10px 10px;
+	font-size: 18px;
+	background-color: #dbac14;
+	border-radius: 50%;
+	color: white;
+	transition: color .3s ease-in-out;
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+}
+
+#container .list li .favorite:hover {
+	color: #333333;
+}
+
+#container .list li .favorite.active {
+	color: #333333;
 }
 
 #container .list li .date {
@@ -5074,8 +5264,8 @@ legend {
 
 img {
 	width: 100%;
-	height: 150px;
-	object-fit: contain;
+	/* height: 150px; */
+	object-fit: scale-down;
 }
 
 pre {
@@ -7069,10 +7259,11 @@ label {
 }
 
 @media (min-width: 992px) {
-	.suggestion .suggestion_Ads{
+	.suggestion .suggestion_Ads {
 		width: 16.666667%;
 	}
 }
+
 .suggestion_Ads a {
 	text-decoration: none;
 }

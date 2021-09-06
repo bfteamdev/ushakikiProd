@@ -27,7 +27,7 @@ class CustomizeSearch extends Component
     public function render()
     {
         $price = strlen($this->trieByPrice) === 0 ?  [1, 999999999] : explode("-", $this->trieByPrice);
-        $annonce = Annonce::with(["category", "type"])
+        $annonce = Annonce::with(["category", "type","viewPhoto"])
             ->OrWhere('category_id', $this->products)
             ->OrWhere('type_id', $this->products)
             ->whereBetween("price", [(int)$price[0], (int)$price[1]])

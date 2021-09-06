@@ -90,6 +90,7 @@ Route::get('login/facebook/callback', 'LoginController@handleFacebookCallback');
 //website --route
 Route::prefix('/')->group(function () {
   Route::get('/', "Site\HomeController@index")->name('site.index');
+  Route::get("/faq","Site\HomeController@faq")->name("faq.website");
   //Creation d'annonce
   Route::group(["prefix" => "/createAd", 'middleware' => ['auth']], function () {
     Route::get('/sub_category/{category}', "Site\CreateAds@showCategory")->name('ad.subCategory');
@@ -113,6 +114,7 @@ Route::prefix('/')->group(function () {
   Route::post('search_ads', 'Site\AutoSearchController@search')->name('AutoSearchController.search');
   //site- search Home
   Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
+  Route::get('createa-ad/', "Site\CreateAds@showGroup")->name('ad.category');
   //-----------------------Dashboard Client-----------------
   Route::prefix('dashboard')->group(function () {
     Route::get('', "HomeController@index")->name('home');
@@ -120,7 +122,6 @@ Route::prefix('/')->group(function () {
     Route::get('/category/{id}/{name}', "HomeController@viewAdBySubCategory")->name('ad.by.type');
     Route::get('/logout', "HomeController@logout")->name('logout.user');
     Route::get('/my-ads', 'AnnonceController@annonceByUser')->name('dashboard.ads');
-    Route::get('createa-ad/', "Site\CreateAds@showGroup")->name('ad.category');
     Route::get('ad/{id}', 'AnnonceController@viewAnnonce')->name('dashboard.ads.show');
     Route::patch('ad/{id}', 'AnnonceController@updateAd')->name('dashboard.ads.update');
     Route::get('/my-ads/search', 'AnnonceController@searchAdByUser')->name('dashboard.ads.search');

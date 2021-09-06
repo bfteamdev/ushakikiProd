@@ -74,7 +74,7 @@ use App\Classes\UrlRandom;
                         </p>
                     </div> --}}
                     <div class="clearfix"></div>
-                    <a class="work col-md-2" href="#">Get start Now</a>
+                    <a class="work col-md-2" href="{{ route("ad.category") }}">Get start Now</a>
                 </div>
             </div>
         </div>

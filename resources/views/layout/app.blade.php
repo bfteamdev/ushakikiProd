@@ -34,7 +34,6 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
     </script>
     {{-- Global Theme Styles (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.css') as $style)
@@ -42,8 +41,8 @@
             rel="stylesheet" type="text/css" rel="preload" as="style" />
     @endforeach
     @foreach (config('layout.resourcesUSHAKIKI.js') as $script)
-    <link href="{{ asset($script) }}" type="text/javascript" rel="preload" as="script">
-@endforeach
+        <link href="{{ asset($script) }}" type="text/javascript" rel="preload" as="script">
+    @endforeach
     @livewireStyles
     @yield('style')
 </head>
@@ -57,6 +56,7 @@
         <footer>
             @yield('footer')
         </footer>
+        @include("layout.partials.include.shoppingCart")
     </div>
     {{-- Global Theme JS Bundle (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.js') as $script)
@@ -67,8 +67,9 @@
         rel="preload" as="script">
     </script>
     <!-- Source -->
-    <script type="text/javascript" src="{{ asset('app-assets/js/jquery.leanModal.min.js') }}" rel="preload"
-        as="script"></script>
+    <script type="text/javascript" src="{{ asset('app-assets/js/jquery.leanModal.min.js') }}" rel="preload" as="script">
+    </script>
+    <script type="text/javascript" src="{{ asset('app-assets/js/cart.js') }}" rel="preload" as="script"></script>
     {{-- <script src="{{ asset('app-assets/js/jquery.uls.data.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.data.utils.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.lcd.js') }}" rel="preload" as="script"></script>

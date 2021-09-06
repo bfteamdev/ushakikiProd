@@ -63,7 +63,7 @@
                                             </section>
                                             <section class="list-right">
                                                 <span class="date">Poster: {{ $item->created_at }}</span>
-                                                {{-- <span class="cityname">{{ $item->commune }} {{ $item->zone  }}</span> --}}
+                                                <span class="favorite fas fa-heart active"></span>
                                             </section>
                                             <div class="clearfix"></div>
                                         </li>

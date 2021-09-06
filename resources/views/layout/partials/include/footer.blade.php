@@ -13,7 +13,7 @@
                 <ul>
                     <li><a href="howitworks.html">How it Works</a></li>
                     <li><a href="sitemap.html">Sitemap</a></li>
-                    <li><a href="faq.html">Faq</a></li>
+                    <li><a href="{{ route('faq.website') }}">Faq</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="typography.html">Shortcodes</a></li>
@@ -32,21 +32,13 @@
                 <span class="footer-head">Contact Us</span>
                 <span class="hq">Our headquarters</span>
                 <address>
-                    <ul class="location">
-                        <li><span class="glyphicon glyphicon-map-marker fas fa-map-marker-alt"></span></li>
-                        <li>USHAKIKI</li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    <ul class="location">
-                        <li><span class="glyphicon glyphicon-earphone fas fa-phone-alt"></span></li>
-                        <li>+257 xxx xxx</li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    <ul class="location">
-                        <li><span class="glyphicon glyphicon-envelope fas fa-envelope"></span></li>
-                        <li><a href="mailto:info@example.com">mail@example.com</a></li>
-                        <div class="clearfix"></div>
-                    </ul>
+                    @foreach (config('settings.contacts') as $item)
+                        <ul class="location">
+                            <li><span class="glyphicon glyphicon-map-marker {{ $item['icon'] }}"></span></li>
+                            <li>{{ $item['value'] }}</li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    @endforeach
                 </address>
             </div>
             <div class="clearfix"></div>
