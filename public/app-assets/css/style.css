@@ -585,7 +585,7 @@ button.iconCart:hover {
 	-o-transform: translate(100%);
 }
 
-.favorite_Ads.active{
+.favorite_Ads.active {
 	transform: none;
 	padding: 0;
 	-webkit-transform: none;
@@ -619,7 +619,7 @@ button.iconCart:hover {
 	justify-content: space-between;
 }
 
-.favorite_Ads h1 button{
+.favorite_Ads h1 button {
 	cursor: pointer;
 	font-size: 13px;
 	margin-right: 11px;
@@ -635,10 +635,9 @@ button.iconCart:hover {
 	outline: none;
 }
 
-.favorite_Ads h1 button:hover{
+.favorite_Ads h1 button:hover {
 	cursor: pointer;
 	background-color: red;
-
 }
 
 .favorite_Ads .adFavorite {
@@ -4712,6 +4711,10 @@ div#myTabContent {
 	-ms-transition: 0.5s all;
 }
 
+#container .list li a {
+	width: 73%;
+}
+
 #container .list li img {
 	float: left;
 	margin-right: 0;
@@ -4775,12 +4778,13 @@ span.adprice {
 }
 
 #container .list li .list-right {
-	width: 19%;
+	width: 27%;
 	/* float: right; */
 	text-align: right;
 }
 
 #container .list li .favorite {
+	z-index: 100000000000000;
 	margin-top: 5px;
 	padding: 10px 10px;
 	font-size: 18px;
@@ -4792,6 +4796,8 @@ span.adprice {
 	-moz-transition: color .3s ease-in-out;
 	-ms-transition: color .3s ease-in-out;
 	-o-transition: color .3s ease-in-out;
+	border: none;
+	outline: none;
 }
 
 #container .list li .favorite:hover {

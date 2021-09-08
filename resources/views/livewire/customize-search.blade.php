@@ -49,9 +49,9 @@
                             <div class="clearfix"></div>
                             <ul class="list">
                                 @forelse ($annonce as $item)
-                                    <a
-                                        href="{{ route('category.product.one', ['name' => $item->category->name ?? $item->type->name, 'id' => $item->id]) }}">
-                                        <li>
+                                    <li>
+                                        <a
+                                            href="{{ route('category.product.one', ['name' => $item->category->name ?? $item->type->name, 'id' => $item->id]) }}">
                                             <img src="{{ asset('storage/' . $item->viewPhoto->name) }}" title=""
                                                 alt="" />
                                             <section class="list-left">
@@ -61,13 +61,15 @@
                                                 <p class="catpath">{{ $name }} » Other
                                                     {{ $name }}</p>
                                             </section>
-                                            <section class="list-right">
-                                                <span class="date">Poster: {{ $item->created_at }}</span>
-                                                <span class="favorite fas fa-heart active"></span>
-                                            </section>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                    </a>
+                                        </a>
+                                        <section class="list-right">
+                                            <span class="date">Poster: {{ $item->created_at }}</span>
+                                            @if (Auth::check())
+                                            <button class="favorite fas fa-heart" wire:click="favorite({{ $item->id }},'{{ $item->viewPhoto->name }}','{{ $item->title }}')"></button>
+                                            @endif
+                                        </section>
+                                        <div class="clearfix"></div>
+                                    </li>
                                 @empty
                                     <li>
                                         <section class="no-result">
