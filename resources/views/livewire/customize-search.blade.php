@@ -68,8 +68,7 @@
                                                 wire:click="favorite({{ $item->id }},'{{ $item->viewPhoto->name }}','{{ $item->title }}','{{ $item->price }}')"></button>
                                             <section class="list-right">
                                                 <div class="">
-                                                    <a class="
-                                                    btn btn-primary m-0" id="fb-btn">
+                                                    <a class="btn btn-primary m-0" id="fb-btn">
                                                     <i class="fab fa-facebook-square" aria-hidden="true"
                                                         style=" color:#3b5998"></i>&nbsp; share</a>
                                                 </div>

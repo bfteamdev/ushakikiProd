@@ -28,28 +28,22 @@
     </div>
 @endsection
 @section('script')
-<script >
-    $(document).ready(function){
-        $("#fb_btn".click(function(){
-            alert('12345')
-            window.open('https://www.facebook.com/sharer.php?u=')
+    <script>
+        // ................................................
+        const btn_fb = document.getElementById('fb-btn');
+        let postUrl = encodeURI(document.location.href);
+        let postTitle = encodeURI('{{ $name }}');
+        btn_fb.setAttribute("href", `https://www.facebook.com/sharer.php?u=${postUrl}&title=${postTitle}`);
+        btn_fb.addEventListener('click', () => {
+            navigator.share({
+                title: postTitle,
+                url: postUrl
+            }).then((result) => {
+                alert("thank you for sharing")
+            }).catch((err)=>{
+                console.log(err);
+            })
         })
-    }
-    // ................................................
-    // const btn_fb=document.getElementById('facebook-btn');
-    // let postUrl=encodeURI(document.location.href);
-    // let postTitle=encodeURI('{{ $name }}');
-    // btn_fb.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}&title=${postTitle}`);
-    // btn_fb.addEventListener('click',()=>{
-    //     navigator.share({
-    //         title:postTitle
-    //         url:postUrl
-    //     }).then((result)=>{
-    //         alert("thank you for sharing")
-    //     }).catch(err)=>{
-    //         console.log(err);
-    //     }
-    // })
-</script>
+    </script>
 
 @endsection
