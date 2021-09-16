@@ -39,7 +39,7 @@
                 title: postTitle,
                 url: postUrl
             }).then((result) => {
-                alert("thank you for sharing")
+                console.log("thank you for sharing")
             }).catch((err)=>{
                 console.log(err);
             })
