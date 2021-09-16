@@ -69,7 +69,6 @@
         </div>
     </div>
 @endsection
-
 @section('style')
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet">
 @endsection

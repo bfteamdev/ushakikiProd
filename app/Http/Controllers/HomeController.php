@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Type;
 use App\Models\Annonce;
 use App\Models\Category;
 use App\Models\Groupe;
-use Illuminate\Http\Request;
+use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -30,7 +29,6 @@ class HomeController extends Controller
     {
 
         $group = Groupe::with("categories")->get();
-        // return $group;
         return view('website.dashbaord.home', compact('group'));
     }
 
@@ -52,7 +50,7 @@ class HomeController extends Controller
                 ->get();
             return view('site.adByCat', compact('annonce'));
         } else {
-            return view('subCat', compact('type', "cat","adsCount"));
+            return view('subCat', compact('type', "cat", "adsCount"));
         }
     }
     public function viewAdBySubCategory($id)

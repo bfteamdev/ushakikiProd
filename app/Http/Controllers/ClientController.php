@@ -162,19 +162,14 @@ class ClientController extends Controller
         $request = request()->validate([
             "password" => 'required|string|min:6',
         ]);
-        // dd($client);
         $request['password'] = Hash::make($request['password']);
         $client->update($request);
         return back()->withInput()->with("success", "The passwprd is reset with successful !!!");
     }
     public function ad(User $client)
     {
-        // dd($client);
         $group=Groupe::all();
         $annonce=Annonce::where('user_id',$client->id)->paginate(10);
-        // foreach($annonce as $item){
-        //     // dd($item->type->category['name']);
-        // }
         return view('admin.client.ad',compact('client','group','annonce'));
     }
 

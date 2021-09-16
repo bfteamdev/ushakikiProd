@@ -62,13 +62,6 @@
                                 <strong>PUBLIER</strong> <br>Placez votre annonce en ligne
                             </a>
                         </li>
-                        {{-- @if ($group->price > 0)
-                            <li class="nav-item" id="payment">
-                                <a class="nav-link inactive" href="#step-4">
-                                    <strong>Payement </strong> <br>Payer votre annonce
-                                </a>
-                            </li>
-                        @endif --}}
                     </ul>
                     <form method="post" action="{{ route('ad.storeAds') }}" enctype="multipart/form-data">
                         @csrf

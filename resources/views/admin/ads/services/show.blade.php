@@ -1,5 +1,27 @@
 @extends('layout.default')
 @section('content')
+@section('style')
+    <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" rel="preload" as="style" />
+    <style>
+        .borderImgUnique {
+            padding: 5px;
+            margin: 0 2px;
+            width: 178px;
+            border: 2px solid #dbac14;
+            border-radius: 8px;
+        }
+
+        .borderImg {
+            width: 165px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .form-group {
+            margin-bottom: 6px !important;
+        }
+    </style>
+    @endsection
     @section('activeService') active @endsection
     <div class="card card-custom col-lg-10 mx-auto  example example-compact">
         @section("titre") View {{ $service->title }} @endsection
@@ -14,7 +36,38 @@
             @method('patch')
             <div class="example-preview">
                 <div class="card-body">
-
+                    <hr class="my-4">
+                    <h3 class="h2">Ad pictures</h3>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="form-group col-lg-12 justify-content-between"
+                         style="padding: 4px; margin: 0 2px; width: 178px; display: flex;justify-content: start;align-items: center">
+                            @foreach ($photo as $item)
+                                <div class="borderImgUnique">
+                                    <div class="d-flex align-items-center justify-content-center mb-1 w-100">
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            {{-- <label >display</label> --}}
+                                            <label>
+                                                <input type="hidden" name="display[{{ $item->id }}]" value="0" class="disables">
+                                                <input type="checkbox" name="display[{{ $item->id }}]" value="1"
+                                                {{ $item->display === 1 ? 'checked' : '' }} class="disables">
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                        <img
+                                            src="{{ asset('storage/' . $item->name) }}"
+                                            alt="image-xxxx-xxxx{{ $item->id }}" style="padding: 4px; margin: 0 2px; width: 178px;"  />
+                                    </label>
+                                </div>
+                            @endforeach
+                            @error('images')
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('images') }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="form-group col-lg-12">
                             <h3>ad information</h3>
@@ -37,7 +90,6 @@
                                 </div>
                             @enderror
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
@@ -53,9 +105,7 @@
                         <div class="form-group col-lg-6">
                             <label for="">categorie</label>
                             @if ($service->type_id != null)
-                                <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                                is-invalid
-                                                             @enderror">
+                                <select name="category_id" id="" class="form-control @error('category_id') is-invalid @enderror">
                                     <option value="">selection la categorie</option>
                                     @foreach ($group as $item)
                                         <optgroup label="{{ $item->name }}">
@@ -73,9 +123,7 @@
                                     </optgroup>
                                 </select>
                             @else
-                                <select name="category_id" id="" class="form-control @error('category_id')
-                                                                                             is-invalid
-                                                         @enderror">
+                                <select name="category_id" id="" class="form-control @error('category_id') is-invalid @enderror">
                                     <option value="">selection la categorie</option>
                                     @foreach ($group as $item)
                                         <optgroup label="{{ $item->name }}">
@@ -196,11 +244,9 @@
                                 </div>
                             @enderror
                         </div>
-                        @endforeach
-                            
+                        @endforeach 
                         @elseif( sizeof($features) === 6 )
                               @foreach ($features as $feature)
-
                         <div class="form-group col-lg-4">
                             <label for="">{{ $feature->field->name }}</label>
                             <input type="{{ $feature->field->type }}" name="value[{{  $feature->id }}]"
@@ -244,6 +290,7 @@
 @endsection
 @section('scripts')
     <script>
+        //........................photo..................
         //........................Clients...................
         // Class definition
         var KTSelect2 = function() {

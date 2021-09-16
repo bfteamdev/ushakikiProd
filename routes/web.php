@@ -90,7 +90,7 @@ Route::get('login/facebook/callback', 'LoginController@handleFacebookCallback');
 //website --route
 Route::prefix('/')->group(function () {
   Route::get('/', "Site\HomeController@index")->name('site.index');
-  Route::get("/faq","Site\HomeController@faq")->name("faq.website");
+  Route::get("/faq", "Site\HomeController@faq")->name("faq.website");
   //Creation d'annonce
   Route::group(["prefix" => "/createAd", 'middleware' => ['auth']], function () {
     Route::get('/sub_category/{category}', "Site\CreateAds@showCategory")->name('ad.subCategory');
@@ -106,7 +106,7 @@ Route::prefix('/')->group(function () {
     Route::get('/{group}/{name}', 'PagesController@showCategory')->name('category.show');
     Route::get('/{name}/sub-category/{products}', 'PagesController@showProducts')->name('category.ads');
     Route::get('/{name}/parent-category/{products}', 'PagesController@showProductsNotSub')->name('category.ads.not');
-    Route::get('/{name}/product/{id}', 'PagesController@showOne')->name('category.product.one')->middleware("auth");
+    Route::get('/{name}/product/{id}', 'PagesController@showOne')->name('category.product.one');
   });
 
   Route::post("/message/{idReceiver}", 'MessageController@store')->name("message.store");
@@ -114,8 +114,9 @@ Route::prefix('/')->group(function () {
   Route::post('search_ads', 'Site\AutoSearchController@search')->name('AutoSearchController.search');
   //site- search Home
   Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
+
   Route::get('createa-ad/', "Site\CreateAds@showGroup")->name('ad.category');
-  //-----------------------Dashboard Client-----------------
+  //-----------------------D-A-S-H-B-O-A-R-D---------C-L-I-E-N-T-S--------------------------------------------
   Route::prefix('dashboard')->group(function () {
     Route::get('', "HomeController@index")->name('home');
     Route::get('/category/{id}', "HomeController@viewAdByCategory")->name('ad.by.category');

@@ -47,7 +47,7 @@
                             @include('website.dashbaord.header')<br>
                             {{-- <h2 class=" text-center">Edit Ad</h2> --}}
                         </div>
-                        <form action="{{ route('dashboard.ads.update', ['id' => $add->id]) }}" method="post">
+                        <form action="{{ route('dashboard.ads.update', ['id' => $add->id]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="card-body pt-0">
@@ -64,7 +64,7 @@
                                                     <span class="font-weight-boldest">&nbsp;set default</span>
                                                 </div>
                                                 <label for="file{{ $item->id }}">
-                                                    <input type="file" accept="image/*" name="image" class="file"
+                                                    <input type="file" accept="image/*"  name="imagesAds[{{ $item->id }}]" class="file"
                                                         id="file{{ $item->id }}" onchange="readURL(this, 'blah');"
                                                         style="display: none;">
                                                     <img id="image{{ $item->id }}"
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <hr class="my-4">
-                                <h3 class="h2">Ad information</h3>
+                                <h3 class="h2">Ad informations</h3>
                                 <hr class="my-4">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
@@ -185,7 +185,7 @@
                                 <h3 class="h2">Features</h3>
                                 <hr class="my-4">
                                 {{-- ........................actuel.......................... --}}
-                                {{-- <div class="row">
+                                <div class="row">
                                     @if (sizeof($features) === 3)
                                         @foreach ($features as $feature)
                                         <div class="form-group col-lg-4">
@@ -233,13 +233,11 @@
                                             </div>
                                         @endforeach
                                     @endif
-                                </div> --}}
-                                {{-- ........................---------.......................... --}}
-                                <div id="kt_repeater_3">
+                                </div>
+                                {{-- ........................repeater bloc.......................... --}}
+                                {{-- <div id="kt_repeater_3">
                                     <div class="form-group row">
                                         <div data-repeater-list="features" class="col-lg-12">
-                                            {{-- <label for="">* features</label> --}}
-                                            {{-- @dump($ssl->sslPrice) --}}
                                             @if (sizeof($features) === 3)
                                                 <div data-repeater-item class="form-group row">
                                                     @foreach ($features as $feature)
@@ -323,7 +321,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- .................................................................... --}}
                             </div>
                             <div class="card-footer">
@@ -365,6 +363,7 @@
     </script> --}}
     <script src="{{ asset('js/input_repeat.js') }}" rel="preload" as="script" defer></script>
     <script type="text/javascript" rel="preload" as="script">
+
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -379,7 +378,8 @@
             item.addEventListener("change", (e) => {
                 readURL(e.target);
             })
-        })
+
+        })  
         // ..............................KTFormRepeater...........................................
         var KTFormRepeater = function() {
             var demo3 = function() {

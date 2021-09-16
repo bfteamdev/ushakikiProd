@@ -281,7 +281,7 @@ class createAds extends Controller
     }
     public function viewDetail()
     {
-        return view("site.viewDetail");
+        return view("website.viewDetail");
     }
     public function confirmcommande(Request $data)
     {

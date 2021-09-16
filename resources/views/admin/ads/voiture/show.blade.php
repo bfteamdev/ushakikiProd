@@ -14,7 +14,38 @@
             @method('patch')
             <div class="example-preview">
                 <div class="card-body">
-
+                    <hr class="my-4">
+                    <h3 class="h2">Ad pictures</h3>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="form-group col-lg-12 justify-content-between"
+                         style="padding: 4px; margin: 0 2px; width: 178px; display: flex;justify-content: start;align-items: center">
+                            @foreach ($photo as $item)
+                                <div class="borderImgUnique">
+                                    <div class="d-flex align-items-center justify-content-center mb-1 w-100">
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            {{-- <label >display</label> --}}
+                                            <label>
+                                                <input type="hidden" name="display[{{ $item->id }}]" value="0" class="disables">
+                                                <input type="checkbox" name="display[{{ $item->id }}]" value="1"
+                                                {{ $item->display === 1 ? 'checked' : '' }} class="disables">
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                        <img
+                                            src="{{ asset('storage/' . $item->name) }}"
+                                            alt="image-xxxx-xxxx{{ $item->id }}" style="padding: 4px; margin: 0 2px; width: 178px;"  />
+                                    </label>
+                                </div>
+                            @endforeach
+                            @error('images')
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('images') }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="form-group col-lg-12">
                             <h3>Ad information</h3>

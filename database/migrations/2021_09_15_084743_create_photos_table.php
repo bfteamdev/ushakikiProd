@@ -17,8 +17,8 @@ class CreatePhotosTable extends Migration
             $table->id();
             $table->unsignedBigInteger("annonce_id");
             $table->string("name");
+            $table->integer('display')->default(1);
             $table->timestamps();
-            
             $table->foreign("annonce_id")->references("id")->on("annonces");
         });
     }

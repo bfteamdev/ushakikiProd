@@ -51,11 +51,13 @@ use App\Models\Feature;
                     <div class="flexslider">
                         <ul class="slides">
                             @foreach ($ads->photos as $items)
-                                <li data-thumb="{{ asset('storage/' . $items->name) }}" class="clone"
-                                    aria-hidden="true" style="width: 625px; float: left; display: block;">
-                                    <img src="{{ asset('storage/' . $items->name) }}"
-                                        alt="imageOfAd-xxxxx-{{ $items->id }}" draggable="false">
-                                </li>
+                                @if ($items->display === 1)
+                                    <li data-thumb="{{ asset('storage/' . $items->name) }}" class="clone"
+                                        aria-hidden="true" style="width: 625px; float: left; display: block;">
+                                        <img src="{{ asset('storage/' . $items->name) }}"
+                                            alt="imageOfAd-xxxxx-{{ $items->id }}" draggable="false">
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>
