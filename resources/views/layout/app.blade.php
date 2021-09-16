@@ -70,6 +70,16 @@
     <script type="text/javascript" src="{{ asset('app-assets/js/jquery.leanModal.min.js') }}" rel="preload" as="script">
     </script>
     <script type="text/javascript" src="{{ asset('app-assets/js/cart.js') }}" rel="preload" as="script"></script>
+    <script type="application/x-javascript" rel="preload" as="script">
+        let responsive = document.getElementById("responsiveBtn");
+        responsive.addEventListener("click", (e) => {
+            if (e.target.parentNode.classList.contains("active") === false) {
+                e.target.parentNode.classList.add("active");
+            } else {
+                e.target.parentNode.classList.remove("active");
+            }
+        })
+    </script>
     {{-- <script src="{{ asset('app-assets/js/jquery.uls.data.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.data.utils.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.lcd.js') }}" rel="preload" as="script"></script>
@@ -77,6 +87,8 @@
     <script src="{{ asset('app-assets/js/jquery.uls.regionfilter.js') }}" rel="preload" as="script"></script>
     <script src="{{ asset('app-assets/js/jquery.uls.core.js') }}" rel="preload" as="script"></script> --}}
     <script src="{{ asset('app-assets/js/script.js') }}" rel="preload" as="script"></script>
+
     @livewireScripts
     @yield('script')
+
 </body>

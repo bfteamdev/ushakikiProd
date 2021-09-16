@@ -95,7 +95,7 @@ label {
 }
 
 .main-banner {
-	background: url('../images/banner.jpg') no-repeat 0px 0px;
+	background: url('../images/banner11.jpg') no-repeat 0px 0px;
 	background-size: cover;
 	min-height: 93vh;
 	padding: 100px 0 0 0;
@@ -347,6 +347,7 @@ li.dropdown-header {
 }
 
 .header {
+	position: relative;
 	width: 100%;
 	display: flex !important;
 	justify-content: space-between !important;
@@ -356,17 +357,17 @@ li.dropdown-header {
 	flex-wrap: wrap;
 	background-color: #ffffff;
 	box-shadow: 0px 2px 7px -3px #c5c5c5;
+	transition: all .3s ease-in-out;
 }
 
 .logo {
 	float: left;
-	/* width: 254px; */
 }
 
 .logo img {
-	width: 16%;
+	width: 25%;
 	height: 94px;
-	object-fit: cover;
+	object-fit: contain;
 }
 
 .header-right {
@@ -5599,6 +5600,9 @@ label {
 }
 
 @media (max-width: 1366px) {
+	.header-right {
+		width: 45%;
+	}
 	.main-banner {
 		min-height: 380px;
 	}
@@ -5629,6 +5633,12 @@ label {
 }
 
 @media (max-width: 1080px) {
+	.header-right {
+		width: 70%;
+	}
+	.logo .cl1, .cl2, .cl3, .cl4 {
+		display: none;
+	}
 	.banner h1 {
 		font-size: 7rem;
 	}
@@ -5840,6 +5850,17 @@ label {
 }
 
 @media (max-width: 991px) {
+	.header-right {
+		width: 79%;
+	}
+	.logo {
+		width: 10%;
+	}
+	.logo img {
+		width: 100%;
+		height: 94px;
+		object-fit: contain;
+	}
 	.main-banner {
 		min-height: 260px;
 		padding: 55px 0 0 0;
@@ -6095,6 +6116,17 @@ label {
 }
 
 @media (max-width: 800px) {
+	.header-right {
+		width: 100%;
+	}
+	.logo {
+		width: 10%;
+	}
+	.logo img {
+		width: 100%;
+		height: 60px;
+		object-fit: contain;
+	}
 	.app-right h3 {
 		font-size: 22px;
 		line-height: 32px;
@@ -6121,7 +6153,41 @@ label {
 	}
 }
 
+#responsiveBtn {
+	position: absolute;
+	display: none;
+	top: 13px;
+	cursor: pointer;
+	right: 16px;
+	padding: 12px 11px 10px 12px;
+	font-size: 1.25rem;
+	border-radius: 50%;
+	background-color: #dbac15;
+}
+
+.header.active {
+	height: 141px !important;
+	max-height: 200px;
+	transition: all .3s ease-in-out;
+}
+
 @media (max-width: 640px) {
+	#responsiveBtn {
+		display: block;
+	}
+	.logo {
+		width: 10%;
+		margin-bottom: 10px;
+	}
+	.logo img {
+		width: 100%;
+		object-fit: contain;
+	}
+	button.iconCart {
+		position: absolute;
+		top: 15px;
+		left: 69%;
+	}
 	/*--typo--*/
 	/*--typo--*/
 	.main-banner, .banner {
@@ -6142,6 +6208,7 @@ label {
 	}
 	.header {
 		padding: 5px 0;
+		height: 70px !important;
 	}
 	.banner h1 {
 		font-size: 5rem;
@@ -6332,6 +6399,26 @@ label {
 }
 
 @media (max-width: 480px) {
+	a.MyAds {
+		width: 97%;
+		margin-bottom: 9px;
+	}
+	.auth {
+		width: 100%;
+	}
+	.auth #app {
+		width: 100%;
+	}
+	.auth a.authBtn {
+		width: 50%;
+	}
+	.header.active {
+		height: 182px !important;
+	}
+	.profilHeader {
+	width: 95%;
+	justify-content: space-between;
+	}
 	/*--typo--*/
 	.main-banner, .banner {
 		min-height: 180px;
@@ -6424,13 +6511,15 @@ label {
 	}
 	.logo {
 		float: none;
-		width: 100%;
+		width: 14%;
 		text-align: center;
 	}
 	.header-right {
 		width: 90%;
 		text-align: center;
 		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
 	}
 	.header {
 		padding: 0px 0 5px;
@@ -7000,8 +7089,7 @@ label {
 	}
 	.logo {
 		float: left;
-		width: 45%;
-		margin-top: 5%;
+		width: 18%;
 	}
 	.header-right {
 		width: 100%;

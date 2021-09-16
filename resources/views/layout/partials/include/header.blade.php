@@ -10,7 +10,6 @@
         <a class="MyAds" href="{{ route('ad.category') }}"><i class="far fa-edit"></i>Ajouter votre
             annonce</a>
         <div class="auth">
-            <div id="app">
                 @guest
                     @if (Route::has('login'))
                         <a class="authBtn" href="{{ route('login.user') }}">Login&nbsp;&nbsp;<i
@@ -45,8 +44,8 @@
                         </div>
                     </div>
                 @endguest
-            </div>
         </div>
         <button id="showCart" class="iconCart flaticon2-shopping-cart-1"></button>
     </div>
+    <span id="responsiveBtn" class="fas fa-list-alt"></span>
 </div>
