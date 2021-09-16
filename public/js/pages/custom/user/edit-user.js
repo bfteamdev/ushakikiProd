@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 117);
+/******/ 	return __webpack_require__(__webpack_require__.s = 118);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval(" // Class definition\n\nvar KTUserEdit = function () {\n  // Base elements
 
 /***/ }),
 
-/***/ 117:
+/***/ 118:
 /*!********************************************************************!*\
   !*** multi ./resources/metronic/js/pages/custom/user/edit-user.js ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\custom\user\edit-user.js */"./resources/metronic/js/pages/custom/user/edit-user.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\custom\user\edit-user.js */"./resources/metronic/js/pages/custom/user/edit-user.js");
 
 
 /***/ })

@@ -56,7 +56,7 @@
         <footer>
             @yield('footer')
         </footer>
-        @include("layout.partials.include.shoppingCart")
+        @livewire('shopping-cart')
     </div>
     {{-- Global Theme JS Bundle (used by all pages) --}}
     @foreach (config('layout.resourcesUSHAKIKI.js') as $script)

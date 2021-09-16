@@ -72,6 +72,7 @@
         "inputmask": "^4.0.6",
         "ion-rangeslider": "^2.3.1",
         "jkanban": "^1.2.1",
+        "jquery": "^3.5.1",
         "jquery.repeater": "^1.2.1",
         "jqvmap": "^1.5.1",
         "jstree": "^3.3.9",
@@ -102,7 +103,7 @@
         "tinymce": "^5.0.16",
         "toastr": "^2.1.4",
         "typeahead.js": "^0.11.1",
-        "underscore": "^1.13.1",
+        "underscore": "^1.8.3",
         "uppy": "^1.18.0",
         "waypoints": "^4.0.1",
         "whatwg-fetch": "^3.0.0",
@@ -110,19 +111,12 @@
     },
     "devDependencies": {
         "axios": "^0.21.1",
-        "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
-        "jquery": "^3.6.0",
-        "laravel-echo": "^1.10.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
-        "popper.js": "^1.12",
-        "pusher-js": "^7.0.3",
         "replace-in-file-webpack-plugin": "^1.0.6",
-        "resolve-url-loader": "^2.3.1",
-        "sass": "^1.20.1",
-        "sass-loader": "^8.0.0",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.26.9",
+        "sass-loader": "^8.0.2"
     }
 }

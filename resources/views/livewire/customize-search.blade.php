@@ -16,7 +16,7 @@
             @foreach ($tablePrice as $key => $item)
                 <div class="form-check">
                     <label>
-                        <input type="radio" wire:model.debounce.300ms="trieByPrice"
+                        <input type="radio" wire:model="trieByPrice"
                             value="{{ $key . '-' . $key * $item }}">&nbsp;{{ number_format($key) . ' - ' . number_format($key * $item) }}
                     </label>
                 </div>
@@ -64,9 +64,7 @@
                                         </a>
                                         <section class="list-right">
                                             <span class="date">Poster: {{ $item->created_at }}</span>
-                                            @if (Auth::check())
-                                            <button class="favorite fas fa-heart" wire:click="favorite({{ $item->id }},'{{ $item->viewPhoto->name }}','{{ $item->title }}')"></button>
-                                            @endif
+                                            <button class="favorite fas fa-heart" wire:click="favorite({{ $item->id }},'{{ $item->viewPhoto->name }}','{{ $item->title }}','{{ $item->price }}')"></button>
                                         </section>
                                         <div class="clearfix"></div>
                                     </li>

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 139);
+/******/ 	return __webpack_require__(__webpack_require__.s = 140);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval(" // Class definition\n\nvar KTSpinnersDemo = function () {\n  // Private f
 
 /***/ }),
 
-/***/ 139:
+/***/ 140:
 /*!***********************************************************************!*\
   !*** multi ./resources/metronic/js/pages/features/custom/spinners.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\features\custom\spinners.js */"./resources/metronic/js/pages/features/custom/spinners.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\features\custom\spinners.js */"./resources/metronic/js/pages/features/custom/spinners.js");
 
 
 /***/ })

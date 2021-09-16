@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 149);
+/******/ 	return __webpack_require__(__webpack_require__.s = 150);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval(" // Class definition\n\nvar KTKanbanBoardDemo = function () {\n  // Privat
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /*!**********************************************************************************!*\
   !*** multi ./resources/metronic/js/pages/features/miscellaneous/kanban-board.js ***!
   \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\features\miscellaneous\kanban-board.js */"./resources/metronic/js/pages/features/miscellaneous/kanban-board.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\features\miscellaneous\kanban-board.js */"./resources/metronic/js/pages/features/miscellaneous/kanban-board.js");
 
 
 /***/ })

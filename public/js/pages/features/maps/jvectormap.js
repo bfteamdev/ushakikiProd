@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 142);
+/******/ 	return __webpack_require__(__webpack_require__.s = 143);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval(" // Class definition\n\nvar KTjVectorMap = function () {\n  // Private fun
 
 /***/ }),
 
-/***/ 142:
+/***/ 143:
 /*!***********************************************************************!*\
   !*** multi ./resources/metronic/js/pages/features/maps/jvectormap.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\features\maps\jvectormap.js */"./resources/metronic/js/pages/features/maps/jvectormap.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\features\maps\jvectormap.js */"./resources/metronic/js/pages/features/maps/jvectormap.js");
 
 
 /***/ })

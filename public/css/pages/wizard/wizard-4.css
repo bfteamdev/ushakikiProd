@@ -58,6 +58,18 @@
 .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-title {
   color: #3699FF;
 }
+.wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="2"] .wizard-step {
+  flex: 0 0 calc(50% - 0.25rem);
+  width: calc(50% - 0.25rem);
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="3"] .wizard-step {
+  flex: 0 0 calc(33.3333333333% - 0.25rem);
+  width: calc(33.3333333333% - 0.25rem);
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="4"] .wizard-step {
+  flex: 0 0 calc(25% - 0.25rem);
+  width: calc(25% - 0.25rem);
+}
 
 @media (max-width: 1399.98px) {
   .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
@@ -67,6 +79,14 @@
     border-bottom-right-radius: 0.5rem;
     margin-bottom: 0.5rem;
   }
+  .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="2"] .wizard-step, .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="4"] .wizard-step {
+    flex: 0 0 calc(50% - 0.25rem);
+    width: calc(50% - 0.25rem);
+  }
+  .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="3"] .wizard-step {
+    flex: 0 0 100%;
+    width: 100%;
+  }
 }
 @media (max-width: 767.98px) {
   .wizard.wizard-4 .wizard-nav .wizard-steps {
@@ -74,9 +94,9 @@
     align-items: flex-start;
   }
   .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
-    flex: 0 0 100%;
+    flex: 0 0 100% !important;
     position: relative;
-    width: 100%;
+    width: 100% !important;
   }
   .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
     justify-content: flex-start;

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 137);
+/******/ 	return __webpack_require__(__webpack_require__.s = 138);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval(" // Class definition\n\nfunction _defineProperty(obj, key, value) { if (ke
 
 /***/ }),
 
-/***/ 137:
+/***/ 138:
 /*!*************************************************************************!*\
   !*** multi ./resources/metronic/js/pages/features/charts/flotcharts.js ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\features\charts\flotcharts.js */"./resources/metronic/js/pages/features/charts/flotcharts.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\features\charts\flotcharts.js */"./resources/metronic/js/pages/features/charts/flotcharts.js");
 
 
 /***/ })

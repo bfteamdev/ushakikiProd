@@ -190,8 +190,7 @@
   box-shadow: 0 0 0;
 }
 .vakata-context .vakata-contextmenu-disabled > a > i {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 .vakata-context li > a > i {
   text-decoration: none;

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 125);
+/******/ 	return __webpack_require__(__webpack_require__.s = 126);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval(" // Class definition\n\nvar KTDropdownDemo = function () {\n  // Private f
 
 /***/ }),
 
-/***/ 125:
+/***/ 126:
 /*!*********************************************************************!*\
   !*** multi ./resources/metronic/js/pages/features/base/dropdown.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\features\base\dropdown.js */"./resources/metronic/js/pages/features/base/dropdown.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\features\base\dropdown.js */"./resources/metronic/js/pages/features/base/dropdown.js");
 
 
 /***/ })

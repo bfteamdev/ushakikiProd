@@ -77,8 +77,7 @@
 	-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
 }
 .leaflet-tile {
-	-webkit-filter: inherit;
-	        filter: inherit;
+	filter: inherit;
 	visibility: hidden;
 	}
 .leaflet-tile-loaded {
@@ -518,7 +517,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 
 .leaflet-oldie .leaflet-popup-content-wrapper {
-	zoom: 1;
+	-ms-zoom: 1;
 	}
 .leaflet-oldie .leaflet-popup-tip {
 	width: 24px;

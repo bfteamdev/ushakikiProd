@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 127);
+/******/ 	return __webpack_require__(__webpack_require__.s = 128);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval("\n\nvar KTCalendarBasic = function () {\n  return {\n    //main function t
 
 /***/ }),
 
-/***/ 127:
+/***/ 128:
 /*!**********************************************************************!*\
   !*** multi ./resources/metronic/js/pages/features/calendar/basic.js ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\features\calendar\basic.js */"./resources/metronic/js/pages/features/calendar/basic.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\features\calendar\basic.js */"./resources/metronic/js/pages/features/calendar/basic.js");
 
 
 /***/ })

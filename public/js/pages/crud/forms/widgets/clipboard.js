@@ -105,7 +105,7 @@ eval(" // Class definition\n\nvar KTClipboardDemo = function () {\n  // Private 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\keenthemes\themes\metronic\theme\html_laravel\demo1\skeleton\resources\metronic\js\pages\crud\forms\widgets\clipboard.js */"./resources/metronic/js/pages/crud/forms/widgets/clipboard.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\UshakikiApp\resources\metronic\js\pages\crud\forms\widgets\clipboard.js */"./resources/metronic/js/pages/crud/forms/widgets/clipboard.js");
 
 
 /***/ })

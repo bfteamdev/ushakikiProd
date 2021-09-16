@@ -4,14 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Annonce;
 use Livewire\Component;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-
-use function Opis\Closure\serialize;
 
 class CustomizeSearch extends Component
 {
@@ -34,10 +29,20 @@ class CustomizeSearch extends Component
     public $id_Ad;
     public $image;
     public $title;
+    public $price;
 
-    public function favorite(Request $request, $id_Ad, $image, $title)
+    public function favorite(Request $request, $id_Ad, $image, $title,$price)
     {
-        dd(Cookie::get("favorite"));
+        // dd(json_decode(Cookie::get("ushakiki-favorite"),true));
+        $data = json_decode(Cookie::get("ushakiki-favorite"),true) ?? [];
+        $data[$id_Ad] = [
+            "id" => $id_Ad,
+            "image" => $image,
+            "title" => $title,
+            "price" => $price,
+        ];
+        $time = (60 * 60 * 24 * 30);
+        Cookie::queue(Cookie::make("ushakiki-favorite", json_encode($data), $time));
     }
     public function render()
     {
