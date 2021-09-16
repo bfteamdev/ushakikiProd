@@ -105,7 +105,7 @@ Route::prefix('/')->group(function () {
     Route::get('/{group}/{name}', 'PagesController@showCategory')->name('category.show');
     Route::get('/{name}/sub-category/{products}', 'PagesController@showProducts')->name('category.ads');
     Route::get('/{name}/parent-category/{products}', 'PagesController@showProductsNotSub')->name('category.ads.not');
-    Route::get('/{name}/product/{id}', 'PagesController@showOne')->name('category.product.one')->middleware("auth");
+    Route::get('/{name}/product/{id}', 'PagesController@showOne')->name('category.product.one');
   });
 
   Route::post("/message/{idReceiver}", 'MessageController@store')->name("message.store");
@@ -113,7 +113,7 @@ Route::prefix('/')->group(function () {
   Route::post('search_ads', 'Site\AutoSearchController@search')->name('AutoSearchController.search');
   //site- search Home
   Route::get('home-search', 'Site\HomeController@searchHome')->name('search.home');
-  //-----------------------Dashboard Client-----------------
+  //-----------------------D-A-S-H-B-O-A-R-D---------C-L-I-E-N-T-S--------------------------------------------
   Route::prefix('dashboard')->group(function () {
     Route::get('', "HomeController@index")->name('home');
     Route::get('/category/{id}', "HomeController@viewAdByCategory")->name('ad.by.category');

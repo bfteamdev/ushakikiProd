@@ -27,7 +27,6 @@ class HomeController extends Controller
     public function index()
     {
         $group = Groupe::all();
-        // dd($group);
         return view('website.home', compact("group"));
     }
 
@@ -102,7 +101,6 @@ class HomeController extends Controller
         $password = $request->input('password');
         $new_password=$request->input('new_password');
         $user= User::findOrFail(Auth::user()->id);
-        // dd($user);
         $request = request()->validate([
                 'password' => 'required',
                 'new_password' => ['required'],

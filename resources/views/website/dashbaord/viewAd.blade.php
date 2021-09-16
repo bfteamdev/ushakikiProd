@@ -185,7 +185,7 @@
                                 <h3 class="h2">Features</h3>
                                 <hr class="my-4">
                                 {{-- ........................actuel.......................... --}}
-                                {{-- <div class="row">
+                                <div class="row">
                                     @if (sizeof($features) === 3)
                                         @foreach ($features as $feature)
                                         <div class="form-group col-lg-4">
@@ -233,13 +233,11 @@
                                             </div>
                                         @endforeach
                                     @endif
-                                </div> --}}
-                                {{-- ........................---------.......................... --}}
-                                <div id="kt_repeater_3">
+                                </div>
+                                {{-- ........................repeater bloc.......................... --}}
+                                {{-- <div id="kt_repeater_3">
                                     <div class="form-group row">
                                         <div data-repeater-list="features" class="col-lg-12">
-                                            {{-- <label for="">* features</label> --}}
-                                            {{-- @dump($ssl->sslPrice) --}}
                                             @if (sizeof($features) === 3)
                                                 <div data-repeater-item class="form-group row">
                                                     @foreach ($features as $feature)
@@ -323,7 +321,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- .................................................................... --}}
                             </div>
                             <div class="card-footer">
@@ -382,10 +380,6 @@
             })
 
         })  
-      // ..............................KTFormRepeater...........................................
-        // Class definition
-
-        })
         // ..............................KTFormRepeater...........................................
         var KTFormRepeater = function() {
             var demo3 = function() {

@@ -38,10 +38,10 @@ class AnnonceController extends Controller
         $user = User::all();
         $immobilier = Annonce::findOrFail($id);
         $features = Annonces_feature::where('annonce_id', $immobilier->id)->get();
-        // $photo=Photo::where('annonce_id',$immobilier->id)->get();
+        $photo=Photo::where('annonce_id',$immobilier->id)->get();
         $group = Groupe::all();
         // dd($immobilier);
-        return view('admin.ads.immobilier.show', compact('immobilier', 'user', 'group', 'features'));
+        return view('admin.ads.immobilier.show', compact('immobilier', 'user', 'group', 'features','photo'));
     }
     public function updateImmobilier(Request $request, $id)
     {
@@ -77,6 +77,14 @@ class AnnonceController extends Controller
                         "value" => $item,
                     ]);
             }
+        }
+        foreach($request->display as $keyD => $itemD){
+            $photo=DB::table('photos')
+                   ->where('annonce_id',$imo->id)
+                   ->where('id',$keyD)
+                   ->update([
+                       'display'=>$itemD
+                   ]);
         }
         return back()->with('success', 'the ad is updated successfully');
     }
@@ -139,10 +147,9 @@ class AnnonceController extends Controller
         $user = User::all();
         $voiture = Annonce::findOrFail($id);
         $features = Annonces_feature::where('annonce_id', $voiture->id)->get();
-        // dd($features);
-        // $photo=Photo::where('annonce_id',$immobilier->id)->get();
+        $photo=Photo::where('annonce_id',$voiture->id)->get();
         $group = Groupe::all();
-        return view('admin.ads.voiture.show', compact('voiture', 'user', 'group', 'features'));
+        return view('admin.ads.voiture.show', compact('voiture', 'user', 'group', 'features','photo'));
     }
     public function updateVoiture(Request $request, $id)
     {
@@ -177,6 +184,14 @@ class AnnonceController extends Controller
                         "value" => $item,
                     ]);
             }
+        }
+        foreach($request->display as $keyD => $itemD){
+            $photo=DB::table('photos')
+                   ->where('annonce_id',$voiture->id)
+                   ->where('id',$keyD)
+                   ->update([
+                       'display'=>$itemD
+                   ]);
         }
         return back()->with('success', 'the ad is updated successfully');
     }
@@ -241,8 +256,9 @@ class AnnonceController extends Controller
         $user = User::all();
         $truc = Annonce::findOrFail($id);
         $features = Annonces_feature::where('annonce_id', $truc->id)->get();
+        $photo=Photo::where('annonce_id',$truc->id)->get();
         $group = Groupe::all();
-        return view('admin.ads.truc.show', compact('truc', 'user', 'group', 'features'));
+        return view('admin.ads.truc.show', compact('truc', 'user', 'group', 'features','photo'));
     }
     public function updateTruc(Request $request, $id)
     {
@@ -276,6 +292,14 @@ class AnnonceController extends Controller
                         "value" => $item,
                     ]);
             }
+        }
+        foreach($request->display as $keyD => $itemD){
+            $photo=DB::table('photos')
+                   ->where('annonce_id',$truc->id)
+                   ->where('id',$keyD)
+                   ->update([
+                       'display'=>$itemD
+                   ]);
         }
         return back()->with('success', 'the ad is updated successfully');
     }
@@ -340,13 +364,16 @@ class AnnonceController extends Controller
     {
         $user = User::all();
         $service = Annonce::findOrFail($id);
-        // $photo=Photo::where('annonce_id',$immobilier->id)->get();
+        $photo=Photo::where('annonce_id',$service->id)->get();
+        // dd($photo);
         $features = Annonces_feature::where('annonce_id', $service->id)->get();
         $group = Groupe::all();
-        return view('admin.ads.services.show', compact('service', 'user', 'group', 'features'));
+        return view('admin.ads.services.show', compact('service', 'user', 'group', 'features','photo'));
     }
+
     public function updateService(Request $request, $id)
     {
+        // dd($request->display);
         $data = $request->validate([
             'title' => 'required',
             'user_id' => 'required',
@@ -377,6 +404,14 @@ class AnnonceController extends Controller
                         "value" => $item,
                     ]);
             }
+        }
+        foreach($request->display as $keyD => $itemD){
+            $photo=DB::table('photos')
+                   ->where('annonce_id',$service->id)
+                   ->where('id',$keyD)
+                   ->update([
+                       'display'=>$itemD
+                   ]);
         }
         return back()->with('success', 'the ad is updated successfully');
     }
@@ -520,7 +555,8 @@ class AnnonceController extends Controller
             'statu' => 'required',
         ]);
         $add = Annonce::findOrFail($id);
-
+        DB::beginTransaction();
+        try {
         $upAd = $add->update([
             'title' => $request->title,
             'category_id' => $request->category_id,
@@ -529,31 +565,34 @@ class AnnonceController extends Controller
             'zone' => $request->zone,
             'price' => $request->price,
             'statu' => $request->statu,
-
         ]);
+        // $add->featuresAds()->delete();
         foreach ($request->value as $key => $item) {
-            if (empty($item)) {
-                return back()->with('error', 'same field is not completed');
-            } else {
-                $field = DB::table('annonces_features')
-                    ->where('id', $key)
-                    ->where('annonce_id', $add->id)
-                    ->update([
-                        "value" => $item,
-                    ]);
-            }
-        }
-        foreach ($request['imagesAds'] as $key => $itemI) {
-            $itemI = $itemI->store("AdsImages/" . $add->id, "public");
-            $image = DB::table('photos')
+            $feature = DB::table('annonces_features')
                 ->where('id', $key)
                 ->where('annonce_id', $add->id)
                 ->update([
-                    'name' => trim(htmlentities($itemI)),
+                    'value' => $item,
                 ]);
         }
-        return back()->with('success', 'the ad is updated succussfuly');
+        if ($request['imagesAds']) {
+            foreach ($request['imagesAds'] as $key => $itemI) {
+                $itemI = $itemI->store("AdsImages/" . $add->id, "public");
+                $image = DB::table('photos')
+                    ->where('id', $key)
+                    ->where('annonce_id', $add->id)
+                    ->update([
+                        'name' => trim(htmlentities($itemI)),
+                    ]);
+            }
 
+        }
+        DB::commit();
+        return back()->with('success', 'the ad is updated succussfuly');
+        }catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->withInput()->with("error", "Une erreur est survenue lors du post d'annonce veillerz reassayez !!!");
+        }
     }
     public function viewRenew($id)
     {
