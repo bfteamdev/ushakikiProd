@@ -238,18 +238,18 @@ class createAds extends Controller
                 $expiredAt = Carbon::now()->addDays($request['expired_at']);
                 foreach ($this->howMultipliy as $key => $value) {
                     if ($value === (int)$request['expired_at']) {
-                        $amount = ($group->price * $key);
+                        $amount = (($group->price * $key) / 100);
                     }
                 }
             } else {
                 $expiredAt = Carbon::now()->addDays(7);
                 $amount = $group->price;
             }
-           Order::create([
-               "orderReference"=>"#".random_int(10000,99999),
-               "user_id"=>(int)Auth::user()->id,
-               "annonce_id"=>$Ads_id, 
-           ]);
+            Order::create([
+                "orderReference" => "#" . random_int(10000, 99999),
+                "user_id" => (int)Auth::user()->id,
+                "annonce_id" => $Ads_id,
+            ]);
             $client_token =  $request['title'] . '_' . (int)Auth::user()->id . '_' . $Ads_id . '_' . $expiredAt . '_' . $description;
             $client_token_encode = base64_encode($client_token);
             $return_url = "http://localhost:8000/home/my-ads";
