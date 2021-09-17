@@ -57,6 +57,7 @@ class PagesController extends Controller
     public function showProductsNotSub($name, $products)
     {
         // $annonce = Annonce::where('category_id', $products)->get();
+        
         return view('website.category.allAds', compact('products', 'name'));
     }
     public function showOne($name, $id)
@@ -64,7 +65,7 @@ class PagesController extends Controller
         $ads = Annonce::where("id", $id)
             ->with(["photos", "featuresAds", "category", "type"])
             ->first();
-        // return $ads;
+        // return $ads->title;
         $idFeat = [];
         foreach ($ads->featuresAds as $x) {
             $idFeat[] = $x->feature_id;

@@ -69,7 +69,6 @@ class HomeController extends Controller
     }
     public function updateProfil(Request $request)
     {
-        // dd($request->all());
         $data = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
