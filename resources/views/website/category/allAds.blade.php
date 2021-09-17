@@ -5,12 +5,10 @@
         .breadcrumb-item.active {
             color: black !important;
         }
-
         .breadcrumb-item a {
             color: #6c757d !important;
             text-decoration: none !important;
         }
-
     </style>
 @endsection
 @section('content')
@@ -27,13 +25,12 @@
         </div>
     </div>
 @endsection
-@section('script')
+{{-- @section('script')
     <script>
-        // ................................................
         const btn_fb = document.getElementById('fb-btn');
         let postUrl = encodeURI(document.location.href);
         let postTitle = encodeURI('{{ $name }}');
-        btn_fb.setAttribute("href", `https://www.facebook.com/sharer.php?u=${postUrl}&title=${postTitle}`);
+        btn_fb.setAttribute("href", `https://www.facebook.com/sharer.php?u=${postUrl}`);
         btn_fb.addEventListener('click', () => {
             navigator.share({
                 title: postTitle,
@@ -42,8 +39,7 @@
                 console.log("thank you for sharing")
             }).catch((err)=>{
                 console.log(err);
-            })
+            })  
         })
     </script>
-
-@endsection
+@endsection --}}
