@@ -5,6 +5,10 @@
     <style rel="preload" as="style">
         .drop-files__file {
             max-width: 189px !important;
+            object-fit: contain;
+            border: 1px solid #dcdcdc;
+            padding: 4px;
+            border-radius: 10px;
         }
 
         .drop-files__file img {
@@ -41,12 +45,13 @@
     <div class="container postCard">
         <div class="row choiseCategory">
             <form action="{{ route('ad.storeAds') }}" method="post" enctype="multipart/form-data" id="form"
-                data-defaultLink="{{ route("site.index") }}">
+                data-defaultLink="{{ route('site.index') }}">
                 @csrf
                 @method("POST")
                 <input type="hidden" name="group_id" value="{{ $group->id }}">
                 <div id="smartwizard" class="sw sw-justified sw-theme-dots">
-                    <ul class="nav" style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
+                    <ul class="nav"
+                        style="margin-bottom: 15px;border-bottom: 1px solid #dadada;padding-bottom: 15px;">
                         <li class="nav-item">
                             <a class="nav-link inactive active" href="#step-1">
                                 <strong>DÉTAILS DE L'ANNONCE</strong> <br>Description, prix et contact
@@ -158,7 +163,8 @@
                                             </div>
                                             <div class="col-lg-5">
                                                 <div class="field {{ Auth::user()->phone ? 'has-label' : '' }}">
-                                                    <label for="nom" class="field-label">Numero de telephone *</label>
+                                                    <label for="nom" class="field-label">Numero de telephone
+                                                        *</label>
                                                     <input type="text"
                                                         class="field-input {{ Auth::user()->phone ? '' : 'stepTree' }}"
                                                         name="user[phone]" autocomplete="off"
@@ -182,28 +188,31 @@
                                         <h4 class="h2Step text-center">Delai de votre annonce</h4>
                                         <div class="row mb-4"
                                             style="display: flex;justify-content: center;align-items: center;margin-top: 20px;">
-                                                <div class="p-3">
-                                                    <table class="table table-sm">
-                                                        <tbody>
-                                                            @foreach ($priceDays as $key => $value)
-                                                                <tr align="center">
-                                                                    <td style="font-size: 1.2rem;" scope="row" class="{{ $key === 30 ? 'border-bottom-0' : '' }} border-right">
-                                                                        <input class="form-check-input" type="radio"
-                                                                            name="expired_at"
-                                                                            id="expired{{ $key }}"
-                                                                            value="{{ $key }}"
-                                                                            {{ $key === 7 ? 'checked' : '' }}>
-                                                                        <label class="form-check-label ml-3"
-                                                                            for="expired{{ $key }}">
-                                                                            {{ $key }} Jours
-                                                                        </label>
-                                                                    </td>
-                                                                    <th style="font-size: 1.2rem;" class="{{ $key === 30 ? 'border-bottom-0' : '' }}">{{ number_format($value) }}&nbsp;Fbu</th>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                            <div class="p-3">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        @foreach ($priceDays as $key => $value)
+                                                            <tr align="center">
+                                                                <td style="font-size: 1.2rem;" scope="row"
+                                                                    class="{{ $key === 30 ? 'border-bottom-0' : '' }} border-right">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="expired_at"
+                                                                        id="expired{{ $key }}"
+                                                                        value="{{ $key }}"
+                                                                        {{ $key === 7 ? 'checked' : '' }}>
+                                                                    <label class="form-check-label ml-3"
+                                                                        for="expired{{ $key }}">
+                                                                        {{ $key }} Jours
+                                                                    </label>
+                                                                </td>
+                                                                <th style="font-size: 1.2rem;"
+                                                                    class="{{ $key === 30 ? 'border-bottom-0' : '' }}">
+                                                                    {{ number_format($value) }}&nbsp;Fbu</th>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -239,12 +248,12 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
-    rel="preload" as="script">
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
+rel="preload" as="script">
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
-    rel="preload" as="script">
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"
+rel="preload" as="script">
 </script>
 @endsection
 @section('footer')
@@ -257,11 +266,11 @@
 <script src="{{ asset('app-assets/js/grafkart.js') }}" rel="preload" as="script" type="module"></script>
 {{-- <script type="module" src="//unpkg.com/@grafikart/drop-files-element" rel="preload" as="script"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"
-    rel="preload" as="script">
+rel="preload" as="script">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js"
-    integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A=="
-    crossorigin="anonymous" rel="preload" as="script"></script>
+integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A=="
+crossorigin="anonymous" rel="preload" as="script"></script>
 <script type="text/javascript" rel="preload" as="script">
     $('#smartwizard').smartWizard({
         selected: 0, // Initial selected step, 0 = first step
@@ -273,7 +282,7 @@
         backButtonSupport: true, // Enable the back button support
         enableURLhash: false, // Enable selection of the step based on url hash
         transition: {
-            animation: 'none', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
+            animation: 'slide-swing', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
             speed: '400', // Transion animation speed
             easing: '' // Transition animation easing. Not supported without a jQuery easing plugin
         },
@@ -375,17 +384,6 @@
         }
     });
 
-    // function debounce(callback, delay) {
-    //     let timer;
-    //     return function() {
-    //         let args = arguments;
-    //         let context = this;
-    //         clearTimeout(timer);
-    //         timer = setTimeout(function() {
-    //             callback.apply(context, args);
-    //         }, delay)
-    //     }
-    // }
     let allStepTree = []
     form.addEventListener("submit", function(e) {
         allStepTree = []
@@ -400,7 +398,6 @@
             }
         })
     });
-
 </script>
 <script src="{{ asset('app-assets/js/createAds.js') }}" rel="preload" as="script"></script>
 @endsection

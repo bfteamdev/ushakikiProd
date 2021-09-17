@@ -22,8 +22,7 @@ use League\HTMLToMarkdown\HtmlConverter;
 
 class createAds extends Controller
 {
-    private $howMultipliy = [];
-    private $priceDays = [
+    private $howMultipliy = [
         "100" => 7,
         "150" => 15,
         "250" => 30
