@@ -57,7 +57,7 @@ class PagesController extends Controller
     public function showProductsNotSub($name, $products)
     {
         // $annonce = Annonce::where('category_id', $products)->get();
-        
+
         return view('website.category.allAds', compact('products', 'name'));
     }
     public function showOne($name, $id)
@@ -80,8 +80,12 @@ class PagesController extends Controller
             $category = $ads->category;
             $type = $ads->type;
         }
-        // dd($groupe);
+        if ($ads->category_id !== null) {
+            $randomAds = Annonce::where("category_id", $ads->category_id)->inRandomOrder()->limit(5)->get();
+        } else {
+            $randomAds = Annonce::where("type_id", $ads->type_id)->inRandomOrder()->limit(5)->get();
+        }
 
-        return view('website.category.showOne', compact('ads', "idFeat", "groupe", "category", "type"));
+        return view('website.category.showOne', compact('ads', "idFeat", "groupe", "category", "type", "randomAds"));
     }
 }

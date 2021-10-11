@@ -53,7 +53,7 @@ class CustomizeSearch extends Component
             ->whereBetween("price", [(int)$price[0], (int)$price[1]])
             ->where("title", "like", "%{$this->q}%")
             ->paginate(10);
-        $sidebarAds = Annonce::limit(3)->get();
+        $sidebarAds = Annonce::all()->random(5);
         return view('livewire.customize-search',  compact("annonce", "price", "sidebarAds"));
     }
 }

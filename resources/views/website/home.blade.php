@@ -14,7 +14,8 @@ use App\Classes\UrlRandom;
             @csrf
             <div class="d-flex justify-content-center align-items-center">
                 <div class="search col-lg-5 col-md-8 col-sm-10">
-                    <input type="search" class="searchInput" name="q" id="search" placeholder="Search....." autocomplete="off" data-link="{{ route('AutoSearchController.search') }}">
+                    <input type="search" class="searchInput" name="q" id="search" placeholder="Search....."
+                        autocomplete="off" data-link="{{ route('AutoSearchController.search') }}">
                     <button type="submit"><i class="fa fa-search"></i></button>
                     <ul class="autosearch">
                     </ul>
@@ -74,7 +75,7 @@ use App\Classes\UrlRandom;
                         </p>
                     </div> --}}
                     <div class="clearfix"></div>
-                    <a class="work col-md-2" href="{{ route("ad.category") }}">Get start Now</a>
+                    <a class="work col-md-2" href="{{ route('ad.category') }}">Get start Now</a>
                 </div>
             </div>
         </div>
@@ -88,7 +89,7 @@ use App\Classes\UrlRandom;
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-bs-interval="10000">
                                         <div class="d-flex row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p1.jpg') }}" />
                                                     <span class="price">&#36; 450</span>
@@ -98,7 +99,17 @@ use App\Classes\UrlRandom;
                                                     <span>1 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
+                                                <a href="single.html">
+                                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                                    <span class="price">&#36; 450</span>
+                                                </a>
+                                                <div class="ad-info">
+                                                    <h5>There are many variations of passages</h5>
+                                                    <span>1 hour ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p2.jpg') }}" />
                                                     <span class="price">&#36; 399</span>
@@ -108,7 +119,17 @@ use App\Classes\UrlRandom;
                                                     <span>3 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
+                                                <a href="single.html">
+                                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                                    <span class="price">&#36; 450</span>
+                                                </a>
+                                                <div class="ad-info">
+                                                    <h5>There are many variations of passages</h5>
+                                                    <span>1 hour ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p3.jpg') }}" />
                                                     <span class="price">&#36; 199</span>
@@ -118,7 +139,7 @@ use App\Classes\UrlRandom;
                                                     <span>8 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p4.jpg') }}" />
                                                     <span class="price">&#36; 159</span>
@@ -132,7 +153,7 @@ use App\Classes\UrlRandom;
                                     </div>
                                     <div class="carousel-item" data-bs-interval="10000">
                                         <div class="d-flex row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p1.jpg') }}" />
                                                     <span class="price">&#36; 450</span>
@@ -142,7 +163,18 @@ use App\Classes\UrlRandom;
                                                     <span>1 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
+                                                <a href="single.html">
+                                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                                    <span class="price">&#36; 450</span>
+                                                </a>
+                                                <div class="ad-info">
+                                                    <h5>There are many variations of passages</h5>
+                                                    <span>1 hour ago</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p2.jpg') }}" />
                                                     <span class="price">&#36; 399</span>
@@ -152,7 +184,7 @@ use App\Classes\UrlRandom;
                                                     <span>3 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p3.jpg') }}" />
                                                     <span class="price">&#36; 199</span>
@@ -162,7 +194,7 @@ use App\Classes\UrlRandom;
                                                     <span>8 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p4.jpg') }}" />
                                                     <span class="price">&#36; 159</span>
@@ -172,11 +204,7 @@ use App\Classes\UrlRandom;
                                                     <span>19 hour ago</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item" data-bs-interval="10000">
-                                        <div class="d-flex row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p1.jpg') }}" />
                                                     <span class="price">&#36; 450</span>
@@ -186,17 +214,21 @@ use App\Classes\UrlRandom;
                                                     <span>1 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="10000">
+                                        <div class="d-flex row">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
-                                                    <img src="{{ asset('app-assets/images/p2.jpg') }}" />
-                                                    <span class="price">&#36; 399</span>
+                                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                                    <span class="price">&#36; 450</span>
                                                 </a>
                                                 <div class="ad-info">
-                                                    <h5>Lorem Ipsum is simply dummy</h5>
-                                                    <span>3 hour ago</span>
+                                                    <h5>There are many variations of passages</h5>
+                                                    <span>1 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p3.jpg') }}" />
                                                     <span class="price">&#36; 199</span>
@@ -206,7 +238,37 @@ use App\Classes\UrlRandom;
                                                     <span>8 hour ago</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" style="width: 16% !important;">
+                                                <a href="single.html">
+                                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                                    <span class="price">&#36; 450</span>
+                                                </a>
+                                                <div class="ad-info">
+                                                    <h5>There are many variations of passages</h5>
+                                                    <span>1 hour ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="width: 16% !important;">
+                                                <a href="single.html">
+                                                    <img src="{{ asset('app-assets/images/p1.jpg') }}" />
+                                                    <span class="price">&#36; 450</span>
+                                                </a>
+                                                <div class="ad-info">
+                                                    <h5>There are many variations of passages</h5>
+                                                    <span>1 hour ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="width: 16% !important;">
+                                                <a href="single.html">
+                                                    <img src="{{ asset('app-assets/images/p2.jpg') }}" />
+                                                    <span class="price">&#36; 399</span>
+                                                </a>
+                                                <div class="ad-info">
+                                                    <h5>Lorem Ipsum is simply dummy</h5>
+                                                    <span>3 hour ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3" style="width: 16% !important;">
                                                 <a href="single.html">
                                                     <img src="{{ asset('app-assets/images/p4.jpg') }}" />
                                                     <span class="price">&#36; 159</span>
@@ -265,5 +327,5 @@ use App\Classes\UrlRandom;
     @include('layout.partials.include.footer')
 @endsection
 @section('script')
-    <script src="{{ asset("app-assets/js/search.js") }}"></script>
+    <script src="{{ asset('app-assets/js/search.js') }}"></script>
 @endsection

@@ -14,6 +14,43 @@ use App\Models\Feature;
             text-decoration: none !important;
         }
 
+        .btn-share-fb {
+            color: #ffffff !important;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            padding: 8px 10px;
+            text-decoration: none !important;
+            background-color: #0466f7;
+        }
+
+        .btn-share-whtspp {
+            color: #ffffff !important;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            padding: 8px 10px;
+            text-decoration: none !important;
+            background-color: #10882b;
+        }
+
+        .btn-share-fb:hover {
+            transition: background-color 0.3s ease-in-out;
+            background-color: #00378a !important;
+        }
+
+        .btn-share-whtspp:hover {
+            transition: background-color 0.3s ease-in-out;
+            background-color: #0c531c !important;
+        }
+
+        .btn-share-fb i {
+            color: inherit;
+        }
+        .btn-share-whtspp i {
+            color: inherit;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -52,7 +89,6 @@ use App\Models\Feature;
                         <ul class="slides">
                             {{-- @dump($ads->photos) --}}
                             @foreach ($ads->photos as $items)
-
                                 @if ($items->display === 1)
                                     <li data-thumb="{{ asset('storage/' . $items->name) }}" class="clone"
                                         aria-hidden="true" style="width: 625px; float: left; display: block;">
@@ -124,7 +160,7 @@ use App\Models\Feature;
                                 <i class="fas fa-user-circle"></i>
                                 <span>{{ $ads->user->firstName }} {{ $ads->user->lastName }}</span>
                             </div>
-                            <div class="tips-userInfo">
+                            <div class="tips-userInfo" id="chat" style="cursor: pointer;">
                                 <i class="fas fa-comment-dots"></i>
                                 <span>Send Message</span>
                             </div>
@@ -144,13 +180,13 @@ use App\Models\Feature;
                                 <span>More information</span>
                             </div>
                             <div class="tips-userInfo d-flex justify-content-between">
-                                <a class="btn btn-primary m-0" id="fb-btn" target="_blank">
-                                    <i class="fab fa-facebook-square" aria-hidden="true"
-                                        style=" color:#3b5998"></i> &nbsp; share  
+                                <a class="btn-share-fb" id="fb-btn" target="_blank"
+                                    style="background-color: #0466f7;">
+                                    <i class="fab fa-facebook" aria-hidden="true"></i>&nbsp;share
                                 </a>
-                                <a class="btn btn-primary m-0" id="wp-btn" target="_blank">
-                                        <i class="fab fa-whatsapp-square" style="color:rgb(6, 189, 189)"></i>
-                                        &nbsp; share    
+                                <a class="btn-share-whtspp" id="wp-btn" target="_blank"
+                                    style="background-color: #10882b;">
+                                    <i class="fab fa-whatsapp"></i>&nbsp;share
                                 </a>
                             </div>
 
@@ -161,58 +197,56 @@ use App\Models\Feature;
             </div>
             <div class="suggestion">
                 <h1>Suggestion</h1>
-                @for ($i = 0; $i < 5; $i++)
+                @foreach ($randomAds as $item)
                     <div class="suggestion_Ads col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <a href="#">
+                        <a
+                            href="{{ route('category.product.one', ['name' => $item->category->name ?? $item->type->name, 'id' => $item->id]) }}">
                             <div class="ads-bottom">
-                                <img
-                                    src="{{ asset('storage/AdsImages/9/LEqrgbGCX3jrrDLRO8tagF5has6n5XCLKPQeJmtV.png') }}" />
+                                <img src="{{ asset('storage/' . $item->viewPhoto->name) }}" />
                                 <div class="ad-info">
-                                    <span class="title">There are many variations of passages</span>
-                                    <span class="priceAds">450</span>
+                                    <span class="title">{{ $item->title }}</span>
+                                    <span class="priceAds">{{ number_format($item->price) }}</span>
                                 </div>
                             </div>
                         </a>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
-    @if ($ads->user_id == Auth::user()->id)
-        <div id="chat" class="chat">
-            <i class="fas fa-comment-dots"></i>
-        </div>
-        <div id="popupChat" class="popupChat col-lg-3 col-md-6 col-sm-9">
-            <form id="form" action="{{ route('message.store', ['idReceiver' => $ads->user->id]) }}" method="post"
-                style="height: 100%">
-                @csrf
-                @method("post")
-                <div class="message">
-                    <div class="message-header">
-                        <div class="header-profil">
-                            <img src="{{ asset('storage/' . $ads->user->profil) }}" alt="">
-                        </div>
-                        <span class="name">{{ $ads->user->username }}</span>
-                        <i class="ki ki-close icon-1x" id="closePopup"></i>
+    <div class="chat">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div id="popupChat" class="popupChat col-lg-3 col-md-6 col-sm-9">
+        <form id="form" action="{{ route('message.store', ['idReceiver' => $ads->user->id]) }}" method="post"
+            style="height: 100%">
+            @csrf
+            @method("post")
+            <div class="message">
+                <div class="message-header">
+                    <div class="header-profil">
+                        <img src="{{ asset('storage/profil/blank.png') }}" alt="imgprofil">
                     </div>
-                    @if (Auth::check())
-                        @livewire('chat', ['receiver_id' => $ads->user->id,"sender_id"=>Auth::user()->id], key($user->id))
-                    @else
-                        <div class="message-body">
-                            <div class="message-body-sender equare">Bonjour</div>
-                            <div class="message-body-receiver equare">Bjr</div>
-                        </div>
-                    @endif
-                    <div class="message-footer">
-                        <div class="message-input">
-                            <textarea id="message" name="message" placeholder="Votre message ....."></textarea>
-                        </div>
-                        <button class="message-send" type="submit">Send<i class="fas fa-paper-plane"></i></button>
-                    </div>
+                    <span class="name">{{ $ads->user->username }}</span>
+                    <i class="ki ki-close icon-1x" id="closePopup"></i>
                 </div>
-            </form>
-        </div>
-    @endif
+                @if (Auth::check())
+                    @livewire('chat', ['receiver_id' => $ads->user->id,"sender_id"=>Auth::user()->id], key($user->id))
+                @else
+                    <div class="message-body">
+                        <div class="message-body-sender equare">Bonjour</div>
+                        <div class="message-body-receiver equare">Bjr</div>
+                    </div>
+                @endif
+                <div class="message-footer">
+                    <div class="message-input">
+                        <textarea id="message" name="message" placeholder="Votre message ....."></textarea>
+                    </div>
+                    <button class="message-send" type="submit">Send<i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection
 
 @section('script')
@@ -232,42 +266,38 @@ use App\Models\Feature;
         let scrollBottom = document.querySelector(".message-body")
         if (scrollBottom) {
             scrollBottom.scrollTop = scrollBottom.scrollHeight;
-        }    
+        }
     </script>
-     @if ($ads->user_id == Auth::user()->id)
-     <script src="{{ asset('app-assets/js/popup.js') }}" rel="preload" as="script"></script>
-     <script>
-         let scrollBottom = document.querySelector(".message-body")
-         scrollBottom.scrollTop = scrollBottom.scrollHeight;
-     </script>
- @endif
- <script>
-    const btn_fb = document.getElementById('fb-btn');
-    const wp_btn=document.getElementById('wp-btn');
-    let postUrl = encodeURI(document.location.href);
-    let postTitle = encodeURI('{{ $ads->title }}');
-    btn_fb.setAttribute("href", `https://www.facebook.com/sharer.php?u=${postUrl}&title=${postTitle}`);
-    wp_btn.setAttribute("href",`https://wa.me/?text=${postTitle} ${postUrl}`);
-    btn_fb.addEventListener('click', () => {
-        navigator.share({
-            title: postTitle,
-            url: postUrl
-        }).then((result) => {
-            console.log("thank you for sharing")
-        }).catch((err)=>{
-            console.log(err);
+    <script src="{{ asset('app-assets/js/popup.js') }}" rel="preload" as="script"></script>
+    <script>
+        const btn_fb = document.getElementById('fb-btn');
+        const wp_btn = document.getElementById('wp-btn');
+        let postUrl = encodeURI(document.location.href);
+        let postTitle = encodeURI('{{ $ads->title }}');
+        btn_fb.setAttribute("href", `https://www.facebook.com/sharer.php?u=${postUrl}&title=${postTitle}`);
+        wp_btn.setAttribute("href", `https://wa.me/?text=${postTitle} ${postUrl}`);
+        btn_fb.addEventListener('click', () => {
+            navigator.share({
+                title: postTitle,
+                url: postUrl
+            }).then((result) => {
+                console.log("thank you for sharing")
+            }).catch((err) => {
+                console.log(err);
+            })
         })  
-    });
-    wp_btn.addEventListener('click',()=>{
-        navigator.share({
-            title:postTitle,
-            url:postUrl
-        }).then((result)=>{
-            console.log("thank you for sharing")
-           
-        }).catch((err) =>{
-            console.log(err);
-        })
-    });
-</script>
+            })
+        });
+        wp_btn.addEventListener('click', () => {
+            navigator.share({
+                title: postTitle,
+                url: postUrl
+            }).then((result) => {
+                console.log("thank you for sharing")
+
+            }).catch((err) => {
+                console.log(err);
+            })
+        });
+    </script>
 @endsection
