@@ -79,7 +79,7 @@ Route::get('/admin/reset-password/{token}', 'AdminPageController@getPassword')->
 Route::post('/admin/reset-password', 'AdminPageController@updatePassword')->name('admin.postPassword');
 //----------------------------------------E-N-D----A-D-M-I-N-------------------------------------------
 // Login personaliser
-Route::get('/sigin', "LoginController@index")->name('login.user');
+Route::get('/login', "LoginController@index")->name('login.user');
 Route::post('/login/user', "LoginController@login")->name('login.custom');
 //Login with Facebook and Google
 Route::get('/login/google', 'LoginController@redirectToGoogle')->name('login.google');

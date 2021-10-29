@@ -15,7 +15,7 @@
                 <!-- Right Side Of Navbar -->
 
                 <!-- Authentication Links -->             
-                    @if (Route::has('login'))
+                    @if (Route::has('login.user'))
                         <a class="authBtn" href="{{ route('login.user') }}">Login&nbsp;&nbsp;<i
                                 class="fas fa-user-circle"></i></a>
                         </li>

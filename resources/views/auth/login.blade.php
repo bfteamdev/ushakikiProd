@@ -1,86 +1,112 @@
 @extends('layout.app_login')
 
 @section('content')
-
     <div id="page-wrapper" class="sign-in-wrapper">
-        <div class="graphs">
-            <div class="sign-in-form">
-                <div class="sign-in-form-top">
-                    <h1>Log in</h1>
-                </div>
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <div class="headLogo">
+                <h2>USHAKIKI</h2>
+            </div>
+
+            <div class="loginOrCreate">
+                <span class="register {{ route('login.user') }}">Se connecter</span>
+                <span class="register {{ route('register') }}">Ou <a href="/register">Creer un compte</a></span>
+            </div>
+            <div class="col-lg-5 col-md-7 col-sm-10">
+
+                @if (session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <div class="signin">
-                    @if (session()->has('error'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ session()->get('error') }}
+
+                    <div class="signin-header">
+                        {{-- <div class="header-title">Se connecter</div> --}}
+                        <div class="header-img">
+                            <img src="{{ asset('app-assets/images/avatar.svg') }}" alt="" srcset="">
                         </div>
-                    @endif
+                    </div>
+
+
                     <form method="POST" action="{{ route('login.custom') }}">
                         @csrf
-                        <div class="signin-rit">
-                            <span class="checkbox1">
-                                <label class="checkbox"><input type="checkbox" name="remember" id="remember"
-                                        {{ old('remember') ? 'checked' : '' }}>Forgot Password
-                                    ?</label>
-                            </span>
-                            <p>
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Click Here
-                                    </a>
-                                @endif
-                            </p>
-                            <div class="clearfix"> </div>
-                        </div>
-
-                        <div class="log-input">
-                            <div class="log-input-left">
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="Your Email" 
-                                    onfocus="this.value = '';"
-                                    onblur="if (this.value == '') {this.value = 'Your Email';}" />
-                                    {{-- <i class="fas fa-user-circle"></i> --}}
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="signin-body">
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="email" class="field-label">Adresse e-mail</label>
+                                    {{-- <input type="text" class="field-input allInputs" name="" autocomplete="off" aria-autocomplete="off"> --}}
+                                    <input type="text" class="field-input allInputs @error('email') is-invalid @enderror"
+                                        id="email" name="email" />
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                            <span class="checkbox2">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-                            </span>
-                            <div class="clearfix">
-
-                            </div>
-                            <div class="log-input">
-                                <div class="log-input-left">
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        name="password" value="password" onfocus="this.value = '';"
-                                        onblur="if (this.value == '') {this.value = 'Email address:';}" />
+                            <div class="col-lg-12">
+                                <div class="field">
+                                    <label for="password" class="field-label">Mot de passe</label>
+                                    <input type="password"
+                                        class="field-input allInputs @error('password') is-invalid @enderror" id="password"
+                                        name="password" />
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <span class="checkbox2">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i>
-                                        </i></label>
-                                </span>
-                                <div class="clearfix">
-                                </div>
                             </div>
-                            <input type="submit" value="Log in">
 
+                            <div class="col-lg-12 mt-4 d-flex justify-content-between align-items-center">
+                                <div class="col-lg-6">
+                                    <button class="signin-btn" type="submit">Se connecter</button>
+                                </div>
+                                @if (Route::has('password.request'))
+                                    <span class="passwordReset"><a href="{{ route('password.request') }}">Mot de
+                                            passe oublie ?</a></span>
+                                @endif
+                            </div>
+                            <div class="col-lg-12 mt-4 d-flex justify-content-between align-items-center mt-4">
+                                <a href="{{ route('login.facebook') }}" class="btn btn-primary m-0"><i class="fab fa-facebook"></i>&nbsp; Login with facebook</a>
+                                <a href="{{ route('login.google') }}" class="btn btn-danger "><i class="fab fa-google"></i>&nbsp; Login with google</a>
+                            </div>
+                        </div>
                     </form>
-                </div>
-                <div class="new_people">
-                    <h2>For New People</h2>
-                    <p>Having hands on experience in creating innovative designs,I do offer design
-                        solutions which harness.</p>
-                    <a href="{{ route('register') }}">Register Now!</a>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+    @include('layout.partials.include.footer')
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.field-input').focus(function() {
+                $(this).parent().addClass('is-focused has-label');
+            });
+            $('.field-input').blur(function() {
+                if ($(this).val() == '') {
+                    $(this).parent().removeClass('has-label');
+                }
+                $(this).parent().removeClass('is-focused');
+            });
+            $('.field-input').each(function() {
+                if ($(this).val() != '') {
+                    $(this).parent().addClass('has-label');
+                }
+            });
+
+            $('.allInputs').keyup(function() {
+                if ($(this).val() == "") {
+                    $(this).parent().addClass('is-error-focused error');
+                } else {
+                    $(this).parent().removeClass('is-error-focused error');
+                }
+            });
+        });
+
+    </script>
 @endsection
